@@ -1,0 +1,100 @@
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        "sidebar main"
+        "sidebar footer";
+}
+
+/* hidden this header first, only show at mobile view */
+nav {
+    grid-area: header;
+    display: none;
+}
+
+aside {
+    grid-area: sidebar;
+    padding: 1em;
+    background-color: lightblue;
+    top: 0;
+    position: sticky;
+    align-self: start;
+    height: 100vh;
+}
+
+/* also hidden, only show at mobile view */
+#close-menu {
+    display: none;
+}
+
+main {
+    grid-area: main;
+    padding: 1em;
+    background-color: antiquewhite;
+}
+
+footer {
+    grid-area: footer;
+    padding: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px black solid;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media(max-width: 800px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
+    }
+
+    /* show the header */
+    nav {
+        display: block;
+    }
+
+    aside {
+        position: fixed;
+        width: 300px;
+
+        /* Don't hide the sidebar, push the it out of the screen (for animation) */
+        left: -300px;
+        transition: left 0.3s ease;
+    }
+
+    #close-menu {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+
+    .icon-menu {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #333;
+        padding: 5px;
+        transition: color 0.3s;
+    }
+
+    .icon-menu:hover {
+        color: #007bff;
+    }
+
+    .show {
+        /*  push back the sidebar to the screen (for animation) */
+        left: 0;
+    }
+}
