@@ -1,19 +1,19 @@
 const sidebar = document.getElementById("sidebar");
-const openMenu = document.getElementById('open-menu');
-const closeMenu = document.getElementById('close-menu');
+const openMenu = document.getElementById("open-menu");
+const closeMenu = document.getElementById("close-menu");
 
-openMenu.addEventListener('click', () => {
+openMenu.addEventListener("click", () => {
     sidebar.classList.toggle("show");
 });
 
-closeMenu.addEventListener('click', () => {
+closeMenu.addEventListener("click", () => {
     sidebar.classList.remove("show");
 });
 
-window.addEventListener('click', (e) => {
+window.addEventListener("click", (e) => {
     // 1. make sure sidebar alr display on screen
     // 2. make sure the area that user click is not on the sidebar
-    if (sidebar.classList.contains('show') && !sidebar.contains(e.target)) {
+    if (sidebar.classList.contains("show") && !sidebar.contains(e.target)) {
         // very important, if not this condition, every time user open the sidebar will be closed back immediately
         // we should make sure the clicked target is not the openMenu button
         // event bubbling*
