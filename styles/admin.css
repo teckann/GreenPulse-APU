@@ -20,7 +20,7 @@ nav {
 aside {
     grid-area: sidebar;
     padding: 1em;
-    background-color: lightblue;
+    background-color: #d1dbe4;
     top: 0;
     position: sticky;
     align-self: start;
@@ -35,7 +35,7 @@ aside {
 main {
     grid-area: main;
     padding: 1em;
-    background-color: antiquewhite;
+    /* background-color: #d1dbe4; */
 }
 
 footer {
@@ -45,6 +45,7 @@ footer {
     justify-content: center;
     align-items: center;
     border-top: 2px black solid;
+    /* background-color: #d1dbe4; */
 }
 
 footer p {
@@ -63,6 +64,7 @@ footer p {
     border-radius: 5px;
     border: none;
     outline: none;
+    border: 1px black solid;
 }
 
 .search-box i {
@@ -70,7 +72,7 @@ footer p {
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: #666;
+    color: #333;
     pointer-events: none;
 }
 
@@ -78,16 +80,22 @@ footer p {
     display: flex;
     flex-direction: column;
     margin: 1em 0;
-    gap: 1.2em;
+    gap: 0.5em;
 }
 
 .nav-pages a,
 .nav-pages i {
-    color: #1a1a1a
+    color: #1a1a1a;
+    font-size: 0.9em;
 }
 
 .nav-pages a {
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .nav-pages i {
@@ -95,6 +103,84 @@ footer p {
     width: 20px;
     text-align: center;
 }
+
+.nav-pages a:hover {
+    background-color: #bcd2e7;
+}
+
+.nav-pages a.active {
+    background-color: #a3b7ca;
+    font-weight: 600;
+    color: #000;
+}
+
+.sidebar-subTitle {
+    margin-top: 1em;
+    font-size: 0.85em;
+    color: #666;
+}
+
+.page-subTitle {
+    padding: 0.3em 0;
+    color: #666;
+    font-weight: 400;
+    font-size: 1.3em;
+}
+
+.data-container {
+    margin: 1em 0;
+    padding: 0.5em 0;
+    width: 100%;
+    height: auto;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    gap: 5em;
+}
+
+.data-box {
+    width: 20em;
+    height: 8em;
+    border-radius: 10px;
+    background: linear-gradient(to right, #CFE5F3 0%, #B1C6D7 100%);
+    padding: 1em;
+}
+
+.data-box-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* background-color: blue; */
+}
+
+.percentage-box {
+    height: auto;
+    width: 6em;
+    border-radius: 8px;
+    border: 1px black solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+}
+
+.percentage-box i,
+.percentage-box p {
+    font-size: 0.9em !important;
+    padding: 0.1em 0;
+}
+
+.percentage-box i {
+    padding: 0.2em 0;
+}
+
+.data-box h1 {
+    padding: 0.3em 0;
+    font-size: 2.5em;
+}
+
 
 @media(max-width: 800px) {
     body {
@@ -108,13 +194,20 @@ footer p {
 
     /* show the header */
     nav {
-        display: block;
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        background-color: #d1dbe4;
+    }
+
+    nav h2 {
+        padding-top: 0.2em;
+        font-weight: 500;
     }
 
     aside {
         position: fixed;
         width: 250px;
-        background-color: lightblue;
 
         /* Don't hide the sidebar, push the it out of the screen (for animation) */
         left: -300px;
@@ -145,5 +238,18 @@ footer p {
     .show {
         /*  push back the sidebar to the screen (for animation) */
         left: 0;
+    }
+
+    .page-subTitle {
+        font-size: 1em;
+    }
+
+    .data-container {
+        flex-direction: column;
+        gap: 2em;
+    }
+
+    .data-box {
+        align-self: center;
     }
 }

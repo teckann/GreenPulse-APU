@@ -2,6 +2,7 @@
     <button id="open-menu" class="icon-menu">
         <i class="fa-solid fa-bars"></i>
     </button>
+    <h2>GreenPulse APU</h2>
 </nav>
 
 <aside id="sidebar">
@@ -22,7 +23,7 @@
             <i class="fa-solid fa-gauge-high"></i> Dashboard
         </a>
 
-        <a id="manageUsers" href="#">
+        <a id="manageUsers" href="../../pages/admin/manageUsers.php">
             <i class="fa-solid fa-users"></i> Manage Users
         </a>
 
@@ -44,6 +45,17 @@
 
         <a id="logActivity" href="#">
             <i class="fa-solid fa-clipboard-list"></i> Log Activity
+        </a>
+    </div>
+
+    <p class="sidebar-subTitle">Account</p>
+    <div class="nav-pages">
+        <a id="profile" href="#">
+            <i class="fa-solid fa-user"></i> Profile
+        </a>
+
+        <a id="guildeline" href="#">
+            <i class="fa-solid fa-book"></i> Guildeline
         </a>
     </div>
 </aside>

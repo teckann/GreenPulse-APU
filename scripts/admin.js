@@ -24,4 +24,20 @@ window.addEventListener("click", (e) => {
     }
 });
 
-// search bar (sidebar) settings
+
+// sidebar elements selected effect
+const navAnchorTag = document.querySelectorAll(".nav-pages a");
+const currentFile = window.location.pathname.split("/").pop(); // current file path
+
+// default: Dashboard will be selected
+// ..../admin/index.php sometime will be simplify as ..../admin
+if (currentFile === "" || currentFile === "admin") {
+    document.getElementById("dashboard").classList.add("active");
+}
+
+navAnchorTag.forEach(link => {
+    const href = link.getAttribute("href");
+    if (href.includes(currentFile)) {
+        link.classList.add("active");
+    }
+});
