@@ -18,7 +18,7 @@
     </div>
 
     <div class = "logo" onclick = "window.location.href='home.html'">
-            <img src=".../../src/committee/logo.png" alt="Logo">
+            <img src="../../src/committee/logo.png" alt="Logo">
     </div>
 
     <div class = "profile">
