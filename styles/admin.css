@@ -177,10 +177,15 @@ footer p {
 }
 
 .data-box h1 {
-    padding: 0.3em 0;
     font-size: 2.5em;
 }
 
+.increase-number {
+    display: flex;
+    justify-content: right;
+    padding-top: 0.3em;
+    font-size: 0.9em;
+}
 
 @media(max-width: 800px) {
     body {

@@ -89,7 +89,7 @@
                     $title = array("Total Users", "Total Trees", "Total Events");
                     $all_data = array($users, $trees, $events);
                     $percentage = 0;
-                    $status; $icon; $total;
+                    $status; $icon; $total; $this_month; $color;
 
                     for($i = 0; $i < 3; $i++) {
                         $status = "none"; 
@@ -98,6 +98,7 @@
                         
                         $target_data = $all_data[$i];
                         $total = $target_data[0];
+                        $this_month = $target_data[1];
 
                         // index2 = last_month data
                         if ($target_data[1] == 0) {
@@ -128,12 +129,15 @@
 
                         if ($status === "up") {
                             $icon = "fa-solid fa-arrow-trend-up trend-up";
+                            $color = "#28a745";
                         }
                         elseif ($status === "down") {
                             $icon = "fa-solid fa-arrow-trend-down trend-down";
+                            $color = "#dc3545";
                         }
                         else {
                             $icon = "fa-solid fa-minus trend-flat";
+                            $color = "#6c757d";
                         }
 
                         echo "<div class='data-box'>
@@ -145,6 +149,7 @@
                                         <p>$percentage %</p>
                                     </div>
                                 </div>
+                                <p class='increase-number' style='color: $color'>+$this_month in this month</p>
                                 <h1>$total</h1>
                               </div>";
                     }
