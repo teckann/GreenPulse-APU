@@ -1,7 +1,9 @@
+@import url("general.css");
+
 body {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 250px 1fr;
     grid-template-rows: 1fr auto;
     grid-template-areas:
         "sidebar main"
@@ -11,6 +13,7 @@ body {
 /* hidden this header first, only show at mobile view */
 nav {
     grid-area: header;
+    padding: 0.5em;
     display: none;
 }
 
@@ -48,6 +51,51 @@ footer p {
     margin: 0;
 }
 
+.search-box {
+    margin: 0.5em 0;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    height: 2rem;
+    padding: 10px 15px 10px 40px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.search-box i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    pointer-events: none;
+}
+
+.nav-pages {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0;
+    gap: 1.2em;
+}
+
+.nav-pages a,
+.nav-pages i {
+    color: #1a1a1a
+}
+
+.nav-pages a {
+    text-decoration: none;
+}
+
+.nav-pages i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
@@ -65,7 +113,8 @@ footer p {
 
     aside {
         position: fixed;
-        width: 300px;
+        width: 250px;
+        background-color: lightblue;
 
         /* Don't hide the sidebar, push the it out of the screen (for animation) */
         left: -300px;

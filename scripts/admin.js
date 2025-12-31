@@ -1,3 +1,4 @@
+// sidebar settings
 const sidebar = document.getElementById("sidebar");
 const openMenu = document.getElementById("open-menu");
 const closeMenu = document.getElementById("close-menu");
@@ -22,3 +23,5 @@ window.addEventListener("click", (e) => {
         }
     }
 });
+
+// search bar (sidebar) settings
