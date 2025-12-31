@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Committee Home Page</title>
+    <title>Event Feedback Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+</head>
 <body>
-    <!-- The whole navigation bar (include the menu icon, logo and profile pic)-->
     <nav class = "navigationBar">
 
     <div class = "hamburgerMenu">
@@ -17,8 +17,8 @@
         </button>
     </div>
 
-    <div class = "logo">
-        <img src="../../src/committee/logo.png" alt="Logo">
+    <div class = "logo" onclick = "window.location.href='home.html'">
+            <img src=".../../src/committee/logo.png" alt="Logo">
     </div>
 
     <div class = "profile">
@@ -33,63 +33,62 @@
         </marquee>
     </div>
 
-    <!--Use <section> like this section got a lot things, pack it together-->
-    <section class="heroSection">
-        <h1>APU</h1>
-        <h1>GREENPULSE</h1>
-        <p>Grow greener futures — volunteer, share, celebrate.</p>
+        
+    <section class="heroSection-event">
+        <h1>Event</h1>
+        <h1>Management</h1>
+        <p>Create and manage green initiative events.</p>
     </section>
 
-    <!-- Grey section with cards -->
-    <section class="content-section">
-        <div class="content-card">
-            <div class="card-content">
-                <h3>Tree Adoption</h3>
-                <p>Add, edit, and delete tree records for management.</p>
-                
-                <button class="card-button" onclick="window.location.href='treeAdoption.php'">
-                    <span>Tree Adoption</span>
-                    <span>→</span>
-                </button>
-
+    <div class="container">
+        <span class = "title">Event Feedback</span>
+        <div class = "event-feedback-outer-box">
+            <div class = "feedback-header">
+                <span class = "title-feedback">Feedback</span>
+                <div class = "date-time">
+                    <span class = "title-date">Date</span>
+                    <span class = title-time>Time</span>
+                </div>
             </div>
+            <div class = "event-feedback-inner-box"></div>
         </div>
 
-        <div class="content-card">
-            <div class="card-content">
-                <h3>Merchandises</h3>
-                <p>Add, edit, and delete merchandise records for management.</p>
-                <button class="card-button" onclick="window.location.href='merchandises.php'">
-                    <span>Merchandises</span>
-                    <span>→</span>
-                </button>
+        <div class = "event-feedback-outer-box">
+            <div class = "feedback-header">
+                <span class = "title-feedback">Feedback</span>
+                <div class = "date-time">
+                    <span class = "title-date">Date</span>
+                    <span class = title-time>Time</span>
+                </div>
             </div>
+            <div class = "event-feedback-inner-box"></div>
         </div>
 
-        <div class="content-card">
-            <div class="card-content">
-                <h3>Events</h3>
-                <p>Add, edit, and delete events records for management.</p>
-                <button class="card-button" onclick="window.location.href='eventMain.php'">
-                    <span>Events</span>
-                    <span>→</span>
-                </button>
+        <div class = "event-feedback-outer-box">
+            <div class = "feedback-header">
+                <span class = "title-feedback">Feedback</span>
+                <div class = "date-time">
+                    <span class = "title-date">Date</span>
+                    <span class = title-time>Time</span>
+                </div>
             </div>
+            <div class = "event-feedback-inner-box"></div>
         </div>
 
-        <div class="content-card">
-            <div class="card-content">
-                <h3>Study & Quiz</h3>
-                <p>Add, edit, and delete quiz records for management.</p>
-                <button class="card-button" onclick="window.location.href='study&Quiz.php'">
-                    <span>Study & Quiz</span>
-                    <span>→</span>
-                </button>
+                <div class = "event-feedback-outer-box">
+            <div class = "feedback-header">
+                <span class = "title-feedback">Feedback</span>
+                <div class = "date-time">
+                    <span class = "title-date">Date</span>
+                    <span class = title-time>Time</span>
+                </div>
             </div>
+            <div class = "event-feedback-inner-box"></div>
         </div>
-    </section>
+    </div>
 
-    <!-- Hamburger Menu sidebar -->
+
+   <!-- Hamburger Menu sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">LOGO</div>
@@ -127,7 +126,6 @@
             </div>
         </div>
     </div>
-
     <!-- Overlay -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
@@ -160,6 +158,5 @@
             }
         });
     </script>
-
 </body>
 </html>

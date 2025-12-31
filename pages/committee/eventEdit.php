@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Committee Home Page</title>
+    <title>Edit Event Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- The whole navigation bar (include the menu icon, logo and profile pic)-->
     <nav class = "navigationBar">
 
     <div class = "hamburgerMenu">
@@ -17,8 +16,8 @@
         </button>
     </div>
 
-    <div class = "logo">
-        <img src="../../src/committee/logo.png" alt="Logo">
+    <div class = "logo" onclick = "window.location.href='home.html'">
+            <img src="../../src/committee/logo.png" alt="Logo">
     </div>
 
     <div class = "profile">
@@ -33,59 +32,69 @@
         </marquee>
     </div>
 
-    <!--Use <section> like this section got a lot things, pack it together-->
-    <section class="heroSection">
-        <h1>APU</h1>
-        <h1>GREENPULSE</h1>
-        <p>Grow greener futures — volunteer, share, celebrate.</p>
+      
+    <section class="heroSection-event">
+        <h1>Event</h1>
+        <h1>Management</h1>
+        <p>Create and manage green initiative events.</p>
     </section>
 
-    <!-- Grey section with cards -->
-    <section class="content-section">
-        <div class="content-card">
-            <div class="card-content">
-                <h3>Tree Adoption</h3>
-                <p>Add, edit, and delete tree records for management.</p>
-                
-                <button class="card-button" onclick="window.location.href='treeAdoption.php'">
-                    <span>Tree Adoption</span>
-                    <span>→</span>
-                </button>
+    <!-- STARTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT -->
+    <section class="eventControls">
+        
 
+        <div class="container">
+            <div class="input-group">
+                <label>Event name</label>
+                <div class="event-box">Recycling Workshop</div>
             </div>
-        </div>
+            
+            <div class = "two-column">
+                <div class="input-group">
+                    <label>Event Date</label>
+                    <div class="event-box">December 30, 2025</div>
+                </div>
 
-        <div class="content-card">
-            <div class="card-content">
-                <h3>Merchandises</h3>
-                <p>Add, edit, and delete merchandise records for management.</p>
-                <button class="card-button" onclick="window.location.href='merchandises.php'">
-                    <span>Merchandises</span>
-                    <span>→</span>
-                </button>
-            </div>
-        </div>
+                <div class="input-group">
+                    <label>Duration</label>
+                <div class="event-box" >2 hours</div>
 
-        <div class="content-card">
-            <div class="card-content">
-                <h3>Events</h3>
-                <p>Add, edit, and delete events records for management.</p>
-                <button class="card-button" onclick="window.location.href='eventMain.php'">
-                    <span>Events</span>
-                    <span>→</span>
-                </button>
+                </div>
             </div>
-        </div>
 
-        <div class="content-card">
-            <div class="card-content">
-                <h3>Study & Quiz</h3>
-                <p>Add, edit, and delete quiz records for management.</p>
-                <button class="card-button" onclick="window.location.href='study&Quiz.php'">
-                    <span>Study & Quiz</span>
-                    <span>→</span>
-                </button>
+             <div class = "two-column">
+                <div class="input-group">
+                    <label>Location</label>
+                    <div class="event-box">Auditorium 3</div>
+                </div>
+
+                <div class="input-group">
+                    <label>Available Spot</label>
+                <div class="event-box">100</div>
+
+                </div>
             </div>
+
+             <div class="input-group">
+                <label>Points Given</label>
+                <div class="event-box">50</div>
+            </div>
+
+             <div class="input-group">
+                <label>Description</label>
+                <div class="event-big-box"> An interactive, hands-on session designed to educate participants about proper waste management and inspire creativity by transforming discarded materials into new, useful products.</div>
+            </div>
+
+            <div class="input-group">
+                <label>Event Poster</label>
+                <div class="event-big-box"></div>
+            </div>
+
+
+
+            <button class="btnCreateEvent">
+                Save Changes
+            </button>
         </div>
     </section>
 
@@ -127,7 +136,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Overlay -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
