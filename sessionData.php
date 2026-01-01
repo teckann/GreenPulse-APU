@@ -9,6 +9,6 @@
 
     // always make sure section active, else redirect to guest index page
     if (!isset($_SESSION['userID'])) {
-	    header("Location: ../../pages/guest/index.php");
+	    header("Location: index.php");
 	} 
 ?>
