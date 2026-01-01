@@ -1,0 +1,15 @@
+The password has been hashed
+Don't modify password data inside the database
+
+Try Login Details as below:
+    - U001 : teckann123 (admin)
+    - U002 : yangee123 (committee)
+    - U003 : cynthia123 (committee)
+    - U004 : jimmy123 (volunteer)
+
+Please update your database
+
+Version: V2 - 1.1.2026
+
+
+# items table add posted_date
