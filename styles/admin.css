@@ -35,7 +35,6 @@ aside {
 main {
     grid-area: main;
     padding: 1em;
-    /* background-color: #d1dbe4; */
 }
 
 footer {
@@ -187,6 +186,45 @@ footer p {
     font-size: 0.9em;
 }
 
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 73vw;
+    height: 260px;
+    padding: 1em 2.5em;
+    gap: 0.7em;
+    border-radius: 8px;
+    background: linear-gradient(to right, #CFE5F3 0%, #B1C6D7 100%);
+}
+
+.item-chart-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item-chart select {
+    width: 10em;
+    padding: 0.5em;
+    border-radius: 8px;
+    border: 1px black solid;
+}
+
+.item-chart-box {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
@@ -257,4 +295,15 @@ footer p {
     .data-box {
         align-self: center;
     }
+
+    .item-chart {
+        width: 95%;
+        padding: 1em;
+        gap: 0.7em;
+    }
+
+    /* iphone SE not match */
+    /* .item-chart-title h3 {
+        font-size: 1.1em;
+    } */
 }
