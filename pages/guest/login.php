@@ -10,7 +10,6 @@
     </head>
     <body>
         <!-- <?php include("header.php") ?> -->
-
         <main class="login">
             <div class="login-container">
                 <div class="login-header">
@@ -28,8 +27,8 @@
                             </tr>
 
                             <tr>
-                                <td class="label"><label for="password">Password</label></td>
-                                <td class="colon">:</td>
+                                <td class="label password-labelText"><label for="password">Password</label></td>
+                                <td class="colon password-colon">:</td>
                                 <td class="password-feild">
                                     <input type="password" name="txtPassword" id="password" required>
                                     <a href="#" class="forgot-password">Forgot Password?</a>
