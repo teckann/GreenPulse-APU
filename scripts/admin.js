@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newData = lineGraph_merchandiseData;
             newColor = "#3b7ddd";
         }
-        else if (item === 'tree') {
+        else if (item === "tree") {
             newData = lineGraph_treeData;
             newColor = "#7fb5ff";
         }
