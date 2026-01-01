@@ -93,7 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // listen the dropdown menu
     itemSelector.addEventListener("change", (e) => {
-        const item = e.target.value; // get the value (all, merchandise, tree)
+        // get the value (all, merchandise, tree)
+        const item = e.target.value;
 
         let newData = [];
         let newColor = "";
