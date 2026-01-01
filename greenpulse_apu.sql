@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2025 at 10:58 PM
+-- Generation Time: Jan 02, 2026 at 02:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -164,6 +164,7 @@ CREATE TABLE `items` (
   `item_redeem_points` int(11) NOT NULL,
   `item_stock` int(11) NOT NULL,
   `category` varchar(50) NOT NULL,
+  `posted_date` date NOT NULL,
   `item_status` varchar(50) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -171,8 +172,8 @@ CREATE TABLE `items` (
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`item_id`, `user_id`, `item_name`, `item_image`, `item_description`, `item_redeem_points`, `item_stock`, `category`, `item_status`) VALUES
-('I001', 'U003', 'GreenPulse T-Shirt', 'src/itemImages/item1.png', 'A GreenPulse branded T-shirt supporting green initiatives and environmental awareness. Available in sizes M, L, XL, and XXL for a comfortable fit.', 6000, 50, 'merchandise', 'Active');
+INSERT INTO `items` (`item_id`, `user_id`, `item_name`, `item_image`, `item_description`, `item_redeem_points`, `item_stock`, `category`, `posted_date`, `item_status`) VALUES
+('I001', 'U003', 'GreenPulse T-Shirt', 'src/itemImages/item1.png', 'A GreenPulse branded T-shirt supporting green initiatives and environmental awareness. Available in sizes M, L, XL, and XXL for a comfortable fit.', 6000, 50, 'merchandise', '2026-01-01', 'Active');
 
 -- --------------------------------------------------------
 
@@ -187,6 +188,13 @@ CREATE TABLE `log` (
   `log_datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `log`
+--
+
+INSERT INTO `log` (`log_id`, `user_id`, `log_event`, `log_datetime`) VALUES
+('L001', 'U001', 'Successful Login', '2026-01-02 02:49:32');
+
 -- --------------------------------------------------------
 
 --
@@ -200,6 +208,13 @@ CREATE TABLE `merchandise_purchase_history` (
   `merchandise_purchase_date` date NOT NULL,
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `merchandise_purchase_history`
+--
+
+INSERT INTO `merchandise_purchase_history` (`merchandise_purchase_id`, `item_id`, `user_id`, `merchandise_purchase_date`, `amount`) VALUES
+('MP001', 'I001', 'U003', '2026-01-01', 1);
 
 -- --------------------------------------------------------
 
@@ -327,10 +342,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `nationality`, `gender`, `date_of_birth`, `contact_number`, `education_email`, `course_name`, `registration_date`, `password`, `safety_question_1`, `answer_1`, `safety_question_2`, `answer_2`, `green_points`, `total_earned`, `avatar`, `role`, `last_login`, `account_status`) VALUES
-('U001', 'Gan Teck Ann', 'Malaysia', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', 'teckann123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'admin', NULL, 'Active'),
-('U002', 'Goh Yang Ee', 'Malaysia', 'M', '2006-07-24', '0125508144', 'TP084231@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', 'yangee123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'committee', NULL, 'Active'),
-('U003', 'Cynthia Tan Xin Ru', 'Malaysia', 'F', '2006-01-21', '01155034966', 'TP084369@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', 'cynthia123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'committee', NULL, 'Active'),
-('U004', 'Lim Jin Ming', 'Malaysia', 'M', '2006-06-09', '0129692700', 'TP0834242@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', 'jimmy123', NULL, NULL, NULL, NULL, 0, 0, NULL, 'volunteer', NULL, 'Active');
+('U001', 'Gan Teck Ann', 'Malaysia', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$ZfvTcqZCdCiDJUceYyzYCuuQOMfj/9425nCG4kq0mqzfqLZ5eAizu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'admin', '2026-01-02 02:52:01', 'Active'),
+('U002', 'Goh Yang Ee', 'Malaysia', 'M', '2006-07-24', '0125508144', 'TP084231@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$/FqDThXUlgrkHbNEmlF4cuiwcndPCgObsnDj7k/9u7JMRoYPHtWBe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'committee', NULL, 'Active'),
+('U003', 'Cynthia Tan Xin Ru', 'Malaysia', 'F', '2006-01-21', '01155034966', 'TP084369@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pOUI7Dv/WdOlaO/fca0MHOPafP3I.a55FhuVKme4X8SZzB7l/tyaC', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'committee', NULL, 'Active'),
+('U004', 'Lim Jin Ming', 'Malaysia', 'M', '2006-06-09', '0129692700', 'TP0834242@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$hrkNchWg.uYwsRLpPlVTveGyMV0fFr1cSTgYC7MY0ec.3rxEIKdyS', NULL, NULL, NULL, NULL, 0, 0, NULL, 'volunteer', NULL, 'Active');
 
 --
 -- Indexes for dumped tables
