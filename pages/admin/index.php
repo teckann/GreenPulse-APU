@@ -1,5 +1,6 @@
 <?php
     include("../../conn.php");
+    include("../../sessionData.php");
 
     // card data
     $sql_users = "SELECT 

@@ -25,6 +25,7 @@ aside {
     position: sticky;
     align-self: start;
     height: 100vh;
+    z-index: 1000;
 }
 
 /* also hidden, only show at mobile view */
