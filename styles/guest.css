@@ -25,12 +25,13 @@
 }
 
 .login-header {
-    padding: 2em 0;
+    padding: 1.5em 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 8px;
+    /* background-color: #ccc; */
 }
 
 .login-header p {
@@ -46,6 +47,7 @@
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
+    /* background-color: blue; */
 }
 
 .login-form-table {
@@ -54,6 +56,7 @@
     border-spacing: 1em 1.2em;
     font-size: 1em;
     color: #333;
+    /* background-color: red; */
 }
 
 .login-form-table .label {
@@ -106,11 +109,10 @@ table input:focus {
     border-radius: 15px;
     padding: 1em 0;
     transition: 0.3s;
-    background-color: #ccc;
 }
 
 .btn-login:hover {
-    background: rgba(36, 98, 159, 0.6);
+    background: rgba(36, 98, 159, 0.8);
     transform: translateY(-2px);
 }
 
@@ -118,6 +120,7 @@ table input:focus {
     margin-top: 1em;
     align-self: center;
     font-size: 0.9em;
+    /* background-color: aqua; */
 }
 
 .signup-text a {
@@ -130,4 +133,15 @@ table input:focus {
     text-decoration: underline;
 }
 
-@media(max-width: 800px) {}
+@media(max-width: 800px) {
+    /* .login-mobile-view {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        justify-content: center;
+        padding: 1em;
+        background: linear-gradient(to right, #CFE5F3 0%, #B1C6D7 100%);
+        width: 100%;
+        height: 200px;
+    } */
+}
