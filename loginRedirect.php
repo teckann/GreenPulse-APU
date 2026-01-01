@@ -52,7 +52,7 @@
             header("Location: pages/committee/index.php");
         }
         else if ($role == "volunteer") {
-            header("Location: pages/committee/index.php");
+            header("Location: pages/volunteer/index.php");
         }
     }
 ?>
