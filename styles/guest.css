@@ -1,0 +1,133 @@
+@import url("general.css");
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #D9D9D9;
+}
+
+.login-container {
+    width: 500px;
+    height: 500px;
+    padding: 1em;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-header {
+    padding: 2em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.login-header p {
+    color: #666;
+}
+
+.login-form {
+    margin-top: 1em;
+    width: 90%;
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+.login-form-table {
+    width: 100%;
+    margin: 1em auto;
+    border-spacing: 1em 1.2em;
+    font-size: 1em;
+    color: #333;
+}
+
+.login-form-table .label {
+    font-weight: 500;
+    width: 3em;
+    text-align: left;
+    padding-right: 10px;
+}
+
+.login-form-table .colon {
+    width: 0.3em;
+    text-align: center;
+}
+
+table input {
+    width: 100%;
+    padding: 0.8em 0.5em;
+    border: 1.5px #ccc solid;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: 0.3s;
+}
+
+table input:focus {
+    border-color: #194a7a;
+    box-shadow: 0 0 5px rgba(25, 74, 122, 0.4);
+    outline: none;
+}
+
+.password-feild {
+    display: flex;
+    flex-direction: column;
+}
+
+.password-feild .forgot-password {
+    align-self: flex-end;
+    padding-top: 0.7em;
+    font-size: 0.8em;
+    color: #194a7a;
+    text-decoration: none;
+}
+
+.btn-login {
+    align-self: center;
+    width: 90%;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 1em;
+    border: none;
+    border-radius: 15px;
+    padding: 1em 0;
+    transition: 0.3s;
+    background-color: #ccc;
+}
+
+.btn-login:hover {
+    background: rgba(36, 98, 159, 0.6);
+    transform: translateY(-2px);
+}
+
+.signup-text {
+    margin-top: 1em;
+    align-self: center;
+    font-size: 0.9em;
+}
+
+.signup-text a {
+    color: #194a7a;
+    text-decoration: none;
+}
+
+.signup-text a:hover,
+.password-feild .forgot-password:hover {
+    text-decoration: underline;
+}
+
+@media(max-width: 800px) {}
