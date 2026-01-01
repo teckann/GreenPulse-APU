@@ -66,6 +66,12 @@ footer p {
     border: 1px black solid;
 }
 
+.search-box input:focus {
+    border-color: #194a7a;
+    box-shadow: 0 0 10px rgba(25, 74, 122, 0.6);
+    outline: none;
+}
+
 .search-box i {
     position: absolute;
     left: 10px;
