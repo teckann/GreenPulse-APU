@@ -76,7 +76,7 @@
     text-align: center;
 }
 
-table input {
+.login-form-table input {
     width: 100%;
     padding: 0.8em 0.5em;
     border: 1.5px #ccc solid;
@@ -85,7 +85,7 @@ table input {
     transition: 0.3s;
 }
 
-table input:focus {
+.login-form-table input:focus {
     border-color: #194a7a;
     box-shadow: 0 0 5px rgba(25, 74, 122, 0.4);
     outline: none;
