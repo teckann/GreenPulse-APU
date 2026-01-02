@@ -20,10 +20,11 @@
                 session_start();
 
                 $_SESSION["userID"] = $row["user_id"];
-                $_SESSION["name"] = $row["name"];
+                $_SESSION["userName"] = $row["name"];
                 $_SESSION["role"] = $row["role"];
 
                 header("Location: ../../loginRedirect.php");
+                exit;
             }
             else {
                 echo "<script> alert('Incorrect Password.') </script>";

@@ -47,12 +47,15 @@
         // main logic - redirection
         if ($role == "admin") {
             header("Location: pages/admin/index.php");
+            exit;
         }
         else if ($role == "committee") {
             header("Location: pages/committee/index.php");
+            exit;
         }
         else if ($role == "volunteer") {
             header("Location: pages/volunteer/index.php");
+            exit;
         }
     }
 ?>

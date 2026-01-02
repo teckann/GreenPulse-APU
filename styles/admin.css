@@ -26,6 +26,8 @@ aside {
     align-self: start;
     height: 100vh;
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
 }
 
 /* also hidden, only show at mobile view */
@@ -44,8 +46,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 2px black solid;
-    /* background-color: #d1dbe4; */
+    /* border-top: 2px black solid; */
+    background-color: #d1dbe4;
 }
 
 footer p {
@@ -120,8 +122,59 @@ footer p {
     color: #000;
 }
 
+.user-info-section-desktop {
+    margin: auto -1em -1em -1em;
+    border: 2px black solid;
+    height: 55px;
+    width: 250px;
+    align-self: flex-end;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 0 0 1.5em;
+    gap: 15px;
+}
+
+.user-info-section-desktop img {
+    border-radius: 5px;
+}
+
+.user-info-section-desktop .user-info-box .name {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.user-info-section-desktop .user-info-box .role {
+    font-size: 0.85em;
+    color: #666;
+}
+
+.logout-form {
+    margin: 0;
+    padding-left: 0.2em;
+    display: flex;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+
+    font-size: 18px;
+    color: #454545;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.logout-btn:hover {
+    color: #f42323;
+}
+
 .sidebar-subTitle {
-    margin-top: 1em;
+    margin-top: 0.5em;
     font-size: 0.85em;
     color: #666;
 }
@@ -308,6 +361,11 @@ footer p {
         padding: 1em;
         gap: 0.7em;
     }
+
+    /* 
+    .user-info-section-desktop {
+        display: none;
+    } */
 
     /* iphone SE not match */
     /* .item-chart-title h3 {
