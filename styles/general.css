@@ -13,5 +13,6 @@ body {
 html,
 body {
     max-width: 100%;
-    overflow-x: hidden;
+    /* hidden will make sticky work unnormally, change clip */
+    overflow-x: clip;
 }

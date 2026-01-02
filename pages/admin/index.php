@@ -2,66 +2,35 @@
     include("../../conn.php");
     include("../../sessionData.php");
 
-    // card data
-    $sql_users = "SELECT 
-                    -- total users
-                    COUNT(*) as total_users,
+    // dashboard 3 cards data for analysis (total users, items, events)
+    function cardData($conn, $table, $column) {
+        $sql = "SELECT 
+                -- total records
+                COUNT(*) as total,
 
-                    -- this month register user
-                    (SELECT COUNT(*) FROM users 
-                    WHERE registration_date >= DATE_FORMAT(NOW(), '%Y-%m-01')) as this_month,
+                -- this month records
+                (SELECT COUNT(*) FROM $table 
+                WHERE $column >= DATE_FORMAT(NOW(), '%Y-%m-01')) as this_month,
 
-                    -- last month register user
-                    (SELECT COUNT(*) FROM users 
-                    WHERE registration_date >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01') 
-                    AND registration_date < DATE_FORMAT(NOW(), '%Y-%m-01')) as last_month             
-                  FROM users";
+                -- last month records
+                (SELECT COUNT(*) FROM $table 
+                WHERE $column >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01') 
+                AND $column < DATE_FORMAT(NOW(), '%Y-%m-01')) as last_month             
+                FROM $table";
+        
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
 
-    $result_users = mysqli_query($conn, $sql_users);
-    $data_users = mysqli_fetch_assoc($result_users);
-    $users = array($data_users["total_users"], $data_users["this_month"], $data_users["last_month"]);
+        return array($row["total"], $row["this_month"], $row["last_month"]);
+    }
 
+    $users = cardData($conn, "users", "registration_date");
+    $items = cardData($conn, "items", "posted_date");
+    $events = cardData($conn, "events", "posted_date");
 
-    $sql_trees = "SELECT 
-                    -- total users
-                    COUNT(*) as total_trees,
-
-                    -- this month register user
-                    (SELECT COUNT(*) FROM items WHERE category = 'tree'
-                    AND posted_date >= DATE_FORMAT(NOW(), '%Y-%m-01')) as this_month,
-
-                    -- last month register user
-                    (SELECT COUNT(*) FROM items WHERE category = 'tree'
-                    AND posted_date >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01') 
-                    AND posted_date < DATE_FORMAT(NOW(), '%Y-%m-01')) as last_month             
-                  FROM items WHERE category = 'tree'";
-
-    $result_trees = mysqli_query($conn, $sql_trees);
-    $data_trees = mysqli_fetch_assoc($result_trees);
-    $trees = array($data_trees["total_trees"], $data_trees["this_month"], $data_trees["last_month"]);
-
-
-    $sql_events = "SELECT 
-                    -- total events
-                    COUNT(*) as total_events,
-
-                    -- this month posted events
-                    (SELECT COUNT(*) FROM events 
-                    WHERE posted_date >= DATE_FORMAT(NOW(), '%Y-%m-01')) as this_month,
-
-                    -- last month posted events
-                    (SELECT COUNT(*) FROM events 
-                    WHERE posted_date >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01') 
-                    AND posted_date < DATE_FORMAT(NOW(), '%Y-%m-01')) as last_month             
-                  FROM events";
-
-    $result_events = mysqli_query($conn, $sql_events);
-    $data_events = mysqli_fetch_assoc($result_events);
-    $events = array($data_events["total_events"], $data_events["this_month"], $data_events["last_month"]);
-
-    // * testing data Here
+    // * testing data here
     // $users = array(220, 0, 100);
-    // $trees = array(270, 150, 120);
+    // $items = array(270, 150, 120);
     // $events = array(12, 1, 10);
 ?>
 
@@ -164,8 +133,8 @@
             <div class="flex-container">
                 <div class="data-container">
                     <?php
-                        $title = array("Total Users", "Total Trees", "Total Events");
-                        $all_data = array($users, $trees, $events);
+                        $title = array("Total Users", "Total Items", "Total Events");
+                        $all_data = array($users, $items, $events);
                         $percentage = 0;
                         $status; $icon; $total; $this_month; $color;
 
@@ -235,7 +204,6 @@
                 </div>
 
                 <div class="item-chart">
-
                     <div class="item-chart-title">
                         <h3>Redemption Analysis</h3>
                         <select id="itemList" name="txtItem" required>
@@ -247,6 +215,28 @@
 
                     <div class="item-chart-box">
                         <canvas id="item-lineChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="module-announcement-container">
+                    <div class="module-chart">
+                        <div class="module-chart-title">
+                            <h3>Redemption Analysis</h3>
+                        </div>
+
+                        <div class="module-chart-box">
+                            <canvas id="item-lineChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-announcement">
+                        <div class="dashboard-announcement-title">
+                            <h3>Recent System Announcement</h3>
+                        </div>
+
+                        <div class="dashboard-announcement-list">
+
+                        </div>
                     </div>
                 </div>
             </div>

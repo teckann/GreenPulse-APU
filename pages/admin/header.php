@@ -67,7 +67,7 @@
         </a>
     </div>
 
-    <div class="user-info-section-desktop">
+    <div class="user-info-section">
         <img src="../../<?php echo $avatar ?>" alt="user_avatar" width="35px" height="35px">
 
         <div class="user-info-box">
