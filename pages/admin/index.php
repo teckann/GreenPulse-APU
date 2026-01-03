@@ -113,6 +113,12 @@
     }
 ?>
 
+<?php
+    // top 5 latest announcement list
+    $sql_announcement = "SELECT * FROM announcement ORDER BY announcement_datetime DESC LIMIT 5";
+    $result_announcement = mysqli_query($conn, $sql_announcement);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -221,7 +227,7 @@
                 <div class="module-announcement-container">
                     <div class="module-chart">
                         <div class="module-chart-title">
-                            <h3>Redemption Analysis</h3>
+                            <h3>Total Module Enrollment</h3>
                         </div>
 
                         <div class="module-chart-box">
@@ -235,7 +241,27 @@
                         </div>
 
                         <div class="dashboard-announcement-list">
+                            <table class="dashboard-announcement-table">
+                                <thead>
+                                    <tr>
+                                        <th>Announcement</th>
+                                        <th>Date & Time</th>
+                                    </tr>
+                                </thead>
 
+                                <tbody>
+                                    <?php
+                                        if (mysqli_num_rows($result_announcement) > 0) {
+                                            while ($row = mysqli_fetch_assoc($result_announcement)) {
+                                                echo "<tr>
+                                                        <td>" . $row['announcement_details'] . "</td>
+                                                        <td>" . $row['announcement_datetime'] . "</td>
+                                                      </tr>";
+                                            }
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

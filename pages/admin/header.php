@@ -35,7 +35,7 @@
             <i class="fa-solid fa-users"></i> Manage Users
         </a>
 
-        <a id="manageEvents" href="#">
+        <a id="manageEvents" href="../../pages/admin/manageEvents.php">
             <i class="fa-solid fa-calendar-check"></i> Manage Events
         </a>
 

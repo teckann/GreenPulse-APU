@@ -8,7 +8,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Manage Users</title>
+        <title>Manage Events</title>
         <link rel="stylesheet" href="../../styles/admin.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,8 +17,8 @@
         <?php include("header.php"); ?>
 
         <main class="search-area">
-            <h1>Manage Users</h1>
-            <h2 class="page-subTitle">Overview of all registered accounts</h2>
+            <h1>Manage Events</h1>
+            <h2 class="page-subTitle">Overview of all posted events</h2>
 
             <div class="flex-container">
 
