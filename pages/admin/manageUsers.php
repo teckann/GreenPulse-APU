@@ -1,6 +1,6 @@
 <?php
     include("../../conn.php");
-    include("../../sessionData.php");
+    include("../../backend/sessionData.php");
 ?>
 
 <!DOCTYPE html>

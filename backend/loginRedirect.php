@@ -1,5 +1,5 @@
 <?php
-    include("conn.php");
+    include("../conn.php");
     include("sessionData.php");
 
     if ($role == "admin" || $role == "committee" || $role == "volunteer") {
@@ -46,15 +46,15 @@
 
         // main logic - redirection
         if ($role == "admin") {
-            header("Location: pages/admin/index.php");
+            header("Location: ../pages/admin/index.php");
             exit;
         }
         else if ($role == "committee") {
-            header("Location: pages/committee/index.php");
+            header("Location: ../pages/committee/index.php");
             exit;
         }
         else if ($role == "volunteer") {
-            header("Location: pages/volunteer/index.php");
+            header("Location: ../pages/volunteer/index.php");
             exit;
         }
     }

@@ -17,6 +17,6 @@
 
     // pop-up message
     echo "<script> alert('Logout Successful') </script>";
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 ?>

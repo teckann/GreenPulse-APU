@@ -75,7 +75,7 @@
             <p class="role">Admin</p>
         </div>
 
-        <form action="../../logoutRedirect.php" method="POST" class="logout-form">
+        <form action="../../backend/logoutRedirect.php" method="POST" class="logout-form">
             <button type="submit" class="logout-btn" title="Logout">
                 <i class="fa-solid fa-right-from-bracket"></i>
             </button>

@@ -1,6 +1,6 @@
 <?php
     include("../../conn.php");
-    include("../../sessionData.php");
+    include("../../backend/sessionData.php");
 
     // dashboard 3 cards data for analysis (total users, items, events)
     function cardData($conn, $table, $column) {

@@ -23,7 +23,7 @@
                 $_SESSION["userName"] = $row["name"];
                 $_SESSION["role"] = $row["role"];
 
-                header("Location: ../../loginRedirect.php");
+                header("Location: ../../backend/loginRedirect.php");
                 exit;
             }
             else {
