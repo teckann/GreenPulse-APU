@@ -168,7 +168,7 @@
     <body>
         <?php include("header.php"); ?>
 
-        <main class="search-area">
+        <main class="">
             <h1>Welcome back! 👋</h1>
             <h2 class="page-subTitle">Monitor users, events, and system performance</h2>
 
@@ -256,7 +256,7 @@
                     </div>
 
                     <div class="item-chart-box">
-                        <canvas id="item-lineChart"></canvas>
+                        <canvas id="item-lineGraph"></canvas>
                     </div>
                 </div>
 

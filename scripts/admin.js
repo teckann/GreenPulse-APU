@@ -43,24 +43,23 @@ navAnchorTag.forEach(link => {
 });
 
 
-// item line graph
-/*
-    PHP alr passed the data:
-        const lineGraph_labels
-        const lineGraph_merchandiseData
-        const lineGraph_treeData
-        const lineGraph_allData
-*/
 // execute directly after the HTML document structure is loaded
+// https://github.com/chartjs/Chart.js?tab=readme-ov-file
+// documentation that I refer: https://www.chartjs.org/docs/2.9.4/
 document.addEventListener("DOMContentLoaded", () => {
-    const chart = document.getElementById("item-lineChart");
+    // item line graph
+    /*
+        PHP alr passed the data:
+            const lineGraph_labels
+            const lineGraph_merchandiseData
+            const lineGraph_treeData
+            const lineGraph_allData
+    */
+    const lineGraph = document.getElementById("item-lineGraph");
     const itemSelector = document.getElementById("itemList");
 
-    // debug purpose
-    // if (!chart) return
-
     // initialize graph
-    let itemLineChart = new Chart(chart, {
+    let itemLineGraph = new Chart(lineGraph, {
         type: "line",
         data: {
             // assign lineGraph_labels (from PHP) to labels
@@ -113,37 +112,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // update the datasets data
-        itemLineChart.data.datasets[0].data = newData;
+        itemLineGraph.data.datasets[0].data = newData;
         // update the curve color
-        itemLineChart.data.datasets[0].borderColor = newColor;
+        itemLineGraph.data.datasets[0].borderColor = newColor;
         // update the background color
-        itemLineChart.data.datasets[0].backgroundColor = newColor + "33";
+        itemLineGraph.data.datasets[0].backgroundColor = newColor + "33";
 
-        itemLineChart.update();
+        itemLineGraph.update();
     });
-});
 
 
-// module enrollment bar chart
-/*
-    PHP alr passed the data:
-        const barChart_labels
-        const lineChart_data
-*/
-// execute directly after the HTML document structure is loaded
-document.addEventListener("DOMContentLoaded", () => {
-    const ctx = document.getElementById("module-barChart");
 
-    // 2. 创建图表
-    new Chart(ctx, {
-        type: "bar", // 指定类型为柱状图
+    // module enrollment bar chart
+    /*
+        PHP alr passed the data:
+            const barChart_labels
+            const lineChart_data
+    */
+    const barChart = document.getElementById("module-barChart");
+
+    new Chart(barChart, {
+        type: "bar", // bar chart
         data: {
             labels: barChart_labels,
             datasets: [{
                 label: false,
                 data: barChart_data,
-
-                // --- 样式美化 ---
                 borderColor: "#194a7a",
                 backgroundColor: "rgba(25, 74, 122, 0.4)",
                 borderWidth: 0.4,
@@ -165,4 +159,80 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+});
+
+
+
+// sidebar (search feature)
+/**
+ * * Note: the dashboard dont support search feature
+ * ! Problem: chart will disappear + HTML / PHP code display on the page
+ * ? Small Bug: when search only one character, then HTML / PHP code also display on the page
+ */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("txtSearchInput");
+    const contentArea = document.querySelector(".search-area");
+
+    const removeHighlights = () => {
+        // find all tags with the highlight-text class in the search-area
+        const highlights = contentArea.querySelectorAll(".highlight-text");
+
+        highlights.forEach(targetElement => {
+            // remove the class, so it will back to original one
+            targetElement.classList.remove("highlight-text");
+        });
+    }
+
+    searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault(); // prevent the auto refresh the page
+            let inputValue = searchInput.value.trim();
+            searchInput.blur(); // remove the focus of the searchbar
+
+            if (inputValue) {
+                removeHighlights();
+
+                // create a regular expression (refer: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+                // g = global (find all), i = case-insensitive (dont care UpperCase or LowerCase)
+                let target = new RegExp(inputValue, "gi");
+                // compare with target, only matched element will be replace to the span tag
+                // $& = the text that match, put again inside the span tag
+                contentArea.innerHTML = contentArea.innerHTML.replace(target, "<span class='highlight-text'>$&</span>");
+
+
+                // auto scroll to the first result that found
+                let firstResult = contentArea.querySelector(".highlight-text");
+
+                if (firstResult) {
+                    firstResult.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center" // make it center on the screen
+                    });
+                }
+            }
+            else {
+                return;
+            }
+        }
+    });
+
+    // another function to remove the highlight becasue
+    // I dont want the user click the searchbar, then the highlight directly remove
+    const removeHighlights2 = (e) => {
+        // click the searchbar itself, then nothing
+        if (e.target === searchInput) {
+            return;
+        }
+
+        // otherwise, onece it contain highlight-text class, the class will be remove
+        if (contentArea.querySelector(".highlight-text")) {
+            removeHighlights();
+        }
+    }
+
+    // I dont want the user click the searchbar, then the highlight directly remove
+    // so use removeHighlights2 to prevent the event target to the searchbar
+    document.addEventListener("wheel", removeHighlights2); // Mouse wheel, for desktop
+    document.addEventListener("touchmove", removeHighlights2); // finger swipe, for mobile
 });

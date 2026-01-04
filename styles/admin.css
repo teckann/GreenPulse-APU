@@ -365,6 +365,13 @@ tbody tr:hover {
     cursor: default;
 }
 
+.highlight-text {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
 
 @media(max-width: 800px) {
     body {
