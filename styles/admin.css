@@ -372,6 +372,23 @@ tbody tr:hover {
     border-radius: 3px;
 }
 
+.action-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 15px;
+    font-size: 1.1em;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #194a7a;
+}
+
+
 
 @media(max-width: 800px) {
     body {
@@ -473,5 +490,9 @@ tbody tr:hover {
     th,
     td {
         padding: 12px 10px;
+    }
+
+    .desktop-table {
+        display: none;
     }
 }
