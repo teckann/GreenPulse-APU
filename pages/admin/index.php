@@ -68,12 +68,12 @@
 
     // store the previous 4 months from the latest date (total: 5 months) 
     // use to query the quantity for each month and display it in the graph (x-axis)
-    $monthsQueryKeys = [];   // for query purpose ("Dec", "Jan", ...)
-    $monthsLabels = []; // for graph to display ("2025-12", "2026-01", ...)
+    $monthsQueryKeys = array();   // for query purpose ("2025-12", "2026-01", ...)
+    $monthsLabels = array(); // for graph to display ("Dec", "Jan", ...)
 
     for ($i = 4; $i >= 0; $i--) {
-        $monthsQueryKeys[]   = date('Y-m', strtotime("-$i months", $latestDateTime));
-        $monthsLabels[] = date('M', strtotime("-$i months", $latestDateTime));
+        $monthsQueryKeys[]   = date("Y-m", strtotime("-$i months", $latestDateTime));
+        $monthsLabels[] = date("M", strtotime("-$i months", $latestDateTime));
     }
 
     // function for query the total record for each month
@@ -112,6 +112,42 @@
         $allData[$i] = $merchandiseData[$i] + $treeData[$i];
     }
 ?>
+
+
+
+<?php
+    $sql_modules = "SELECT module_id, module_name FROM modules";
+    $result_modules = mysqli_query($conn, $sql_modules);
+
+    $moduleIDs = array(); // for find the total enrollment
+    
+    if (mysqli_num_rows($result_modules) > 0) {
+        while ($row = mysqli_fetch_assoc($result_modules)) {
+            $moduleIDs[] = $row["module_id"];
+        }
+    }
+
+    // count total modules & filter the data based on these modules
+    $moduleTotalEnroll = array();
+
+    for ($i = 0; $i < count($moduleIDs); $i++) {
+        $sql = "SELECT COUNT(*) as total_enrollment FROM module_history 
+                WHERE module_id = '$moduleIDs[$i]'";
+
+        $result = mysqli_query($conn, $sql);
+
+        $result = mysqli_query($conn, $sql);
+
+        if ($row = mysqli_fetch_assoc($result)) {
+            $moduleTotalEnroll[] = $row["total_enrollment"];
+        }
+    }
+
+    // * testing data here
+    // $moduleIDs = array("M001", "M002", "M003");
+    // $moduleTotalEnroll = array(20, 10, 13);
+?>
+
 
 <?php
     // top 5 latest announcement list
@@ -231,7 +267,7 @@
                         </div>
 
                         <div class="module-chart-box">
-                            <canvas id="item-lineChart"></canvas>
+                            <canvas id="module-barChart"></canvas>
                         </div>
                     </div>
 
@@ -276,9 +312,12 @@
             const lineGraph_labels = <?php echo json_encode($monthsLabels); ?>;
             const lineGraph_merchandiseData = <?php echo json_encode($merchandiseData); ?>;
             const lineGraph_treeData = <?php echo json_encode($treeData); ?>;
-            const lineGraph_allData = <?php echo json_encode($allData); ?>;
-            
-            console.info("Line Graph Data Successful Passed to JS")
+            const lineGraph_allData = <?php echo json_encode($allData); ?>;           
+            console.info("Line Graph Data Successful Passed to JS");
+
+            const barChart_labels = <?php echo json_encode($moduleIDs); ?>;
+            const barChart_data = <?php echo json_encode($moduleTotalEnroll); ?>;
+            console.info("Bar Chart Data Successful Passed to JS");
         </script>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

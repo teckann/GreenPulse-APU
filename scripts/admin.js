@@ -43,7 +43,7 @@ navAnchorTag.forEach(link => {
 });
 
 
-// item line chart
+// item line graph
 /*
     PHP alr passed the data:
         const lineGraph_labels
@@ -120,5 +120,49 @@ document.addEventListener("DOMContentLoaded", () => {
         itemLineChart.data.datasets[0].backgroundColor = newColor + "33";
 
         itemLineChart.update();
+    });
+});
+
+
+// module enrollment bar chart
+/*
+    PHP alr passed the data:
+        const barChart_labels
+        const lineChart_data
+*/
+// execute directly after the HTML document structure is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    const ctx = document.getElementById("module-barChart");
+
+    // 2. 创建图表
+    new Chart(ctx, {
+        type: "bar", // 指定类型为柱状图
+        data: {
+            labels: barChart_labels,
+            datasets: [{
+                label: false,
+                data: barChart_data,
+
+                // --- 样式美化 ---
+                borderColor: "#194a7a",
+                backgroundColor: "rgba(25, 74, 122, 0.4)",
+                borderWidth: 0.4,
+                borderRadius: 5,
+                barPercentage: 0.5
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // must false, so can allow CSS adjust
+            plugins: {
+                legend: { display: false } // hide the legend, alr have dropdown menu
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 } // only integer
+                }
+            }
+        }
     });
 });
