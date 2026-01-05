@@ -40,7 +40,7 @@
     // latest date of both merchandise and tree table
     $date_target_table = array("merchandise_purchase_history", "tree_adoption_history");
     $date_target_column = array("merchandise_purchase_date", "tree_adoption_date");
-    $latest_date_result = array(null, null);
+    $latest_date_result = array("", ""); // cannot NULL, strtotime() will pop-up error
 
     for ($i = 0; $i < 2; $i++) {
         $sql= "SELECT MAX($date_target_column[$i]) as latest_date

@@ -5,23 +5,45 @@
     $sql = "SELECT * FROM users";
     $target = "";
 
-    // if (isset($_GET["btnSearch"])) {
-    //     $attribute = $_GET["attribute"];
-    //     $target = $_GET["target"];
+    if (isset($_GET["btnSearch"])) {
+        $target = $_GET["target"];
 
-    //     $sql = "SELECT * FROM tblstudent WHERE name LIKE '{$target}%'";
-    // }
+        $sql = "SELECT * FROM users WHERE name LIKE '%{$target}%'";
+    }
 
     if (isset($_GET["btnChangeStatus"])) {
         $targetUserID = $_GET["target_userID"];
         $nextStatus = $_GET["next_status"];
 
         $sql_updateStatus = "UPDATE users SET account_status = '$nextStatus' WHERE user_id = '$targetUserID'";
-        mysqli_query($conn, $sql_updateStatus);
+        
+        if(mysqli_query($conn, $sql_updateStatus)) {
+            echo "<script>
+                    // toastr.success('Account Status Successfully Updated');
+                    window.location.href = 'manageUsers.php';
+                    </script>";
+        }
+    }
+
+    if (isset($_GET["btnFilter"])) {
+        $role = $_GET["txtRole"];
+        $accountStatus = $_GET["txtStatus"];
+
+        if (!empty($role) && !empty($accountStatus)) {
+            $sql = "SELECT * FROM users 
+                    WHERE role = '$role' AND account_status = '$accountStatus'";
+        }
+        elseif (!empty($role)) {
+            $sql = "SELECT * FROM users 
+                    WHERE role = '$role'";
+        }
+        elseif (!empty($accountStatus)) {
+            $sql = "SELECT * FROM users 
+                    WHERE account_status = '$accountStatus'";
+        }
     }
 
     // $show_accountStatus_success = isset($_GET["status"]) && $_GET["status"] === "updated";
-
     $result = mysqli_query($conn, $sql);
 ?>
 
@@ -41,6 +63,54 @@
         <main class="search-area">
             <h1>Manage Users</h1>
             <h2 class="page-subTitle">Overview of all registered accounts</h2>
+
+            <div class="action-bar" style="margin: 1em 0;">
+                <form action="" method="GET">
+                    <div class="table-search-box">
+                        <input type="text" name="target" placeholder="Search user here">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <button name="btnSearch" type="submit" value="Search" class="table-btnSearch" title="Search"></button>
+                    </div>
+                </form>
+
+                <form action="" method="GET" class="select-container">
+                    <div class="select-boxs">
+                        <div>
+                            <label for="role">Role: </label>
+                            <select name="txtRole" id="role">
+                                <option value="">All</option>
+                                <option value="admin">Admin</option>
+                                <option value="committee">Committee</option>
+                                <option value="volunteer">Volunteer</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="status">Status: </label>
+                            <select name="txtStatus" id="status">
+                                <option value="">All</option>
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="action-btns">
+                        <button name="btnFilter" type="submit" value="Filter" class="filter-btn">
+                            <i class="fa-solid fa-filter"></i>
+                            <p>Filter</p>
+                        </button>
+
+                        <button type="button" class="addNewUser-btn">
+                            <a href="addNewUser.php">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <p>Add New User</p>
+                            </a>
+                        </button>
+                    </div>
+                </form>
+            </div>
 
             <div class="flex-container desktop-table" style="margin: 1em 0;">
                 <table>
@@ -94,8 +164,8 @@
                                                         </button>
                                                     </form>
 
-                                                    <a href="edit_user.php?id=' . $row['user_id'] . '" class="action-btn" title="Edit">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    <a href="edit_user.php?id=' . $row['user_id'] . '" class="action-btn" title="View">
+                                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                                     </a>
                                                 </div>
                                             </td>

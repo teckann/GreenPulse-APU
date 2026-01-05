@@ -59,7 +59,8 @@ footer p {
     position: relative;
 }
 
-.search-box input {
+.search-box input,
+.table-search-box input {
     width: 100%;
     height: 2rem;
     padding: 10px 15px 10px 40px;
@@ -69,13 +70,15 @@ footer p {
     border: 1px black solid;
 }
 
-.search-box input:focus {
+.search-box input:focus,
+.table-search-box input:focus {
     border-color: #194a7a;
     box-shadow: 0 0 10px rgba(25, 74, 122, 0.6);
     outline: none;
 }
 
-.search-box i {
+.search-box i,
+.table-search-box i {
     position: absolute;
     left: 10px;
     top: 50%;
@@ -274,7 +277,8 @@ footer p {
     justify-content: space-between;
 }
 
-.item-chart select {
+.item-chart select,
+.select-boxs select {
     width: 10em;
     padding: 0.5em;
     border-radius: 8px;
@@ -388,7 +392,78 @@ tbody tr:hover {
     color: #194a7a;
 }
 
+.action-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* background-color: blue; */
+    gap: 10px;
+}
 
+.table-search-box {
+    margin: 0.5em 0;
+    position: relative;
+    width: 100%;
+    /* background-color: red; */
+}
+
+.table-search-box input {
+    width: 90%;
+}
+
+.table-search-box button {
+    display: none;
+}
+
+.select-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    /* background-color: red; */
+}
+
+.select-boxs,
+.action-btns {
+    gap: 20px;
+}
+
+.select-boxs {
+    display: flex;
+    flex-direction: row;
+}
+
+.select-container button {
+    background-color: rgba(25, 74, 122, 0.6);
+    /* color: white; */
+    padding: 0.5em 0.7em;
+    border: none;
+    border-radius: 5px;
+}
+
+.action-btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.addNewUser-btn {
+    background-color: #007bff !important;
+}
+
+.addNewUser-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.filter-btn,
+.addNewUser-btn a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px
+}
 
 @media(max-width: 800px) {
     body {
@@ -495,4 +570,58 @@ tbody tr:hover {
     .desktop-table {
         display: none;
     }
+
+    .action-bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* background-color: blue; */
+    }
+
+    .table-search-box {
+        margin: 0.5em 0;
+        position: relative;
+        width: 20em;
+        /* background-color: red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .table-search-box i {
+        left: 30px;
+    }
+
+    .table-search-box input {
+        width: 90%;
+    }
+
+    .table-search-box button {
+        display: none;
+    }
+
+    .select-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        /* background-color: red; */
+    }
+
+    .select-boxs,
+    .action-btns {
+        /* background-color: blue; */
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .select-boxs select {
+        width: 8em;
+    }
+
+    /* .action-bar {
+        background-color: palegreen;
+    } */
 }
