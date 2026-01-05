@@ -112,6 +112,13 @@
                 </form>
             </div>
 
+            <?php
+                $users = array();
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $users[] = $row;
+                }
+            ?>
+
             <div class="flex-container desktop-table" style="margin: 1em 0;">
                 <table>
                     <thead>
@@ -127,54 +134,125 @@
 
                     <tbody>
                         <?php
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    $textColor = "";
-                                    $icon = "";
-                                    $title = "";
-                                    $nextStatus = "";
+                            foreach ($users as $row):
+                                $textColor = "";
+                                $icon = "";
+                                $title = "";
+                                $nextStatus = "";
 
-                                    if ($row["account_status"] === "Active") {
-                                        $icon = "<i class='fa-solid fa-ban'></i>";
-                                        $textColor = "#28a745";
-                                        $nextStatus = "Inactive";
-                                    }
-                                    elseif ($row["account_status"] === "Inactive") {
-                                        $icon = "<i class='fa-solid fa-undo'></i>";
-                                        $textColor = "#dc3545";
-                                        $nextStatus = "Active";
-                                    }
-                                    $title = $nextStatus;
-
-                                    echo '<tr>
-                                            <td>' . $row['user_id'] . '</td>
-                                            <td>' . $row['name'] . '</td>
-                                            <td>' . $row['education_email'] . '</td>
-                                            <td>' . ucwords($row['role']) . '</td>
-                                            <td style="color:' . $textColor . '">' . $row['account_status'] . '</td>
-                                            
-                                            <td>
-                                                <div class="action-container">
-                                                    <form action="" method="GET">
-                                                        <input type="hidden" name="target_userID" value="' . $row['user_id'] . '">
-                                                        <input type="hidden" name="next_status" value="' . $nextStatus . '">
-
-                                                        <button name="btnChangeStatus" type="submit" class="action-btn" title="'. $title .'">
-                                                            ' . $icon . '
-                                                        </button>
-                                                    </form>
-
-                                                    <a href="edit_user.php?id=' . $row['user_id'] . '" class="action-btn" title="View">
-                                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>';
+                                if ($row["account_status"] === "Active") {
+                                    $icon = "<i class='fa-solid fa-ban'></i>";
+                                    $textColor = "#28a745";
+                                    $nextStatus = "Inactive";
                                 }
-                            }
+                                elseif ($row["account_status"] === "Inactive") {
+                                    $icon = "<i class='fa-solid fa-undo'></i>";
+                                    $textColor = "#dc3545";
+                                    $nextStatus = "Active";
+                                }
+                                $title = $nextStatus;
+
+                                echo '<tr>
+                                        <td>' . $row['user_id'] . '</td>
+                                        <td>' . $row['name'] . '</td>
+                                        <td>' . $row['education_email'] . '</td>
+                                        <td>' . ucwords($row['role']) . '</td>
+                                        <td style="color:' . $textColor . '">' . $row['account_status'] . '</td>
+                                        
+                                        <td>
+                                            <div class="action-container">
+                                                <form action="" method="GET">
+                                                    <input type="hidden" name="target_userID" value="' . $row['user_id'] . '">
+                                                    <input type="hidden" name="next_status" value="' . $nextStatus . '">
+
+                                                    <button name="btnChangeStatus" type="submit" class="action-btn" title="'. $title .'">
+                                                        ' . $icon . '
+                                                    </button>
+                                                </form>
+
+                                                <a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="action-btn" title="View">
+                                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>';
+                            endforeach;
                         ?>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="flex-container mobile-card" style="margin: 1em 0;">
+                <?php
+                    foreach ($users as $row):
+                        $bgColor = "";
+                        $icon = "";
+                        $title = "";
+                        $text = "";
+                        $nextStatus = "";
+
+                        if ($row["account_status"] === "Active") {
+                            $icon = "<i class='fa-solid fa-ban'></i>";
+                            $bgColor = "#28a745";
+                            $nextStatus = "Inactive";
+                        }
+                        elseif ($row["account_status"] === "Inactive") {
+                            $icon = "<i class='fa-solid fa-undo'></i>";
+                            $bgColor = "#dc3545";
+                            $nextStatus = "Active";
+                        }
+                        $title = $nextStatus;
+                        $text = $nextStatus;
+
+                        echo '<div class="cards">
+                                <div class="card-header">
+                                    <div class="card-id">
+                                        <p>User ID</p>
+                                        <h3>' . $row['user_id'] . '</h3>
+                                    </div>
+
+                                    <div class="card-status" style="background-color:' . $bgColor . '">
+                                        <p>' . $row['account_status'] . '</p>
+                                    </div>
+                                </div>
+
+                                <div class="card-content">
+                                    <div class="card-data">
+                                        <p>Name</p>
+                                        <p>' . $row['name'] . '</p>
+                                    </div>
+
+                                    <div class="card-data">
+                                        <p>Education Email</p>
+                                        <p>' . $row['education_email'] . '</p>
+                                    </div>
+
+                                    <div class="card-data">
+                                        <p>Role</p>
+                                        <p>' . ucwords($row['role']) . '</p>
+                                    </div>
+                                </div>
+
+                                <div class="card-btns">
+                                    <form action="" method="GET">
+                                        <input type="hidden" name="target_userID" value="' . $row['user_id'] . '">
+                                        <input type="hidden" name="next_status" value="' . $nextStatus . '">
+
+                                        <button name="btnChangeStatus" type="submit" class="card-action-btn card-status-btn" title="'. $title .'">
+                                            ' . $icon . '
+                                            <p>' . $text . '</p>
+                                        </button>
+                                    </form>
+
+                                    <a href="viewUserProfile.php?id=' . $row['user_id'] . '" title="View">
+                                        <button class="card-action-btn card-view-btn">
+                                            View User Details
+                                        </button>
+                                    </a>
+                                </div>
+                              </div>';
+                    endforeach;
+                ?>
             </div>
         </main>
 
