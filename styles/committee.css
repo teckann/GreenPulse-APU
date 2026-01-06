@@ -12,7 +12,7 @@
 
 
 /* import google font*/
-@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 
 /*The header thing*/
@@ -156,32 +156,6 @@
     width: 100%;
 }
 
-/* This not final */
-/* @media (max-width: 480px) {
-    .hamburgerMenu img { 
-        max-width: 32px;  
-    }
-
-    .logo img {
-        max-width: 120px; 
-    }
-    
-    .profile img {
-        width: 32px;
-        height: 32px; 
-        border-radius: 50%;}
-    
-    .treeImage {
-        width: 90px;
-        right: 1rem;
-        top: -70px;
-    }
-    
-    .content-section {
-        padding-top: 3rem;
-    }
-} */
-
 .hamburgerMenu button {
     background: none;
     border: none;
@@ -206,7 +180,6 @@
 .sidebar.active {
     left: 0;
 }
-
 
 .sidebar-header {
     padding: 1.5rem;
@@ -355,7 +328,7 @@
 /* ======================================================================================================================================== */
 .heroSection-event {
     text-align: left;
-    padding: 3rem 1.5rem 1rem; /* Increased bottom padding from 3rem to 5rem */
+    padding: 3rem 1.5rem 1rem;
     background-color: #ffffff;
 }
 

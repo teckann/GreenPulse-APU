@@ -1,0 +1,252 @@
+/************************
+
+* Author: Cynthia
+* Date: January 7 2026
+* Description: Committee style template
+
+**************************/
+
+.navigationBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    min-height: 40px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.hamburgerMenu {
+    flex: 1; /* Use one section*/
+    text-align: left;
+}
+
+.hamburgerMenu img {
+    width: 30px;
+    height: auto;
+    
+}
+
+.hamburgerMenu button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.logo {
+    flex:1;
+    text-align: center;
+}
+
+.logo img {
+    width: 160px;
+    height: auto;
+}
+
+.profile {
+    flex: 1;
+    text-align: right;
+}
+
+.profile img {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; /* Circle */
+  
+}
+
+.banner {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    overflow: hidden; /* Make sure the <marquee> won't overflow*/
+    height: 30px;
+    background-color: #ededed;
+}
+
+.banner p {
+    font-size: 1rem;
+    color: black;
+    font-family: "Roboto", sans-serif;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100vh;
+    background-color: white;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.sidebar-logo {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.menu-item:hover {
+    background-color: #f5f5f5;
+    border-left-color: #4CAF50;
+}
+
+.menu-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.menu-text {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.sidebar-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #ffffff;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid #e0e0e0;
+}
+
+.user-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.user-name {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000000;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-id {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.85rem;
+    color: #888888;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.heroSection-event {
+    text-align: left;
+    padding: 3rem 1.5rem 1rem;
+    background-color: #ffffff;
+}
+
+.heroSection-event h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 1.3;
+    letter-spacing: 1px;
+    margin: 0.5rem 0;
+    color: #000000;
+    font-weight: bold;
+}
+
+.heroSection-event p {
+    font-size: 0.8rem;
+    color: black;
+    font-family: "Roboto", sans-serif;
+    margin-top: 0.5rem;
+    color: #000000;
+}
