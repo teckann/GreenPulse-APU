@@ -18,10 +18,7 @@
         $sql_updateStatus = "UPDATE users SET account_status = '$nextStatus' WHERE user_id = '$targetUserID'";
         
         if(mysqli_query($conn, $sql_updateStatus)) {
-            echo "<script>
-                    // toastr.success('Account Status Successfully Updated');
-                    window.location.href = 'manageUsers.php';
-                    </script>";
+            header("location: manageUsers.php");
         }
     }
 
@@ -43,7 +40,6 @@
         }
     }
 
-    // $show_accountStatus_success = isset($_GET["status"]) && $_GET["status"] === "updated";
     $result = mysqli_query($conn, $sql);
 ?>
 
@@ -257,19 +253,11 @@
         </main>
 
         <?php include("footer.php"); ?>
-
-        <!-- toastr option settings -->
-        <script src="../../scripts/toastr_settings.js"></script>
+        
         <script src="../../scripts/admin.js"></script>
     </body>
 </html>
 
 <?php
-    // if ($show_accountStatus_success) {
-    //     echo "<script>
-    //             toastr.success('Account Status Successfully Updated');
-    //           </script>";
-    // }
-
     mysqli_close($conn);
 ?>
