@@ -470,6 +470,160 @@ tbody tr:hover {
     display: none;
 }
 
+.viewUserProfile {
+    width: 100%;
+    /* background-color: red; */
+    /* margin-top: 0.8em; */
+    padding: 1em;
+}
+
+.viewUserProfile form {
+    align-self: flex-start;
+}
+
+.back-btn {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    background-color: white;
+    gap: 10px;
+    font-size: 1em;
+}
+
+.back-btn:hover {
+    color: #194a7a;
+}
+
+.viewUserProfile-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+}
+
+.viewUserProfile-header img {
+    border-radius: 50%;
+}
+
+.viewUserProfile-title {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.viewUserProfile-title .row {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.viewUserProfile-title .row p {
+    border: 2px #194a7a solid;
+}
+
+.viewUserProfile-title .row p,
+.viewUserProfile-title .status {
+    padding: 0.3em 1.2em;
+    border-radius: 10px;
+}
+
+.viewUserProfile-title .status {
+    background-color: #007bff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.viewUserProfile-content {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    background: linear-gradient(to right, #CFE5F3 0%, #B1C6D7 100%);
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 20px;
+    gap: 20px;
+}
+
+.user-personal-info {
+    /* background-color: blue; */
+    width: 70%;
+}
+
+.info-title {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.line {
+    width: 60px;
+    height: 3px;
+    background-color: #194a7a;
+}
+
+.info-content {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* .info-content table {
+    width: 90%;
+} */
+
+.info-content th,
+.info-content td {
+    padding: 8px 15px;
+}
+
+.track-user-activity {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 1.2em 0;
+    padding-left: 1.5em;
+}
+
+.account-security-analysis {
+    /* background-color: red; */
+    /* width: 50%; */
+    margin-bottom: 1em;
+}
+
+.user-activity-monitoring {
+    /* background-color: red; */
+}
+
+.track-user-activity .info-content {
+    font-size: 0.9em;
+}
+
+.account-security-status {
+    width: 80px;
+    padding: 0.3em 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    color: white;
+}
+
+.info-content .icon-text {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
@@ -726,6 +880,42 @@ tbody tr:hover {
         text-decoration: none;
         /* background-color: red; */
         height: 40px;
+        width: 100%;
+    }
+
+    .viewUserProfile {
+        width: 100%;
+        /* background-color: red; */
+        padding: 1em 0;
+    }
+
+    .back-btn {
+        margin-bottom: 1em;
+        color: black;
+    }
+
+    .viewUserProfile-content {
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        width: 100%;
+    }
+
+    .track-user-activity {
+        width: 100%;
+        padding: 0;
+        gap: 20px;
+    }
+
+    .user-personal-info,
+    .account-security-analysis,
+    .user-activity-monitoring {
+        width: 100%;
+        /* background-color: blue; */
+    }
+
+    .info-content {
+        /* background-color: red; */
         width: 100%;
     }
 }
