@@ -50,7 +50,7 @@
         // find the dob
         $arr = explode("-", $data["date_of_birth"]);
         $dob = $arr[1] .$arr[2];
-        $defaultPassword = $data["user_id"] . $dob;
+        $defaultPassword = $data["user_id"] . "@" . $dob;
 
         $defaultPassword_test = !password_verify($defaultPassword, $data["password"]);
         $safetyQuestion_test = !empty($data["safety_question_1"]);
@@ -63,11 +63,11 @@
             $changedDefaultPassword_icon = $safetyQuestion_icon;
         }
         // either one is true (no safety question && chenged password OR safety question && default password)
-        elseif (($safetyQuestion_test && !$defaultPassword) || (!$safetyQuestion_test && $defaultPassword)) {
+        elseif (($safetyQuestion_test && !$defaultPassword_test) || (!$safetyQuestion_test && $defaultPassword_test)) {
             $accountSecurityStatus = "Warning";
             $accountStatusColor = "#ffca28";
             
-            if ($safetyQuestion_test && !$defaultPassword) {
+            if ($safetyQuestion_test && !$defaultPassword_test) {
                 $safetyQuestion_icon = "fa-solid fa-check";
                 $changedDefaultPassword_icon = "fa-solid fa-xmark";
             }
@@ -213,7 +213,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td>registration Date</td>
+                                    <td>Registration Date</td>
                                     <td>:</td>
                                     <td><?php echo $data["registration_date"] ?></td>
                                 </tr>
