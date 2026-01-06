@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Committee Home Page</title>
+    <title>Committee Template</title>
     <link rel="stylesheet" href="../../styles/committee.css">
-    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap' rel="stylesheet">
+  
 </head>
 <body>
     <!-- The whole navigation bar (include the menu icon, logo and profile pic)-->
@@ -16,7 +16,7 @@
             </button>
         </div>
 
-        <div class = "logo">
+        <div class = "logo" onclick = "window.location.href='index.php'">
             <img src="../../src/committee/logo.png" alt="Logo">
         </div>
 
@@ -41,13 +41,12 @@
 
     <!--Use <section> like this section got a lot things, pack it together-->
     <!-- This is the "header" part -->
-    <section class="heroSection">
-        <h1>APU</h1>
-        <h1>GREENPULSE</h1>
-        <p>Grow greener futures — volunteer, share, celebrate.</p>
+    <section class="heroSection-event">
+        <h1>Event</h1>
+        <h1>Management</h1>
+        <p>Create and manage green initiative events.</p>
     </section>
 
-    
     <!-- Hamburger Menu sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -90,9 +89,6 @@
     <!-- Overlay -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT FOR HAMBURGER MENU - MUST BE AT THE END -->
-    <!-- ============================================ -->
     <script>
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');

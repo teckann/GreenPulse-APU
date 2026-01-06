@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Committee Home Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
-    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
+   
 <body>
     <!-- The whole navigation bar (include the menu icon, logo and profile pic)-->
     <nav class = "navigationBar">
@@ -16,10 +15,18 @@
             </button>
         </div>
 
-        <div class = "logo">
+        <div class = "logo" onclick = "window.location.href='index.php'">
             <img src="../../src/committee/logo.png" alt="Logo">
         </div>
 
+        <div class = "desktopMenu">
+            <a href="index.php">Home</a>
+            <a href="treeAdoption.php">Tree Adoption</a>
+            <a href="merchandises.php">Merchandises</a>
+            <a href="eventMain.php">Events</a>
+            <a href="study&Quiz.php">Study & Quiz</a>
+        </div>
+        
         <div class = "profile">
             <img src="../../src/committee/profilePicture.jpg" alt="Profile Picture">
         </div>
