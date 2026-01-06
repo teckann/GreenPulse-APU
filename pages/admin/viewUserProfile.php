@@ -128,7 +128,7 @@
 
         <main class="search-area">
             <h1>View User Profile</h1>
-            <h2 class="page-subTitle">Overview of all posted events</h2>
+            <h2 class="page-subTitle">Detailed information about this user</h2>
 
             <div class="flex-container viewUserProfile">
                 <form action="" action="GET">
