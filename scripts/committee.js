@@ -1,7 +1,9 @@
-// const treeSearchBar = document.querySelector("#searchTree");
-// const treeSearchIcon = document.querySelector("#treeSearchIcon");
+const treeStatusFilter = document.querySelectorAll(".filterTree");
+console.log(treeStatusFilter);
 
-// treeSearchBar.addEventListener("focus", function() {
-//     treeSearchIcon.classList.add("hide");
-//     console.log(treeSearchIcon);
-// })
+for (eachFilter of treeStatusFilter) {
+    eachFilter.addEventListener("change", function() {
+        eachFilter.form.submit();
+        console.log("select box is clickedd")
+    })
+}

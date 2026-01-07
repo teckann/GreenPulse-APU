@@ -41,11 +41,11 @@
 
     <!--Use <section> like this section got a lot things, pack it together-->
     <!-- This is the "header" part -->
-    <section class="heroSection-event">
+    <!-- <section class="heroSection-event">
         <h1>Event</h1>
         <h1>Management</h1>
         <p>Create and manage green initiative events.</p>
-    </section>
+    </section> -->
 
     <!-- Hamburger Menu sidebar -->
     <div class="sidebar" id="sidebar">

@@ -759,27 +759,20 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    /* background-color: blue; */
     align-items: center;
-
+    
 }
 
 #upperTree button {
-    border: green 0.2em solid;
+    border: #2E7D32 0.2em solid;
     padding: 0.6em 1.5em;
     font-size: 1em;
-    background-color: greenyellow;
+    background-color: darkseagreen;
     border-radius: 10%;
     margin-right: 1em;  
-}
-
-#upperTree button:hover {
-    border-color: #f1ff5c;
-    color: white;
-    box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
-    transform: translateY(-0.25em);
-    transition: border-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.25s;
-    cursor:  pointer;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
 }
 
 #showTreeClass {
@@ -793,8 +786,10 @@
     align-items: center;
     padding: 1em auto;
     gap: 3px;
-    border-radius: 10%;
-    border: 0.1em solid rgb(57, 55, 55)
+    border-radius: 5%;
+    border: 0.1em solid rgb(57, 55, 55);
+    color: #3d3b8e;
+    background-color: #b0e298;
 }
 
 .treeClass:nth-of-type(2) {
@@ -802,11 +797,10 @@
 }
 
 #treeSearchBar {
-    /* width: 15em; */
     display: flex;
     align-items: center;
     position: relative;
-    /* padding: 2em 5em; */
+    width: 12em;
 }
 
 #treeSearchBar i {
@@ -817,7 +811,7 @@
 
 #searchTree {
     width: 100%;
-    padding: 0.8em 0 0.8em 1.8em !important;
+    padding: 0.6em 0 0.6em 1.8em !important;
     border-radius: 8px;
 }
 
@@ -825,7 +819,7 @@
     box-shadow: 0 0 10px rgba(25, 74, 122, 0.6);
 }
 
-#upperTreeCard {
+#upperTreeCard form {
     display: flex;
     flex-direction: row;
     /* background-color: blue; */
@@ -833,14 +827,16 @@
     align-items: center;
 }
 
-#upperTreeCard label {
-    font-size: 1.5em;
+#upperTreeCard form label {
+    font-size: 1em;
 }
 
-#upperTreeCard select{
+#upperTreeCard form select{
     padding: 1px 5px;
-    font-size: 1.5em;
-    border-radius: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    gap: 1em;
+    background-color: #f9f9f9;
 }
 
 #searchTree {
@@ -851,49 +847,68 @@
 #filterBar {
     display: flex;
     flex-direction: row;
-    gap: 3em;
+    gap: 0.5em;
 }
 
-.showDesktop {
-    display: block;
-}
-
-.showMobile {
-    display: none;
-}
-/* .hide {
-    display: none !important;
-} */
-
-@media(max-width: 800px) {
-    #upperTreeCard {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-    }
-
-    #upperTree button {
-        position: fixed;
-        bottom: 10px;
-        right: 10px;
-    }
-
-    #filterBar {
-        gap: 0.5em;
-    }
-
-    #filterBar div {
+#filterBar div {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 0.5em;
     }
 
-    .showDesktop {
+.showMobile {
+    display: block;
+}
+
+.showDesktop {
     display: none;
+}
+
+#upperTreeCard form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+#treeManageText h1{
+    
+}
+
+@media(min-width: 800px) {
+    #upperTreeCard form {
+        flex-direction: row;
+        gap: 3em;
+    }
+
+    #upperTree button {
+        position:static;
+    }
+
+    #upperTree button:hover {
+        border-color: #f1ff5c;
+        color: white;
+        box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
+        transform: translateY(-0.25em);
+        transition: border-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.25s;
+        cursor:  pointer;
+    }
+
+    #filterBar {
+        gap: 3em;
+    }
+
+    #filterBar div {
+        display: flex;
+        flex-direction: row;
     }
 
     .showMobile {
+    display: none;
+    }
+
+    .showDesktop {
         display: block;
     }        
 }

@@ -52,7 +52,7 @@
                 <h3>Tree Adoption</h3>
                 <p>Add, edit, and delete tree records for management.</p>
                 
-                <button class="card-button" onclick="window.location.href='treeAdoption.php'">
+                <button class="card-button" onclick="window.location.href='availableTreePage.php'">
                     <span>Tree Adoption</span>
                     <span>→</span>
                 </button>
