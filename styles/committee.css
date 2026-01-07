@@ -828,7 +828,7 @@
 #upperTreeCard {
     display: flex;
     flex-direction: row;
-    background-color: blue;
+    /* background-color: blue; */
     gap: 3em;
     align-items: center;
 }
@@ -851,9 +851,14 @@
 #filterBar {
     display: flex;
     flex-direction: row;
+    gap: 3em;
 }
 
-.abc {
+.showDesktop {
+    display: block;
+}
+
+.showMobile {
     display: none;
 }
 /* .hide {
@@ -864,6 +869,7 @@
     #upperTreeCard {
         display: flex;
         flex-direction: column;
+        gap: 1em;
     }
 
     #upperTree button {
@@ -872,7 +878,22 @@
         right: 10px;
     }
 
-    .abc {
-        display: block;
+    #filterBar {
+        gap: 0.5em;
     }
+
+    #filterBar div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .showDesktop {
+    display: none;
+    }
+
+    .showMobile {
+        display: block;
+    }        
 }
