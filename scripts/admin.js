@@ -236,3 +236,23 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("wheel", removeHighlights2); // Mouse wheel, for desktop
     document.addEventListener("touchmove", removeHighlights2); // finger swipe, for mobile
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const openBtn = document.querySelector(".addNewUser-btn");
+    const closeBtn = document.getElementById("popup-close-menu");
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("popupOverlay");
+
+    openBtn.addEventListener("click", () => {
+        popup.style.display = "block";
+        overlay.style.display = "block";
+    });
+
+    function closePopup() {
+        popup.style.display = "none";
+        overlay.style.display = "none";
+    }
+
+    closeBtn.addEventListener("click", closePopup);
+    overlay.addEventListener("click", closePopup);
+});

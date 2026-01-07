@@ -17,7 +17,7 @@
     <button id="close-menu" class="icon-menu">
         <i class="fa-solid fa-xmark"></i>
     </button>
-    <img src="../../src/elements/logo_horizontal.png" alt="Logo" width="180rem" height="60rem" class="desktop_logo">
+    <img src="../../src/elements/logo_horizontal.png" alt="Logo" width="165rem" height="50rem" class="desktop_logo">
     <img src="../../src/elements/logo_vertical.png" alt="Logo" width="70rem" height="70rem" class="mobile_logo">
     
     <div class="search-box">
