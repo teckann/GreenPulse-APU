@@ -16,7 +16,7 @@
                 <h1>Tree Management <i class="fa-solid fa-tree" style="color: #228B22;"></i></h1>
                 <p>Add new, manage available tree adoption for volunteers to redeem</p>
             </div>
-            <button>Add Tree</button>
+            <button><span class="showDesktop" name="addTreeButton">Add Tree</span><span class="showMobile"><i class="fa-solid fa-plus" style="color: white;"></i></span></button>
         </div>
         <div id="showTreeClass">
             <button id="availableTree" class="treeClass">
@@ -54,10 +54,13 @@
                 </div>
             </div>
 
-            
+            <div id="showTreeCards"></div>
         </div>
-        <button class="abc">abc</button>
     </main>
     <script src="../../scripts/committee.js"></script>
 </body>
 </html>
+
+<?php 
+
+?>

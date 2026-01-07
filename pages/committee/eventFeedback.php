@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Feedback Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
-    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+    
 </head>
 </head>
 <body>
@@ -17,8 +17,16 @@
         </button>
     </div>
 
-    <div class = "logo" onclick = "window.location.href='home.html'">
+    <div class = "logo" onclick = "window.location.href='index.php'">
             <img src="../../src/committee/logo.png" alt="Logo">
+    </div>
+
+    <div class = "desktopMenu">
+            <a href="index.php">Home</a>
+            <a href="treeAdoption.php">Tree Adoption</a>
+            <a href="merchandises.php">Merchandises</a>
+            <a href="eventMain.php">Events</a>
+            <a href="study&Quiz.php">Study & Quiz</a>
     </div>
 
     <div class = "profile">

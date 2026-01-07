@@ -3,34 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Event Page</title>
+    <title>Committee Template</title>
     <link rel="stylesheet" href="../../styles/committee.css">
-    
+  
+</head>
 <body>
+    <!-- The whole navigation bar (include the menu icon, logo and profile pic)-->
     <nav class = "navigationBar">
+        <div class = "hamburgerMenu">
+            <button onclick = "toggleMenu()">
+                <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
+            </button>
+        </div>
 
-    <div class = "hamburgerMenu">
-        <button onclick = "toggleMenu()">
-            <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
-        </button>
-    </div>
-
-    <div class = "logo" onclick = "window.location.href='index.php'">
+        <div class = "logo" onclick = "window.location.href='index.php'">
             <img src="../../src/committee/logo.png" alt="Logo">
-    </div>
+        </div>
 
-    <div class = "desktopMenu">
+        <div class = "desktopMenu">
             <a href="index.php">Home</a>
             <a href="treeAdoption.php">Tree Adoption</a>
             <a href="merchandises.php">Merchandises</a>
             <a href="eventMain.php">Events</a>
             <a href="study&Quiz.php">Study & Quiz</a>
-    </div>
+        </div>
 
-    <div class = "profile">
-        <img src="../../src/committee/profilePicture.jpg" alt="Profile Picture">
-    </div>
-
+        <div class = "profile">
+            <img src="../../src/committee/profilePicture.jpg" alt="Profile Picture">
+        </div>
     </nav>
 
     <div class = "banner">
@@ -39,70 +39,12 @@
         </marquee>
     </div>
 
-      
+    <!--Use <section> like this section got a lot things, pack it together-->
+    <!-- This is the "header" part -->
     <section class="heroSection-event">
         <h1>Event</h1>
         <h1>Management</h1>
         <p>Create and manage green initiative events.</p>
-    </section>
-
-    <!-- STARTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT -->
-    <section class="eventControls">
-        
-
-        <div class="container">
-            <div class="input-group">
-                <label>Event name</label>
-                <div class="event-box">Recycling Workshop</div>
-            </div>
-            
-            <div class = "two-column">
-                <div class="input-group">
-                    <label>Event Date</label>
-                    <div class="event-box">December 30, 2025</div>
-                </div>
-
-                <div class="input-group">
-                    <label>Duration</label>
-                <div class="event-box" >2 hours</div>
-
-                </div>
-            </div>
-
-             <div class = "two-column">
-                <div class="input-group">
-                    <label>Location</label>
-                    <div class="event-box">Auditorium 3</div>
-                </div>
-
-                <div class="input-group">
-                    <label>Available Spot</label>
-                <div class="event-box">100</div>
-
-                </div>
-            </div>
-
-             <div class="input-group">
-                <label>Points Given</label>
-                <div class="event-box">50</div>
-            </div>
-
-             <div class="input-group">
-                <label>Description</label>
-                <div class="event-big-box"> An interactive, hands-on session designed to educate participants about proper waste management and inspire creativity by transforming discarded materials into new, useful products.</div>
-            </div>
-
-            <div class="input-group">
-                <label>Event Poster</label>
-                <div class="event-big-box"></div>
-            </div>
-
-
-
-            <button class="btnCreateEvent">
-                Save Changes
-            </button>
-        </div>
     </section>
 
     <!-- Hamburger Menu sidebar -->
@@ -143,13 +85,10 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Overlay -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT FOR HAMBURGER MENU - MUST BE AT THE END -->
-    <!-- ============================================ -->
     <script>
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
