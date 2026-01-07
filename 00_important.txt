@@ -9,8 +9,9 @@ Try Login Details as below:
 
 Please update your database
 
-Version: V2 - 02.01.2026
-
+Version: V3 - 07.01.2026
 
 # items table add posted_date
 # change fertilization_datetime to allow NULL
+
+# add avatar for each person
