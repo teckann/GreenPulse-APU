@@ -10,6 +10,11 @@ body {
         "sidebar footer";
 }
 
+
+.mobile_logo {
+    display: none;
+}
+
 /* hidden this header first, only show at mobile view */
 nav {
     grid-area: header;
@@ -632,6 +637,14 @@ tbody tr:hover {
             "header"
             "main"
             "footer";
+    }
+
+    .desktop_logo {
+        display: none;
+    }
+
+    .mobile_logo {
+        display: block;
     }
 
     /* show the header */
