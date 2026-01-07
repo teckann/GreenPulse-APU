@@ -135,7 +135,7 @@
                         </div>
 
                         <div class="popup-row">
-                            <div class="popup-input">
+                            <div class="popup-input popup-contact">
                                 <label for="contactNumber">Contact Number *</label>
                                 <div class="popup-sub-input">
                                     <label for="contact">+60 </label>
