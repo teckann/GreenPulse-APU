@@ -123,15 +123,17 @@
                     <div class="popup-scroll-area">
                         <div class="popup-input">
                             <label for="fullname">Full Name *</label>
-                            <input type="text" name="name" id="fullname" placeholder="e.g. Marcus" required>
+                            <input type="text" name="name" id="fullname" placeholder="e.g. Marcus">
+                            <div class="popup-error-text">Enter a Valid Name</div>
                         </div>
 
                         <div class="popup-input">
                             <label for="email">Education Email *</label>
                             <div style = "display: flex; flex-direction: row; align-items: center; gap:5px;">
-                                <input type="text" name="emailID" id="email" placeholder="e.g. TP012345" required>
+                                <input type="text" name="emailID" id="email" placeholder="e.g. TP012345">
                                 <label for="email">@mail.apu.edu.my</label>
                             </div>
+                            <div class="popup-error-text">Enter a Valid APU Education Email</div>
                         </div>
 
                         <div class="popup-row">
@@ -139,19 +141,21 @@
                                 <label for="contactNumber">Contact Number *</label>
                                 <div class="popup-sub-input">
                                     <label for="contact">+60 </label>
-                                    <input type="text" name="contactNumber" id="contact" placeholder="e.g. 123456789" required>
+                                    <input type="text" name="contactNumber" id="contact" placeholder="e.g. 0123456789">
                                 </div>
+                                <div class="popup-error-text">Enter a Valid Contact Number</div>
                             </div>
 
                             <div class="popup-input popup-dob">
                                 <label for="dob">DOB *</label>
-                                <input type="date" name="dateOfBirth" id="dob" required>
+                                <input type="date" name="dateOfBirth" id="dob">
+                                <div class="popup-error-text">Select DOB</div>
                             </div>
                         </div>
 
                         <div class="popup-input">
                             <label for="course">Course Enrolled *</label>
-                            <select name="courseName" id="course" required>
+                            <select name="courseName" id="course">
                                 <option value="">-- Please Select --</option>
                                 <option value="Diploma in ICT">Diploma in ICT</option>
                                 <option value="Diploma in ICT (Software Engineering)">Diploma in ICT (Software Engineering)</option>
@@ -166,19 +170,21 @@
                                 <option value="Diploma in Events Management">Diploma in Events Management</option>
                                 <option value="Diploma in Hotel Management">Diploma in Hotel Management</option>
                             </select>
+                            <div class="popup-error-text">Select Course</div>
                         </div>
 
                         <div class="popup-row">
                             <div class="popup-input">
-                                <label for="gender">Gender</label>
+                                <label for="gender">Gender *</label>
                                 <div style="display: flex; flex-direction: row; gap:15px; margin-top: 0.5em;">
                                     <span><input type="radio" name="gender" id="gender" value="M" class="popup-radio"> Male</span>
                                     <span><input type="radio" name="gender" id="gender" value="F" class="popup-radio"> Female</span>
                                 </div>
+                                <div class="popup-error-text">Select Gender</div>
                             </div>
 
                             <div class="popup-input popup-nationality">
-                                <label for="nationality">Nationality</label>
+                                <label for="nationality">Nationality *</label>
                                 <select name="nationality" id="nationality">
                                     <option value="">-- Please Select --</option>
                                     <option value="Malaysian">Malaysian</option>
@@ -374,17 +380,19 @@
                                     <option value="Zambian">Zambian</option>
                                     <option value="Zimbabwean">Zimbabwean</option>
                                 </select>
+                                <div class="popup-error-text">Select Nationality</div>
                             </div>
                         </div>
 
                         <div class="popup-input">
                             <label for="permission">Access Permission *</label>
-                            <select name="role" id="permission" required>
+                            <select name="role" id="permission">
                                 <option value="">-- Please Select --</option>
                                 <option value="admin">Admin</option>
                                 <option value="committee">Committee</option>
                                 <option value="volunteer">Volunteer</option>
                             </select>
+                            <div class="popup-error-text">Select Access Permission</div>
                         </div>
                     </div>
 

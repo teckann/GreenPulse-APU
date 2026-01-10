@@ -777,6 +777,12 @@ tbody tr:hover {
     width: 90%;
 }
 
+.popup-error-text {
+    color: red;
+    font-size: 0.8em;
+    display: none;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
@@ -1096,11 +1102,11 @@ tbody tr:hover {
     }
 
     .popup-contact {
-        width: 50% !important;
+        width: 60% !important;
     }
 
     .popup-dob {
-        width: 45% !important;
+        width: 35% !important;
         /* background-color: red; */
     }
 
