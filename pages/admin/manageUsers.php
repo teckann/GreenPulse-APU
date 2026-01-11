@@ -1,6 +1,7 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php");
+    include("../../backend/idGenerator.php");
 
     $sql = "SELECT * FROM users";
     $target = "";
@@ -15,10 +16,21 @@
         $targetUserID = $_GET["target_userID"];
         $nextStatus = $_GET["next_status"];
 
-        $sql_updateStatus = "UPDATE users SET account_status = '$nextStatus' WHERE user_id = '$targetUserID'";
+        if ($targetUserID == $userID) {
+            echo "<script>
+                    alert('You cannot inactive yourself');
+                    window.location.href = 'manageUsers.php';
+                  </script>";
+        }
+        else {
+            $sql_updateStatus = "UPDATE users SET account_status = '$nextStatus' WHERE user_id = '$targetUserID'";
         
-        if(mysqli_query($conn, $sql_updateStatus)) {
-            header("location: manageUsers.php");
+            if(mysqli_query($conn, $sql_updateStatus)) {
+                echo "<script>
+                        alert('--- Successfully Updated User Status ---\\nUser ID: $targetUserID\\nNew Status: $nextStatus');
+                        window.location.href = 'manageUsers.php';
+                      </script>";
+            }
         }
     }
 
@@ -41,6 +53,53 @@
     }
 
     $result = mysqli_query($conn, $sql);
+
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $name = trim($_POST["name"]);
+        $emailID = trim($_POST["emailID"]);
+        $contactNumber = trim($_POST["contactNumber"]);
+        $dateOfBirth = $_POST["dateOfBirth"];
+        $courseName = $_POST["courseName"];
+        $gender = $_POST["gender"];
+        $nationality = $_POST["nationality"];
+        $role = $_POST["role"];
+
+        $email = strtoupper($emailID) . "@mail.apu.edu.my";
+        $newUserID = newID($conn, "users", "U");
+        $registrationDate =  date("Y-m-d");
+
+        // default password
+        $arr = explode("-", $dateOfBirth);
+        $dob = $arr[1] .$arr[2];
+        $defaultPassword = $newUserID . "@" . $dob;
+        $hash = password_hash($defaultPassword, PASSWORD_DEFAULT);
+
+        $sql_addUser = "";
+
+        if ($role == "admin" || $role == "committee") {
+            $sql_addUser = "INSERT INTO users (user_id, name, nationality, gender, date_of_birth, contact_number, 
+                            education_email, course_name, registration_date, password, role)
+                            VALUES ('$newUserID', '$name', '$nationality', '$gender', '$dateOfBirth', '$contactNumber', 
+                            '$email', '$courseName', '$registrationDate', '$hash', '$role')";
+        }
+        else {
+            $greenPoints = 0;
+            $totalEarned = 0;
+
+            $sql_addUser = "INSERT INTO users (user_id, name, nationality, gender, date_of_birth, contact_number, 
+                            education_email, course_name, registration_date, password, green_points, total_earned, role)
+                            VALUES ('$newUserID', '$name', '$nationality', '$gender', '$dateOfBirth', '$contactNumber', 
+                            '$email', '$courseName', '$registrationDate', '$hash', '$greenPoints', '$totalEarned', '$role')";
+        }
+
+        if(mysqli_query($conn, $sql_addUser)) {
+            echo "<script>
+                    alert('--- Successfully Added New User ---\\nAccess Granted!\\nUser ID: $newUserID\\nRole: $role\\nDefault Password Format: UXXX@MMDD');
+                    window.location.href = 'manageUsers.php';
+                  </script>";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -119,7 +178,7 @@
                     </button>
                 </div>
 
-                <form class="popup-form">
+                <form action="" method="POST" class="popup-form">
                     <div class="popup-scroll-area">
                         <div class="popup-input">
                             <label for="fullname">Full Name *</label>

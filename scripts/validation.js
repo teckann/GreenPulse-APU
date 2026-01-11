@@ -37,6 +37,17 @@ document.addEventListener("DOMContentLoaded", () => {
         let validationPass = true;
 
         // validate name
+        // regular expression
+        /*
+            /* - start
+            &/ - end
+
+            [] - character set
+            a-z - allow lowercase
+            A-Z - allow uppercase
+            \s - allow space
+            + - allow more than one character
+        */
         const nameRegex = /^[a-zA-Z\s]+$/;
 
         if (fullname.trim() === "" || !nameRegex.test(fullname)) {
@@ -49,6 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // validate email
+        /*
+           TP - start with TP
+           \d{6} - number (6 digits)
+        */
         const tpRegex = /^TP\d{6}$/;
         const tp = email.trim().toUpperCase();
 
@@ -61,6 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // validate contact
+        /*
+           \d{10,11} - number (10-11 digits)
+        */
         const contactRegex = /^\d{10,11}$/;
 
         if (contact.trim() === "" || !contactRegex.test(contact.trim())) {
