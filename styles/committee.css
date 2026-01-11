@@ -784,12 +784,20 @@
 .treeClass {
     display: flex;
     align-items: center;
-    padding: 1em auto;
-    gap: 3px;
+    /* padding: 1em auto; */
+    /* gap: 3px; */
     border-radius: 5%;
     border: 0.1em solid rgb(57, 55, 55);
     color: #3d3b8e;
     background-color: #b0e298;
+}
+
+.treeClass a {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1em auto;
+    gap: 3px;
 }
 
 .treeClass:nth-of-type(2) {

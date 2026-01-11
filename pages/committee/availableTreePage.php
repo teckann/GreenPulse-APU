@@ -2,37 +2,49 @@
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
 
-    $sql = "SELECT * from items";
+    $sql = "SELECT * FROM items WHERE category = 'tree'";
 
     if (!empty($_GET["filterAvailableTreeStatus"])) {
         $status = $_GET["filterAvailableTreeStatus"];
     }
     
-    $isStatus = empty($_GET['searchTree']);
-    $isCreater = empty($_GET["filterAvailableTreeCreator"]);
+    $isStatus = !empty($_GET['searchTree']);
+    $isCreater = !empty($_GET["filterAvailableTreeCreator"]);
 
     $search = "";
-    if (!$isStatus) {
+    if ($isStatus) {
         $search = $_GET['searchTree'];
-        $sql = "SELECT * from items where item_name like '%{$search}%'";
+        echo "<script>alert('$search')</script>";
+        $sql = "SELECT * FROM items WHERE item_name LIKE '%{$search}%' AND category = 'tree'";
     }
-    elseif (!$isStatus && !$isCreater) {
-        $sql = "SELECT * from items where item_status = '$status' and user_id = '$userID'";
+    elseif ($isStatus && $isCreater) {
+        $sql = "SELECT * FROM items WHERE    item_status = '$status' and user_id = '$userID' AND category = 'tree'";
     }
-    elseif ($isStatus && !$isCreater) {
-        $sql = "SELECT * from items where user_id = '$userID'";
+    elseif (!$isStatus && $isCreater) {
+        $sql = "SELECT * FROM items WHERE user_id = '$userID' AND category = 'tree'";
     }
-    else if (!$isStatus && $isCreator) {
-        $sql = "SELECT * from items where item_status = '$status";
+    else if ($isStatus && !$isCreator) {
+        $sql = "SELECT * FROM items WHERE item_status = '$status' AND category = 'tree'";
     }
 
-    $sql = "SELECT * from items where item_name like '%{$search}%'";
+    // $sql = "SELECT * from items where item_name like '%{$search}%'";
     $result = mysqli_query($conn, $sql);
 
-    $trees = array();
-    while ($row = mysqli_fetch_assoc($result)) {
-        $trees[] = $row;
-    }
+    // $trees = array();
+    // if (mysqli_num_rows($result) > 0) {
+    //     echo "<script>alert('tessssst')</script>";
+    //     while ($row = mysqli_fetch_assoc($result)) {
+    //         // $trees[] = $row;
+    //         echo '<script>
+    //                 alert("'. $row['item_id'] .'")
+    //             </script>';
+    //     }
+    // }
+
+    // echo "<script>alert($row[0]);</script>";
+    // if (empty($tree)) {
+    //     echo "<script>alert('lala')</script>";
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -56,20 +68,18 @@
             <button><span class="showDesktop" name="addTreeButton">Add Tree</span><span class="showMobile"><i class="fa-solid fa-plus" style="color: white;"></i></span></button>
         </div>
         <div id="showTreeClass">
-            <!-- <form action="" method="GET"> -->
-                <button id="btnAvailableTree" class="treeClass">
-                    <a href="availableTreePage.php" style="text-decoration: none;">
-                        <i class="fa-solid fa-circle-check" style="color: #28a745;"></i>
-                        <p><b>Available Tree</b></p>
-                    </a>
-                </button>
-                <button id="btnAdoptedTree" class="treeClass">
-                    <a href="adoptedTreePage.php" style="text-decoration: none;">
-                        <i class="fa-solid fa-house" style="color: #2e8b57;"></i>
-                        <p><b>Adopted Tree</b></p>
-                    </a>
-                </button>
-            <!-- </form> -->
+            <button id="btnAvailableTree" class="treeClass">
+                <a href="availableTreePage.php" style="text-decoration: none;">
+                    <i class="fa-solid fa-circle-check" style="color: #28a745;"></i>
+                    <p><b>Available Tree</b></p>
+                </a>
+            </button>
+            <button id="btnAdoptedTree" class="treeClass">
+                <a href="adoptedTreePage.php" style="text-decoration: none;">
+                    <i class="fa-solid fa-house" style="color: #2e8b57;"></i>
+                    <p><b>Adopted Tree</b></p>
+                </a>
+            </button>
         </div>
         <hr>
         <div id="displayTreeCard">
@@ -100,10 +110,32 @@
                 </form>
             </div>
 
+            
             <div id="showTreeCards">
                 <?php 
-
-                ?>
+                    $trees = array();
+                    if ($row = mysqli_fetch_assoc($result)) {
+                        $trees[] = $row;
+                        $statusColor = "";
+                        if ($row["item_status"] === "Active") {
+                            $statusColor = "red";
+                        }
+                        else {
+                            $statusColor = "green";
+                        }
+                        echo "<div class-'treeCard'>
+                            <div class='upTreeCard'>
+                                <div>
+                                    <p><b>" . $row["item_id"] . "</b></p>
+                                    <p class='treeName'>". $row["item_name"] ."</p>
+                                </div>
+                                <div>
+                                    <p class='treeNameInCard'>" . $row["item_status"] ."</p>
+                                </div>
+                            </div>
+                        </div>";
+                    }
+                ?>                
             </div>
         </div>
     </main>
