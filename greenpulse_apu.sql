@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2026 at 03:58 PM
+-- Generation Time: Jan 11, 2026 at 05:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -329,8 +329,8 @@ CREATE TABLE `users` (
   `answer_1` varchar(150) DEFAULT NULL,
   `safety_question_2` varchar(150) DEFAULT NULL,
   `answer_2` varchar(150) DEFAULT NULL,
-  `green_points` int(11) DEFAULT 0,
-  `total_earned` int(11) DEFAULT 0,
+  `green_points` int(11) DEFAULT NULL,
+  `total_earned` int(11) DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,
   `role` varchar(50) NOT NULL,
   `last_login` datetime DEFAULT NULL,
@@ -342,10 +342,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `nationality`, `gender`, `date_of_birth`, `contact_number`, `education_email`, `course_name`, `registration_date`, `password`, `safety_question_1`, `answer_1`, `safety_question_2`, `answer_2`, `green_points`, `total_earned`, `avatar`, `role`, `last_login`, `account_status`) VALUES
-('U001', 'Gan Teck Ann', 'Malaysia', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$RcYQHeQf2XXmpDHaQTg8W.HaGPPAnHCocBXeMHZt58Z5rF9aI0ylO', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U001_avatar.png', 'admin', '2026-01-07 15:32:39', 'Active'),
-('U002', 'Goh Yang Ee', 'Malaysia', 'M', '2006-07-24', '0125508144', 'TP084231@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$/FqDThXUlgrkHbNEmlF4cuiwcndPCgObsnDj7k/9u7JMRoYPHtWBe', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U002_avatar.png', 'committee', '2026-01-07 15:00:36', 'Active'),
-('U003', 'Cynthia Tan Xin Ru', 'Malaysia', 'F', '2006-01-21', '01155034966', 'TP084369@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pOUI7Dv/WdOlaO/fca0MHOPafP3I.a55FhuVKme4X8SZzB7l/tyaC', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U003_avatar.png', 'committee', '2026-01-07 14:57:58', 'Active'),
-('U004', 'Lim Jin Ming', 'Malaysia', 'M', '2006-06-09', '0129692700', 'TP083424@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$hrkNchWg.uYwsRLpPlVTveGyMV0fFr1cSTgYC7MY0ec.3rxEIKdyS', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/U004_avatar.png', 'volunteer', '2026-01-02 03:07:07', 'Active');
+('U001', 'Gan Teck Ann', 'Malaysian', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$RcYQHeQf2XXmpDHaQTg8W.HaGPPAnHCocBXeMHZt58Z5rF9aI0ylO', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U001_avatar.png', 'admin', '2026-01-11 17:10:48', 'Active'),
+('U002', 'Goh Yang Ee', 'Malaysian', 'M', '2006-07-24', '0125508144', 'TP084231@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$/FqDThXUlgrkHbNEmlF4cuiwcndPCgObsnDj7k/9u7JMRoYPHtWBe', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U002_avatar.png', 'committee', '2026-01-07 15:00:36', 'Active'),
+('U003', 'Cynthia Tan Xin Ru', 'Malaysian', 'F', '2006-01-21', '01155034966', 'TP084369@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pOUI7Dv/WdOlaO/fca0MHOPafP3I.a55FhuVKme4X8SZzB7l/tyaC', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U003_avatar.png', 'committee', '2026-01-07 14:57:58', 'Active'),
+('U004', 'Lim Jin Ming', 'Malaysian', 'M', '2006-06-09', '0129692700', 'TP083424@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$hrkNchWg.uYwsRLpPlVTveGyMV0fFr1cSTgYC7MY0ec.3rxEIKdyS', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/U004_avatar.png', 'volunteer', '2026-01-02 03:07:07', 'Active');
 
 --
 -- Indexes for dumped tables
