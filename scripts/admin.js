@@ -237,15 +237,21 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("touchmove", removeHighlights2); // finger swipe, for mobile
 });
 
+// open & close the popup form
 document.addEventListener("DOMContentLoaded", () => {
-    const openBtn = document.querySelector(".addNewUser-btn");
-    const closeBtn = document.getElementById("popup-close-menu");
+    const btnOpen = document.querySelector(".addNewUser-btn");
+    const btnClose = document.getElementById("popup-close-menu");
     const popup = document.getElementById("popup");
     const overlay = document.getElementById("popupOverlay");
+    const erroMsg = document.querySelectorAll(".popup-error-text");
 
-    openBtn.addEventListener("click", () => {
+    btnOpen.addEventListener("click", () => {
         popup.style.display = "block";
         overlay.style.display = "block";
+
+        erroMsg.forEach((e) => {
+            e.style.display = "none";
+        });
     });
 
     function closePopup() {
@@ -253,6 +259,6 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.style.display = "none";
     }
 
-    closeBtn.addEventListener("click", closePopup);
+    btnClose.addEventListener("click", closePopup);
     overlay.addEventListener("click", closePopup);
 });

@@ -124,7 +124,7 @@
                         <div class="popup-input">
                             <label for="fullname">Full Name *</label>
                             <input type="text" name="name" id="fullname" placeholder="e.g. Marcus">
-                            <div class="popup-error-text">Enter a Valid Name</div>
+                            <div class="popup-error-text" id="error-fullname">Enter a Valid Name</div>
                         </div>
 
                         <div class="popup-input">
@@ -133,7 +133,7 @@
                                 <input type="text" name="emailID" id="email" placeholder="e.g. TP012345">
                                 <label for="email">@mail.apu.edu.my</label>
                             </div>
-                            <div class="popup-error-text">Enter a Valid APU Education Email</div>
+                            <div class="popup-error-text" id="error-email">Enter a Valid APU Education Email</div>
                         </div>
 
                         <div class="popup-row">
@@ -143,13 +143,13 @@
                                     <label for="contact">+60 </label>
                                     <input type="text" name="contactNumber" id="contact" placeholder="e.g. 0123456789">
                                 </div>
-                                <div class="popup-error-text">Enter a Valid Contact Number</div>
+                                <div class="popup-error-text" id="error-contactNumber">Enter a Valid Contact Number</div>
                             </div>
 
                             <div class="popup-input popup-dob">
                                 <label for="dob">DOB *</label>
                                 <input type="date" name="dateOfBirth" id="dob">
-                                <div class="popup-error-text">Select DOB</div>
+                                <div class="popup-error-text" id="error-dob">Select DOB</div>
                             </div>
                         </div>
 
@@ -170,17 +170,17 @@
                                 <option value="Diploma in Events Management">Diploma in Events Management</option>
                                 <option value="Diploma in Hotel Management">Diploma in Hotel Management</option>
                             </select>
-                            <div class="popup-error-text">Select Course</div>
+                            <div class="popup-error-text" id="error-course">Select Course</div>
                         </div>
 
                         <div class="popup-row">
                             <div class="popup-input">
                                 <label for="gender">Gender *</label>
                                 <div style="display: flex; flex-direction: row; gap:15px; margin-top: 0.5em;">
-                                    <span><input type="radio" name="gender" id="gender" value="M" class="popup-radio"> Male</span>
-                                    <span><input type="radio" name="gender" id="gender" value="F" class="popup-radio"> Female</span>
+                                    <label><input type="radio" name="gender" value="M" class="popup-radio"> Male</label>
+                                    <label><input type="radio" name="gender" value="F" class="popup-radio"> Female</label>
                                 </div>
-                                <div class="popup-error-text">Select Gender</div>
+                                <div class="popup-error-text" id="error-gender">Select Gender</div>
                             </div>
 
                             <div class="popup-input popup-nationality">
@@ -380,7 +380,7 @@
                                     <option value="Zambian">Zambian</option>
                                     <option value="Zimbabwean">Zimbabwean</option>
                                 </select>
-                                <div class="popup-error-text">Select Nationality</div>
+                                <div class="popup-error-text" id="error-nationality">Select Nationality</div>
                             </div>
                         </div>
 
@@ -392,12 +392,12 @@
                                 <option value="committee">Committee</option>
                                 <option value="volunteer">Volunteer</option>
                             </select>
-                            <div class="popup-error-text">Select Access Permission</div>
+                            <div class="popup-error-text" id="error-permission">Select Access Permission</div>
                         </div>
                     </div>
 
                     <div class="submit-container">
-                        <button name="btnSubmit" type="submit" value="Submit" class="submit-btn">
+                        <button name="btnSubmit" value="Submit" class="submit-btn" id="btnSubmit-addNewUser">
                             <i class="fa-solid fa-paper-plane"></i>
                             <p>Submit</p>
                         </button>
@@ -552,6 +552,7 @@
         <?php include("footer.php"); ?>
         
         <script src="../../scripts/admin.js"></script>
+        <script src="../../scripts/validation.js"></script>
     </body>
 </html>
 
