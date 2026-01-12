@@ -149,6 +149,10 @@
                                 <option value="Inactive">Inactive</option>
                             </select>
                         </div>
+
+                        <button class="print" onclick="window.print()">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
                     </div>
 
                     <div class="action-btns">

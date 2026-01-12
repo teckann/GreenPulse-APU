@@ -783,6 +783,18 @@ tbody tr:hover {
     display: none;
 }
 
+.print {
+    padding: 0 1em;
+    background-color: white !important;
+    border: 1px black solid !important;
+}
+
+.redirect-link {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
