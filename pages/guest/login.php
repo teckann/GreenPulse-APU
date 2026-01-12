@@ -13,7 +13,7 @@
                 WHERE user_id = '$userID'";
         $result = mysqli_query($conn, $sql);
 
-        if(mysqli_num_rows($result) > 0){
+        if(mysqli_num_rows($result) === 1){
             $row = mysqli_fetch_assoc($result);
             $hash_password = $row["password"];
             $account_status = $row["account_status"];
@@ -31,12 +31,9 @@
             elseif ($account_status === "Inactive") {
                 echo "<script> alert('This Account has been Suspended.') </script>";
             }
-            else {
-                echo "<script> alert('Incorrect Password.') </script>";
-            }
         } 
         else {
-            echo "<script> alert('User Not Found.') </script>";
+            echo "<script> alert('Incorrect Password.') </script>";
         }
         mysqli_close($conn);
     }

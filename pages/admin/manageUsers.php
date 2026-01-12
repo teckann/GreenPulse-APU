@@ -1,6 +1,7 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php");
+    include("../../backend/idGenerator.php");
 
     $sql = "SELECT * FROM users";
     $target = "";
@@ -15,10 +16,21 @@
         $targetUserID = $_GET["target_userID"];
         $nextStatus = $_GET["next_status"];
 
-        $sql_updateStatus = "UPDATE users SET account_status = '$nextStatus' WHERE user_id = '$targetUserID'";
+        if ($targetUserID == $userID) {
+            echo "<script>
+                    alert('You cannot inactive yourself');
+                    window.location.href = 'manageUsers.php';
+                  </script>";
+        }
+        else {
+            $sql_updateStatus = "UPDATE users SET account_status = '$nextStatus' WHERE user_id = '$targetUserID'";
         
-        if(mysqli_query($conn, $sql_updateStatus)) {
-            header("location: manageUsers.php");
+            if(mysqli_query($conn, $sql_updateStatus)) {
+                echo "<script>
+                        alert('--- Successfully Updated User Status ---\\nUser ID: $targetUserID\\nNew Status: $nextStatus');
+                        window.location.href = 'manageUsers.php';
+                      </script>";
+            }
         }
     }
 
@@ -41,6 +53,53 @@
     }
 
     $result = mysqli_query($conn, $sql);
+
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $name = trim($_POST["name"]);
+        $emailID = trim($_POST["emailID"]);
+        $contactNumber = trim($_POST["contactNumber"]);
+        $dateOfBirth = $_POST["dateOfBirth"];
+        $courseName = $_POST["courseName"];
+        $gender = $_POST["gender"];
+        $nationality = $_POST["nationality"];
+        $role = $_POST["role"];
+
+        $email = strtoupper($emailID) . "@mail.apu.edu.my";
+        $newUserID = newID($conn, "users", "U");
+        $registrationDate =  date("Y-m-d");
+
+        // default password
+        $arr = explode("-", $dateOfBirth);
+        $dob = $arr[1] .$arr[2];
+        $defaultPassword = $newUserID . "@" . $dob;
+        $hash = password_hash($defaultPassword, PASSWORD_DEFAULT);
+
+        $sql_addUser = "";
+
+        if ($role == "admin" || $role == "committee") {
+            $sql_addUser = "INSERT INTO users (user_id, name, nationality, gender, date_of_birth, contact_number, 
+                            education_email, course_name, registration_date, password, role)
+                            VALUES ('$newUserID', '$name', '$nationality', '$gender', '$dateOfBirth', '$contactNumber', 
+                            '$email', '$courseName', '$registrationDate', '$hash', '$role')";
+        }
+        else {
+            $greenPoints = 0;
+            $totalEarned = 0;
+
+            $sql_addUser = "INSERT INTO users (user_id, name, nationality, gender, date_of_birth, contact_number, 
+                            education_email, course_name, registration_date, password, green_points, total_earned, role)
+                            VALUES ('$newUserID', '$name', '$nationality', '$gender', '$dateOfBirth', '$contactNumber', 
+                            '$email', '$courseName', '$registrationDate', '$hash', '$greenPoints', '$totalEarned', '$role')";
+        }
+
+        if(mysqli_query($conn, $sql_addUser)) {
+            echo "<script>
+                    alert('--- Successfully Added New User ---\\nAccess Granted!\\nUser ID: $newUserID\\nRole: $role\\nDefault Password Format: UXXX@MMDD');
+                    window.location.href = 'manageUsers.php';
+                  </script>";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -90,6 +149,10 @@
                                 <option value="Inactive">Inactive</option>
                             </select>
                         </div>
+
+                        <button class="print" onclick="window.print()">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
                     </div>
 
                     <div class="action-btns">
@@ -119,19 +182,21 @@
                     </button>
                 </div>
 
-                <form class="popup-form">
+                <form action="" method="POST" class="popup-form">
                     <div class="popup-scroll-area">
                         <div class="popup-input">
                             <label for="fullname">Full Name *</label>
-                            <input type="text" name="name" id="fullname" placeholder="e.g. Marcus" required>
+                            <input type="text" name="name" id="fullname" placeholder="e.g. Marcus">
+                            <div class="popup-error-text" id="error-fullname">Enter a Valid Name</div>
                         </div>
 
                         <div class="popup-input">
                             <label for="email">Education Email *</label>
                             <div style = "display: flex; flex-direction: row; align-items: center; gap:5px;">
-                                <input type="text" name="emailID" id="email" placeholder="e.g. TP012345" required>
+                                <input type="text" name="emailID" id="email" placeholder="e.g. TP012345">
                                 <label for="email">@mail.apu.edu.my</label>
                             </div>
+                            <div class="popup-error-text" id="error-email">Enter a Valid APU Education Email</div>
                         </div>
 
                         <div class="popup-row">
@@ -139,19 +204,21 @@
                                 <label for="contactNumber">Contact Number *</label>
                                 <div class="popup-sub-input">
                                     <label for="contact">+60 </label>
-                                    <input type="text" name="contactNumber" id="contact" placeholder="e.g. 123456789" required>
+                                    <input type="text" name="contactNumber" id="contact" placeholder="e.g. 0123456789">
                                 </div>
+                                <div class="popup-error-text" id="error-contactNumber">Enter a Valid Contact Number</div>
                             </div>
 
                             <div class="popup-input popup-dob">
                                 <label for="dob">DOB *</label>
-                                <input type="date" name="dateOfBirth" id="dob" required>
+                                <input type="date" name="dateOfBirth" id="dob">
+                                <div class="popup-error-text" id="error-dob">Select DOB</div>
                             </div>
                         </div>
 
                         <div class="popup-input">
                             <label for="course">Course Enrolled *</label>
-                            <select name="courseName" id="course" required>
+                            <select name="courseName" id="course">
                                 <option value="">-- Please Select --</option>
                                 <option value="Diploma in ICT">Diploma in ICT</option>
                                 <option value="Diploma in ICT (Software Engineering)">Diploma in ICT (Software Engineering)</option>
@@ -166,19 +233,21 @@
                                 <option value="Diploma in Events Management">Diploma in Events Management</option>
                                 <option value="Diploma in Hotel Management">Diploma in Hotel Management</option>
                             </select>
+                            <div class="popup-error-text" id="error-course">Select Course</div>
                         </div>
 
                         <div class="popup-row">
                             <div class="popup-input">
-                                <label for="gender">Gender</label>
+                                <label for="gender">Gender *</label>
                                 <div style="display: flex; flex-direction: row; gap:15px; margin-top: 0.5em;">
-                                    <span><input type="radio" name="gender" id="gender" value="M" class="popup-radio"> Male</span>
-                                    <span><input type="radio" name="gender" id="gender" value="F" class="popup-radio"> Female</span>
+                                    <label><input type="radio" name="gender" value="M" class="popup-radio"> Male</label>
+                                    <label><input type="radio" name="gender" value="F" class="popup-radio"> Female</label>
                                 </div>
+                                <div class="popup-error-text" id="error-gender">Select Gender</div>
                             </div>
 
                             <div class="popup-input popup-nationality">
-                                <label for="nationality">Nationality</label>
+                                <label for="nationality">Nationality *</label>
                                 <select name="nationality" id="nationality">
                                     <option value="">-- Please Select --</option>
                                     <option value="Malaysian">Malaysian</option>
@@ -374,22 +443,24 @@
                                     <option value="Zambian">Zambian</option>
                                     <option value="Zimbabwean">Zimbabwean</option>
                                 </select>
+                                <div class="popup-error-text" id="error-nationality">Select Nationality</div>
                             </div>
                         </div>
 
                         <div class="popup-input">
                             <label for="permission">Access Permission *</label>
-                            <select name="role" id="permission" required>
+                            <select name="role" id="permission">
                                 <option value="">-- Please Select --</option>
                                 <option value="admin">Admin</option>
                                 <option value="committee">Committee</option>
                                 <option value="volunteer">Volunteer</option>
                             </select>
+                            <div class="popup-error-text" id="error-permission">Select Access Permission</div>
                         </div>
                     </div>
 
                     <div class="submit-container">
-                        <button name="btnSubmit" type="submit" value="Submit" class="submit-btn">
+                        <button name="btnSubmit" value="Submit" class="submit-btn" id="btnSubmit-addNewUser">
                             <i class="fa-solid fa-paper-plane"></i>
                             <p>Submit</p>
                         </button>
@@ -544,6 +615,7 @@
         <?php include("footer.php"); ?>
         
         <script src="../../scripts/admin.js"></script>
+        <script src="../../scripts/validation.js"></script>
     </body>
 </html>
 
