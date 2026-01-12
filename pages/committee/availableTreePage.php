@@ -30,21 +30,7 @@
     // $sql = "SELECT * from items where item_name like '%{$search}%'";
     $result = mysqli_query($conn, $sql);
 
-    // $trees = array();
-    // if (mysqli_num_rows($result) > 0) {
-    //     echo "<script>alert('tessssst')</script>";
-    //     while ($row = mysqli_fetch_assoc($result)) {
-    //         // $trees[] = $row;
-    //         echo '<script>
-    //                 alert("'. $row['item_id'] .'")
-    //             </script>';
-    //     }
-    // }
-
-    // echo "<script>alert($row[0]);</script>";
-    // if (empty($tree)) {
-    //     echo "<script>alert('lala')</script>";
-    // }
+    
 ?>
 
 <!DOCTYPE html>
@@ -114,26 +100,63 @@
             <div id="showTreeCards">
                 <?php 
                     $trees = array();
-                    if ($row = mysqli_fetch_assoc($result)) {
+                    while ($row = mysqli_fetch_assoc($result)) {
                         $trees[] = $row;
                         $statusColor = "";
                         if ($row["item_status"] === "Active") {
-                            $statusColor = "red";
-                        }
-                        else {
                             $statusColor = "green";
                         }
-                        echo "<div class-'treeCard'>
-                            <div class='upTreeCard'>
-                                <div>
-                                    <p><b>" . $row["item_id"] . "</b></p>
-                                    <p class='treeName'>". $row["item_name"] ."</p>
+                        else {
+                            $statusColor = "red";
+                        }
+
+                        // $targetID = $row
+                        $findUploadName = "SELECT * FROM users WHERE user_id = '{$row['user_id']}'";
+                        $uploaderResult = mysqli_query($conn, $findUploadName);
+                        $uploaderName = mysqli_fetch_assoc($uploaderResult)['name'];
+
+                        echo "<div class='treeCard'>
+                                <div class='upItemCard'>
+                                    <div>
+                                        <div>
+                                            <p><b>" . $row["item_id"] . "</b></p>
+                                            <p class='treeName'>". $row["item_name"] ."</p>
+                                        </div>
+                                        <div>
+                                            <p class='treeNameInCard'>" . $row["item_status"] ."</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class='treeStatus' style='background-color: ". $statusColor ."'>". $row["item_status"]."</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p class='treeNameInCard'>" . $row["item_status"] ."</p>
+                                <div class='middleItemCard'>
+                                    <div class='itemImage'>
+                                        <img src='../../". $row['item_image'] ."' alt='tree image'>
+                                    </div>
+                                    <div class='itemInventory'>
+                                        <div class='treePoint'>
+                                            <p><b>Points Required:</b></p>
+                                            <p>" . $row['item_redeem_points'] . "</p>
+                                        </div>
+                                        <div class='itemStock'>
+                                            <p><b>Stocks:</b></p>
+                                            <p>" . $row['item_stock'] . "</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>";
+                                <div class='itemInfo'>
+                                    <div class='itemDescription'>
+                                        <p>Description:</p>
+                                        <p>" . $row['item_description'] . "</p>
+                                        <script>alert('".$uploaderName."')</script>
+                                    </div>
+                                    <div class='itemUploadInfo'>
+                                        <p>Updated by " . $uploaderName . "</p>
+                                        <p>Uploaded Date: " . $row['posted_date'] . "</p>
+                                    </div>
+                                </div>
+                            </div>";
                     }
                 ?>                
             </div>
