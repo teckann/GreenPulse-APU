@@ -97,7 +97,7 @@
             </div>
 
             
-            <div id="showTreeCards">
+            <div class="showTreeCards">
                 <?php 
                     $trees = array();
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -114,20 +114,21 @@
                         $findUploadName = "SELECT * FROM users WHERE user_id = '{$row['user_id']}'";
                         $uploaderResult = mysqli_query($conn, $findUploadName);
                         $uploaderName = mysqli_fetch_assoc($uploaderResult)['name'];
+                        $uploadDate = date("d M Y", strtotime($row['posted_date']));
 
-                        echo "<div class='treeCard'>
+                        echo "
+                            <div class='treeCard'>
                                 <div class='upItemCard'>
                                     <div>
                                         <div>
-                                            <p><b>" . $row["item_id"] . "</b></p>
-                                            <p class='treeName'>". $row["item_name"] ."</p>
+                                            <b class='itemId'>" . $row["item_id"] . "</b>
                                         </div>
                                         <div>
-                                            <p class='treeNameInCard'>" . $row["item_status"] ."</p>
+                                            <p class='itemName'>" . $row["item_name"] ."</p>
                                         </div>
                                     </div>
-                                    <div>
-                                        <p class='treeStatus' style='background-color: ". $statusColor ."'>". $row["item_status"]."</p>
+                                    <div class='itemStatusContainer'>
+                                        <p class='itemStatus' style='background-color: ". $statusColor ."'>". $row["item_status"] ."</p>
                                     </div>
                                 </div>
                                 <div class='middleItemCard'>
@@ -136,25 +137,29 @@
                                     </div>
                                     <div class='itemInventory'>
                                         <div class='treePoint'>
-                                            <p><b>Points Required:</b></p>
+                                            <b>Points Required:</b>
                                             <p>" . $row['item_redeem_points'] . "</p>
                                         </div>
                                         <div class='itemStock'>
-                                            <p><b>Stocks:</b></p>
+                                            <b>Stocks:</b>
                                             <p>" . $row['item_stock'] . "</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class='itemInfo'>
                                     <div class='itemDescription'>
-                                        <p>Description:</p>
+                                        <b>Description:</b>
                                         <p>" . $row['item_description'] . "</p>
-                                        <script>alert('".$uploaderName."')</script>
                                     </div>
                                     <div class='itemUploadInfo'>
-                                        <p>Updated by " . $uploaderName . "</p>
-                                        <p>Uploaded Date: " . $row['posted_date'] . "</p>
+                                        <p><i>Updated by " . $uploaderName . " (" . $uploadDate . ")</i></p>
                                     </div>
+                                </div>
+                                <div class='itemButton'>
+                                    <form action='#'>
+                                        <button type='submit' name='deleteBtn' class='itemDeleteBtn'><b>Delete</b></button>
+                                        <button type='submit' name='editBtn'class='itemEditBtn'><b>Edit</b></button>
+                                    </form>
                                 </div>
                             </div>";
                     }
