@@ -784,12 +784,20 @@
 .treeClass {
     display: flex;
     align-items: center;
-    padding: 1em auto;
-    gap: 3px;
+    /* padding: 1em auto; */
+    /* gap: 3px; */
     border-radius: 5%;
     border: 0.1em solid rgb(57, 55, 55);
     color: #3d3b8e;
     background-color: #b0e298;
+}
+
+.treeClass a {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1em auto;
+    gap: 3px;
 }
 
 .treeClass:nth-of-type(2) {
@@ -870,11 +878,145 @@
         display: flex;
         flex-direction: column;
         gap: 0.5em;
-    }
-
-#treeManageText h1{
-    
 }
+
+.showTreeCards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-top: 2em;
+}
+
+.treeCard {
+    width: 80%;
+    border: 0.2em solid #EAF2E3;
+    border-radius: 15px;
+    padding: 0.5em;
+    margin: 0;
+}
+
+.treeCard:last-child {
+    margin-bottom: 2em;
+}
+
+.upItemCard {
+    display: flex;
+    flex-direction: row;
+}
+
+.upItemCard div {
+    width: 100%;
+}
+
+.itemId {
+    font-size: 2em;
+}
+
+.itemName {
+    opacity: 0.8;
+    font-size: 1.3em;
+    margin-top: 0;
+}
+
+.itemStatusContainer {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.itemStatus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4em;
+    height: 2em;
+    font-size: 1.2em;
+    color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.middleItemCard {
+    display: flex;
+    flex-direction: row;
+}
+
+.itemImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+
+.itemImage img {
+    width: 100%;
+    border-radius: 15px;
+    /* height: 60%; */
+}
+
+.itemInventory {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding-left: 1.2em;
+}
+
+.itemInventory div p {
+    margin-top: 0;
+}
+
+.itemInfo {
+    border: 6px solid #8DA1B9;
+    background-color: #CAD2C5;
+    border-radius: 12px;
+    padding: 0.2em;
+}
+
+.itemDescription p {
+    margin: 0 0 1.4em 0;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+}
+
+.itemUploadInfo {
+    display: flex;
+    flex-direction: column;
+    /* align-items: end; */
+}
+
+.itemUploadInfo p {
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: end;
+    margin: 0;
+}
+
+.itemButton form {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1em;
+}
+
+.itemButton form button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    padding: 0.3em 0.6em;
+    border-radius: 5px;
+    color: white;
+}
+
+.itemDeleteBtn {
+    background-color: #BA3B46;
+}
+
+.itemEditBtn {
+    background-color: #FEA82F;
+}
+
 
 @media(min-width: 800px) {
     #upperTreeCard form {
