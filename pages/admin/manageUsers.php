@@ -75,22 +75,24 @@
         $defaultPassword = $newUserID . "@" . $dob;
         $hash = password_hash($defaultPassword, PASSWORD_DEFAULT);
 
+        $avatar = "src/avatars/default.png";
+
         $sql_addUser = "";
 
         if ($role == "admin" || $role == "committee") {
             $sql_addUser = "INSERT INTO users (user_id, name, nationality, gender, date_of_birth, contact_number, 
-                            education_email, course_name, registration_date, password, role)
+                            education_email, course_name, registration_date, password, avatar, role)
                             VALUES ('$newUserID', '$name', '$nationality', '$gender', '$dateOfBirth', '$contactNumber', 
-                            '$email', '$courseName', '$registrationDate', '$hash', '$role')";
+                            '$email', '$courseName', '$registrationDate', '$hash', '$avatar', '$role')";
         }
         else {
             $greenPoints = 0;
             $totalEarned = 0;
 
             $sql_addUser = "INSERT INTO users (user_id, name, nationality, gender, date_of_birth, contact_number, 
-                            education_email, course_name, registration_date, password, green_points, total_earned, role)
+                            education_email, course_name, registration_date, password, green_points, total_earned, avatar, role)
                             VALUES ('$newUserID', '$name', '$nationality', '$gender', '$dateOfBirth', '$contactNumber', 
-                            '$email', '$courseName', '$registrationDate', '$hash', '$greenPoints', '$totalEarned', '$role')";
+                            '$email', '$courseName', '$registrationDate', '$hash', '$greenPoints', '$totalEarned', '$avatar', '$role')";
         }
 
         if(mysqli_query($conn, $sql_addUser)) {
@@ -507,6 +509,9 @@
                                     $nextStatus = "Active";
                                 }
                                 $title = $nextStatus;
+
+                                $eventDateTime = $row["event_datetime"];
+                                $formatted_dateTime = date("d M Y (g:i A)", strtotime($eventDateTime));
 
                                 echo '<tr>
                                         <td>' . $row['user_id'] . '</td>
