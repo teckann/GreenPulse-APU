@@ -1,4 +1,5 @@
 @import url("general.css");
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
 
 body {
     min-height: 100vh;
@@ -843,6 +844,99 @@ tbody tr:hover {
     max-width: 100%;
 }
 
+.box-container {
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.5em;
+}
+
+.terms-conditions,
+.main-features,
+.tutorial-video {
+    background: linear-gradient(to right, #CFE5F3 0%, #B1C6D7 100%);
+    padding: 1em;
+    border-radius: 15px;
+}
+
+.terms-conditions {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+
+.box-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.box-title h3,
+.box-title p {
+    color: #194a7a;
+}
+
+.box-content {
+    padding: 1em;
+}
+
+.box-content ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+}
+
+.terms-conditions .box-content ul li {
+    line-height: 1.7;
+    color: #333;
+}
+
+.smallBox-container {
+    width: 48%;
+}
+
+.main-features {
+    width: 100%;
+}
+
+.box-title-mobile {
+    display: none;
+}
+
+.smallBox-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.main-features-content {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+}
+
+.main-features-content div {
+    line-height: 1.7;
+    color: #333;
+}
+
+.slogan {
+    margin-top: 1em;
+    font-size: 2.5em;
+    font-family: "Italianno", cursive;
+    color: #194a7a;
+    align-self: flex-end;
+}
+
+.slogan-mobile {
+    display: none;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
@@ -1205,5 +1299,42 @@ tbody tr:hover {
 
     .event-tracking {
         margin-top: 1em;
+    }
+
+    .box-container {
+        flex-direction: column;
+    }
+
+    .terms-conditions {
+        width: 100%;
+    }
+
+    .smallBox-container {
+        width: 100%;
+        margin-top: 1em;
+    }
+
+    .box-title-desktop {
+        display: none;
+    }
+
+    .box-title-mobile {
+        display: block;
+    }
+
+    .slogan {
+        margin-top: 0.5em;
+        font-size: 2.5em;
+        font-family: "Italianno", cursive;
+        color: #194a7a;
+        align-self: flex-end;
+    }
+
+    .slogan-desktop {
+        display: none;
+    }
+
+    .slogan-mobile {
+        display: block;
     }
 }
