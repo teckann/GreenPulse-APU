@@ -478,14 +478,14 @@ tbody tr:hover {
     display: none;
 }
 
-.viewUserProfile {
+.viewDetails {
     width: 100%;
     /* background-color: red; */
     /* margin-top: 0.8em; */
     padding: 1em;
 }
 
-.viewUserProfile form {
+.viewDetails form {
     align-self: flex-start;
 }
 
@@ -505,7 +505,7 @@ tbody tr:hover {
     color: #194a7a;
 }
 
-.viewUserProfile-header {
+.viewDetails-header {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -514,33 +514,34 @@ tbody tr:hover {
 
 }
 
-.viewUserProfile-header img {
+.viewDetails-header img {
     border-radius: 50%;
 }
 
-.viewUserProfile-title {
+.viewDetails-title {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-width: 300px;
 }
 
-.viewUserProfile-title .row {
+.viewDetails-title .row {
     display: flex;
     flex-direction: row;
     gap: 15px;
 }
 
-.viewUserProfile-title .row p {
+.viewDetails-title .row p {
     border: 2px #194a7a solid;
 }
 
-.viewUserProfile-title .row p,
-.viewUserProfile-title .status {
+.viewDetails-title .row p,
+.viewDetails-title .status {
     padding: 0.3em 1.2em;
     border-radius: 10px;
 }
 
-.viewUserProfile-title .status {
+.viewDetails-title .status {
     background-color: #007bff;
     display: flex;
     justify-content: center;
@@ -548,7 +549,7 @@ tbody tr:hover {
     color: white;
 }
 
-.viewUserProfile-content {
+.viewDetails-content {
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -559,7 +560,7 @@ tbody tr:hover {
     gap: 20px;
 }
 
-.user-personal-info {
+.info-box1 {
     /* background-color: blue; */
     width: 70%;
 }
@@ -592,7 +593,7 @@ tbody tr:hover {
     padding: 8px 15px;
 }
 
-.track-user-activity {
+.info-box2 {
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -602,17 +603,17 @@ tbody tr:hover {
     padding-left: 1.5em;
 }
 
-.account-security-analysis {
+.tracking-box1 {
     /* background-color: red; */
     /* width: 50%; */
     margin-bottom: 1em;
 }
 
-/* .user-activity-monitoring {
+/* .tracking-box2 {
     background-color: red;
 } */
 
-.track-user-activity .info-content {
+.info-box2 .info-content {
     font-size: 0.9em;
 }
 
@@ -793,6 +794,53 @@ tbody tr:hover {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.table-linkIcon {
+    transform: rotate(-45deg);
+    color: #666;
+    margin-left: 0.3em;
+    font-weight: 300;
+}
+
+.event-header img {
+    border-radius: 8px !important;
+}
+
+.viewDetails-contentss .info-box1 {
+    width: 65%;
+    /* background-color: red; */
+}
+
+.viewDetails-contentss .info-box2 {
+    width: 30%;
+    margin-left: 2.5em;
+}
+
+.event-info-box2 {
+    padding: 0;
+}
+
+.viewDetails-container {
+    flex-direction: column;
+}
+
+.viewDetails-contentss {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.viewDetails-title .status-width {
+    width: 100px;
+}
+
+.viewDetails-tableContent {
+    margin-top: 1em;
+}
+
+.viewDetails-table {
+    max-width: 100%;
 }
 
 @media(max-width: 800px) {
@@ -1062,7 +1110,7 @@ tbody tr:hover {
         width: 100%;
     }
 
-    .viewUserProfile {
+    .viewDetails {
         width: 100%;
         /* background-color: red; */
         padding: 1em 0;
@@ -1073,22 +1121,22 @@ tbody tr:hover {
         color: black;
     }
 
-    .viewUserProfile-content {
+    .viewDetails-content {
         flex-direction: column;
         justify-content: center;
         gap: 30px;
         width: 100%;
     }
 
-    .track-user-activity {
+    .info-box2 {
         width: 100%;
         padding: 0;
         gap: 20px;
     }
 
-    .user-personal-info,
-    .account-security-analysis,
-    .user-activity-monitoring {
+    .info-box1,
+    .tracking-box1,
+    .tracking-box2 {
         width: 100%;
         /* background-color: blue; */
     }
@@ -1124,5 +1172,38 @@ tbody tr:hover {
 
     .popup-dob input {
         width: 100%;
+    }
+
+    .viewDetails-contentss {
+        flex-direction: column;
+        gap: 20px !important;
+    }
+
+    .viewDetails-contentss .info-box1 {
+        width: 100% !important;
+    }
+
+    .viewDetails-contentss .info-box2 {
+        width: 100% !important;
+        margin-left: 0;
+    }
+
+    .event-header {
+        flex-direction: column !important;
+    }
+
+    .mobile-viewDetails-title {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mobile-row {
+        align-items: center;
+        justify-content: center;
+        /* background-color: red; */
+    }
+
+    .event-tracking {
+        margin-top: 1em;
     }
 }

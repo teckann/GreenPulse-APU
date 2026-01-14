@@ -1,7 +1,7 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php");
-    include("../../backend/idGenerator.php");
+    include("../../backend/utility.php");
 
     $sql = "SELECT * FROM users";
     $target = "";
@@ -75,27 +75,30 @@
         $defaultPassword = $newUserID . "@" . $dob;
         $hash = password_hash($defaultPassword, PASSWORD_DEFAULT);
 
+        $avatar = "src/avatars/default.png";
+
         $sql_addUser = "";
 
         if ($role == "admin" || $role == "committee") {
             $sql_addUser = "INSERT INTO users (user_id, name, nationality, gender, date_of_birth, contact_number, 
-                            education_email, course_name, registration_date, password, role)
+                            education_email, course_name, registration_date, password, avatar, role)
                             VALUES ('$newUserID', '$name', '$nationality', '$gender', '$dateOfBirth', '$contactNumber', 
-                            '$email', '$courseName', '$registrationDate', '$hash', '$role')";
+                            '$email', '$courseName', '$registrationDate', '$hash', '$avatar', '$role')";
         }
         else {
             $greenPoints = 0;
             $totalEarned = 0;
 
             $sql_addUser = "INSERT INTO users (user_id, name, nationality, gender, date_of_birth, contact_number, 
-                            education_email, course_name, registration_date, password, green_points, total_earned, role)
+                            education_email, course_name, registration_date, password, green_points, total_earned, avatar, role)
                             VALUES ('$newUserID', '$name', '$nationality', '$gender', '$dateOfBirth', '$contactNumber', 
-                            '$email', '$courseName', '$registrationDate', '$hash', '$greenPoints', '$totalEarned', '$role')";
+                            '$email', '$courseName', '$registrationDate', '$hash', '$greenPoints', '$totalEarned', '$avatar', '$role')";
         }
 
         if(mysqli_query($conn, $sql_addUser)) {
+            $titleFormat_role = ucwords($role);
             echo "<script>
-                    alert('--- Successfully Added New User ---\\nAccess Granted!\\nUser ID: $newUserID\\nRole: $role\\nDefault Password Format: UXXX@MMDD');
+                    alert('--- Successfully Added New User ---\\nAccess Granted!\\nUser ID: $newUserID\\nRole: $titleFormat_role\\nDefault Password Format: UXXX@MMDD');
                     window.location.href = 'manageUsers.php';
                   </script>";
         }
@@ -108,8 +111,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Manage Users</title>
-        <link rel="stylesheet" href="../../styles/admin.css">
 
+        <link rel="stylesheet" href="../../styles/admin.css">
         <?php include("library.php") ?>
     </head>
     <body>

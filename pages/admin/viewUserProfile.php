@@ -1,6 +1,7 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php");
+    include("../../backend/utility.php");
 
     if (isset($_GET["btnBack"])) {
         header("Location: manageUsers.php");
@@ -33,12 +34,7 @@
 
         $age = date_diff(date_create($data["date_of_birth"]), date_create("today")) -> y;
 
-        if ($data["account_status"] === "Active") {
-            $statusColor = "#28a745";
-        }
-        elseif ($data["account_status"] === "Inactive") {
-            $statusColor = "#dc3545";
-        }
+        $statusColor = statusColor($data["account_status"]);
 
         if ($data["gender"] === "M") {
             $gender = "Male";
@@ -111,6 +107,9 @@
         echo "<script>alert('ID not granted yet')</script>";
         exit;
     }
+
+    $registrationDate = $data["registration_date"];
+    $formatted_registrationDate = date("d M Y", strtotime($registrationDate));
 ?>
 
 <!DOCTYPE html>
@@ -119,9 +118,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>View User Profile</title>
-        <link rel="stylesheet" href="../../styles/admin.css">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="../../styles/admin.css">
+        <?php include("library.php") ?> 
     </head>
     <body>
         <?php include("header.php"); ?>
@@ -130,7 +129,7 @@
             <h1>View User Profile</h1>
             <h2 class="page-subTitle">Detailed information about this user</h2>
 
-            <div class="flex-container viewUserProfile">
+            <div class="flex-container viewDetails">
                 <form action="" action="GET">
                     <button name="btnBack" class="back-btn" type="submit" value="Back">
                         <i class="fa-solid fa-arrow-left"></i>
@@ -138,10 +137,10 @@
                     </button>
                 </form>
 
-                <div class="viewUserProfile-header">
+                <div class="viewDetails-header">
                     <img src="../../<?php echo $data['avatar'] ?>" alt="user_avatar" width="100px" height="100px">
 
-                    <div class="viewUserProfile-title">
+                    <div class="viewDetails-title">
                         <h2><?php echo $data["name"] ?></h2>
 
                         <div class="row">
@@ -155,8 +154,8 @@
                     </div>
                 </div>
 
-                <div class="viewUserProfile-content">
-                    <div class="user-personal-info">
+                <div class="viewDetails-content">
+                    <div class="info-box1">
                         <div class="info-title">
                             <p>Personal Information</p>
                             <div class="line"></div>
@@ -215,14 +214,14 @@
                                 <tr>
                                     <td>Registration Date</td>
                                     <td>:</td>
-                                    <td><?php echo $data["registration_date"] ?></td>
+                                    <td><?php echo $formatted_registrationDate ?></td>
                                 </tr>
                             </table>
                         </div>
                     </div>
 
-                    <div class="track-user-activity">
-                        <div class="account-security-analysis">
+                    <div class="info-box2">
+                        <div class="tracking-box1">
                             <div class="info-title">
                                 <p>Account Security Analysis</p>
                                 <div class="line"></div>
@@ -245,7 +244,7 @@
                             </div>
                         </div>
 
-                        <div class="user-activity-monitoring">
+                        <div class="tracking-box2">
                             <div class="info-title">
                                 <p>User Activity Monitoring</p>
                                 <div class="line"></div>
@@ -254,7 +253,7 @@
                             <div class="info-content">
                                 <div class="icon-text">
                                     <i class="fa-solid fa-clock-rotate-left"></i>
-                                    <p>Last Login: <?php echo $data["last_login"] ?></p>
+                                    <p>Last Login: <?php echo $data["last_login"] ?? "N/A" ?></p>
                                 </div>
 
                                 <div class="icon-text">
