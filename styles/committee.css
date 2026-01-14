@@ -952,7 +952,7 @@
 .itemImage img {
     width: 100%;
     border-radius: 15px;
-    /* height: 60%; */
+    height: 100%;
 }
 
 .itemInventory {
@@ -964,20 +964,22 @@
 
 .itemInventory div p {
     margin-top: 0;
+    height: 2.5em;
 }
 
 .itemInfo {
-    border: 6px solid #8DA1B9;
+    border: 2px solid #8DA1B9;
     background-color: #CAD2C5;
     border-radius: 12px;
     padding: 0.2em;
+    margin-top: 1em;
 }
 
 .itemDescription p {
     margin: 0 0 1.4em 0;
     display: flex;
     justify-content: center;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 .itemUploadInfo {
@@ -1007,6 +1009,11 @@
     padding: 0.3em 0.6em;
     border-radius: 5px;
     color: white;
+}
+
+
+.itemUploadInfo {
+    opacity:0.5;
 }
 
 .itemDeleteBtn {
@@ -1044,6 +1051,22 @@
     #filterBar div {
         display: flex;
         flex-direction: row;
+    }
+
+    .showTreeCards {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .middleItemCard {
+        height: 10em;
+    }
+
+    .treeCard {
+        width: 20%;
+        height: 30em;
     }
 
     .showMobile {
