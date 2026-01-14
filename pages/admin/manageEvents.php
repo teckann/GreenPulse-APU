@@ -43,10 +43,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Manage Events</title>
-        <link rel="stylesheet" href="../../styles/admin.css">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </head>
+        <link rel="stylesheet" href="../../styles/admin.css">
+        <?php include("library.php") ?>
     <body>
         <?php include("header.php"); ?>
 
@@ -76,17 +75,17 @@
                                 <option value="Inactive">Today</option>
                             </select>
                         </div>
-                    </div>
 
-                    <div class="action-btns">
-                        <button name="btnFilter" type="submit" value="Filter" class="filter-btn">
-                            <i class="fa-solid fa-filter"></i>
-                            <p>Filter</p>
-                        </button>
+                        <div class="action-btns">
+                            <button name="btnFilter" type="submit" value="Filter" class="filter-btn">
+                                <i class="fa-solid fa-filter"></i>
+                                <p>Filter</p>
+                            </button>
 
-                        <button class="print" onclick="window.print()">
-                            <i class="fa-solid fa-print"></i>
-                        </button>
+                            <button class="print" onclick="window.print()">
+                                <i class="fa-solid fa-print"></i>
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -105,7 +104,7 @@
                             <th>Event ID</th>
                             <th>Event Title</th>
                             <th>Author</th>
-                            <th>Date & Time</th>
+                            <th>Event Date & Time</th>
                             <th>Posted Date</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -144,7 +143,7 @@
                                 echo '<tr>
                                         <td>' . $row['event_id'] . '</td>
                                         <td>' . $row['event_title'] . '</td>
-                                        <td><a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">' . $author . '</a></td>
+                                        <td><a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">' . $author . ' <i class="fa-solid fa-angle-double-right table-linkIcon"></i></a></td>
                                         <td>' . $formatted_dateTime . ' </td>
                                         <td>' . ucwords($row['posted_date']) . '</td>
                                         <td style="color:' . $textColor . '">' . $row['event_status'] . '</td>
@@ -198,7 +197,10 @@
                         $sql_user = "SELECT name FROM users WHERE user_id = '$user_id'";
                         $result_user = mysqli_query($conn, $sql_user);
                         $row_user = mysqli_fetch_assoc($result_user);
-                        $postedBy = $row_user["name"];
+                        $author = $row_user["name"];
+
+                        $eventDateTime = $row["event_datetime"];
+                        $formatted_dateTime = date("d M Y (g:i A)", strtotime($eventDateTime));
 
                         echo '<div class="cards">
                                 <div class="card-header">
@@ -219,8 +221,13 @@
                                     </div>
 
                                     <div class="card-data">
-                                        <p>Posted By</p>
-                                        <p><a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">' . $postedBy . '</a></p>
+                                        <p>Author</p>
+                                        <p><a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">' . $author . '</a></p>
+                                    </div>
+
+                                    <div class="card-data">
+                                        <p>Event Date & Time</p>
+                                        <p>' . $formatted_dateTime . '</p>
                                     </div>
 
                                     <div class="card-data">
@@ -240,7 +247,7 @@
                                         </button>
                                     </form>
 
-                                    <a href="viewUserProfile.php?id=' . $row['user_id'] . '" title="View">
+                                    <a href="viewEventDetails.php?id=' . $row['event_id'] . '" title="View">
                                         <button class="card-action-btn card-view-btn">
                                             View User Details
                                         </button>
