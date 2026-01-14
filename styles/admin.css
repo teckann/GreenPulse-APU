@@ -522,6 +522,7 @@ tbody tr:hover {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-width: 300px;
 }
 
 .viewDetails-title .row {
@@ -828,6 +829,18 @@ tbody tr:hover {
     display: flex;
     flex-direction: row;
     gap: 20px;
+}
+
+.viewDetails-title .status-width {
+    width: 100px;
+}
+
+.viewDetails-tableContent {
+    margin-top: 1em;
+}
+
+.viewDetails-table {
+    max-width: 100%;
 }
 
 @media(max-width: 800px) {
@@ -1173,5 +1186,24 @@ tbody tr:hover {
     .viewDetails-contentss .info-box2 {
         width: 100% !important;
         margin-left: 0;
+    }
+
+    .event-header {
+        flex-direction: column !important;
+    }
+
+    .mobile-viewDetails-title {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mobile-row {
+        align-items: center;
+        justify-content: center;
+        /* background-color: red; */
+    }
+
+    .event-tracking {
+        margin-top: 1em;
     }
 }

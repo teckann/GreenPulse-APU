@@ -71,8 +71,6 @@
                                 <option value="">All</option>
                                 <option value="Active">Active</option>
                                 <option value="Inactive">Inactive</option>
-                                <option value="Active">Close</option>
-                                <option value="Inactive">Today</option>
                             </select>
                         </div>
 

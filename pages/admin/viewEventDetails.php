@@ -9,6 +9,7 @@
     }
 
     $data = array();
+    $allParticipantsInfo = array();
 
     $author = "";
     $formatted_dateTime = "";
@@ -63,6 +64,20 @@
         }
 
         $availableSpot = (int)$data["capacity"] - (int)$totalParticipants;
+
+
+        // find all participants
+        $sql_allParticipants = "SELECT U.*, A.event_register_date, A.attendance_status FROM attendance A
+                                INNER JOIN users U ON A.user_id = U.user_id
+                                WHERE A.event_id = '$id'";
+        
+        $result_allParticipants = mysqli_query($conn, $sql_allParticipants);
+        
+        if (mysqli_num_rows($result_allParticipants) > 0){
+            while ($row = mysqli_fetch_assoc($result_allParticipants)) {
+                $allParticipantsInfo[] = $row;
+            }
+        }
     }
 ?>
 
@@ -94,16 +109,15 @@
                 <div class="viewDetails-header event-header">
                     <img src="../../<?php echo $data['event_poster'] ?>" alt="event poster" width="250px" height="150px">
 
-                    <div class="viewDetails-title">
+                    <div class="viewDetails-title mobile-viewDetails-title">
                         <h2><?php echo $data["event_title"] ?></h2>
 
-                        <div class="row">
+                        <div class="row mobile-row">
                             <p><?php echo $data["event_id"] ?></p>
-                            <p><?php echo $author ?></p>
-                        </div>
 
-                        <div class="row status" style="background-color: <?php echo $statusColor; ?>">
-                            <?php echo $data["event_status"] ?>
+                            <div class="status status-width" style="background-color: <?php echo $statusColor; ?>">
+                                <?php echo $data["event_status"] ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -164,7 +178,7 @@
                         </div>
 
                         <div class="info-box2 event-info-box2">
-                            <div class="tracking-box1">
+                            <div class="tracking-box1 event-tracking">
                                 <div class="info-title">
                                     <p>Event Performance Monitoring</p>
                                     <div class="line"></div>
@@ -200,14 +214,34 @@
                         </div>
                     </div>
 
-                    <div>
-                        <table>
-                            <tr>
-                                <th>User ID</th>
-                                <th>Full Name</th>
-                                <th>Register Date & Time</th>
-                                <th>Status</th>
-                            </tr>
+                    <div class="viewDetails-table">
+                        <div class="info-title">
+                            <p>Participants & Attendance</p>
+                            <div class="line"></div>
+                        </div>
+
+                        <table class="viewDetails-tableContent">
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Full Name</th>
+                                    <th>Register Date</th>
+                                    <th>Attendance</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php
+                                    foreach ($allParticipantsInfo as $row):
+                                        echo '<tr>
+                                                <td>' . $row['user_id'] . '</td>
+                                                <td>' . $row['name'] . '</td>
+                                                <td>' . $row['event_register_date'] . '</td>
+                                                <td>' . $row['attendance_status'] . '</td>
+                                              </tr>';
+                                    endforeach
+                                ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>

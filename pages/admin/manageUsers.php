@@ -96,8 +96,9 @@
         }
 
         if(mysqli_query($conn, $sql_addUser)) {
+            $titleFormat_role = ucwords($role);
             echo "<script>
-                    alert('--- Successfully Added New User ---\\nAccess Granted!\\nUser ID: $newUserID\\nRole: $role\\nDefault Password Format: UXXX@MMDD');
+                    alert('--- Successfully Added New User ---\\nAccess Granted!\\nUser ID: $newUserID\\nRole: $titleFormat_role\\nDefault Password Format: UXXX@MMDD');
                     window.location.href = 'manageUsers.php';
                   </script>";
         }
@@ -110,7 +111,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Manage Users</title>
-        
+
         <link rel="stylesheet" href="../../styles/admin.css">
         <?php include("library.php") ?>
     </head>
