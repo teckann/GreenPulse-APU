@@ -152,13 +152,13 @@
                                         <p>" . $row['item_description'] . "</p>
                                     </div>
                                     <div class='itemUploadInfo'>
-                                        <p><i>Updated by " . $uploaderName . " (" . $uploadDate . ")</i></p>
+                                        <p><i>Uploaded by " . $uploaderName . " (" . $uploadDate . ")</i></p>
                                     </div>
                                 </div>
                                 <div class='itemButton'>
                                     <form action='#'>
-                                        <button type='submit' name='deleteBtn' class='itemDeleteBtn'><b>Delete</b></button>
-                                        <button type='submit' name='editBtn'class='itemEditBtn'><b>Edit</b></button>
+                                        <button type='submit' name='deleteBtn' class='itemDeleteBtn'>Delete</button>
+                                        <button type='submit' name='editBtn'class='itemEditBtn'>Edit</button>
                                     </form>
                                 </div>
                             </div>";
