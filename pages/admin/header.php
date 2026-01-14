@@ -28,15 +28,15 @@
     <p class="sidebar-subTitle">Main Menu</p>
 
     <div class="nav-pages">
-        <a id="dashboard" href="../../pages/admin/index.php">
+        <a id="dashboard" href="index.php">
             <i class="fa-solid fa-gauge-high"></i> Dashboard
         </a>
 
-        <a id="manageUsers" href="../../pages/admin/manageUsers.php">
+        <a id="manageUsers" href="manageUsers.php">
             <i class="fa-solid fa-users"></i> Manage Users
         </a>
 
-        <a id="manageEvents" href="../../pages/admin/manageEvents.php">
+        <a id="manageEvents" href="manageEvents.php">
             <i class="fa-solid fa-calendar-check"></i> Manage Events
         </a>
 
@@ -63,8 +63,8 @@
             <i class="fa-solid fa-user"></i> Profile
         </a>
 
-        <a id="guildeline" href="#">
-            <i class="fa-solid fa-book"></i> Guildeline
+        <a id="guildeline" href="guideline.php">
+            <i class="fa-solid fa-book"></i> Guideline
         </a>
     </div>
 
