@@ -163,7 +163,26 @@
                     </div>
 
                     <div class="profile-info-content">
+                        <div class="profile-personal-content-container">
+                            <div class="profile-personal-content-box">
+                                <h3>Password</h3>
+                                <p>**************************</p>
+                            </div>
+                        </div>
 
+                        <div class="profile-personal-content-container">
+                            <div class="profile-personal-content-box">
+                                <h3>Security Question 1</h3>
+                                <p><?php echo $row["safety_question_1"] ?? "N/A" ?></p>
+                            </div>
+                        </div>
+
+                        <div class="profile-personal-content-container">
+                            <div class="profile-personal-content-box">
+                                <h3>Security Question 2</h3>
+                                <p><?php echo $row["safety_question_2"] ?? "N/A" ?></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
