@@ -16,6 +16,33 @@
     else {
         $gender = "Female";
     }
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+        if ($_POST["formType"] === "addNewUser") {
+            $name = trim($_POST["name"]);
+            $emailID = trim($_POST["emailID"]);
+            $contactNumber = trim($_POST["contactNumber"]);
+            $dateOfBirth = $_POST["dateOfBirth"];
+            $courseName = $_POST["courseName"];
+            $nationality = $_POST["nationality"];
+
+            $email = strtoupper($emailID) . "@mail.apu.edu.my";
+
+            $sql_updateInfo = "UPDATE users SET
+                               name = '$name', education_email = '$email',
+                               contact_number = '$contactNumber', date_of_birth = '$dateOfBirth',
+                               course_name = '$courseName', nationality = '$nationality'";
+
+            if(mysqli_query($conn, $sql_updateInfo)) {
+                echo "<script>
+                        alert('--- Successfully Updated Personal Infomation ---\\nAlways keep your profile details up to date.');
+                        window.location.href = 'profile.php';
+                      </script>";
+            }
+
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -105,17 +132,19 @@
                     </div>
 
                     <form action="" method="POST" class="popup-form">
+                        <!-- used to know what form submited  -->
+                        <input type="hidden" name="formType" value="addNewUser">
                         <div class="popup-scroll-area">
                             <div class="popup-input">
                                 <label for="fullname">Full Name *</label>
-                                <input type="text" name="name" id="fullname" placeholder="e.g. Marcus">
+                                <input type="text" name="name" id="fullname" value="<?php echo $row["name"] ?>">
                                 <div class="popup-error-text" id="error-fullname">Enter a Valid Name</div>
                             </div>
 
                             <div class="popup-input">
                                 <label for="email">Education Email *</label>
                                 <div style = "display: flex; flex-direction: row; align-items: center; gap:5px;">
-                                    <input type="text" name="emailID" id="email" placeholder="e.g. TP012345">
+                                    <input type="text" name="emailID" id="email" value="<?php echo explode('@', $row["education_email"])[0]; ?>">
                                     <label for="email">@mail.apu.edu.my</label>
                                 </div>
                                 <div class="popup-error-text" id="error-email">Enter a Valid APU Education Email</div>
@@ -126,14 +155,14 @@
                                     <label for="contactNumber">Contact Number *</label>
                                     <div class="popup-sub-input">
                                         <label for="contact">+60 </label>
-                                        <input type="text" name="contactNumber" id="contact" placeholder="e.g. 0123456789">
+                                        <input type="text" name="contactNumber" id="contact" value="<?php echo $row["contact_number"] ?>">
                                     </div>
                                     <div class="popup-error-text" id="error-contactNumber">Enter a Valid Contact Number</div>
                                 </div>
 
                                 <div class="popup-input popup-dob">
                                     <label for="dob">DOB *</label>
-                                    <input type="date" name="dateOfBirth" id="dob">
+                                    <input type="date" name="dateOfBirth" id="dob" value="<?php echo $row['date_of_birth']; ?>">
                                     <div class="popup-error-text" id="error-dob">Select DOB</div>
                                 </div>
                             </div>
@@ -149,10 +178,36 @@
                                 <?php include("../general/nationality.php"); ?>
                                 <div class="popup-error-text" id="error-nationality">Select Nationality</div>
                             </div>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    const btnOpen = document.querySelectorAll(".updatePersonalInfo-btn");
+
+                                    const userCourse = "<?php echo $row["course_name"]; ?>"; 
+                                    const userNationality = "<?php echo $row["nationality"]; ?>"; 
+                                    
+                                    const selectCourse = document.getElementById("course");
+                                    const selectNationality = document.getElementById("nationality");
+
+                                    if (btnOpen) {
+                                        btnOpen.forEach((btn) => {
+                                            btn.addEventListener("click", () => {
+                                                if (userCourse) {
+                                                    selectCourse.value = userCourse;
+                                                }
+
+                                                if (userNationality) {
+                                                    selectNationality.value = userNationality;
+                                                }
+                                            });
+                                        });
+                                    }
+                                });
+                            </script>
                         </div>
 
                         <div class="submit-container">
-                            <button type="submit" name="btnUpdateAvatar" value="Submit" class="submit-btn">
+                            <button name="btnSubmit" value="Submit" class="submit-btn" id="btnSubmit-updateInfo">
                                 <i class="fa-solid fa-floppy-disk"></i>
                                 <p>Save Changes</p>
                             </button>
@@ -345,6 +400,7 @@
         <script src="../../scripts/admin.js"></script>
         <script src="../../scripts/admin_popup_updateAvatar.js"></script>
         <script src="../../scripts/admin_popup_updateProfile.js"></script>
+        <script src="../../scripts/validation.js"></script>
     </body>
 </html>
 

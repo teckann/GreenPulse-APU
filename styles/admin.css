@@ -735,8 +735,13 @@ tbody tr:hover {
     justify-content: space-between;
 }
 
+.popup-contact {
+    width: 55%;
+    /* background-color: red; */
+}
+
 .popup-dob {
-    width: 33%;
+    width: 38%;
     /* background-color: red; */
 }
 
