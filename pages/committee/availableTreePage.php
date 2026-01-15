@@ -171,10 +171,10 @@
                                             </div>
                                         </div>
                                         <div class='itemButton'>
-                                            <form action='#'>
+                                            <form action='#' method='GET'>
                                                 <input type='hidden' name='targetUserID' value='" . $row['item_id'] . "'>
                                                 <button type='submit' name='deleteBtn' class='itemDeleteBtn'>Delete</button>
-                                                <button type='button' name='editBtn' class='itemEditBtn'>Edit</button>
+                                                <button type='submit' name='editBtn' class='itemEditBtn'>Edit</button>
                                             </form>
                                         </div>
                                     </div>";
@@ -190,13 +190,25 @@
         <div id="itemPopUp">
             <div class="popUpHeader">
                 <div><button><i class="fa-solid fa-arrow-left"></i></button></div>
-                <div><b>Edit Tree</b></div>
+                <div><button><b>Edit Tree</b></button></div>
             </div>
-            <form action="#" method="GET">
-                <div class="popUpShow">
-                    
-                </div>
-            </form>
+            <?php 
+                if(isset($_GET['editBtn']) ){
+                    $editTreeSql = "SELECT * FROM items WHERE item_id = '{$_GET['targetUserID']}'";
+                    $treeEditResult = mysqli_query($conn, $editTreeSql);
+                    while ($row = mysqli_fetch_assoc($treeEditResult)) {
+                        echo "
+                            <form action='#' method='GET'>
+                                <div class='popUpShow'>
+                                    <div class='itemPopUpInput'>
+                                        <label for='itemName'>Tree Name</label>
+                                        <input type='text' name='itemName' id='itemName' value='" . $row['item_name'] . "'>
+                                    </div>
+                                </div>
+                            </form>";
+                    }
+                }
+            ?>
         </div>
     </main>
     <script>
@@ -209,11 +221,12 @@
 
             btnEditItem.forEach((eachEditBtn) => {
                 eachEditBtn.addEventListener('click', () => {
+                
                 itemPopUpOverlay.style.display = 'block';
                 itemPopUp.style.display = 'block';
 
             }) ;
-            })
+            });
         });
 
         const treeStatus = document.getElementById("filterAvailableTreeStatus");
