@@ -36,6 +36,10 @@
     function reformat_dateTime($dateTime) {
         return date("d M Y (g:i A)", strtotime($dateTime));
     }
+
+    function reformat_date($date) {
+        return date("d M Y", strtotime($date));
+    }
     
     function timeRemaining($conn, $eventID) {
         $sql = "SELECT event_datetime, duration FROM events WHERE event_id = '$eventID'";
