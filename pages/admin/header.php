@@ -59,7 +59,7 @@
 
     <p class="sidebar-subTitle">Account</p>
     <div class="nav-pages">
-        <a id="profile" href="#">
+        <a id="profile" href="profile.php">
             <i class="fa-solid fa-user"></i> Profile
         </a>
 

@@ -1,4 +1,5 @@
 @import url("general.css");
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
 
 body {
     min-height: 100vh;
@@ -843,6 +844,281 @@ tbody tr:hover {
     max-width: 100%;
 }
 
+.box-container {
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.5em;
+}
+
+.terms-conditions,
+.main-features,
+.tutorial-video {
+    background: linear-gradient(to right, #CFE5F3 0%, #B1C6D7 100%);
+    padding: 1em;
+    border-radius: 15px;
+}
+
+.terms-conditions {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+
+.box-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.box-title h3,
+.box-title p {
+    color: #194a7a;
+}
+
+.box-content {
+    padding: 1em;
+}
+
+.box-content ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+}
+
+.terms-conditions .box-content ul li {
+    line-height: 1.7;
+    color: #333;
+}
+
+.smallBox-container {
+    width: 48%;
+}
+
+.main-features {
+    width: 100%;
+}
+
+.box-title-mobile {
+    display: none;
+}
+
+.smallBox-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.main-features-content {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+}
+
+.main-features-content div {
+    line-height: 1.7;
+    color: #333;
+}
+
+.slogan {
+    margin-top: 1em;
+    font-size: 2.5em;
+    font-family: "Italianno", cursive;
+    color: #194a7a;
+    align-self: flex-end;
+}
+
+.slogan-mobile {
+    display: none;
+}
+
+.profile-header {
+    width: 100%;
+    background: linear-gradient(to right, #CFE5F3 0%, #B1C6D7 100%);
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 8px;
+}
+
+.profile-header-info {
+    margin-left: 4em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.avatar-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+}
+
+.profile-avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+}
+
+.edit-avatar-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #333;
+    font-size: 14px;
+    border: none;
+}
+
+.profile-header-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-header-details h2 {
+    font-size: 2.5em;
+    letter-spacing: 2.5px;
+    color: #194a7a;
+}
+
+.profile-header-details p {
+    font-size: 1em;
+    letter-spacing: 2px;
+    color: #194a7a;
+}
+
+.last-login {
+    color: #0463c9;
+}
+
+.profile-personal-info {
+    width: 100%;
+    background: linear-gradient(to right, #CFE5F3 0%, #B1C6D7 100%);
+    padding: 1em 1.5em;
+    border-radius: 8px;
+}
+
+.profile-info-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #454545;
+}
+
+.profile-info-header h3 {
+    color: #194a7a;
+}
+
+.profile-update-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em 1em;
+    gap: 7px;
+    border: none;
+    background-color: #0463c9;
+    color: white;
+    border-radius: 5px;
+}
+
+.profile-personal-info {
+    margin-bottom: 1em;
+}
+
+button,
+select {
+    cursor: pointer;
+}
+
+.profile-info-content {
+    display: flex;
+    flex-direction: row;
+    /* background-color: red; */
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 1.3em;
+
+}
+
+.profile-personal-content-container {
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    gap: 25px;
+}
+
+.profile-personal-content-box {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.profile-personal-content-box h3 {
+    color: #194a7a;
+    font-weight: 500;
+}
+
+.preview-avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.preview-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.update-avatar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-file-btn {
+    background-color: #194a7a;
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-name {
+    font-size: 0.8em;
+    letter-spacing: 1.5px;
+    color: #454545;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
@@ -1205,5 +1481,92 @@ tbody tr:hover {
 
     .event-tracking {
         margin-top: 1em;
+    }
+
+    .box-container {
+        flex-direction: column;
+    }
+
+    .terms-conditions {
+        width: 100%;
+    }
+
+    .smallBox-container {
+        width: 100%;
+        margin-top: 1em;
+    }
+
+    .box-title-desktop {
+        display: none;
+    }
+
+    .box-title-mobile {
+        display: block;
+    }
+
+    .slogan {
+        margin-top: 0.5em;
+        font-size: 2.5em;
+        font-family: "Italianno", cursive;
+        color: #194a7a;
+        align-self: flex-end;
+    }
+
+    .slogan-desktop {
+        display: none;
+    }
+
+    .slogan-mobile {
+        display: block;
+    }
+
+    .profile-header {
+        width: 100%;
+        background: linear-gradient(to right, #CFE5F3 0%, #B1C6D7 100%);
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+    }
+
+    .profile-header-info {
+        margin-left: 0;
+        gap: 30px;
+    }
+
+    .avatar-container {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .edit-avatar-icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .profile-header-details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .profile-header-details h2 {
+        font-size: 1.7em;
+        letter-spacing: 2.5px;
+        color: #194a7a;
+    }
+
+    .profile-header-details p {
+        font-size: 1em;
+        letter-spacing: 2px;
+        color: #194a7a;
+    }
+
+    .last-login {
+        font-size: 0.8em;
     }
 }
