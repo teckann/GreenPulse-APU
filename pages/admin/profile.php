@@ -104,8 +104,51 @@
                         </button>
                     </div>
 
-                    <form action="../../backend/update_avatar.php" method="POST">
-                        <div class="update-avatar-container">
+                    <form action="" method="POST" class="popup-form">
+                        <div class="popup-scroll-area">
+                            <div class="popup-input">
+                                <label for="fullname">Full Name *</label>
+                                <input type="text" name="name" id="fullname" placeholder="e.g. Marcus">
+                                <div class="popup-error-text" id="error-fullname">Enter a Valid Name</div>
+                            </div>
+
+                            <div class="popup-input">
+                                <label for="email">Education Email *</label>
+                                <div style = "display: flex; flex-direction: row; align-items: center; gap:5px;">
+                                    <input type="text" name="emailID" id="email" placeholder="e.g. TP012345">
+                                    <label for="email">@mail.apu.edu.my</label>
+                                </div>
+                                <div class="popup-error-text" id="error-email">Enter a Valid APU Education Email</div>
+                            </div>
+
+                            <div class="popup-row">
+                                <div class="popup-input popup-contact">
+                                    <label for="contactNumber">Contact Number *</label>
+                                    <div class="popup-sub-input">
+                                        <label for="contact">+60 </label>
+                                        <input type="text" name="contactNumber" id="contact" placeholder="e.g. 0123456789">
+                                    </div>
+                                    <div class="popup-error-text" id="error-contactNumber">Enter a Valid Contact Number</div>
+                                </div>
+
+                                <div class="popup-input popup-dob">
+                                    <label for="dob">DOB *</label>
+                                    <input type="date" name="dateOfBirth" id="dob">
+                                    <div class="popup-error-text" id="error-dob">Select DOB</div>
+                                </div>
+                            </div>
+
+                            <div class="popup-input">
+                                <label for="course">Course Enrolled *</label>
+                                <?php include("../general/course.php"); ?>
+                                <div class="popup-error-text" id="error-course">Select Course</div>
+                            </div>
+
+                            <div class="popup-input">
+                                <label for="nationality">Nationality *</label>
+                                <?php include("../general/nationality.php"); ?>
+                                <div class="popup-error-text" id="error-nationality">Select Nationality</div>
+                            </div>
                         </div>
 
                         <div class="submit-container">
@@ -216,12 +259,10 @@
                             <h3>Personal Information</h3>
                         </div>
 
-                        <a href="updatePersonalInfo.php" style="text-decoration: none;">
-                            <button class="profile-update-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                <p>Update</p>
-                            </button>
-                        </a>
+                        <button class="profile-update-btn updatePersonalInfo-btn">
+                            <i class="fa-solid fa-pen"></i>
+                            <p>Update</p>
+                        </button>
                     </div>
 
                     <div class="card-content">
