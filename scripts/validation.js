@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const btnAddNewUser = document.querySelector("#btnSubmit-addNewUser");
-    const btnUpdateInfo = document.querySelector("#btnSubmit-updateInfo");
+    const btnUpdateInfo = document.querySelectorAll("#btnSubmit-updateInfo");
 
     if (btnAddNewUser) {
         btnAddNewUser.addEventListener("click", (e) => {
@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             else {
                 closeErrorMsg(nameError);
-                validationPass = true;
             }
 
             // validate email
@@ -161,86 +160,86 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    else if (btnUpdateInfo) {
-        btnUpdateInfo.addEventListener("click", (e) => {
-            // prevent submit from first
-            e.preventDefault();
+    if (btnUpdateInfo.length > 0) {
+        btnUpdateInfo.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
 
-            // elements that need to validate
-            const Vfullname = fullname.value;
-            const Vemail = email.value;
-            const Vcontact = contact.value;
-            const Vdob = dob.value;
-            const Vcourse = course.value;
-            const Vnationality = nationality.value;
+                // elements that need to validate
+                const Vfullname = fullname.value;
+                const Vemail = email.value;
+                const Vcontact = contact.value;
+                const Vdob = dob.value;
+                const Vcourse = course.value;
+                const Vnationality = nationality.value;
 
-            let validationPass = true;
+                let validationPass = true;
 
-            // validate name
-            if (Vfullname.trim() === "" || !nameRegex.test(Vfullname)) {
-                displayErrorMsg(nameError);
-                validationPass = false;
-            }
-            else {
-                closeErrorMsg(nameError);
-                validationPass = true;
-            }
+                // validate name
+                if (Vfullname.trim() === "" || !nameRegex.test(Vfullname)) {
+                    displayErrorMsg(nameError);
+                    validationPass = false;
+                }
+                else {
+                    closeErrorMsg(nameError);
+                }
 
-            // validate email
-            const tpRegex = /^TP\d{6}$/;
-            const tp = Vemail.trim().toUpperCase();
+                // validate email
+                const tpRegex = /^TP\d{6}$/;
+                const tp = Vemail.trim().toUpperCase();
 
-            if (tp === "" || !tpRegex.test(tp)) {
-                displayErrorMsg(emailError);
-                validationPass = false;
-            }
-            else {
-                closeErrorMsg(emailError);
-            }
+                if (tp === "" || !tpRegex.test(tp)) {
+                    displayErrorMsg(emailError);
+                    validationPass = false;
+                }
+                else {
+                    closeErrorMsg(emailError);
+                }
 
-            // validate contact
-            const contactRegex = /^\d{10,11}$/;
+                // validate contact
+                const contactRegex = /^\d{10,11}$/;
 
-            if (Vcontact.trim() === "" || !contactRegex.test(Vcontact.trim())) {
-                displayErrorMsg(contactError);
-                validationPass = false;
-            }
-            else {
-                closeErrorMsg(contactError);
-            }
+                if (Vcontact.trim() === "" || !contactRegex.test(Vcontact.trim())) {
+                    displayErrorMsg(contactError);
+                    validationPass = false;
+                }
+                else {
+                    closeErrorMsg(contactError);
+                }
 
-            // validate dob
-            if (Vdob === "") {
-                displayErrorMsg(dobError);
-                validationPass = false;
-            }
-            else {
-                closeErrorMsg(dobError);
-            }
+                // validate dob
+                if (Vdob === "") {
+                    displayErrorMsg(dobError);
+                    validationPass = false;
+                }
+                else {
+                    closeErrorMsg(dobError);
+                }
 
-            // validate course
-            if (Vcourse === "") {
-                displayErrorMsg(courseError);
-                validationPass = false;
-            }
-            else {
-                closeErrorMsg(courseError);
-            }
+                // validate course
+                if (Vcourse === "") {
+                    displayErrorMsg(courseError);
+                    validationPass = false;
+                }
+                else {
+                    closeErrorMsg(courseError);
+                }
 
-            // validate nationality
-            if (Vnationality === "") {
-                displayErrorMsg(nationalityError);
-                validationPass = false;
-            }
-            else {
-                closeErrorMsg(nationalityError);
-            }
+                // validate nationality
+                if (Vnationality === "") {
+                    displayErrorMsg(nationalityError);
+                    validationPass = false;
+                }
+                else {
+                    closeErrorMsg(nationalityError);
+                }
 
-            // main logic
-            if (validationPass) {
-                const form = document.querySelector(".popup-form");
-                form.submit();
-            }
+                // main logic
+                if (validationPass) {
+                    const form = document.querySelector(".popup-form");
+                    form.submit();
+                }
+            });
         });
     }
 });
