@@ -32,7 +32,8 @@
             $sql_updateInfo = "UPDATE users SET
                                name = '$name', education_email = '$email',
                                contact_number = '$contactNumber', date_of_birth = '$dateOfBirth',
-                               course_name = '$courseName', nationality = '$nationality'";
+                               course_name = '$courseName', nationality = '$nationality'
+                               WHERE user_id = '$userID'";
 
             if(mysqli_query($conn, $sql_updateInfo)) {
                 echo "<script>
@@ -40,7 +41,6 @@
                         window.location.href = 'profile.php';
                       </script>";
             }
-
         }
     }
 ?>

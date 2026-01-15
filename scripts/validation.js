@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const contact = document.getElementById("contact");
     const dob = document.getElementById("dob");
     const course = document.getElementById("course");
-    const genderSelected = document.querySelector("input[name='gender']:checked");
     const nationality = document.getElementById("nationality");
     const permission = document.getElementById("permission");
 
@@ -73,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const Vcontact = contact.value;
             const Vdob = dob.value;
             const Vcourse = course.value;
-            const VgenderSelected = genderSelected;
+            const VgenderSelected = document.querySelector("input[name='gender']:checked");
             const Vnationality = nationality.value;
             const Vpermission = permission.value;
 
