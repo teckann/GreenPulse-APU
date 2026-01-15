@@ -116,12 +116,11 @@
 
                         <div class="tutorial-video">
                             <div class="box-title">
-                                <h3>Training Video</h3>
+                                <h3>Admin Training Video</h3>
                             </div>
 
                             <video width=100% height=auto controls class="box-content">
                                 <source src="../../src/elements/training.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
                             </video>
                         </div>
                     </div>
@@ -132,7 +131,7 @@
         <?php include("footer.php"); ?>
 
         <script src="../../scripts/admin.js"></script>
-        <script src="../../scripts/carousel.js"></script>
+        <script src="../../scripts/admin_carousel.js"></script>
     </body>
 </html>
 

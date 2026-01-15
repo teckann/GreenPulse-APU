@@ -93,10 +93,34 @@
                     </form>
                 </div>
 
-                <div class="profile-personal-info">
+                <div class="popup" id="popup-update-info">
+                    <div class="popup-header">
+                        <div class="info-title">
+                            <h3>Update Personal Information</h3>
+                            <div class="line"></div>
+                        </div>
+                        <button id="popup-update-info-close-menu" class="icon-menu">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <form action="../../backend/update_avatar.php" method="POST">
+                        <div class="update-avatar-container">
+                        </div>
+
+                        <div class="submit-container">
+                            <button type="submit" name="btnUpdateAvatar" value="Submit" class="submit-btn">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                <p>Save Changes</p>
+                            </button>
+                        </div>            
+                    </form>
+                </div>
+
+                <div class="profile-personal-info profile-desktop">
                     <div class="profile-info-header">
                         <h3>Personal Information</h3>
-                        <button class="profile-update-btn">
+                        <button class="profile-update-btn updatePersonalInfo-btn">
                             <i class="fa-solid fa-pen"></i>
                             <p>Update</p>
                         </button>
@@ -153,7 +177,7 @@
                     </div>
                 </div>
 
-                <div class="profile-personal-info">
+                <div class="profile-personal-info profile-desktop">
                     <div class="profile-info-header">
                         <h3>Account Security Settings</h3>
                         <button class="profile-update-btn">
@@ -166,22 +190,109 @@
                         <div class="profile-personal-content-container">
                             <div class="profile-personal-content-box">
                                 <h3>Password</h3>
-                                <p>**************************</p>
+                                <p class="no-copy-element">**************************</p>
                             </div>
                         </div>
 
                         <div class="profile-personal-content-container">
                             <div class="profile-personal-content-box">
                                 <h3>Security Question 1</h3>
-                                <p><?php echo $row["safety_question_1"] ?? "N/A" ?></p>
+                                <p class="no-copy-element"><?php echo $row["safety_question_1"] ?? "N/A" ?></p>
                             </div>
                         </div>
 
                         <div class="profile-personal-content-container">
                             <div class="profile-personal-content-box">
                                 <h3>Security Question 2</h3>
-                                <p><?php echo $row["safety_question_2"] ?? "N/A" ?></p>
+                                <p class="no-copy-element"><?php echo $row["safety_question_2"] ?? "N/A" ?></p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cards profile-mobile">
+                    <div class="card-header">
+                        <div class="card-id">
+                            <h3>Personal Information</h3>
+                        </div>
+
+                        <a href="updatePersonalInfo.php" style="text-decoration: none;">
+                            <button class="profile-update-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                <p>Update</p>
+                            </button>
+                        </a>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="card-data">
+                            <p>Full Name</p>
+                            <p><?php echo $row["name"] ?></p>
+                        </div>
+
+                        <div class="card-data">
+                            <p>Gender</p>
+                            <p><?php echo $gender ?></p>
+                        </div>
+
+                        <div class="card-data">
+                            <p>Nationality</p>
+                            <p><?php echo $row["nationality"] ?></p>
+                        </div>
+
+                        <div class="card-data">
+                            <p>Date of Birth</p>
+                            <p><?php echo reformat_date($row["date_of_birth"]) ?></p>
+                        </div>
+
+                        <div class="card-data">
+                            <p>Education Email</p>
+                            <p><?php echo $row["education_email"] ?></p>
+                        </div>
+
+                        <div class="card-data">
+                            <p>Contact Number</p>
+                            <p><?php echo $row["contact_number"] ?></p>
+                        </div>
+
+                        <div class="card-data">
+                            <p>Course Enrolled</p>
+                            <p><?php echo $row["course_name"] ?></p>
+                        </div>
+
+                        <div class="card-data">
+                            <p>Role</p>
+                            <p><?php echo ucwords($row["role"]) ?></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cards profile-mobile">
+                    <div class="card-header">
+                        <div class="card-id">
+                            <h3>Account Security Settings</h3>
+                        </div>
+
+                        <button class="profile-update-btn">
+                            <i class="fa-solid fa-pen"></i>
+                            <p>Update</p>
+                        </button>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="card-data">
+                            <p>Password</p>
+                            <p class="no-copy-element">**************************</p>
+                        </div>
+
+                        <div class="card-data">
+                            <p>Security Question 1</p>
+                            <p class="no-copy-element"><?php echo $row["safety_question_1"] ?? "N/A" ?></p>
+                        </div>
+
+                        <div class="card-data">
+                            <p>Safety Question 2</p>
+                            <p class="no-copy-element"><?php echo $row["safety_question_2"] ?? "N/A" ?></p>
                         </div>
                     </div>
                 </div>
@@ -191,7 +302,8 @@
         <?php include("footer.php"); ?>
 
         <script src="../../scripts/admin.js"></script>
-        <script src="../../scripts/upload_image.js"></script>
+        <script src="../../scripts/admin_popup_updateAvatar.js"></script>
+        <script src="../../scripts/admin_popup_updateProfile.js"></script>
     </body>
 </html>
 

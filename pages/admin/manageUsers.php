@@ -618,6 +618,7 @@
         <?php include("footer.php"); ?>
         
         <script src="../../scripts/admin.js"></script>
+        <script src="../../scripts/admin_popup_addNewUser.js"></script>
         <script src="../../scripts/validation.js"></script>
     </body>
 </html>

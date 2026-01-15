@@ -1119,6 +1119,24 @@ select {
     color: #454545;
 }
 
+.no-copy-element {
+    user-select: none;
+
+    cursor: not-allowed;
+}
+
+.profile-desktop {
+    margin-top: 1em;
+    background: white !important;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+.profile-mobile {
+    display: none;
+}
+
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
@@ -1568,5 +1586,23 @@ select {
 
     .last-login {
         font-size: 0.8em;
+    }
+
+    .profile-desktop {
+        display: none;
+    }
+
+    .profile-mobile {
+        display: block;
+        margin-top: 1em;
+    }
+
+    .profile-mobile:last-child {
+        margin-top: 2em;
+        margin-bottom: 1em;
+    }
+
+    .profile-mobile .card-content {
+        margin-top: 1em;
     }
 }
