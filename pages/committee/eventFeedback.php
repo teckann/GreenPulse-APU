@@ -37,7 +37,7 @@
 
     <div class = "banner">
         <marquee direction = "right" scrollamount = "10">
-            <p>Announcement</p>
+            <p>AnnouJoin our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.ncement</p>
         </marquee>
     </div>
 
@@ -99,29 +99,35 @@
    <!-- Hamburger Menu sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <div class="sidebar-logo">LOGO</div>
+            <div class="sidebar-logo">
+                <img src="../../src/elements/logo_horizontal.png" alt="Logo">
+            </div>
             <button class="close-btn" onclick="toggleMenu()">×</button>
         </div>
 
         <div class="menu-items">
             <a href="index.php" class="menu-item">
-                <div class="menu-icon">🏠</div>
+                <div class="menu-icon"><i class="fa-solid fa-house"></i></div>
                 <span class="menu-text">Home</span>
             </a>
+
             <a href="treeAdoption.php" class="menu-item">
-                <div class="menu-icon">🌳</div>
+                <div class="menu-icon"><i class="fa-solid fa-tree"></i></div>
                 <span class="menu-text">Tree Adoption</span>
             </a>
+
             <a href="merchandises.php" class="menu-item">
-                <div class="menu-icon">🛍️</div>
+                <div class="menu-icon"><i class="fa-solid fa-bag-shopping"></i></div>
                 <span class="menu-text">Merchandises</span>
             </a>
+
             <a href="eventMain.php" class="menu-item">
-                <div class="menu-icon">📅</div>
+                <div class="menu-icon"><i class="fa-solid fa-calendar-days"></i></div>
                 <span class="menu-text">Events</span>
             </a>
+
             <a href="study&Quiz.php" class="menu-item">
-                <div class="menu-icon">📚</div>
+                <div class="menu-icon"><i class="fa-solid fa-book-open"></i></div>
                 <span class="menu-text">Study & Quiz</span>
             </a>
         </div>
@@ -134,6 +140,7 @@
             </div>
         </div>
     </div>
+    
     <!-- Overlay -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 

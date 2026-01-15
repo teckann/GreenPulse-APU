@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 </head>
 <body>
@@ -18,7 +18,7 @@
     </div>
 
     <div class = "logo" onclick = "window.location.href='index.php'">
-            <img src="../../src/committee/logo.png" alt="Logo">
+            <img src="../../src/elements/logo_horizontal.png" alt="Logo">
     </div>
 
     <div class = "desktopMenu">
@@ -37,26 +37,31 @@
 
     <div class = "banner">
         <marquee direction = "right" scrollamount = "10">
-            <p>Announcement</p>
+            <p>Join our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.</p>
         </marquee>
     </div>
-
         
-    <section class="heroSection-event">
-        <h1>Event</h1>
-        <h1>Management</h1>
-        <p>Create and manage green initiative events.</p>
+    <section class="event-header-section">
+    <div class="header-content">
+        <div class="back-icon" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        
+        <div class="header-text">
+            <h1>EVENT MANAGEMENT</h1>
+            <p>CREATE AND MANAGE GREEN INITIATIVE EVENTS.</p>
+        </div>
+        
+        <div class="add-icon" onclick="window.location.href='eventCreate.php'">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
     </section>
 
-    <!-- Can section if want the width align, bcos like pack them tgt le -->
-    <section class="eventControls">
-        <button class="btnCreateEvent" onclick = "window.location.href='eventCreate.php'">
-            Create Event
-        </button>
-
-        
+    <section class="eventControls-event-main">
+        <div class = "white-color-box">
             <div class="searchFilterGroup">
-                <div class="searchWrapper">
+                <div class="search-bar">
                     <input type="text" placeholder="Search Events..." class="searchInput">
                 </div>
                 <select class="statusDropdown">
@@ -66,82 +71,117 @@
                 </select>
             </div>
 
-            <section class = container-event>
-            <div class = "content-card-event">
 
-                <div class = "eventImage">
-                    <img src="../../src/committee/eventImage.jpg" alt="Event Image">
-                </div>
 
-                <div class="points-badge">Points</div>
-
-                <div class = "button" onclick = "window.location.href='eventEdit.php'">
-                    <div class = "btnEdit"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#B7B7B7"><path d="M576-96v-113l210-209q7.26-7.41 16.13-10.71Q811-432 819.76-432q9.55 0 18.31 3.5Q846.83-425 854-418l44 45q6.59 7.26 10.29 16.13Q912-348 912-339.24t-3.29 17.92q-3.3 9.15-10.71 16.32L689-96H576Zm288-243-45-45 45 45ZM624-144h45l115-115-22-23-22-22-116 115v45ZM264-96q-30 0-51-21.15T192-168v-624q0-29.7 21.15-50.85Q234.3-864 264-864h312l192 192v152h-72v-104H528v-168H264v624h240v72H264Zm252-384Zm246 198-22-22 44 45-22-23Z"/></svg></div>
-                    <div class = "btnDelete"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#B7B7B7"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/></svg></div>
-                </div>
-
-                <div class="user-meta">
-                    <span>User ID</span>
-                    <span>Date</span>
-                </div>
-                    
-
+            <section class="container-event">
+    <div class="content-card-event">
         
-            <div class = event-row>
-                <div class = "eventStatus">
-                    <span class = "circle"></span>
-                    <span>Event Status</span>
-                </div>
-                                    
-                <div class = "more-section">
-                    <span>More</span>
-                    <span class = "more"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#B7B7B7"><path d="M480-216v-336H144v-72h408v408h-72Zm192-192v-336H336v-72h408v408h-72Z"/></svg></span>
-                </div>
-            </div>
-                
-
-                <div class = "eventDetails">
-                    <span>Event Details</span>
-                    <!-- <span></span> -->
-                </div>
-
-               
-
-
-
+        <!-- Left Side: Image Section -->
+        <div class="event-left-section">
+            <div class="eventImage">
+                <img src="../../src/committee/eventImage.jpg" alt="Event Image">
             </div>
 
-        </section>
-        
+            <div class="button">
+                <div class="btnEdit" onclick="window.location.href='eventEdit.php'">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#5f6368">
+                        <path d="M576-96v-113l210-209q7.26-7.41 16.13-10.71Q811-432 819.76-432q9.55 0 18.31 3.5Q846.83-425 854-418l44 45q6.59 7.26 10.29 16.13Q912-348 912-339.24t-3.29 17.92q-3.3 9.15-10.71 16.32L689-96H576Zm288-243-45-45 45 45ZM624-144h45l115-115-22-23-22-22-116 115v45ZM264-96q-30 0-51-21.15T192-168v-624q0-29.7 21.15-50.85Q234.3-864 264-864h312l192 192v152h-72v-104H528v-168H264v624h240v72H264Zm252-384Zm246 198-22-22 44 45-22-23Z"/>
+                    </svg>
+                </div>
+                <div class="btnDelete" onclick="confirmDelete()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#5f6368">
+                        <path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Details Section -->
+        <div class="event-right-section">
+            
+            <!-- Meta Info -->
+            <div class="event-meta-row">
+                <div class="meta-item">
+                    <span class="meta-label">ORGANIZER ID</span>
+                    <span class="meta-value">E-8829-GRN</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">SCHEDULED DATE</span>
+                    <span class="meta-value">Dec 12, 2024</span>
+                </div>
+            </div>
+
+            <!-- Status and Points Row -->
+            <div class="status-points-row">
+                <div class="eventStatus">
+                    <span class="circle"></span>
+                    <span>EVENT ACTIVE</span>
+                </div>
+                <span class="points-badge">500 pts</span>
+                <div class="more-section">
+                    <span>MORE</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+
+            <!-- Event Title -->
+            <h2 class="event-title">Urban Tree Restoration</h2>
+
+            <!-- Event Description -->
+            <p class="event-description">
+                A premium workshop focused on local biodiversity and sustainable urban planning. 
+                Participants will learn hands-on tree planting techniques and maintenance.
+            </p>
+
+           
+
+        </div>
+
+    </div>
+</section>
+        </div>
     </section>
 
+            
 
-    <!-- Hamburger Menu sidebar -->
+
+
+       
+
+    
+            
+<!-- Hamburger Menu -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <div class="sidebar-logo">LOGO</div>
+            <div class="sidebar-logo">
+                <img src="../../src/elements/logo_horizontal.png" alt="Logo">
+            </div>
             <button class="close-btn" onclick="toggleMenu()">×</button>
         </div>
 
         <div class="menu-items">
             <a href="index.php" class="menu-item">
-                <div class="menu-icon">🏠</div>
+                <div class="menu-icon"><i class="fa-solid fa-house"></i></div>
                 <span class="menu-text">Home</span>
             </a>
+
             <a href="treeAdoption.php" class="menu-item">
-                <div class="menu-icon">🌳</div>
+                <div class="menu-icon"><i class="fa-solid fa-tree"></i></div>
                 <span class="menu-text">Tree Adoption</span>
             </a>
+
             <a href="merchandises.php" class="menu-item">
-                <div class="menu-icon">🛍️</div>
+                <div class="menu-icon"><i class="fa-solid fa-bag-shopping"></i></div>
                 <span class="menu-text">Merchandises</span>
             </a>
+
             <a href="eventMain.php" class="menu-item">
-                <div class="menu-icon">📅</div>
+                <div class="menu-icon"><i class="fa-solid fa-calendar-days"></i></div>
                 <span class="menu-text">Events</span>
             </a>
+
             <a href="study&Quiz.php" class="menu-item">
-                <div class="menu-icon">📚</div>
+                <div class="menu-icon"><i class="fa-solid fa-book-open"></i></div>
                 <span class="menu-text">Study & Quiz</span>
             </a>
         </div>

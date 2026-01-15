@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Committee Home Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <body>
     <!-- The whole navigation bar (include the menu icon, logo and profile pic)-->
     <nav class = "navigationBar">
@@ -15,8 +15,9 @@
             </button>
         </div>
 
+    
         <div class = "logo" onclick = "window.location.href='index.php'">
-            <img src="../../src/committee/logo.png" alt="Logo">
+            <img src="../../src/elements/logo_horizontal.png" alt="Logo">
         </div>
 
         <div class = "desktopMenu">
@@ -34,15 +35,14 @@
 
     <div class = "banner">
         <marquee direction = "right" scrollamount = "10">
-            <p>Announcement</p>
+            <p>Join our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.</p>
         </marquee>
     </div>
 
     <!--Use <section> like this section got a lot things, pack it together-->
     <section class="heroSection">
-        <h1>APU</h1>
-        <h1>GREENPULSE</h1>
-        <p>Grow greener futures — volunteer, share, celebrate.</p>
+        <h1>APU GREENPULSE</h1>
+        <p>GROW GREENER FUTURES — VOLUNTEER, SHARE, CELEBRATE.</p>
     </section>
 
     <!-- Grey section with cards -->
@@ -97,29 +97,35 @@
     <!-- Hamburger Menu sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <div class="sidebar-logo">LOGO</div>
+            <div class="sidebar-logo">
+                <img src="../../src/elements/logo_horizontal.png" alt="Logo">
+            </div>
             <button class="close-btn" onclick="toggleMenu()">×</button>
         </div>
 
         <div class="menu-items">
             <a href="index.php" class="menu-item">
-                <div class="menu-icon">🏠</div>
+                <div class="menu-icon"><i class="fa-solid fa-house"></i></div>
                 <span class="menu-text">Home</span>
             </a>
+
             <a href="treeAdoption.php" class="menu-item">
-                <div class="menu-icon">🌳</div>
+                <div class="menu-icon"><i class="fa-solid fa-tree"></i></div>
                 <span class="menu-text">Tree Adoption</span>
             </a>
+
             <a href="merchandises.php" class="menu-item">
-                <div class="menu-icon">🛍️</div>
+                <div class="menu-icon"><i class="fa-solid fa-bag-shopping"></i></div>
                 <span class="menu-text">Merchandises</span>
             </a>
+
             <a href="eventMain.php" class="menu-item">
-                <div class="menu-icon">📅</div>
+                <div class="menu-icon"><i class="fa-solid fa-calendar-days"></i></div>
                 <span class="menu-text">Events</span>
             </a>
+
             <a href="study&Quiz.php" class="menu-item">
-                <div class="menu-icon">📚</div>
+                <div class="menu-icon"><i class="fa-solid fa-book-open"></i></div>
                 <span class="menu-text">Study & Quiz</span>
             </a>
         </div>
