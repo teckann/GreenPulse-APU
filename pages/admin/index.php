@@ -323,6 +323,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="../../scripts/admin.js"></script>
+        <script src="../../scripts/chart.js"></script>
     </body>
 </html>
 
