@@ -1,6 +1,7 @@
 <?php 
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
+    include("../../backend/utility.php");
 
     $sql = "SELECT * FROM items WHERE category = 'tree'";
 
@@ -43,7 +44,15 @@
     // $sql = "SELECT * from items where item_name like '%{$search}%'";
     $result = mysqli_query($conn, $sql);
 
-    
+    // to update tree data
+    if (isset($_GET['btnConfirmEdit'])) {
+        $newTreeName = $_GET['itemNameEdit'];
+        $newDescription = $_GET['itemDescriptionEdit'];
+        $newPoints = $_GET['itemPointsEdit'];
+        $newStock = $_GET['itemStockEdit'];
+
+        $sqlChange = "UPDATE items SET item_name = '$newTreeName', item_description = '$newDescription', item_redeem_points = '$newPoints', item_stock = '$newStock' WHERE user_id = '$userID'";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -172,9 +181,16 @@
                                         </div>
                                         <div class='itemButton'>
                                             <form action='#' method='GET'>
-                                                <input type='hidden' name='targetUserID' value='" . $row['item_id'] . "'>
+                                                <input type='hidden' name='targetItemID' value='" . $row['item_id'] . "'>
+                                                <input type='hidden' name='targetUserID' value='" . $row['user_id'] . "'>
+                                                <input type='hidden' name='targetItemName' value='" . $row['item_name'] . "'>
+                                                <input type='hidden' name='targetItemImage' value='" . $row['item_image'] . "'>
+                                                <input type='hidden' name='targetItemDescription' value='" . $row['item_description'] . "'>
+                                                <input type='hidden' name='targetRedeemPoints' value='" . $row['item_redeem_points'] . "'>
+                                                <input type='hidden' name='targetStock' value='" . $row['item_stock'] . "'>
                                                 <button type='submit' name='deleteBtn' class='itemDeleteBtn'>Delete</button>
                                                 <button type='submit' name='editBtn' class='itemEditBtn'>Edit</button>
+                                                
                                             </form>
                                         </div>
                                     </div>";
@@ -189,26 +205,71 @@
 
         <div id="itemPopUp">
             <div class="popUpHeader">
-                <div><button><i class="fa-solid fa-arrow-left"></i></button></div>
-                <div><button><b>Edit Tree</b></button></div>
+                <div><button id='btnExitPopUp'><i class="fa-solid fa-arrow-left"></i></button></div>
+                <div id="popUpHeaderText"><b id="editTreeText">Edit Tree</b></div>
             </div>
             <?php 
+
+                // to assign integer to point and stock to prevent cannot be parsed or out of range
+                $itemPoints = 0;
+                $itemStocks = 0;
+
+                $showPopUp = false;
+
                 if(isset($_GET['editBtn']) ){
-                    $editTreeSql = "SELECT * FROM items WHERE item_id = '{$_GET['targetUserID']}'";
-                    $treeEditResult = mysqli_query($conn, $editTreeSql);
-                    while ($row = mysqli_fetch_assoc($treeEditResult)) {
-                        echo "
-                            <form action='#' method='GET'>
-                                <div class='popUpShow'>
-                                    <div class='itemPopUpInput'>
-                                        <label for='itemName'>Tree Name</label>
-                                        <input type='text' name='itemName' id='itemName' value='" . $row['item_name'] . "'>
-                                    </div>
-                                </div>
-                            </form>";
-                    }
+                    // set the flag to detect the pop up
+                    $showPopUp = true;
+                    $itemID = $_GET['targetItemID'];
+                    $itemName = $_GET['targetItemName'];
+                    $itemImage = $_GET['targetItemImage'];
+                    $itemDescription = $_GET['targetItemDescription'];
+                    $itemPoints = $_GET['targetRedeemPoints'];
+                    $itemStocks = $_GET['targetStock'];
+                    $itemUserID = $_GET['targetUserID']; 
                 }
             ?>
+            <form action='#' method='GET' class='popUpForm'>
+                <div class='popUpShow'>
+                    <div class='itemPopUpInput'>
+                        <label for='itemNameEdit'>Tree Name:</label>
+                        <input type='text' name='itemNameEdit' id='itemNameEdit' value='<?php echo "$itemName" ?>'>
+                    </div>
+                    <div class='itemPopUpInput'>
+                        <label for='itemDescriptionEdit'>Tree Description</label>
+                        <div>
+                            <textarea name='itemDescriptionEdit' id='itemDescriptionEdit' rows='3' required><?php echo "$itemDescription" ?></textarea>
+                        </div>
+                    </div>
+                    <div class='popUpNumberSelector itemPopUpInput'>
+                        <div>
+                            <label for='itemPointsEdit'>Points Required:</label>
+                            <input type='number' name='itemPointsEdit' id='itemPointsEdit' value='<?php echo "$itemPoints" ?>' min='0'  max='1000' required>
+                        </div>
+                        <div>
+                            <label for='itemStockEdit'>Tree Stocks:</label>
+                            <input type='number' name='itemStockEdit' id='itemStockEdit' value='<?php echo "$itemStocks" ?>' min='0'  max='1000' required>
+                        </div>
+                    </div>
+                    <!-- <div class='itemPopUpInput'>
+                        <label>Tree Photo</label>
+                        <img src="../../<?php echo $itemImage ?>" alt="Tree Image">
+                        
+                        <label for="changeTreePhoto">
+                            <button>
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <p>Choose Image</p>
+                            </button>
+                        </label>
+                        <input type="file" name="btnChangeTreePhoto" id="changeTreePhoto" hidden>
+                    </div> -->
+                    <div class='editConfirmButton'>
+                        <button name='btnConfirmEdit' type='submit' value='Confirm' id='btnConfirmEdit'><i class="fa-solid fa-circle-check" style="color: #28a745;"></i>  Confirm</button>
+                    </div>
+                </div>
+            </form>
+            <div class='navToEditPhoto'>
+                <button name="btnNavToEditPhoto" id="btnNavToEditPhoto">Change Tree Photo?</button>
+            </div>
         </div>
     </main>
     <script>
@@ -217,16 +278,39 @@
             const btnEditItem = document.querySelectorAll(".itemEditBtn");
             const itemPopUpOverlay = document.querySelector("#itemOverlay");
             const itemPopUp = document.querySelector("#itemPopUp");
+            const treeCards = document.querySelectorAll(".treeCard");
+            const btnExitPopUp = document.querySelector("#btnExitPopUp");
+            const btnNavToEditPhoto = document.querySelector("#btnNavToEditPhoto");
 
+            // to make the button unable to click when the status is inactive
+            treeCards.forEach((treeCard) => {
+                const itemStatus = treeCard.querySelector('.itemStatus');
+                const statusText = itemStatus.innerText;
+                const itemEditBtn = treeCard.querySelector(".itemEditBtn");
+                const itemDeleteBtn = treeCard.querySelector(".itemDeleteBtn");
 
-            btnEditItem.forEach((eachEditBtn) => {
-                eachEditBtn.addEventListener('click', () => {
-                
+                if (statusText === "Inactive") {
+                    itemEditBtn.classList.add("disableButton");
+                    itemDeleteBtn.classList.add("disableButton");
+                }
+            })
+
+            <?php if ($showPopUp) {?> 
                 itemPopUpOverlay.style.display = 'block';
-                itemPopUp.style.display = 'block';
+                itemPopUp.style.display = 'flex';
+            <?php } ?>
 
-            }) ;
-            });
+            // close pop up page when the user click overlay
+            itemPopUpOverlay.addEventListener("click", () => {
+            itemPopUpOverlay.style.display = 'none';
+            itemPopUp.style.display = 'none';
+            // window.location.href = 'availableTreePage.php';
+            reload();
+            })
+
+            // btnNavToEditPhoto.addEventListener("click", (event) => {
+            //     event.preventDefault();
+            // })
         });
 
         const treeStatus = document.getElementById("filterAvailableTreeStatus");
@@ -254,6 +338,17 @@
         treeCreator.addEventListener('change', function() {
             sessionStorage.setItem("selectedTreeCreator", this.value);
         });
+
+        btnExitPopUp.addEventListener("click", () => {
+            reload();
+        })
+
+        const reload = () => {
+
+            sessionStorage.setItem('selectedTreeStatus', '');
+            sessionStorage.setItem('selectedTreeCreator', '');
+            window.location.href = 'availableTreePage.php';
+        }
     </script>
     <script src="../../scripts/committee.js"></script>
 </body>

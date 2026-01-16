@@ -1245,6 +1245,7 @@ body{
     padding: 0.3em 0.6em;
     border-radius: 5px;
     color: white;
+    cursor: pointer;
 }
 
 
@@ -1258,6 +1259,12 @@ body{
 
 .itemEditBtn {
     background-color: #FEA82F;
+}
+
+.disableButton {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 #itemOverlay {
@@ -1278,9 +1285,130 @@ body{
     top: 15%;
     right: 10%;
     width: 80%;
-    height: 70%;
+    height: 60%;
     z-index: 1200;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 0.5em;
 }
+
+.popUpHeader {
+    display: flex;
+    flex-direction: row;
+    height: 2em;
+    margin: 1em 0;
+}
+
+#btnExitPopUp {
+    color: #271033;
+    background-color: #fff;
+    border: none;
+    font-size: 2em;
+    margin-left: 0.2em;
+}
+
+#popUpHeaderText {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+
+#editTreeText {
+    font-size: 2em;
+}
+
+.popUpShow {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.itemPopUpInput:nth-of-type(1) {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.itemPopUpInput:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.itemPopUpInput:nth-of-type(2) div {
+    display: flex;
+}
+
+.itemPopUpInput:nth-of-type(2) div textarea {
+    width: 100%;
+}
+
+.itemPopUpInput label {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.itemPopUpInput input[type ='text'] {
+    width: 50%;
+}
+
+.itemPopUpInput input, .itemPopUpInput textarea {
+    font-size: 1.5em;
+    border-radius: 10px;
+}
+
+.popUpNumberSelector {
+    display: flex;
+}
+
+.popUpNumberSelector div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    /* align-items: center; */
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5em;
+}
+
+.popUpForm {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.editConfirmButton {
+    margin-top: 3em;
+    display: flex;
+    justify-content: center;
+}
+
+#btnConfirmEdit {
+    color: #fff;
+    background-color: #2D936C;
+    width: 9rem;
+    height: 3rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.3em;
+}
+
+.navToEditPhoto {
+    position: absolute;
+    bottom: 0.5em;
+}
+
+#btnNavToEditPhoto {
+    border: none;
+    background-color: #fff;
+    color: blue;
+    text-decoration: underline;
+    font-size: 1.2em;
+}
+
 
 @media(min-width: 800px) {
     #upperTreeCard form {
@@ -1321,10 +1449,11 @@ body{
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        right: 5em;
+        /* right: 1em; */
         width: 90%;
         position: absolute;
-        right: 1em;
+        /* right: 1em; */
+        left: 5%;
     }
 
     .middleItemCard {
@@ -1332,7 +1461,7 @@ body{
     }
 
     .treeCard {
-        width: 20em;
+        width: 19em;
         height: 27em;
     }
 
