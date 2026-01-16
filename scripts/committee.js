@@ -7,3 +7,10 @@ for (eachFilter of treeStatusFilter) {
         console.log("select box is clickedd")
     })
 }
+
+// const itemStatus = document.querySelector('itemStatus');
+// const statusText = itemStatus.innerText;
+
+// if (statusText.innerText === "Inactive") {
+    
+// }
