@@ -6,10 +6,11 @@
     <title>Committee Home Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png"> -->
 <body>
     <!-- The whole navigation bar (include the menu icon, logo and profile pic)-->
-    <nav class = "navigationBar">
-        <div class = "hamburgerMenu">
+    <nav class = "navigation-bar">
+        <div class = "hamburger-menu">
             <button onclick = "toggleMenu()">
                 <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
             </button>
