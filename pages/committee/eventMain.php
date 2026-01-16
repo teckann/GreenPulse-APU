@@ -61,6 +61,7 @@
     <section class="eventControls-event-main">
         <div class = "white-color-box">
             <div class="searchFilterGroup">
+                <!-- Here need to change the search bar - dw border -->
                 <div class="search-bar">
                     <input type="text" placeholder="Search Events..." class="searchInput">
                 </div>
@@ -79,7 +80,7 @@
         <!-- Left Side: Image Section -->
         <div class="event-left-section">
             <div class="eventImage">
-                <img src="../../src/committee/eventImage.jpg" alt="Event Image">
+                <img src="../../src/elements/greenCampaignTest.jpg" alt="Event Image">
             </div>
 
             <div class="button">

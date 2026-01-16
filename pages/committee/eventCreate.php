@@ -59,7 +59,7 @@
                 <div class="container">
                     <div class="input-group">
                         <label>Event name</label>
-                        <div class="event-box">Recycling Workshop</div>
+                        <input type="text" placeholder="Recycling Workshop" class="event-box">
                     </div>
                     
                     <div class = "two-column">
