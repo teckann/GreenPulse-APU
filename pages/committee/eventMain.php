@@ -61,6 +61,7 @@
     <section class="eventControls-event-main">
         <div class = "white-color-box">
             <div class="searchFilterGroup">
+                <!-- Here need to change the search bar - dw border -->
                 <div class="search-bar">
                     <input type="text" placeholder="Search Events..." class="searchInput">
                 </div>
@@ -70,16 +71,13 @@
                     <option>Approved</option>
                 </select>
             </div>
-
-
-
             <section class="container-event">
     <div class="content-card-event">
         
         <!-- Left Side: Image Section -->
         <div class="event-left-section">
             <div class="eventImage">
-                <img src="../../src/committee/eventImage.jpg" alt="Event Image">
+                <img src="../../src/elements/greenCampaignTest.jpg" alt="Event Image">
             </div>
 
             <div class="button">
@@ -98,6 +96,9 @@
 
         <!-- Right Side: Details Section -->
         <div class="event-right-section">
+            <div>
+                
+            </div>
             
             <!-- Meta Info -->
             <div class="event-meta-row">
@@ -119,8 +120,7 @@
                 </div>
                 <span class="points-badge">500 pts</span>
                 <div class="more-section">
-                    <span>MORE</span>
-                    <i class="fas fa-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </div>
             </div>
 
