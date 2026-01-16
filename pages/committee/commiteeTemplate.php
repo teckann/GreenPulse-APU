@@ -10,7 +10,7 @@
 <body>
     <!-- The whole navigation bar (include the menu icon, logo and profile pic)-->
     <nav class = "navigationBar">
-        <div class = "hamburgerMenu">
+        <div class = "hamburger-menu">
             <button onclick = "toggleMenu()">
                 <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
             </button>
