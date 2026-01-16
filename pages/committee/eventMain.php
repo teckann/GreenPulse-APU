@@ -71,9 +71,6 @@
                     <option>Approved</option>
                 </select>
             </div>
-
-
-
             <section class="container-event">
     <div class="content-card-event">
         
@@ -99,6 +96,9 @@
 
         <!-- Right Side: Details Section -->
         <div class="event-right-section">
+            <div>
+                
+            </div>
             
             <!-- Meta Info -->
             <div class="event-meta-row">
@@ -120,8 +120,7 @@
                 </div>
                 <span class="points-badge">500 pts</span>
                 <div class="more-section">
-                    <span>MORE</span>
-                    <i class="fas fa-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </div>
             </div>
 

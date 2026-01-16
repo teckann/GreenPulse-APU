@@ -104,9 +104,7 @@ body{
 }
 
 .heroSection h1 {
-    font-family: "Playfair Display", serif;
-    font-weight: 600;
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     line-height: 1.3;
     letter-spacing: 1px;
     margin: 0.5rem 0;
@@ -369,7 +367,7 @@ body{
 }
 
 .event-header-section {
-    padding: 3rem 5rem;
+    padding: 1.5rem 2rem;
     background-color: #FAF9F6;
 }
 
@@ -387,10 +385,12 @@ body{
 }
 
 .header-text h1 {
-    font-size: 3rem;
-    color: #1a4d3a;
-    margin: 0 0 10px 0;
+    font-size: 2.5rem;
+    line-height: 1.3;
+    letter-spacing: 1px;
+    margin: 0.5rem 0;
     font-weight: bold;
+    color: #043927; 
 }
 
 .header-text p {
@@ -402,6 +402,7 @@ body{
 
 .back-icon,
 .add-icon {
+    /* The circle behind the icon*/
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -459,7 +460,7 @@ body{
 
 .searchInput {
     border: none;
-    outline: none;
+    outline: none; /*This is make the searchbar like when you click then no border*/
     width: 100%;
     font-size: 0.95rem;
     padding-left: 0.6rem;
@@ -526,6 +527,14 @@ body{
     overflow: hidden;
 }
 
+/* This can make the image size gang gang hao */
+.eventImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 
 /* Action Buttons */
 .button {
@@ -537,8 +546,8 @@ body{
     gap: 10px;
 }
 
-/* C */
-/* .btnEdit,
+
+.btnEdit,
 .btnDelete {
     width: 45px;
     height: 45px;
@@ -550,16 +559,15 @@ body{
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-} */
+} 
 
-/* .btnEdit svg:hover,
-.btnDelete svg:hover {
-    background-color: #ff4646;
+.btnEdit:hover,
+.btnDelete:hover {
+    /* I want make like when hover the button change color */
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     background-color: #f5f5f5;
-    color: #4CAF50;
-} */
+}
 
 /* Right Section - Details */
 .event-right-section {
@@ -589,12 +597,14 @@ body{
     text-transform: uppercase;
     letter-spacing: 1.2px;
     font-weight: 600;
+    font-family: "Roboto", sans-serif;
 }
 
 .meta-value {
     font-size: 1rem;
     color: #333;
     font-weight: 600;
+    font-family: "Roboto", sans-serif;
 }
 
 /* Status and Points Row */
@@ -603,6 +613,8 @@ body{
     gap: 15px;
     align-items: center;
     flex-wrap: wrap;
+    width: 100%;
+    font-family: "Roboto", sans-serif;
 }
 
 .eventStatus {
@@ -641,10 +653,10 @@ body{
 }
 
 .more-section {
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    justify-content: flex-end;
     gap: 5px;
-    color: #f59e0b;
+    color: grey;
     font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
@@ -692,7 +704,7 @@ body{
 
 .btnCreateEvent {
     width: 100%;
-    padding: 12px;
+    padding: 20px;
     color: white;
     background-color: #2D6A4F;
     border: 1px solid #ddd;
