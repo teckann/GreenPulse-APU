@@ -42,6 +42,21 @@
                       </script>";
             }
         }
+
+        // this is create by js, admin_promptPassword.js
+        elseif ($_POST["formType"] === "checkPassword") {
+            $inputPassword = trim($_POST["inputPassword"]);
+
+            if (password_verify($inputPassword, $row["password"])) {
+                header("Location: updateSecuritySettings.php");
+            }
+            else {
+                echo "<script>
+                        alert('Incorrect Password');
+                        window.location.href = 'profile.php';
+                      </script>";
+            }
+        }
     }
 ?>
 
@@ -278,7 +293,9 @@
                 <div class="profile-personal-info profile-desktop">
                     <div class="profile-info-header">
                         <h3>Account Security Settings</h3>
-                        <button class="profile-update-btn">
+
+                        <!-- js will run the promp to receive password from user  -->
+                        <button class="profile-update-btn prompt-btn">
                             <i class="fa-solid fa-pen"></i>
                             <p>Update</p>
                         </button>
@@ -369,7 +386,8 @@
                             <h3>Account Security Settings</h3>
                         </div>
 
-                        <button class="profile-update-btn">
+                        <!-- js will run the promp to receive password from user  -->
+                        <button class="profile-update-btn prompt-btn">
                             <i class="fa-solid fa-pen"></i>
                             <p>Update</p>
                         </button>
@@ -400,6 +418,7 @@
         <script src="../../scripts/admin.js"></script>
         <script src="../../scripts/admin_popup_updateAvatar.js"></script>
         <script src="../../scripts/admin_popup_updateProfile.js"></script>
+        <script src="../../scripts/admin_promptPassword.js"></script>
         <script src="../../scripts/validation.js"></script>
     </body>
 </html>
