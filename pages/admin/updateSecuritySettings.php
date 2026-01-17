@@ -26,7 +26,36 @@
 
                 if (mysqli_query($conn, $sql_updatePassword)) {
                     echo "<script>
-                            alert('--- Successfully Updated Password ---\\nAlways keep your profile details up to date.');
+                            alert('--- Successfully Updated Password ---\\nYour account is now more secure.');
+                            window.location.href = 'updateSecuritySettings.php';
+                          </script>";
+                }
+            }
+        }
+
+        if ($_POST["formType"] === "updateSecurityQuestion") {
+            $newQ1 = $_POST["securityQuestion1"];
+            $newQ2 = $_POST["securityQuestion2"];
+            $newA1 = trim($_POST["answer1"]);
+            $newA2 = trim($_POST["answer2"]);
+
+            if ($newQ1 === $row["safety_question_1"] && $newA1 === $row["answer_1"] && 
+                $newQ2 === $row["safety_question_2"] && $newA2 === $row["answer_2"]) {
+                
+                echo "<script>
+                        alert('You look like didn\'t make any changes.');
+                        window.location.href = 'updateSecuritySettings.php';
+                      </script>";
+            }
+            else {
+                $sql_updateQuestion = "UPDATE users SET 
+                                       safety_question_1 = '$newQ1', answer_1 = '$newA1',
+                                       safety_question_2 = '$newQ2', answer_2 = '$newA2'
+                                       WHERE user_id = '$userID'";
+
+                if (mysqli_query($conn, $sql_updateQuestion)) {
+                    echo "<script>
+                            alert('--- Successfully Updated Safety Questions ---\\nYour account is now more secure.');
                             window.location.href = 'updateSecuritySettings.php';
                           </script>";
                 }
@@ -113,12 +142,79 @@
                         </p>
                     </div>
                 </div>
+
+                <div class="update-qeustion-container">
+                    <form action="" method="POST" id="update-question-form">
+                        <input type="text" name="formType" value="updateSecurityQuestion" hidden>
+
+                        <div class="question-input-box">
+                            <label for="securityQuestion1">Security Question 1: </label>
+                            <select name="securityQuestion1" id="securityQuestion1">
+                                <option value="">-- Please Select --</option>
+                                <option value="What is your secondary school name?">What is your secondary school name?</option>
+                                <option value="What is your mother's middle name?">What is your mother's middle name?</option>
+                                <option value="What is your favorite color?">What is your favorite color?</option>
+                                <option value="What is your first car brand?">What is your first car brand?</option>
+                                <option value="What is the city name were you born in?">What is the city name were you born in?</option>
+                            </select>
+                            <div class="form-error-text" id="error-question1">Please select question</div>
+                        </div>
+
+                        <div class="question-input-box">
+                            <label for="answer1">Answer for Question 1: </label>
+                            <input type="text" name="answer1" id="answer1" value="<?php echo $row["answer_1"] ?? "" ?>">
+                            <div class="form-error-text" id="error-answer1">Please enter answer</div>
+                        </div>
+
+                        <div class="question-input-box">
+                            <label for="securityQuestion2">Security Question 2: </label>
+                            <select name="securityQuestion2" id="securityQuestion2">
+                                <option value="">-- Please Select --</option>
+                                <option value="What is your secondary school name?">What is your secondary school name?</option>
+                                <option value="What is your mother's middle name?">What is your mother's middle name?</option>
+                                <option value="What is your favorite color?">What is your favorite color?</option>
+                                <option value="What is your first car brand?">What is your first car brand?</option>
+                                <option value="What is the city name were you born in?">What is the city name were you born in?</option>
+                            </select>
+                            <div class="form-error-text" id="error-question2">Please select question</div>
+                        </div>
+
+                        <div class="question-input-box">
+                            <label for="answer2">Answer for Question 2: </label>
+                            <input type="text" name="answer2" id="answer2" value="<?php echo $row["answer_2"] ?? "" ?>">
+                            <div class="form-error-text" id="error-answer2">Please enter answer</div>
+                        </div>
+
+                        <button class="update-security-btn" id="btnUpdateQuestion">
+                            <i class="fa-solid fa-key"></i>
+                            <p>Update</p>
+                        </button>
+                    </form>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                            const userQ1 = "<?php echo $row["safety_question_1"]; ?>"; 
+                            const userQ2 = "<?php echo $row["safety_question_2"]; ?>"; 
+                            
+                            const selectQ1 = document.getElementById("securityQuestion1");
+                            const selectQ2 = document.getElementById("securityQuestion2");
+
+                            if (userQ1) {
+                                selectQ1.value = userQ1;
+                            }
+
+                            if (userQ2) {
+                                selectQ2.value = userQ2;
+                            }
+                        });
+                    </script>
+                </div>
             </div>
         </main>
         <?php include("footer.php"); ?>
 
         <script src="../../scripts/admin.js"></script>
-        <script src="../../scripts/validation_updatePassword.js"></script>
+        <script src="../../scripts/validation_securitySettings.js"></script>
     </body>
 </html>
 
