@@ -2,7 +2,7 @@ The password has been hashed
 Don't modify password data inside the database
 
 Try Login Details as below:
-    - U001 : teckann123 (admin)
+    - U001 : Teckann123@ (admin)
     - U002 : yangee123 (committee)
     - U003 : cynthia123 (committee)
     - U004 : jimmy123 (volunteer)

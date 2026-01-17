@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Feedback Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
+    <!-- <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png"> -->
     
 </head>
 </head>
 <body>
-    <nav class = "navigationBar">
+    <nav class = "navigation-bar">
 
-    <div class = "hamburgerMenu">
+    <div class = "hamburger-menu">
         <button onclick = "toggleMenu()">
             <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
         </button>

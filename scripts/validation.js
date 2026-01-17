@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const contact = document.getElementById("contact");
     const dob = document.getElementById("dob");
     const course = document.getElementById("course");
+    const gender = document.querySelectorAll("input[name='gender']");
     const nationality = document.getElementById("nationality");
     const permission = document.getElementById("permission");
 
@@ -48,6 +49,70 @@ document.addEventListener("DOMContentLoaded", () => {
     const genderError = document.getElementById("error-gender");
     const nationalityError = document.getElementById("error-nationality");
     const permissionError = document.getElementById("error-permission");
+
+    if (fullname) {
+        fullname.addEventListener("input", () => {
+            if (fullname.value.trim() !== "") {
+                nameError.style.display = "none";
+            }
+        });
+    }
+
+    if (email) {
+        email.addEventListener("input", () => {
+            if (email.value.trim() !== "") {
+                emailError.style.display = "none";
+            }
+        });
+    }
+
+    if (contact) {
+        contact.addEventListener("input", () => {
+            if (contact.value.trim() !== "") {
+                contactError.style.display = "none";
+            }
+        });
+    }
+
+    if (dob) {
+        dob.addEventListener("change", () => {
+            if (dob.value.trim() !== "") {
+                dobError.style.display = "none";
+            }
+        });
+    }
+
+    if (course) {
+        course.addEventListener("change", () => {
+            if (course.value.trim() !== "") {
+                courseError.style.display = "none";
+            }
+        });
+    }
+
+    if (gender.length > 0) {
+        gender.forEach((radio) => {
+            radio.addEventListener("change", () => {
+                genderError.style.display = "none";
+            });
+        });
+    }
+
+    if (nationality) {
+        nationality.addEventListener("change", () => {
+            if (nationality.value.trim() !== "") {
+                nationalityError.style.display = "none";
+            }
+        });
+    }
+
+    if (permission) {
+        permission.addEventListener("change", () => {
+            if (permission.value.trim() !== "") {
+                permissionError.style.display = "none";
+            }
+        });
+    }
 
     const displayErrorMsg = (element) => {
         element.style.display = "block";

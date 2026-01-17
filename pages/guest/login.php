@@ -5,7 +5,7 @@
     // $sql = "UPDATE users SET password = '$hash' WHERE user_id = 'U004'";
     // mysqli_query($conn, $sql);
 
-    if (isset($_POST["btnLogin"])) {
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $userID = $_POST["txtUserID"];
         $password = $_POST["txtPassword"];
 
@@ -29,12 +29,18 @@
                 exit;
             }
             elseif ($account_status === "Inactive") {
-                echo "<script> alert('This Account has been Suspended.') </script>";
+                echo "<script>
+                        alert('This Account has been Suspended');
+                        window.location.href = 'login.php';
+                      </script>";
+            }
+            else {
+                echo "<script> 
+                        alert('Incorrect Password');
+                        window.location.href = 'login.php';
+                      </script>";
             }
         } 
-        else {
-            echo "<script> alert('Incorrect Password.') </script>";
-        }
         mysqli_close($conn);
     }
 ?>
