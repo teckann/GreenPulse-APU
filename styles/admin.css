@@ -1484,6 +1484,7 @@ select {
         flex-direction: row;
         justify-content: space-between;
         font-size: 0.8em;
+        gap: 10px;
     }
 
     .card-data:last-child {
