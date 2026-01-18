@@ -3,6 +3,42 @@
     include("../../backend/sessionData.php"); 
     include("../../backend/utility.php");
 
+    // to update tree data
+    if (isset($_POST['btnConfirmEdit'])) {
+        $newTreeName = $_POST['itemNameEdit'];
+        $newDescription = $_POST['itemDescriptionEdit'];
+        $newPoints = $_POST['itemPointsEdit'];
+        $newStock = $_POST['itemStockEdit'];
+        $treeId = $_POST['itemIdEdit'];
+
+        $sqlChange = "UPDATE items SET item_name = '$newTreeName', item_description = '$newDescription', item_redeem_points = '$newPoints', item_stock = '$newStock' WHERE item_id = '$treeId'";
+
+        if (mysqli_query($conn, $sqlChange)) {
+            ?>
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        alert('update successfully');
+                    // directly close pop
+                    const itemPopUpOverlay = document.querySelector("#itemOverlay");
+                    const itemPopUp = document.querySelector("#itemPopUp");
+                    itemPopUpOverlay.style.display = 'none';
+                    itemPopUp.style.display = 'none';
+                    window.location.href='availableTreePage.php';
+                    // reload();
+                    })
+                    
+                </script>
+                
+            <?php
+        }
+
+        // to not direct header let the upper code execute first;
+        if (mysqli_query($conn, $sqlChange)) {
+            // header("Location: availableTreePage.php?updated=1");
+            // exit();
+        }
+    }
+
     $sql = "SELECT * FROM items WHERE category = 'tree'";
 
     $search = '';
@@ -43,16 +79,6 @@
 
     // $sql = "SELECT * from items where item_name like '%{$search}%'";
     $result = mysqli_query($conn, $sql);
-
-    // to update tree data
-    if (isset($_GET['btnConfirmEdit'])) {
-        $newTreeName = $_GET['itemNameEdit'];
-        $newDescription = $_GET['itemDescriptionEdit'];
-        $newPoints = $_GET['itemPointsEdit'];
-        $newStock = $_GET['itemStockEdit'];
-
-        $sqlChange = "UPDATE items SET item_name = '$newTreeName', item_description = '$newDescription', item_redeem_points = '$newPoints', item_stock = '$newStock' WHERE user_id = '$userID'";
-    }
 ?>
 
 <!DOCTYPE html>
@@ -228,7 +254,7 @@
                     $itemUserID = $_GET['targetUserID']; 
                 }
             ?>
-            <form action='#' method='GET' class='popUpForm'>
+            <form action='#' method='POST' class='popUpForm'>
                 <div class='popUpShow'>
                     <div class='itemPopUpInput'>
                         <label for='itemNameEdit'>Tree Name:</label>
@@ -250,6 +276,7 @@
                             <input type='number' name='itemStockEdit' id='itemStockEdit' value='<?php echo "$itemStocks" ?>' min='0'  max='1000' required>
                         </div>
                     </div>
+                    <input type='hidden' name='itemIdEdit' value='<?php echo "$itemID"?>'>
                     <!-- <div class='itemPopUpInput'>
                         <label>Tree Photo</label>
                         <img src="../../<?php echo $itemImage ?>" alt="Tree Image">
@@ -270,6 +297,29 @@
             <div class='navToEditPhoto'>
                 <button name="btnNavToEditPhoto" id="btnNavToEditPhoto">Change Tree Photo?</button>
             </div>
+        </div>
+
+        <div id="itemPopUp2">
+            <div class="popUpHeader">
+                <div><button id='btnBackEditItem'><i class="fa-solid fa-arrow-left"></i></button></div>
+                <div id="popUpHeaderText"><b id="editTreeText">Edit Tree</b></div>
+            </div>
+            
+                <div class='popUpShow'>
+                    <div class='itemPopUpInput'>
+                        <label>Tree Photo</label>
+                        <img src="../../<?php echo $itemImage ?>" alt="Tree Image">
+                        
+                        <label for="changeTreePhoto">
+                            <button>
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <p>Choose Image</p>
+                            </button>
+                        </label>
+                        <input type="file" name="btnChangeTreePhoto" id="changeTreePhoto" hidden>
+                    </div>
+                   
+                </div>
         </div>
     </main>
     <script>
@@ -308,12 +358,7 @@
             reload();
             })
 
-            // btnNavToEditPhoto.addEventListener("click", (event) => {
-            //     event.preventDefault();
-            // })
-        });
-
-        const treeStatus = document.getElementById("filterAvailableTreeStatus");
+            const treeStatus = document.getElementById("filterAvailableTreeStatus");
 
         // check the session has record or not, if don't have record, will become null
         const savedStatusValue = sessionStorage.getItem("selectedTreeStatus");
@@ -343,12 +388,71 @@
             reload();
         })
 
+        const btnBackToEditItem = document.querySelector("#btnBackEditItem");
+        const itemPopUp2 = document.querySelector("#itemPopUp2");
+
+        btnNavToEditPhoto.addEventListener("click", () => {
+            itemPopUp2.style.display = "flex";
+            itemPopUp.style.display = "none";
+        })
+
+
+        btnBackToEditItem.addEventListener("click", () => {
+            itemPopUp2.style.display = "none";
+            itemPopUp.style.display = "flex";
+        })
+
         const reload = () => {
 
             sessionStorage.setItem('selectedTreeStatus', '');
             sessionStorage.setItem('selectedTreeCreator', '');
             window.location.href = 'availableTreePage.php';
         }
+            
+        });
+
+        // const treeStatus = document.getElementById("filterAvailableTreeStatus");
+
+        // // check the session has record or not, if don't have record, will become null
+        // const savedStatusValue = sessionStorage.getItem("selectedTreeStatus");
+        // // if there have record, will asign it into the the selectbox value
+        // if (savedStatusValue !== null) { 
+        //     treeStatus.value = savedStatusValue;
+        // }
+
+        // // place the listener to listen if the sleect box has change or not, if change it will assign new data inyo session
+        // // and the page will refresh due to this is submit type, the set value will become can get one
+        // treeStatus.addEventListener('change', function() {
+        //     sessionStorage.setItem('selectedTreeStatus', this.value);
+        // });
+
+        // const treeCreator = document.querySelector("#filterAvailableTreeCreator");
+        // const savedCreatorValue = sessionStorage.getItem("selectedTreeCreator");
+        // if (savedCreatorValue != null) {
+        //     treeCreator.value = savedCreatorValue;
+        // }
+        
+        // // only funcyion() have their this, arrow  function don;t have this (this refer to window), but can use function(e) or (e) => , and use the e.target.value
+        // treeCreator.addEventListener('change', function() {
+        //     sessionStorage.setItem("selectedTreeCreator", this.value);
+        // });
+
+        // btnExitPopUp.addEventListener("click", () => {
+        //     reload();
+        // })
+
+        // const btnBackToEditItem = document.querySelector("#btnBackEditItem");
+
+        // btnBackToEditItem.addEventListener("click", () => {
+
+        // })
+
+        // const reload = () => {
+
+        //     sessionStorage.setItem('selectedTreeStatus', '');
+        //     sessionStorage.setItem('selectedTreeCreator', '');
+        //     window.location.href = 'availableTreePage.php';
+        // }
     </script>
     <script src="../../scripts/committee.js"></script>
 </body>

@@ -1007,6 +1007,7 @@ body{
     position: fixed;
     bottom: 10px;
     right: 10px;
+    z-index: 9999;
 }
 
 #showTreeClass {
@@ -1278,7 +1279,7 @@ body{
     z-index: 1000;
 }
 
-#itemPopUp {
+#itemPopUp, #itemPopUp2 {
     display:none;
     background-color: #fff;
     position: absolute;
@@ -1409,6 +1410,10 @@ body{
     font-size: 1.2em;
 }
 
+#itemPopUp2 {
+    display: none;
+}
+
 
 @media(min-width: 800px) {
     #upperTreeCard form {
@@ -1418,6 +1423,7 @@ body{
 
     #upperTree button {
         position:static;
+        z-index: auto;
     }
 
     #upperTree button:hover {
