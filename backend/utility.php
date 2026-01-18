@@ -23,6 +23,16 @@
 
         return $newID;
     }
+
+    function addLog($conn, $user_id, $log_event) {
+        $logID = newID($conn, "log", "L");
+        $today_datetime = date("Y-m-d H:i:s");
+
+        $sql = "INSERT INTO log (log_id, user_id, log_event, log_datetime)
+                       VALUES ('$logID', '$user_id', '$log_event', '$today_datetime')";
+
+        mysqli_query($conn, $sql);
+    }
     
     function statusColor($status) {
         if ($status === "Active") {
@@ -39,6 +49,17 @@
 
     function reformat_date($date) {
         return date("d M Y", strtotime($date));
+    }
+
+    function getUserName($conn, $user_id) {
+        $sql = "SELECT name FROM users WHERE user_id = '$user_id'";
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            return $row["name"];
+        }
+        return "User Not Found";
     }
     
     function timeRemaining($conn, $eventID) {

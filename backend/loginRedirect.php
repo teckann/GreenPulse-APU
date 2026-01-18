@@ -1,6 +1,7 @@
 <?php
     include("../conn.php");
     include("sessionData.php");
+    include("utility.php");
 
     if ($role == "admin" || $role == "committee" || $role == "volunteer") {
         // greeting message
@@ -11,38 +12,8 @@
         $sql = "UPDATE users SET last_login = '$todayDateTime' WHERE user_id = '$userID'";
         mysqli_query($conn, $sql);
 
-        // add this event into log activity
-        $logEvent = "Successful Login";
-
-        // count the total records
-        $sql_count = "SELECT COUNT(*) AS total FROM log";
-        $result_count = mysqli_query($conn, $sql_count);
-        $row = mysqli_fetch_assoc($result_count);
-        $total = $row["total"];
-
-        // generate Log ID
-        $logID = "";
-        $newNumber = $total + 1;
-
-        if ($total == 0) {
-            $logID = "L001";
-        } 
-        elseif ($total < 9) {
-            $logID = "L00" .$newNumber;
-        } 
-        elseif ($total < 99) {
-            $logID = "L0" .$newNumber;
-        } 
-        elseif ($total < 999) {
-            $logID = "L" .$newNumber;
-        }
-
-        // add into database
-        // * FINISH (runable code)
-        // ! Uncomment it once all features done
-        // $sql_addLog = "INSERT INTO log (log_id, user_id, log_event, log_datetime)
-        //                VALUES ('$logID', '$userID', '$logEvent', '$todayDateTime')";
-        // mysqli_query($conn, $sql_addLog);
+        // record action into log
+        // addLog($conn, $userID, "Successful Login");
 
         // main logic - redirection
         if ($role == "admin") {

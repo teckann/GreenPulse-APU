@@ -177,6 +177,7 @@
                 <div class="data-container">
                     <?php
                         $title = array("Total Users", "Total Items", "Total Events");
+                        // Recap: array($row["total"], $row["this_month"], $row["last_month"]) for each cards (users, items, events)
                         $all_data = array($users, $items, $events);
                         $percentage = 0;
                         $status; $icon; $total; $this_month; $color;
@@ -190,23 +191,18 @@
                             $total = $target_data[0];
                             $this_month = $target_data[1];
 
-                            // index2 = last_month data
+                            // this month == 0, then make percentage as 0
                             if ($target_data[1] == 0) {
                                 $percentage = 0;
                             }
-                            elseif ($target_data[2] > 0) {
-                                // ((this_month - last_month) / last_month) * 100
-                                $percentage = (($target_data[1] - $target_data[2]) / $target_data[2]) * 100;
+                            // this month & last month both > 0 (have data)
+                            elseif ($target_data[1] > 0 && $target_data[2] > 0) {
+                                // (this_month / last_month) * 100
+                                $percentage = ($target_data[1] / $target_data[2]) * 100;
                                 $status = "up";
-
-                                // dont want negative number, alr use icon to represent, so make it absolute
-                                if ($percentage < 0) {
-                                    $status = "down";
-                                    $percentage = abs($percentage);
-                                }
                             }
-                            // make sure this_month must have number, else just take default number, which is "0"
-                            elseif ($target_data[1] > 0) {
+                            // if this month > 0 (have data), and last month is 0, then means (up 100%)
+                            elseif ($target_data[1] > 0 && $target_data[2] == 0) {
                                 $percentage = 100;
                                 $status = "up";
                             }
@@ -220,10 +216,6 @@
                             if ($status === "up") {
                                 $icon = "fa-solid fa-arrow-trend-up trend-up";
                                 $color = "#28a745";
-                            }
-                            elseif ($status === "down") {
-                                $icon = "fa-solid fa-arrow-trend-down trend-down";
-                                $color = "#dc3545";
                             }
                             else {
                                 $icon = "fa-solid fa-minus trend-flat";

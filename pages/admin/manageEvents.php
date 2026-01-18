@@ -1,6 +1,7 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php");
+    include("../../backend/utility.php");
 
     $sql = "SELECT * FROM events";
     $target = "";
@@ -129,11 +130,7 @@
                                 }
                                 $title = $nextStatus;
 
-                                $user_id = $row["user_id"];
-                                $sql_user = "SELECT name FROM users WHERE user_id = '$user_id'";
-                                $result_user = mysqli_query($conn, $sql_user);
-                                $row_user = mysqli_fetch_assoc($result_user);
-                                $author = $row_user["name"];
+                                $author = getUserName($conn, $row["user_id"]);
 
                                 $eventDateTime = $row["event_datetime"];
                                 $formatted_dateTime = date("d M Y (g:i A)", strtotime($eventDateTime));
@@ -141,7 +138,7 @@
                                 echo '<tr>
                                         <td>' . $row['event_id'] . '</td>
                                         <td>' . $row['event_title'] . '</td>
-                                        <td><a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">' . $author . ' <i class="fa-solid fa-angle-double-right table-linkIcon"></i></a></td>
+                                        <td><a href="viewUserProfile.php?id=' . $row['user_id'] . '&event=Event" class="redirect-link" title="View User Profile">' . $author . ' <i class="fa-solid fa-angle-double-right table-linkIcon"></i></a></td>
                                         <td>' . $formatted_dateTime . ' </td>
                                         <td>' . ucwords($row['posted_date']) . '</td>
                                         <td style="color:' . $textColor . '">' . $row['event_status'] . '</td>

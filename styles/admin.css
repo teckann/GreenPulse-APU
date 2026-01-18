@@ -264,6 +264,7 @@ footer p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* background-color: red; */
 }
 
 .item-chart {

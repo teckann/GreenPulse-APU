@@ -1,22 +1,20 @@
 <?php
-    // continue the session first
-    session_start();
+    include("../conn.php");
+    include("sessionData.php");
+    include("utility.php");
 
-    // remove the data
-    $_SESSION["userID"] = NULL;
-    $_SESSION["userName"] = NULL;
-    $_SESSION["role"] = NULL;
+    // record action into log
+    // addLog($conn, $userID, "Successful Logout");
     
     // remove the session
-    unset($_SESSION["userID"]);
-    unset($_SESSION["userName"]);
-    unset($_SESSION["role"]);
+    session_unset();
 
     // close the session
     session_destroy();
 
     // pop-up message
-    echo "<script> alert('Logout Successful') </script>";
-    header("Location: ../index.php");
-    exit;
+    echo "<script>
+            alert('Successful Logout');
+            window.location.href = '../pages/guest/login.php';
+          </script>";
 ?>
