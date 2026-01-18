@@ -4,8 +4,14 @@
     include("../../backend/utility.php");
 
     if (isset($_GET["btnBack"])) {
-        header("Location: manageUsers.php");
-        exit;
+        if (isset($_GET["event"])) {
+            header("Location: manageEvents.php");
+            exit;
+        }
+        else {
+            header("Location: manageUsers.php");
+            exit;
+        }
     }
 
     $data = array();
@@ -104,7 +110,7 @@
         
     }
     else {
-        echo "<script>alert('ID not granted yet')</script>";
+        echo "<script>alert('Invalid Access')</script>";
         exit;
     }
 

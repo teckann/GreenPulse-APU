@@ -2,6 +2,7 @@
     include("../../conn.php");
     include("../../backend/sessionData.php");
     include("../../backend/utility.php");
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
     $sql = "SELECT * FROM users";
     $target = "";

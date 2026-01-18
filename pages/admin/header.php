@@ -52,7 +52,7 @@
             <i class="fa-solid fa-gear"></i> Manage System
         </a>
 
-        <a id="logActivity" href="#">
+        <a id="logActivity" href="logActivity.php">
             <i class="fa-solid fa-clipboard-list"></i> Log Activity
         </a>
     </div>
