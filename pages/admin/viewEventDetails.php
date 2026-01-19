@@ -250,6 +250,8 @@
         </main>
             
         <?php include("footer.php") ?>
+        
+        <script src="../../scripts/admin.js"></script>
     </body>
 </html>
 

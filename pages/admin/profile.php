@@ -48,7 +48,8 @@
             $inputPassword = trim($_POST["inputPassword"]);
 
             if (password_verify($inputPassword, $row["password"])) {
-                header("Location: updateSecuritySettings.php");
+                $_SESSION["valid_updateSecurityQuestion"] = "Valid";
+                header("Location: updateSecuritySettings.php?");
             }
             else {
                 echo "<script>

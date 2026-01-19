@@ -75,7 +75,7 @@
                         </form>
                     </div>
 
-                    <div class="table-container">
+                    <div class="table-container desktop-table">
                         <table>
                             <thead>
                                 <tr>
@@ -91,17 +91,72 @@
                             <tbody>
                                 <?php
                                     foreach ($submissions as $row) {
-                                        $config = tableConfig($row["submission_status"], "completeType");
+                                        $textColor = statusColor($row["submission_status"]);
 
-                                        $textColor = $config[0];
-                                        $icon = $config[1];
-                                        $title = $config[2];
-                                        $nextStatus = $config[3];
+                                        echo '<tr>
+                                                <td>' . $row['submission_id'] . '</td>';
+
+                                                if (!Empty($row["user_id"])) {
+                                                    echo '<td>
+                                                            <a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">
+                                                                ' . $row['full_name'] . ' 
+                                                                <i class="fa-solid fa-angle-double-right table-linkIcon"></i>
+                                                            </a>
+                                                          </td>';
+                                                }
+                                                else {
+                                                    echo '<td>' . $row['full_name'] . '</td>';
+                                                }
+                                                
+                                          echo '<td>' . $row['email_address'] . '</td>
+                                                <td>' . $row['subject'] . '</td>
+                                                <td style="color:' . $textColor . '">' . $row['submission_status'] . '</td>
+
+                                                <td>
+                                                    <div class="action-container">';
+                                                        if ($row["submission_status"] === "Pending") {
+                                                            echo '<form action="" method="GET">
+                                                                        <input type="hidden" name="target_submissionID" value="' . $row['submission_id'] . '">
+                                                                        <input type="hidden" name="next_status" value="Complete">
+
+                                                                        <button name="btnChangeStatus" type="submit" class="action-btn confirm-btn" title="Complete">
+                                                                            <i class="fa-solid fa-check"></i>
+                                                                        </button>
+                                                                   </form>';
+                                                        }
+
+                                                        echo '<a href="viewContactSubmission.php?id=' . $row['submission_id'] . '" class="action-btn" title="View">
+                                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                              </tr>';
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-container mobile-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Full Name</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php
+                                    foreach ($submissions as $row) {
+                                        $textColor = statusColor($row["submission_status"]);
 
                                         echo '<tr>
                                                 <td>' . $row['submission_id'] . '</td>';
                                         
-                                        if ($row["user_id"] === "") {
+                                        if (!Empty($row["user_id"])) {
                                             echo '<td>
                                                     <a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">
                                                         ' . $row['full_name'] . ' 
@@ -113,32 +168,36 @@
                                             echo '<td>' . $row['full_name'] . '</td>';
                                         }
 
-                                        echo '  <td>' . $row['email_address'] . '</td>
-                                                <td>' . $row['subject'] . '</td>
-                                                <td style="color:' . $textColor . '">' . $row['submission_status'] . '</td>
+                                        echo ' <td style="color:' . $textColor . '">' . $row['submission_status'] . '</td>
 
                                                 <td>
-                                                    <div class="action-container">
-                                                        <form action="" method="GET">
-                                                            <input type="hidden" name="target_submissionID" value="' . $row['submission_id'] . '">
-                                                            <input type="hidden" name="next_status" value="' . $nextStatus . '">
+                                                    <div class="action-container">';
+                                                        if ($row["submission_status"] === "Pending") {
+                                                            echo '<form action="" method="GET">
+                                                                        <input type="hidden" name="target_submissionID" value="' . $row['submission_id'] . '">
+                                                                        <input type="hidden" name="next_status" value="Complete">
 
-                                                            <button name="btnChangeStatus" type="submit" class="action-btn" title="'. $title .'">
-                                                                ' . $icon . '
-                                                            </button>
-                                                        </form>
+                                                                        <button name="btnChangeStatus" type="submit" class="action-btn confirm-btn" title="Complete">
+                                                                            <i class="fa-solid fa-check"></i>
+                                                                        </button>
+                                                                    </form>';
+                                                        }
 
-                                                        <a href="viewContactSubmission.php?id=' . $row['submission_id'] . '" class="action-btn" title="View">
-                                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
+                                                        echo '<a href="viewContactSubmission.php?id=' . $row['submission_id'] . '" class="action-btn" title="View">
+                                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
                                                 </tr>';
                                     }
                                 ?>
                             </tbody>
                         </table>
                     </div>
+                </div>
+
+                <div class="">
+
                 </div>
             </div>
         </main>

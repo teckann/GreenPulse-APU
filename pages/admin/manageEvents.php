@@ -114,7 +114,7 @@
                     <tbody>
                         <?php
                             foreach ($events as $row) {
-                                $config = tableConfig($row["event_status"], "activeType");
+                                $config = tableConfig($row["event_status"]);
 
                                 $textColor = $config[0];
                                 $icon = $config[1];
@@ -165,7 +165,7 @@
             <div class="flex-container mobile-card" style="margin: 1em 0;">
                 <?php
                     foreach ($events as $row) {
-                        $config = tableConfig($row["event_status"], "activeType");
+                        $config = tableConfig($row["event_status"]);
 
                         $bgColor = $config[0];
                         $icon = $config[1];

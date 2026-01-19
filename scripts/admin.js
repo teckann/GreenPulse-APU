@@ -116,6 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("touchmove", removeHighlights2); // finger swipe, for mobile
 });
 
+
+// select box
 document.addEventListener("DOMContentLoaded", () => {
     const submissionFilter = document.querySelector("#submission-status");
 
@@ -124,5 +126,23 @@ document.addEventListener("DOMContentLoaded", () => {
             const form = document.getElementById("submission-form");
             form.submit();
         })
+    }
+});
+
+// contact submission button listen
+// asking yes or not, if not prevent default, else continue do the default action
+document.addEventListener("DOMContentLoaded", () => {
+    const confirmButtons = document.querySelectorAll(".confirm-btn");
+
+    if (confirmButtons.length > 0) {
+        confirmButtons.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                const status = confirm("Are you sure you have contacted the sender?");
+
+                if (!status) {
+                    e.preventDefault();
+                }
+            });
+        });
     }
 });
