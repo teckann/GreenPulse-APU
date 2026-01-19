@@ -2,65 +2,81 @@
     include("../../conn.php");
     include("../../backend/sessionData.php");
 
-    $sql = "SELECT * FROM users WHERE user_id = '$userID'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
+    if (isset($_GET["btnBack"])) {
+        unset($_SESSION["valid_updateSecurityQuestion"]);
+        header("Location: profile.php");
+        exit;
+    }
+    
+    $row = "";
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $hashCurrentPassword = $row["password"];
+    if (isset($_SESSION["valid_updateSecurityQuestion"])) {
+        $sql = "SELECT * FROM users WHERE user_id = '$userID'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
 
-        if ($_POST["formType"] === "updatePassword") {
-            $newPassword = $_POST["newPassword"];
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $hashCurrentPassword = $row["password"];
 
-            if (password_verify($newPassword, $hashCurrentPassword)) {
-                echo "<script>
-                        alert('New password must differ from current password');
-                        window.location.href = 'updateSecuritySettings.php';
-                      </script>";
-            }
-            else {
-                $hashNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+            if ($_POST["formType"] === "updatePassword") {
+                $newPassword = $_POST["newPassword"];
 
-                $sql_updatePassword = "UPDATE users SET password = '$hashNewPassword'
-                                       WHERE user_id = '$userID'";
-
-                if (mysqli_query($conn, $sql_updatePassword)) {
+                if (password_verify($newPassword, $hashCurrentPassword)) {
                     echo "<script>
-                            alert('--- Successfully Updated Password ---\\nYour account is now more secure.');
+                            alert('New password must differ from current password');
                             window.location.href = 'updateSecuritySettings.php';
-                          </script>";
+                        </script>";
+                }
+                else {
+                    $hashNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+                    $sql_updatePassword = "UPDATE users SET password = '$hashNewPassword'
+                                        WHERE user_id = '$userID'";
+
+                    if (mysqli_query($conn, $sql_updatePassword)) {
+                        echo "<script>
+                                alert('--- Successfully Updated Password ---\\nYour account is now more secure.');
+                                window.location.href = 'updateSecuritySettings.php';
+                            </script>";
+                    }
+                }
+            }
+
+            if ($_POST["formType"] === "updateSecurityQuestion") {
+                $newQ1 = $_POST["securityQuestion1"];
+                $newQ2 = $_POST["securityQuestion2"];
+                $newA1 = trim($_POST["answer1"]);
+                $newA2 = trim($_POST["answer2"]);
+
+                if ($newQ1 === $row["safety_question_1"] && $newA1 === $row["answer_1"] && 
+                    $newQ2 === $row["safety_question_2"] && $newA2 === $row["answer_2"]) {
+                    
+                    echo "<script>
+                            alert('You look like didn\'t make any changes.');
+                            window.location.href = 'updateSecuritySettings.php';
+                        </script>";
+                }
+                else {
+                    $sql_updateQuestion = "UPDATE users SET 
+                                        safety_question_1 = '$newQ1', answer_1 = '$newA1',
+                                        safety_question_2 = '$newQ2', answer_2 = '$newA2'
+                                        WHERE user_id = '$userID'";
+
+                    if (mysqli_query($conn, $sql_updateQuestion)) {
+                        echo "<script>
+                                alert('--- Successfully Updated Safety Questions ---\\nYour account is now more secure.');
+                                window.location.href = 'updateSecuritySettings.php';
+                            </script>";
+                    }
                 }
             }
         }
-
-        if ($_POST["formType"] === "updateSecurityQuestion") {
-            $newQ1 = $_POST["securityQuestion1"];
-            $newQ2 = $_POST["securityQuestion2"];
-            $newA1 = trim($_POST["answer1"]);
-            $newA2 = trim($_POST["answer2"]);
-
-            if ($newQ1 === $row["safety_question_1"] && $newA1 === $row["answer_1"] && 
-                $newQ2 === $row["safety_question_2"] && $newA2 === $row["answer_2"]) {
-                
-                echo "<script>
-                        alert('You look like didn\'t make any changes.');
-                        window.location.href = 'updateSecuritySettings.php';
-                      </script>";
-            }
-            else {
-                $sql_updateQuestion = "UPDATE users SET 
-                                       safety_question_1 = '$newQ1', answer_1 = '$newA1',
-                                       safety_question_2 = '$newQ2', answer_2 = '$newA2'
-                                       WHERE user_id = '$userID'";
-
-                if (mysqli_query($conn, $sql_updateQuestion)) {
-                    echo "<script>
-                            alert('--- Successfully Updated Safety Questions ---\\nYour account is now more secure.');
-                            window.location.href = 'updateSecuritySettings.php';
-                          </script>";
-                }
-            }
-        }
+    }
+    else {
+        echo "<script>
+                alert('Invalid Access');
+                window.location.href = 'profile.php';
+              </script>";
     }
 ?>
 
@@ -83,12 +99,12 @@
             <h2 class="page-subTitle">Ensure your account remains protected</h2>
 
             <div class="flex-container security-settings-container">
-                <a href="profile.php" style="text-decoration: none;" class="back-btn-anchor">
+                <form action="" method="GET" class="updateSecuritySettings-back-btn-form">
                     <button name="btnBack" class="back-btn" type="submit" value="Back">
                         <i class="fa-solid fa-arrow-left"></i>
                         <p>Back</p>
                     </button>
-                </a>
+                </form>
 
                 <div class="update-password-container">
                     <div class="new-password-input-container">

@@ -35,10 +35,10 @@
     }
     
     function statusColor($status) {
-        if ($status === "Active") {
+        if ($status === "Active" || $status === "Complete") {
             return "#28a745";
         }
-        elseif ($status === "Inactive") {
+        elseif ($status === "Inactive" || $status === "Pending") {
             return "#dc3545";
         }
     }
@@ -62,34 +62,20 @@
         return "User Not Found";
     }
 
-    function tableConfig($status, $type) {
+    function tableConfig($status) {
         $icon; $textColor; $nextStatus;
 
-        switch ($type) {
-            case "activeType":
-                if ($status === "Active") {
-                    $icon = "<i class='fa-solid fa-ban'></i>";
-                    $textColor = "#28a745";
-                    $nextStatus = "Inactive";
-                }
-                elseif ($status === "Inactive") {
-                    $icon = "<i class='fa-solid fa-undo'></i>";
-                    $textColor = "#dc3545";
-                    $nextStatus = "Active";
-                }
+        switch ($status) {
+            case "Active":
+                $icon = "<i class='fa-solid fa-ban'></i>";
+                $textColor = statusColor($status);
+                $nextStatus = "Inactive";
                 break;
-            
-            case "completeType":
-                if ($status === "Complete") {
-                    $icon = "<i class='fa-solid fa-hourglass-half'></i>";
-                    $textColor = "#28a745";
-                    $nextStatus = "Pending";
-                }
-                elseif ($status === "Pending") {
-                    $icon = "<i class='fa-solid fa-check'></i>";
-                    $textColor = "#dc3545";
-                    $nextStatus = "Complete";
-                }
+
+            case "Inactive":
+                $icon = "<i class='fa-solid fa-undo'></i>";
+                $textColor = statusColor($status);
+                $nextStatus = "Active";
                 break;
         }
     

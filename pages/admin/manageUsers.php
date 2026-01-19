@@ -287,7 +287,7 @@
                     <tbody>
                         <?php
                             foreach ($users as $row) {
-                                $config = tableConfig($row["account_status"], "activeType");
+                                $config = tableConfig($row["account_status"]);
 
                                 $textColor = $config[0];
                                 $icon = $config[1];
@@ -327,7 +327,7 @@
             <div class="flex-container mobile-card" style="margin: 1em 0;">
                 <?php
                     foreach ($users as $row) {
-                        $config = tableConfig($row["account_status"], "activeType");
+                        $config = tableConfig($row["account_status"]);
 
                         $bgColor = $config[0];
                         $icon = $config[1];
