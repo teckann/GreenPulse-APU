@@ -110,8 +110,10 @@
         
     }
     else {
-        echo "<script>alert('Invalid Access')</script>";
-        exit;
+        echo "<script>
+                alert('Invalid Access');
+                window.location.href = 'manageUsers.php';
+              </script>";
     }
 
     $registrationDate = $data["registration_date"];

@@ -28,12 +28,7 @@
         $data = mysqli_fetch_assoc($result);
 
         // find author
-        $user_id = $data["user_id"];
-        
-        $sql_author = "SELECT name from users WHERE user_id = '$user_id'";
-        $result_author = mysqli_query($conn, $sql_author);
-        $data_author = mysqli_fetch_assoc($result_author);
-        $author = $data_author["name"];
+        $author = getUserName($conn, $data["user_id"]);
 
         // format event datetime
         $formatted_dateTime = reformat_dateTime($data["event_datetime"]);
@@ -78,6 +73,12 @@
                 $allParticipantsInfo[] = $row;
             }
         }
+    }
+    else {
+        echo "<script>
+                alert('Invalid Access');
+                window.location.href = 'manageEvents.php';
+              </script>";
     }
 ?>
 
@@ -249,6 +250,8 @@
         </main>
             
         <?php include("footer.php") ?>
+        
+        <script src="../../scripts/admin.js"></script>
     </body>
 </html>
 

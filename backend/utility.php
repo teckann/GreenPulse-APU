@@ -35,10 +35,10 @@
     }
     
     function statusColor($status) {
-        if ($status === "Active") {
+        if ($status === "Active" || $status === "Complete") {
             return "#28a745";
         }
-        elseif ($status === "Inactive") {
+        elseif ($status === "Inactive" || $status === "Pending") {
             return "#dc3545";
         }
     }
@@ -60,6 +60,28 @@
             return $row["name"];
         }
         return "User Not Found";
+    }
+
+    function tableConfig($status) {
+        $icon; $textColor; $nextStatus;
+
+        switch ($status) {
+            case "Active":
+                $icon = "<i class='fa-solid fa-ban'></i>";
+                $textColor = statusColor($status);
+                $nextStatus = "Inactive";
+                break;
+
+            case "Inactive":
+                $icon = "<i class='fa-solid fa-undo'></i>";
+                $textColor = statusColor($status);
+                $nextStatus = "Active";
+                break;
+        }
+    
+        $title = $nextStatus;
+
+        return array($textColor, $icon, $title, $nextStatus);
     }
     
     function timeRemaining($conn, $eventID) {

@@ -48,7 +48,7 @@
             <i class="fa-solid fa-layer-group"></i> Manage Modules
         </a>
 
-        <a id="ManageSystem" href="#">
+        <a id="ManageSystem" href="manageSystem.php">
             <i class="fa-solid fa-gear"></i> Manage System
         </a>
 

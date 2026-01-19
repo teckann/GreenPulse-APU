@@ -1148,7 +1148,7 @@ select {
     /* background-color: blue; */
 }
 
-.back-btn-anchor {
+.updateSecuritySettings-back-btn-form {
     align-self: flex-start;
     padding: 1em 0;
 }
@@ -1260,6 +1260,118 @@ select {
 
 .question-input-box {
     width: 80%;
+}
+
+.contact-submission-container {
+    margin-top: 1em;
+    padding: 1em;
+    /* background-color: red; */
+    width: 100%;
+    min-height: 350px;
+    max-height: 350px;
+    background: white;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+    border-radius: 25px;
+}
+
+.contact-submission-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1em 1em 1em;
+    /* background-color: blue; */
+}
+
+.contact-submission-header select {
+    width: 10em;
+    padding: 0.5em;
+    border-radius: 8px;
+    border: 1px black solid;
+}
+
+.contact-submission-headers select:focus {
+    border-color: #194a7a;
+    box-shadow: 0 0 10px rgba(25, 74, 122, 0.6);
+    outline: none;
+}
+
+.contact-submission-header h3 {
+    color: #194a7a;
+    font-size: 1.3em;
+}
+
+.table-container {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.reminder-container {
+    background-color: #d2e3fa;
+    border: 1px #BEDBFF solid;
+    border-radius: 8px;
+    width: 100%;
+    padding: 1em;
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+
+.reminder-header {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.reminder-header i {
+    color: #155DFC;
+}
+
+.reminder-header h3,
+.reminder-details {
+    color: #193CB8;
+}
+
+.reminder-container a {
+    color: #8E9396;
+    font-size: 0.9em;
+}
+
+.mobile-table {
+    display: none;
+}
+
+.submission-details {
+    margin-top: 1.5em;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.submission-details-action {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+}
+
+.submission-details-action a {
+    text-decoration: none;
+}
+
+.contact-btn {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding: 1em;
+    border: none;
+    color: white;
+    background-color: rgba(25, 74, 122, 0.9);
+    border-radius: 8px;
 }
 
 @media(max-width: 800px) {
@@ -1749,5 +1861,17 @@ select {
 
     .question-input-box {
         width: 100%;
+    }
+
+    .mobile-table {
+        display: block;
+    }
+
+    .submission-details {
+        max-width: 100%;
+    }
+
+    .submission-details-table tr:first-child {
+        white-space: nowrap;
     }
 }

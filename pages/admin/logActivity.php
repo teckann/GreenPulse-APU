@@ -130,16 +130,21 @@
 
                     <tbody>
                         <?php
-                            foreach ($logs as $row):
+                            foreach ($logs as $row) {
                                 $user_name = getUserName($conn, $row["user_id"]);
 
                                 echo '<tr>
                                         <td>' . $row['log_id'] . '</td>
-                                        <td><a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">' . $user_name . ' <i class="fa-solid fa-angle-double-right table-linkIcon"></i></a></td>
+                                        <td>
+                                            <a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">
+                                                ' . $user_name . '
+                                                <i class="fa-solid fa-angle-double-right table-linkIcon"></i>
+                                            </a>
+                                        </td>
                                         <td>' . $row['log_event'] . ' </td>
                                         <td>' . $row['log_datetime'] . '</td>
                                     </tr>';
-                            endforeach;
+                            }
                         ?>
                     </tbody>
                 </table>
@@ -147,7 +152,7 @@
 
             <div class="flex-container mobile-card" style="margin: 1em 0;">
                 <?php
-                    foreach ($logs as $row):
+                    foreach ($logs as $row) {
                         $user_name = getUserName($conn, $row["user_id"]);
 
                         echo '<div class="cards">
@@ -175,7 +180,7 @@
                                     </div>
                                 </div>
                               </div>';
-                    endforeach;
+                    }
                 ?>
             </div>
         </main>

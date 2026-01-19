@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     inputType.type = "hidden";
                     form.appendChild(inputType);
 
-                    const inputPassword = document.createElement('input');
+                    const inputPassword = document.createElement("input");
                     inputPassword.name = "inputPassword";
                     inputPassword.value = password;  // assign prompt value to value
                     inputPassword.type = "hidden";
