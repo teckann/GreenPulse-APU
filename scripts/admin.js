@@ -115,3 +115,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("wheel", removeHighlights2); // Mouse wheel, for desktop
     document.addEventListener("touchmove", removeHighlights2); // finger swipe, for mobile
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const submissionFilter = document.querySelector("#submission-status");
+
+    if (submissionFilter) {
+        submissionFilter.addEventListener("change", () => {
+            const form = document.getElementById("submission-form");
+            form.submit();
+        })
+    }
+});

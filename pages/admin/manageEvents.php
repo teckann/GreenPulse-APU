@@ -25,7 +25,8 @@
         $nextStatus = $_GET["next_status"];
 
         
-        $sql_updateStatus = "UPDATE events SET event_status = '$nextStatus' WHERE event_id = '$targetEventID'";
+        $sql_updateStatus = "UPDATE events SET event_status = '$nextStatus'
+                             WHERE event_id = '$targetEventID'";
         
         if(mysqli_query($conn, $sql_updateStatus)) {
             echo "<script>
@@ -36,6 +37,13 @@
     }
 
     $result = mysqli_query($conn, $sql);
+
+    $events = array();
+    if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
+            $events[] = $row;
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -89,13 +97,6 @@
                 </form>
             </div>
 
-            <?php
-                $events = array();
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $events[] = $row;
-                }
-            ?>
-
             <div class="flex-container desktop-table" style="margin: 1em 0;">
                 <table>
                     <thead>
@@ -112,23 +113,13 @@
 
                     <tbody>
                         <?php
-                            foreach ($events as $row):
-                                $textColor = "";
-                                $icon = "";
-                                $title = "";
-                                $nextStatus = "";
+                            foreach ($events as $row) {
+                                $config = tableConfig($row["event_status"], "activeType");
 
-                                if ($row["event_status"] === "Active") {
-                                    $icon = "<i class='fa-solid fa-ban'></i>";
-                                    $textColor = "#28a745";
-                                    $nextStatus = "Inactive";
-                                }
-                                elseif ($row["event_status"] === "Inactive") {
-                                    $icon = "<i class='fa-solid fa-undo'></i>";
-                                    $textColor = "#dc3545";
-                                    $nextStatus = "Active";
-                                }
-                                $title = $nextStatus;
+                                $textColor = $config[0];
+                                $icon = $config[1];
+                                $title = $config[2];
+                                $nextStatus = $config[3];
 
                                 $author = getUserName($conn, $row["user_id"]);
 
@@ -138,7 +129,12 @@
                                 echo '<tr>
                                         <td>' . $row['event_id'] . '</td>
                                         <td>' . $row['event_title'] . '</td>
-                                        <td><a href="viewUserProfile.php?id=' . $row['user_id'] . '&event=Event" class="redirect-link" title="View User Profile">' . $author . ' <i class="fa-solid fa-angle-double-right table-linkIcon"></i></a></td>
+                                        <td>
+                                            <a href="viewUserProfile.php?id=' . $row['user_id'] . '&event=Event" class="redirect-link" title="View User Profile">
+                                                ' . $author . '
+                                                <i class="fa-solid fa-angle-double-right table-linkIcon"></i>
+                                            </a>
+                                        </td>
                                         <td>' . $formatted_dateTime . ' </td>
                                         <td>' . ucwords($row['posted_date']) . '</td>
                                         <td style="color:' . $textColor . '">' . $row['event_status'] . '</td>
@@ -160,7 +156,7 @@
                                             </div>
                                         </td>
                                     </tr>';
-                            endforeach;
+                            }
                         ?>
                     </tbody>
                 </table>
@@ -168,31 +164,16 @@
 
             <div class="flex-container mobile-card" style="margin: 1em 0;">
                 <?php
-                    foreach ($events as $row):
-                        $bgColor = "";
-                        $icon = "";
-                        $title = "";
-                        $text = "";
-                        $nextStatus = "";
+                    foreach ($events as $row) {
+                        $config = tableConfig($row["event_status"], "activeType");
 
-                        if ($row["event_status"] === "Active") {
-                            $icon = "<i class='fa-solid fa-ban'></i>";
-                            $bgColor = "#28a745";
-                            $nextStatus = "Inactive";
-                        }
-                        elseif ($row["event_status"] === "Inactive") {
-                            $icon = "<i class='fa-solid fa-undo'></i>";
-                            $bgColor = "#dc3545";
-                            $nextStatus = "Active";
-                        }
-                        $title = $nextStatus;
+                        $bgColor = $config[0];
+                        $icon = $config[1];
+                        $title = $config[2];
+                        $nextStatus = $config[3];
                         $text = $nextStatus;
 
-                        $user_id = $row["user_id"];
-                        $sql_user = "SELECT name FROM users WHERE user_id = '$user_id'";
-                        $result_user = mysqli_query($conn, $sql_user);
-                        $row_user = mysqli_fetch_assoc($result_user);
-                        $author = $row_user["name"];
+                        $author = getUserName($conn, $row["user_id"]);
 
                         $eventDateTime = $row["event_datetime"];
                         $formatted_dateTime = date("d M Y (g:i A)", strtotime($eventDateTime));
@@ -217,7 +198,12 @@
 
                                     <div class="card-data">
                                         <p>Author</p>
-                                        <p><a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">' . $author . '</a></p>
+                                        <p>
+                                            <a href="viewUserProfile.php?id=' . $row['user_id'] . '&event=Event" class="redirect-link" title="View User Profile">
+                                                ' . $author . '
+                                                <i class="fa-solid fa-angle-double-right table-linkIcon"></i>
+                                            </a>
+                                        </p>
                                     </div>
 
                                     <div class="card-data">
@@ -249,7 +235,7 @@
                                     </a>
                                 </div>
                               </div>';
-                    endforeach;
+                    }
                 ?>
             </div>
         </main>

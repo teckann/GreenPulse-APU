@@ -2,7 +2,6 @@
     include("../../conn.php");
     include("../../backend/sessionData.php");
     include("../../backend/utility.php");
-    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
     $sql = "SELECT * FROM users";
     $target = "";
@@ -24,7 +23,8 @@
                   </script>";
         }
         else {
-            $sql_updateStatus = "UPDATE users SET account_status = '$nextStatus' WHERE user_id = '$targetUserID'";
+            $sql_updateStatus = "UPDATE users SET account_status = '$nextStatus' 
+                                 WHERE user_id = '$targetUserID'";
         
             if(mysqli_query($conn, $sql_updateStatus)) {
                 echo "<script>
@@ -286,23 +286,13 @@
 
                     <tbody>
                         <?php
-                            foreach ($users as $row):
-                                $textColor = "";
-                                $icon = "";
-                                $title = "";
-                                $nextStatus = "";
+                            foreach ($users as $row) {
+                                $config = tableConfig($row["account_status"], "activeType");
 
-                                if ($row["account_status"] === "Active") {
-                                    $icon = "<i class='fa-solid fa-ban'></i>";
-                                    $textColor = "#28a745";
-                                    $nextStatus = "Inactive";
-                                }
-                                elseif ($row["account_status"] === "Inactive") {
-                                    $icon = "<i class='fa-solid fa-undo'></i>";
-                                    $textColor = "#dc3545";
-                                    $nextStatus = "Active";
-                                }
-                                $title = $nextStatus;
+                                $textColor = $config[0];
+                                $icon = $config[1];
+                                $title = $config[2];
+                                $nextStatus = $config[3];
 
                                 echo '<tr>
                                         <td>' . $row['user_id'] . '</td>
@@ -328,7 +318,7 @@
                                             </div>
                                         </td>
                                     </tr>';
-                            endforeach;
+                            }
                         ?>
                     </tbody>
                 </table>
@@ -336,24 +326,14 @@
 
             <div class="flex-container mobile-card" style="margin: 1em 0;">
                 <?php
-                    foreach ($users as $row):
-                        $bgColor = "";
-                        $icon = "";
-                        $title = "";
-                        $text = "";
-                        $nextStatus = "";
+                    foreach ($users as $row) {
+                        $config = tableConfig($row["account_status"], "activeType");
 
-                        if ($row["account_status"] === "Active") {
-                            $icon = "<i class='fa-solid fa-ban'></i>";
-                            $bgColor = "#28a745";
-                            $nextStatus = "Inactive";
-                        }
-                        elseif ($row["account_status"] === "Inactive") {
-                            $icon = "<i class='fa-solid fa-undo'></i>";
-                            $bgColor = "#dc3545";
-                            $nextStatus = "Active";
-                        }
-                        $title = $nextStatus;
+                        $bgColor = $config[0];
+                        $icon = $config[1];
+                        $title = $config[2];
+                        $nextStatus = $config[3];
+
                         $text = $nextStatus;
 
                         echo '<div class="cards">
@@ -403,7 +383,7 @@
                                     </a>
                                 </div>
                               </div>';
-                    endforeach;
+                    }
                 ?>
             </div>
         </main>

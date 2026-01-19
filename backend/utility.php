@@ -61,6 +61,42 @@
         }
         return "User Not Found";
     }
+
+    function tableConfig($status, $type) {
+        $icon; $textColor; $nextStatus;
+
+        switch ($type) {
+            case "activeType":
+                if ($status === "Active") {
+                    $icon = "<i class='fa-solid fa-ban'></i>";
+                    $textColor = "#28a745";
+                    $nextStatus = "Inactive";
+                }
+                elseif ($status === "Inactive") {
+                    $icon = "<i class='fa-solid fa-undo'></i>";
+                    $textColor = "#dc3545";
+                    $nextStatus = "Active";
+                }
+                break;
+            
+            case "completeType":
+                if ($status === "Complete") {
+                    $icon = "<i class='fa-solid fa-hourglass-half'></i>";
+                    $textColor = "#28a745";
+                    $nextStatus = "Pending";
+                }
+                elseif ($status === "Pending") {
+                    $icon = "<i class='fa-solid fa-check'></i>";
+                    $textColor = "#dc3545";
+                    $nextStatus = "Complete";
+                }
+                break;
+        }
+    
+        $title = $nextStatus;
+
+        return array($textColor, $icon, $title, $nextStatus);
+    }
     
     function timeRemaining($conn, $eventID) {
         $sql = "SELECT event_datetime, duration FROM events WHERE event_id = '$eventID'";

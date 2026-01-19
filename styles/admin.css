@@ -1262,6 +1262,49 @@ select {
     width: 80%;
 }
 
+.contact-submission-container {
+    margin-top: 1em;
+    padding: 1em;
+    /* background-color: red; */
+    width: 100%;
+    min-height: 350px;
+    max-height: 350px;
+    background: white;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+    border-radius: 25px;
+}
+
+.contact-submission-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1em 1em 1em;
+    /* background-color: blue; */
+}
+
+.contact-submission-header select {
+    width: 10em;
+    padding: 0.5em;
+    border-radius: 8px;
+    border: 1px black solid;
+}
+
+.contact-submission-headers select:focus {
+    border-color: #194a7a;
+    box-shadow: 0 0 10px rgba(25, 74, 122, 0.6);
+    outline: none;
+}
+
+.contact-submission-header h3 {
+    color: #194a7a;
+    font-size: 1.3em;
+}
+
+.table-container {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
