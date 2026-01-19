@@ -1279,7 +1279,7 @@ body{
     z-index: 1000;
 }
 
-#itemPopUp, #itemPopUp2, #itemPopUp3 {
+#itemPopUp, #itemPopUp2, #itemPopUp3, #itemPopUp4 {
     display:none;
     background-color: #fff;
     position: absolute;
@@ -1470,6 +1470,10 @@ body{
     font-size: 2em;
 }
 
+#itemPopUp4 .popUpHeader b {
+    font-size: 1.6em;
+}
+
 .askForDelete p {
     font-size: 1.2em;
 }
@@ -1514,6 +1518,81 @@ body{
 .deleteItemBtns {
     display: flex;
     justify-content: center;
+}
+
+.createItem {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    /* padding: 1em 3em; */
+}
+
+/* .createItem {
+    display: flex;
+    flex-direction: column;
+} */
+
+.createItemNamePart, .createItemDescriptionPart {
+    gap: 0.2em;
+}
+
+.createItemNumbersPart div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1em;
+}
+
+.createItemNumbersPart div input[type = 'number'] {
+    width: 50%;
+}
+
+
+.createItem div label, .createItem div input, .createItem div textarea {
+    font-size: 1.5em;
+}
+
+.createItem div input[type = 'text'] {
+    width: 80%;
+}
+
+.createItemDescriptionPart textarea {
+    width: 80%;
+}
+
+.createItemNamePart {
+    display: flex;
+    flex-direction: column;
+}
+
+.createItemNumbersPart {
+    display: flex;
+    align-items: end;
+}
+
+.createItemPhotoPart label {
+    margin-bottom: 0.5em;
+}
+
+.createItemButtonPart {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.2em;
+}
+
+.createItemPhotoPart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.btnCreateTree {
+    width: 8em;
+    height: 3em;
+    background-color: #2D936C;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
 }
 
 
@@ -1614,5 +1693,14 @@ body{
         width: 10em;
         height: 3em;
         margin-bottom: 1.5em;
+    }
+
+    #itemPopUp4 {
+        width: 40%;
+        right: 30%;
+    }
+
+    .createItem {
+        padding: 0 0 0 15%;
     }
 }

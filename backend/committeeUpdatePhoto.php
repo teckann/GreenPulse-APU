@@ -1,6 +1,7 @@
 <?php
     include("../conn.php");
     include("sessionData.php");
+    include("utility.php");
     
     if (isset($_POST["btnChangeTreePhoto"])) {
         $itemID = $_POST["itemId"];
@@ -55,6 +56,8 @@
                         WHERE item_id = '$itemID'";
                 
                 if (mysqli_query($conn, $sql)) {
+                    addLog($conn, $userID, "Change available tree photo");
+                    
                     echo "<script>
                             alert('Image is updated successfully');
                             window.location.href = '../pages/committee/availableTreePage.php';
