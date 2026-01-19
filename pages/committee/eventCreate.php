@@ -1,3 +1,8 @@
+<?php
+    include("../../conn.php");
+    include("../../backend/sessionData.php"); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,16 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Event Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png"> -->
    
 </head>
 <body>
-    <div class = "top-spacing">
-    </div>
-
-    </div>
-        <nav class = "navigation-bar">
-
+    <nav class = "navigation-bar">
         <div class = "hamburger-menu">
             <button onclick = "toggleMenu()">
                 <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
@@ -22,56 +23,59 @@
         </div>
 
         <div class = "logo" onclick = "window.location.href='index.php'">
-                <img src="../../src/committee/logo.png" alt="Logo">
+            <img src="../../src/elements/logo_horizontal.png" alt="Logo">
         </div>
 
         <div class = "desktopMenu">
-                <a href="index.php">Home</a>
-                <a href="treeAdoption.php">Tree Adoption</a>
-                <a href="merchandises.php">Merchandises</a>
-                <a href="eventMain.php">Events</a>
-                <a href="study&Quiz.php">Study & Quiz</a>
+            <a href="index.php">Home</a>
+            <a href="treeAdoption.php">Tree Adoption</a>
+            <a href="merchandises.php">Merchandises</a>
+            <a href="eventMain.php">Events</a>
+            <a href="study&Quiz.php">Study & Quiz</a>
         </div>
 
         <div class = "profile">
             <img src="../../src/committee/profilePicture.jpg" alt="Profile Picture">
         </div>
+    </nav>
 
-        </nav>
+    <div class = "banner">
+        <marquee direction = "right" scrollamount = "10">
+            <p>Join our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.</p>
+        </marquee>
+    </div>
 
-        <div class = "banner">
-            <marquee direction = "right" scrollamount = "10">
-                <p>Join our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.</p>
-            </marquee>
+    
+    <!-- hero -->
+       <div class="header-content">
+            <div class="back-icon" onclick="history.back()">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            
+            <div class="heroSection">
+                <h1>CREATE NEW EVENT</h1> <p>FILL IN THE DETAILS TO LAUNCH A GREEN INITIATIVE.</p>
+            </div>
+            
+            
         </div>
 
-
-        
-        <section class="heroSection">
-            <h1>Event</h1>
-            <h1>Management</h1>
-            <p>Create and manage green initiative events.</p>
-        </section>
-
         <!-- STARTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT -->
-        <section class="eventControls-create">
-            
-            <div class = "container-margin">
-                <div class="container">
+        <section class="event-controls-event-main">
+            <div class = "white-color-box">
                     <div class="input-group">
                         <label>Event name</label>
-                        <input type="text" placeholder="Recycling Workshop" class="event-box">
+                        <input type="text" placeholder="Enter the event name" class="event-box">
                     </div>
                     
                     <div class = "two-column">
                         <div class="input-group">
                             <label>Event Date</label>
-                            <div class="event-box">December 30, 2025</div>
+                            <input type="date" class="event-box">
                         </div>
 
                         <div class="input-group">
-                            <label>Duration</label>
-                        <div class="event-box" >2 hours</div>
+                            <label>Time</label>
+                        <input type="time" class="event-box">
 
                         </div>
                     </div>
@@ -79,33 +83,41 @@
                     <div class = "two-column">
                         <div class="input-group">
                             <label>Location</label>
-                            <div class="event-box">Auditorium 3</div>
+                            <input type="text" placeholder="S-08-01" class="event-box">
                         </div>
 
                         <div class="input-group">
-                            <label>Available Spot</label>
-                        <div class="event-box">100</div>
+                            <label>Duration</label>
+                        <input type="text" placeholder="2 hours" class="event-box">
 
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <label>Points Given</label>
-                        <div class="event-box">50</div>
+                    <div class = "two-column">
+                        <div class="input-group">
+                            <label>Available Spots</label>
+                            <input type="number" placeholder="50" class="event-box">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Points Given</label>
+                            <input type="number" placeholder="100" class="event-box">
+                        </div>
+
+                       
                     </div>
 
                     <div class="input-group">
                         <label>Description</label>
-                        <div class="event-big-box"> An interactive, hands-on session designed to educate participants about proper waste management and inspire creativity by transforming discarded materials into new, useful products.</div>
+                        <textarea placeholder="Event Description" class="event-big-box" rows="5"></textarea>
+                        <!-- TEXTAREA NEED TO CLOSE TAG!! DIFFERENT WITH OTHER INPUT" TYPE AHHH-->
+                        <!-- row = "5" is to like make the text area "go to next line" -->
                     </div>
 
                     <div class="input-group">
                         <label>Event Poster</label>
-                        <div class="event-big-box"></div>
+                        <input type="file" class="event-big-box">
                     </div>
-
-
-
                     <button class="btnCreateEvent">
                         Create Event
                     </button>
@@ -113,12 +125,13 @@
                     <div class = "short-tagline">
                         Create. Inspire. Impact.
                     </div>
-                </div>
             </div>
         </section>
 
 
-    <!-- Hamburger Menu sidebar -->
+        
+
+    <!--Hamburger Menu sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">
