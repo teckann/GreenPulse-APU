@@ -177,7 +177,7 @@
                                                                         <input type="hidden" name="target_submissionID" value="' . $row['submission_id'] . '">
                                                                         <input type="hidden" name="next_status" value="Complete">
 
-                                                                        <button name="btnChangeStatus" type="submit" class="action-btn" title="Complete">
+                                                                        <button name="btnChangeStatus" type="submit" class="action-btn confirm-btn" title="Complete">
                                                                             <i class="fa-solid fa-check"></i>
                                                                         </button>
                                                                     </form>';
@@ -194,6 +194,10 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+
+                <div class="">
+
                 </div>
             </div>
         </main>
