@@ -31,13 +31,33 @@
                 
             <?php
         }
+    }
 
-        // to not direct header let the upper code execute first;
-        if (mysqli_query($conn, $sqlChange)) {
-            // header("Location: availableTreePage.php?updated=1");
-            // exit();
+    if (isset($_POST['btnDeleteTree'])) {
+        $treeID = $_POST['deleteTreeID'];
+        
+
+        $sqlDelete = "UPDATE items SET item_status = 'Inactive' WHERE item_id = '$treeID'";
+        
+        echo "<script>alert('$treeID')</script>";
+
+        if (mysqli_query($conn, $sqlDelete)) { 
+            ?>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    alert('Tree deleted successfully');
+                    const itemPopUpOverlay = document.querySelector("#itemOverlay");
+                    const deletePopUp = document.querySelector("#itemPopUp3");
+                    itemPopUpOverlay.style.display = 'none';
+                    deletePopUp.style.display = 'none';
+                    window.location.href='availableTreePage.php';
+                });
+            </script>
+            <?php
         }
     }
+
+        // to change the tree photo
 
     $sql = "SELECT * FROM items WHERE category = 'tree'";
 
@@ -91,7 +111,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <?php include("commiteeTemplate.php"); ?>
+    <?php include("header.php"); ?>
 
     <main>
         <div id="fullPage">
@@ -156,7 +176,7 @@
                                     $statusColor = "green";
                                 }
                                 else {
-                                    $statusColor = "red";
+                                    $statusColor = "#dc3545";
                                 }
 
                                 // $targetID = $row
@@ -231,7 +251,7 @@
 
         <div id="itemPopUp">
             <div class="popUpHeader">
-                <div><button id='btnExitPopUp'><i class="fa-solid fa-arrow-left"></i></button></div>
+                <div><button id='btnExitPopUp' class='btnExitPopUps'><i class="fa-solid fa-arrow-left"></i></button></div>
                 <div id="popUpHeaderText"><b id="editTreeText">Edit Tree</b></div>
             </div>
             <?php 
@@ -241,6 +261,7 @@
                 $itemStocks = 0;
 
                 $showPopUp = false;
+                $showDeletePopUp = false;
 
                 if(isset($_GET['editBtn']) ){
                     // set the flag to detect the pop up
@@ -253,7 +274,15 @@
                     $itemStocks = $_GET['targetStock'];
                     $itemUserID = $_GET['targetUserID']; 
                 }
+
+                if (isset($_GET['deleteBtn'])) {
+                    $showDeletePopUp = true;
+                    $itemID = $_GET['targetItemID'];
+                    $itemName = $_GET['targetItemName'];
+                }
+
             ?>
+            <!-- // edit item information -->
             <form action='#' method='POST' class='popUpForm'>
                 <div class='popUpShow'>
                     <div class='itemPopUpInput'>
@@ -277,18 +306,6 @@
                         </div>
                     </div>
                     <input type='hidden' name='itemIdEdit' value='<?php echo "$itemID"?>'>
-                    <!-- <div class='itemPopUpInput'>
-                        <label>Tree Photo</label>
-                        <img src="../../<?php echo $itemImage ?>" alt="Tree Image">
-                        
-                        <label for="changeTreePhoto">
-                            <button>
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-                            <p>Choose Image</p>
-                            </button>
-                        </label>
-                        <input type="file" name="btnChangeTreePhoto" id="changeTreePhoto" hidden>
-                    </div> -->
                     <div class='editConfirmButton'>
                         <button name='btnConfirmEdit' type='submit' value='Confirm' id='btnConfirmEdit'><i class="fa-solid fa-circle-check" style="color: #28a745;"></i>  Confirm</button>
                     </div>
@@ -299,38 +316,82 @@
             </div>
         </div>
 
-        <div id="itemPopUp2">
+        <!-- // change item picture -->
+        <div id="itemPopUp2" class='popUpForm'>
             <div class="popUpHeader">
-                <div><button id='btnBackEditItem'><i class="fa-solid fa-arrow-left"></i></button></div>
-                <div id="popUpHeaderText"><b id="editTreeText">Edit Tree</b></div>
+                <div><button id='btnBackEditItem' class='btnExitPopUps'><i class="fa-solid fa-arrow-left"></i></button></div>
+                <div id="popUpHeaderText"><b id="changeItemPhotoText">Current Tree Photo</b></div>
             </div>
             
-                <div class='popUpShow'>
-                    <div class='itemPopUpInput'>
-                        <label>Tree Photo</label>
-                        <img src="../../<?php echo $itemImage ?>" alt="Tree Image">
-                        
-                        <label for="changeTreePhoto">
-                            <button>
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-                            <p>Choose Image</p>
-                            </button>
-                        </label>
-                        <input type="file" name="btnChangeTreePhoto" id="changeTreePhoto" hidden>
+            <form action="../../backend/committeeUpdatePhoto.php" method="POST" enctype="multipart/form-data">
+                <div class='popUpShow treePhotoEditPage'>
+                    <img id="oldItemImage" src="../../<?php echo $itemImage ?>" alt="Tree Image">
+                    
+                    <!-- <label for="changeTreePhoto">
+                        <button>
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p>Choose Image</p>
+                        </button>
+                    </label> -->
+                    <input type="hidden" name="itemId" value="<?php echo $itemID ?>">
+                    <div class="fileUploadPart">
+                        <span class="attachPhotoText"><b>Please attach photo here</b></span>
+                        <span class="uploadFileText">Upload one supported files (e.g. png, jpg, jpeg), Each file up to 5 MB in size.</span>
+                        <input type="file" name="updateFile" id="fileChangeTreePhoto">
                     </div>
-                   
+                    <button type="submit" name="btnChangeTreePhoto" class="btnChangeTreePhoto">Update Tree Photo</button>
+                    
                 </div>
+            </form>
         </div>
+
+            <!-- // delete item -->
+            <div id="itemPopUp3" class="popUpForm">
+                <div class="popUpHeader">
+                    <button id='btnExitDeletePopUp' class='btnExitPopUps'><i class="fa-solid fa-arrow-left"></i></button>
+                    <div id="popUpHeaderText"><b id="deleteItemText">Delete Tree Page</b></div>
+                </div>
+            
+                <form action="#" method="POST">
+                    <div class='popUpShow deleteTreePage'>
+                        <div class="allDeleteInfo">
+                            <input type="hidden" value="<?php echo $itemID ?>" name="deleteTreeID">
+                            <div class="askForDelete">
+                                <p>Do you want to delete the tree?</p>
+                            </div>
+                            <div class="deleteTreeInfo">
+                                <div>
+                                    <p><b>Tree's information</b></p>
+                                    <p>Tree ID: <?php echo $itemID ?></p>
+                                    <p>Tree Name: <?php echo $itemName ?> </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="statusDeleteInfo">
+                                <p>The tree status will be changed from:</p>
+                                <p class="deleteStatusChangeText"><span style="color: green;">Active</span> <i class="fa-solid fa-arrow-right"></i> <span style="color: red;">Inactive</span></p>
+                                <p>You are not allowed to reactive the tree unless with the help of system admin.</p>
+                            </div>
+                        </div>
+                        <div class="deleteItemBtns">
+                            <button type="submit" name="btnDeleteTree" class="btnDeleteTree">Delete Tree</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
     </main>
     <script>
         
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener("DOMContentLoaded", () => {
             const btnEditItem = document.querySelectorAll(".itemEditBtn");
             const itemPopUpOverlay = document.querySelector("#itemOverlay");
             const itemPopUp = document.querySelector("#itemPopUp");
             const treeCards = document.querySelectorAll(".treeCard");
             const btnExitPopUp = document.querySelector("#btnExitPopUp");
             const btnNavToEditPhoto = document.querySelector("#btnNavToEditPhoto");
+            const btnExitDelete = document.querySelector("#btnExitDelete");
+            const itemDeletePopUp = document.querySelector("#itemPopUp3");
+            const btnExitDeleteItem = document.querySelector("#btnExitDeletePopUp");
 
             // to make the button unable to click when the status is inactive
             treeCards.forEach((treeCard) => {
@@ -348,6 +409,11 @@
             <?php if ($showPopUp) {?> 
                 itemPopUpOverlay.style.display = 'block';
                 itemPopUp.style.display = 'flex';
+            <?php } ?>
+
+            <?php if ($showDeletePopUp) {?>
+                itemPopUpOverlay.style.display = 'block';
+                itemDeletePopUp.style.display = 'flex';
             <?php } ?>
 
             // close pop up page when the user click overlay
@@ -408,7 +474,29 @@
             sessionStorage.setItem('selectedTreeCreator', '');
             window.location.href = 'availableTreePage.php';
         }
-            
+
+        const btnUpdateTreePhoto = document.querySelector(".btnChangeTreePhoto");
+        const btnFileChangeTreePhoto = document.querySelector("#fileChangeTreePhoto");
+
+        // font give the button able at first
+        btnUpdateTreePhoto.classList.add("disableButton");
+        
+
+        btnFileChangeTreePhoto.addEventListener("change", () => {
+            if (btnFileChangeTreePhoto.value !== "") {
+                btnUpdateTreePhoto.classList.remove("disableButton");
+            }
+            else {
+                btnUpdateTreePhoto.classList.add("disableButton");
+            }
+        })
+        
+        btnExitDeleteItem.addEventListener("click", () => {
+            itemDeletePopUp.style.display = "none";
+            itemPopUpOverlay.style.display = "none";
+            window.location.href = "availableTreePage.php";
+        })
+
         });
 
         // const treeStatus = document.getElementById("filterAvailableTreeStatus");
@@ -457,7 +545,3 @@
     <script src="../../scripts/committee.js"></script>
 </body>
 </html>
-
-<?php 
-
-?>
