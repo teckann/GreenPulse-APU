@@ -41,6 +41,32 @@
             $submissions[] = $row;
         }
     }
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        if($_POST["formType"] === "addNewAnnouncement") {
+            $newAnnouncement = $_POST["newAnnouncement"];
+            $announcementID = newID($conn, "announcement", "A");
+            $today = date("Y-m-d H:i:s");
+
+            $sql = "INSERT INTO announcement (announcement_id, user_id, announcement_details, announcement_datetime)
+                    VALUES ('$announcementID', '$userID', '$newAnnouncement', '$today')";
+
+            if (mysqli_query($conn, $sql)) {
+                echo "<script>
+                        alert('--- Successfully Added Announcement ---\\nThe latest notifications will be displayed on the banner.');
+                        window.location.href = 'manageSystem.php';
+                      </script>";
+            }
+        }
+    }
+
+    // announcement
+    $sql_announcement = "SELECT * FROM announcement GROUP BY announcement_datetime DESC";
+    $result_announcement = mysqli_query($conn, $sql_announcement);
+
+    // badges
+    $sql_badge = "SELECT * FROM badges";
+    $result_badge = mysqli_query($conn, $sql_badge);
 ?>
 
 <!DOCTYPE html>
@@ -196,14 +222,131 @@
                     </div>
                 </div>
 
-                <div class="">
+                <div class="overlay" id="popupOverlay"></div>
 
+                <div class="popup" id="popup-add-announcement">
+                    <div class="popup-header">
+                        <div class="info-title">
+                            <h3>Add New Announcement</h3>
+                            <div class="line"></div>
+                        </div>
+                        <button id="popup-add-announcement-close-menu" class="icon-menu">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <form action="" method="POST" class="addNewAnnouncem-form">
+                        <!-- used to know what form submited  -->
+                        <input type="hidden" name="formType" value="addNewAnnouncement">
+                        <div class="popup-scroll-area">
+                            <div class="popup-input">
+                                <label for="announcement">Announcement *</label>
+                                <input type="text" name="newAnnouncement" id="newAnnouncement">
+                                <div class="popup-error-text" id="error-announcement">Enter a Valid Announcement</div>
+                            </div>
+                        </div>
+
+                        <div class="submit-container">
+                            <button name="btnSubmit" value="Submit" class="submit-btn" id="btnSubmit-addNewAnnouncement">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                <p>Add Announcement</p>
+                            </button>
+                        </div>            
+                    </form>
+                </div>
+
+                <div class="manage-system-big-container">
+                    <div class="manage-system-container">
+                        <div class="manage-system-header">
+                            <h3>System Announcements</h3>
+
+                            <button class="add-new-btn addNewAnnouncement-btn">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                <p>Add</p>
+                            </button>
+                        </div>
+
+                        <div class="table-container table-handle">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Announcement</th>
+                                        <th>Added By</th>
+                                        <th>Date & Time</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <?php
+                                        if (mysqli_num_rows($result_announcement) > 0) {
+                                            while($row = mysqli_fetch_assoc($result_announcement)) {
+                                                echo '<tr>
+                                                        <td>' . $row['announcement_id'] . '</td>
+                                                        <td>' . $row['announcement_details'] . '</td>
+                                                        <td>' . $row['user_id'] . '</td>
+                                                        <td>' . $row['announcement_datetime'] . '</td>
+                                                      </tr>';
+                                            }
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="manage-system-container">
+                        <div class="manage-system-header">
+                            <h3>Badges</h3>
+
+                            <button class="add-new-btn">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                <p>Add</p>
+                            </button>
+                        </div>
+
+                        <div class="table-container table-handle">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Badge</th>
+                                        <th>Badge Name</th>
+                                        <th>Points</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <?php
+                                        if (mysqli_num_rows($result_badge) > 0) {
+                                            while($row = mysqli_fetch_assoc($result_badge)) {
+                                                echo '<tr>
+                                                        <td>' . $row['badge_id'] . '</td>
+                                                        <td><img src="../../' . $row['badge_image'] . '" alt="badge" width="50px" height="50px"></td>
+                                                        <td>' . $row['badge_name'] . '</td>
+                                                        <td>' . $row['points_required'] . '</td>
+                                                        <td>
+                                                            <a href="updateBadge.php?id=' . $row['badge_id'] . '" class="action-btn" title="Update">
+                                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                            </a>
+                                                        </td>
+                                                      </tr>';
+                                            }
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
         <?php include("footer.php"); ?>
 
         <script src="../../scripts/admin.js"></script>
+        <script src="../../scripts/admin_popup_addAnnouncement.js"></script>
+        <script src="../../scripts/validation.js"></script>
     </body>
 </html>
 

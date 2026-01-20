@@ -308,3 +308,35 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
+// [Admin] Add New Announcement (pop-up) Validation
+document.addEventListener("DOMContentLoaded", () => {
+    const btnAddAnnouncement = document.querySelector("#btnSubmit-addNewAnnouncement");
+    const newAnnounecment = document.getElementById("newAnnouncement");
+    const announcementError = document.getElementById("error-announcement");
+
+    if (newAnnounecment) {
+        newAnnounecment.addEventListener("input", () => {
+            if (newAnnounecment.value.trim() !== "") {
+                announcementError.style.display = "none";
+            }
+        });
+    }
+
+    if (btnAddAnnouncement) {
+        btnAddAnnouncement.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            if (newAnnounecment.value.trim() === "") {
+                announcementError.style.display = "block";
+            }
+            else {
+                announcementError.style.display = "none";
+
+                const form = document.querySelector(".addNewAnnouncem-form");
+                form.submit();
+            }
+        })
+    }
+});
