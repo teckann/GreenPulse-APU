@@ -1,3 +1,8 @@
+<?php
+    include("../../conn.php");
+    include("../../backend/sessionData.php"); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,7 +118,7 @@
                         <span>EVENT ACTIVE</span>
                     </div>
                     <span class="points-badge">500 pts</span>
-                    <div class="more-section">
+                    <div class="more-section" onclick = "window.location.href = 'eventMore.php'">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </div>
                 </div>

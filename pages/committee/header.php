@@ -1,3 +1,13 @@
+<?php
+    // $sql = "SELECT * FROM users WHERE user_id = '$userID'";
+
+    // $result = mysqli_query($conn, $sql);
+
+    // while ($row = mysqli_fetch_assoc($result)) {
+    //     $profilePhoto = $row["avatar"];
+    // }
+?> 
+
 <nav class = "navigation-bar">
         <div class = "hamburger-menu">
             <button onclick = "toggleMenu()">

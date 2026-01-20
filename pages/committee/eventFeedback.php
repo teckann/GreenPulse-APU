@@ -1,3 +1,8 @@
+<?php
+    include("../../conn.php");
+    include("../../backend/sessionData.php"); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,98 +10,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Feedback Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png"> -->
     
 </head>
 </head>
 <body>
-    <nav class = "navigation-bar">
 
-    <div class = "hamburger-menu">
-        <button onclick = "toggleMenu()">
-            <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
-        </button>
-    </div>
+<nav class = "navigation-bar">
+        <div class = "hamburger-menu">
+            <button onclick = "toggleMenu()">
+                <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
+            </button>
+        </div>
 
-    <div class = "logo" onclick = "window.location.href='index.php'">
-            <img src="../../src/committee/logo.png" alt="Logo">
-    </div>
+        <div class = "logo" onclick = "window.location.href='index.php'">
+            <img src="../../src/elements/logo_horizontal.png" alt="Logo">
+        </div>
 
-    <div class = "desktopMenu">
+        <div class = "desktopMenu">
             <a href="index.php">Home</a>
             <a href="treeAdoption.php">Tree Adoption</a>
             <a href="merchandises.php">Merchandises</a>
             <a href="eventMain.php">Events</a>
             <a href="study&Quiz.php">Study & Quiz</a>
-    </div>
+        </div>
 
-    <div class = "profile">
-        <img src="../../src/committee/profilePicture.jpg" alt="Profile Picture">
-    </div>
-
+        <div class = "profile">
+            <img src="../../src/committee/profilePicture.jpg" alt="Profile Picture">
+        </div>
     </nav>
 
     <div class = "banner">
         <marquee direction = "right" scrollamount = "10">
-            <p>AnnouJoin our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.ncement</p>
+            <p>Join our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.</p>
         </marquee>
     </div>
 
+    <!-- !!! -->
+    <div class="header-content">
+        <div class="back-icon" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </div>
         
-    <section class="heroSection-event">
-        <h1>Event</h1>
-        <h1>Management</h1>
-        <p>Create and manage green initiative events.</p>
-    </section>
-
-    <div class="container">
-        <span class = "title">Event Feedback</span>
-        <div class = "event-feedback-outer-box">
-            <div class = "feedback-header">
-                <span class = "title-feedback">Feedback</span>
-                <div class = "date-time">
-                    <span class = "title-date">Date</span>
-                    <span class = title-time>Time</span>
-                </div>
-            </div>
-            <div class = "event-feedback-inner-box"></div>
-        </div>
-
-        <div class = "event-feedback-outer-box">
-            <div class = "feedback-header">
-                <span class = "title-feedback">Feedback</span>
-                <div class = "date-time">
-                    <span class = "title-date">Date</span>
-                    <span class = title-time>Time</span>
-                </div>
-            </div>
-            <div class = "event-feedback-inner-box"></div>
-        </div>
-
-        <div class = "event-feedback-outer-box">
-            <div class = "feedback-header">
-                <span class = "title-feedback">Feedback</span>
-                <div class = "date-time">
-                    <span class = "title-date">Date</span>
-                    <span class = title-time>Time</span>
-                </div>
-            </div>
-            <div class = "event-feedback-inner-box"></div>
-        </div>
-
-                <div class = "event-feedback-outer-box">
-            <div class = "feedback-header">
-                <span class = "title-feedback">Feedback</span>
-                <div class = "date-time">
-                    <span class = "title-date">Date</span>
-                    <span class = title-time>Time</span>
-                </div>
-            </div>
-            <div class = "event-feedback-inner-box"></div>
+        <div class="heroSection">
+            <h1>EVENT MANAGEMENT</h1>
+            <p>CREATE AND MANAGE GREEN INITIATIVE EVENTS.</p>
         </div>
     </div>
 
+    <!-- Lower Part  -->
+    <section class="event-controls-event-main">
+        <div class = "white-color-box">
 
+                <span class = "title">Event Feedback</span>
+            <div class = "event-feedback-outer-box">
+                <div class = "feedback-header">
+                    <span class = "title-feedback">Feedback</span>
+                    <div class = "date-time">
+                        <span class = "title-date">Date</span>
+                        <span class = title-time>Time</span>
+                    </div>
+                </div>
+                <div class = "event-feedback-inner-box"></div>
+            </div>
+
+            <div class = "event-feedback-outer-box">
+                <div class = "feedback-header">
+                    <span class = "title-feedback">Feedback</span>
+                    <div class = "date-time">
+                        <span class = "title-date">Date</span>
+                        <span class = title-time>Time</span>
+                    </div>
+                </div>
+                <div class = "event-feedback-inner-box"></div>
+            </div>
+
+            <div class = "event-feedback-outer-box">
+                <div class = "feedback-header">
+                    <span class = "title-feedback">Feedback</span>
+                    <div class = "date-time">
+                        <span class = "title-date">Date</span>
+                        <span class = title-time>Time</span>
+                    </div>
+                </div>
+                <div class = "event-feedback-inner-box"></div>
+            </div>
+
+                    <div class = "event-feedback-outer-box">
+                <div class = "feedback-header">
+                    <span class = "title-feedback">Feedback</span>
+                    <div class = "date-time">
+                        <span class = "title-date">Date</span>
+                        <span class = title-time>Time</span>
+                    </div>
+                </div>
+                <div class = "event-feedback-inner-box"></div>
+            </div>
+        </div>
+    </section>
    <!-- Hamburger Menu sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">

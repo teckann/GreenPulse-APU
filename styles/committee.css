@@ -98,9 +98,10 @@ body{
 
 .heroSection {
     background-color: #FAF9F6;
-    height: 150px;
+    flex: 1;                  /* Takes up the remaining middle space */
+    background-color: transparent !important; /* Prevents double background colors */
     text-align: center;
-    padding: 1.5rem 2rem;
+    padding: 2rem 0;
 }
 
 .heroSection h1 {
@@ -367,15 +368,15 @@ body{
 }
 
 .header-content {
-    padding: 1.5rem 2rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
+    align-items: center;      /* Vertically align icons with text */
+    justify-content: space-between; 
     background-color: #FAF9F6;
+    padding: 0 5%;            /* Gives breathing room on the sides */
+    width: 100%;
+    box-sizing: border-box;
 }
+
 
 .header-text {
     text-align: center;
@@ -400,20 +401,25 @@ body{
 .back-icon,
 .add-icon {
     /* The circle behind the icon*/
-    width: 50px;
-    height: 50px;
     border-radius: 50%;
+    transition: all 0.3s ease;
+    background-color: #f5f5f5;
+    height: 50px;
+    width: 50px;              /* Fixed width for both ensures center is true center */
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.5rem;
+    color: #043927;
     cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: #f5f5f5;
-    flex-shrink: 0;
 }
+
 
 .back-icon i,
 .add-icon i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 20px;
     color: #333;
     transition: all 0.3s ease;
@@ -566,6 +572,7 @@ body{
     flex-direction: column;
     gap: 1.5rem;
 }
+
 
 /* Meta Info Row */
 .event-meta-row {
@@ -720,9 +727,11 @@ body{
     width: 100%;
 }
 
+
+
 .input-group label {
     font-size: 0.9rem;
-    color: #d00000;
+    color: grey;
     margin-bottom: 8px;
     font-family: "Roboto", sans-serif;
 }
@@ -731,7 +740,7 @@ body{
     border: 1.3px solid rgb(162, 162, 162);  /*THIS BORDER OKAY AH*/
     background-color: #ffffff;
     color: #969696;
-    padding: 9px 15px;
+    padding: 15px 15px;
     width: 100%;
     border-radius: 7px;
     box-sizing: border-box; 
@@ -749,13 +758,40 @@ body{
     border: 1.3px solid rgb(162, 162, 162);
     background-color: #ffffff;
     color: #969696;
-    padding: 60px 15px;
+    padding: 15px 15px;
     width: 100%;
+    height: 100px;
     border-radius: 7px;
     box-sizing: border-box; 
     text-align: left;
     font-family: "Roboto", sans-serif;
 }
+
+/*  These are used to change the placeholder*/
+/*  input[type="number"]::placeholder = bcos I have a lot different input type placeholder, so I need to use [type = "number"] to
+    specific which placeholder. */
+
+input::placeholder {
+    color: rgb(172, 172, 172);
+}
+
+input[type="number"]::placeholder {
+    color: rgb(172, 172, 172);
+}
+
+input[type="file"]::placeholder {
+    color: rgb(172, 172, 172);
+    text-align: center;
+}
+
+input[type="textarea"]::placeholder {
+    color: rgb(172, 172, 172);
+    text-align:start;
+    flex-direction: row;
+
+}
+
+/*  until here */
 
 .short-tagline {
     display: flex;
@@ -778,9 +814,25 @@ body{
 }
 
 .event-feedback-outer-box{
-    background-color: #f4f4f4;
-    padding: 1.5rem 1rem;
-    border-radius: 6px;
+    background-color: #FAF9F6;
+    padding: 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+/* no need flex: 1, bcos it will auto go to left */
+    font-size: 20px;
+    color: grey;
+}
+
+.event-feedback-outer-box:hover {
+    /* I want make like when hover the button change color */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background-color: #faf8ee   ;
 }
 
 .feedback-header{
@@ -828,6 +880,57 @@ body{
     width: 100%;
     border-radius: 4px;
 }
+
+/* ======================================================================================================================================= */
+/*  EVENT MORE PAGE */
+/* ======================================================================================================================================== */
+.more-container {
+    background-color: #FAF9F6;
+}
+
+.details-upper {
+    display: flex;
+    gap: 20px; /*gap put here eh, not .event-name, -event-id there*/
+    justify-content: flex-start;
+    padding: 15px 15px 0 15px;
+    margin-bottom: 0;   
+}
+
+.event-name,.event-id {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 8px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.details-lower-right {
+    display: flex;
+    flex-direction: column; /*every time use tiok flex thing need to code "display: flex;"*/
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.details-lower-right span {
+    flex: 1;
+    color: grey;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
+}
+
+.event-poster-container {
+    width: 80%;
+    /* border-radius: 10px; */
+    border: rgb(192, 192, 192) solid 1px;
+    margin-top: 10px;
+    background-color: white;
+    padding: 80px 15px;
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); */
+    margin-bottom: 20px;
+}
+
 
 /* ======================================================================================================================================== */
 /* @media*/
@@ -1279,7 +1382,7 @@ body{
     z-index: 1000;
 }
 
-#itemPopUp, #itemPopUp2, #itemPopUp3 {
+#itemPopUp, #itemPopUp2, #itemPopUp3, #itemPopUp4 {
     display:none;
     background-color: #fff;
     position: absolute;
@@ -1470,6 +1573,10 @@ body{
     font-size: 2em;
 }
 
+#itemPopUp4 .popUpHeader b {
+    font-size: 1.6em;
+}
+
 .askForDelete p {
     font-size: 1.2em;
 }
@@ -1514,6 +1621,81 @@ body{
 .deleteItemBtns {
     display: flex;
     justify-content: center;
+}
+
+.createItem {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    /* padding: 1em 3em; */
+}
+
+/* .createItem {
+    display: flex;
+    flex-direction: column;
+} */
+
+.createItemNamePart, .createItemDescriptionPart {
+    gap: 0.2em;
+}
+
+.createItemNumbersPart div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1em;
+}
+
+.createItemNumbersPart div input[type = 'number'] {
+    width: 50%;
+}
+
+
+.createItem div label, .createItem div input, .createItem div textarea {
+    font-size: 1.5em;
+}
+
+.createItem div input[type = 'text'] {
+    width: 80%;
+}
+
+.createItemDescriptionPart textarea {
+    width: 80%;
+}
+
+.createItemNamePart {
+    display: flex;
+    flex-direction: column;
+}
+
+.createItemNumbersPart {
+    display: flex;
+    align-items: end;
+}
+
+.createItemPhotoPart label {
+    margin-bottom: 0.5em;
+}
+
+.createItemButtonPart {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.2em;
+}
+
+.createItemPhotoPart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.btnCreateTree {
+    width: 8em;
+    height: 3em;
+    background-color: #2D936C;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
 }
 
 
@@ -1614,5 +1796,14 @@ body{
         width: 10em;
         height: 3em;
         margin-bottom: 1.5em;
+    }
+
+    #itemPopUp4 {
+        width: 40%;
+        right: 30%;
+    }
+
+    .createItem {
+        padding: 0 0 0 15%;
     }
 }

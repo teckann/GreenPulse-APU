@@ -14,10 +14,13 @@
         $sqlChange = "UPDATE items SET item_name = '$newTreeName', item_description = '$newDescription', item_redeem_points = '$newPoints', item_stock = '$newStock' WHERE item_id = '$treeId'";
 
         if (mysqli_query($conn, $sqlChange)) {
+
+            // record activity into logs
+            addLog($conn, $userID, "Edit available tree information");
             ?>
                 <script>
                     document.addEventListener("DOMContentLoaded", () => {
-                        alert('update successfully');
+                    alert('update successfully');
                     // directly close pop
                     const itemPopUpOverlay = document.querySelector("#itemOverlay");
                     const itemPopUp = document.querySelector("#itemPopUp");
@@ -42,6 +45,9 @@
         echo "<script>alert('$treeID')</script>";
 
         if (mysqli_query($conn, $sqlDelete)) { 
+
+        // record actifivy into logs
+        addLog($conn, $userID, "Delete available tree");
             ?>
             <script>
                 document.addEventListener("DOMContentLoaded", () => {
@@ -106,9 +112,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tree Management Page</title>
+    <title>Available Tree Management Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png">
 </head>
 <body>
     <?php include("header.php"); ?>
@@ -120,7 +127,7 @@
                     <h1>Tree Management <i class="fa-solid fa-tree" style="color: #228B22;"></i></h1>
                     <p>Add new, manage available tree adoption for volunteers to redeem</p>
                 </div>
-                <button><span class="showDesktop" name="addTreeButton">Add Tree</span><span class="showMobile"><i class="fa-solid fa-plus" style="color: white;"></i></span></button>
+                <button id="btnAddItem" name="btnAddItem"><span class="showDesktop">Add Tree</span><span class="showMobile"><i class="fa-solid fa-plus" style="color: white;"></i></span></button>
             </div>
             <div id="showTreeClass">
                 <button id="btnAvailableTree" class="treeClass">
@@ -317,13 +324,13 @@
         </div>
 
         <!-- // change item picture -->
-        <div id="itemPopUp2" class='popUpForm'>
+        <div id="itemPopUp2">
             <div class="popUpHeader">
                 <div><button id='btnBackEditItem' class='btnExitPopUps'><i class="fa-solid fa-arrow-left"></i></button></div>
                 <div id="popUpHeaderText"><b id="changeItemPhotoText">Current Tree Photo</b></div>
             </div>
             
-            <form action="../../backend/committeeUpdatePhoto.php" method="POST" enctype="multipart/form-data">
+            <form action="../../backend/committeeUpdatePhoto.php" method="POST" enctype="multipart/form-data" class='popUpForm'>
                 <div class='popUpShow treePhotoEditPage'>
                     <img id="oldItemImage" src="../../<?php echo $itemImage ?>" alt="Tree Image">
                     
@@ -346,13 +353,13 @@
         </div>
 
             <!-- // delete item -->
-            <div id="itemPopUp3" class="popUpForm">
+            <div id="itemPopUp3">
                 <div class="popUpHeader">
                     <button id='btnExitDeletePopUp' class='btnExitPopUps'><i class="fa-solid fa-arrow-left"></i></button>
                     <div id="popUpHeaderText"><b id="deleteItemText">Delete Tree Page</b></div>
                 </div>
             
-                <form action="#" method="POST">
+                <form action="#" method="POST" class='popUpForm'>
                     <div class='popUpShow deleteTreePage'>
                         <div class="allDeleteInfo">
                             <input type="hidden" value="<?php echo $itemID ?>" name="deleteTreeID">
@@ -379,6 +386,46 @@
                     </div>
                 </form>
             </div>
+
+            <!-- create new available tree -->
+             <div id="itemPopUp4">
+                <div class="popUpHeader">
+                    <button id='btnExitCreateNewItemPopUp' class='btnExitPopUps'><i class="fa-solid fa-arrow-left"></i></button>
+                    <div id="popUpHeaderText"><b id="createItemText">Add New Available Tree</b></div>
+                </div>
+            
+                <form action="../../backend/committeeCreateTree.php" method="POST" enctype="multipart/form-data" class='popUpForm'>
+                    <div class='popUpShow createItemPage'>
+                        <div class="createItem">
+                            <div class="createItemNamePart">
+                                <label for="createItemName"><b>Tree Name</b></label>
+                                <input type="text" id="createItemName" name="createItemName" class="createItemName" placeholder="e.g. Oak Tree" required>
+                            </div>
+                            <div class="createItemNumbersPart">
+                                <div>
+                                    <label for="createItemPoints"><b>Points<br>Required</b></label>
+                                    <input type="number" name="createItemPoints" id="createItemPoints" min='0'  max='1000' required>
+                                </div>
+                                <div>
+                                    <label for="createItemStock"><b>Stock</b></label>
+                                    <input type="number" name="createItemStock" id="createItemStock" min='0'  max='1000' required>
+                                </div>
+                            </div>
+                            <div class="createItemDescriptionPart">
+                                <label for="createItemDescripton"><b>Description</b></label>
+                                <textarea name="createItemDescription" id="createItemDescription" placeholder="e.g. Provides shade and oxygen" required rows="5"></textarea>
+                            </div>
+                            <div class="createItemPhotoPart">
+                                <label for="createItemPhoto"><b>Item Photo</b></label>
+                                <input type="file" name="createItemPhoto" id="createItemPhoto" required>
+                            </div>
+                        </div>
+                        <div class="createItemButtonPart">
+                            <button type="submit" name="btnCreateTree" class="btnCreateTree">Create Tree</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
     </main>
     <script>
         
@@ -392,6 +439,10 @@
             const btnExitDelete = document.querySelector("#btnExitDelete");
             const itemDeletePopUp = document.querySelector("#itemPopUp3");
             const btnExitDeleteItem = document.querySelector("#btnExitDeletePopUp");
+            const btnAddNewItem = document.querySelector("#btnAddItem");
+            const itemCreatePopUp = document.querySelector("#itemPopUp4");
+            const btnExitCreateItem = document.querySelector("#btnExitCreateNewItemPopUp");
+            
 
             // to make the button unable to click when the status is inactive
             treeCards.forEach((treeCard) => {
@@ -418,8 +469,8 @@
 
             // close pop up page when the user click overlay
             itemPopUpOverlay.addEventListener("click", () => {
-            itemPopUpOverlay.style.display = 'none';
-            itemPopUp.style.display = 'none';
+            // itemPopUpOverlay.style.display = 'none';
+            // itemPopUp.style.display = 'none';
             // window.location.href = 'availableTreePage.php';
             reload();
             })
@@ -469,7 +520,6 @@
         })
 
         const reload = () => {
-
             sessionStorage.setItem('selectedTreeStatus', '');
             sessionStorage.setItem('selectedTreeCreator', '');
             window.location.href = 'availableTreePage.php';
@@ -495,7 +545,17 @@
             itemDeletePopUp.style.display = "none";
             itemPopUpOverlay.style.display = "none";
             window.location.href = "availableTreePage.php";
-        })
+        });
+
+        // to open create new tree page
+        btnAddNewItem.addEventListener("click", () => {
+            itemCreatePopUp.style.display = "flex";
+            itemPopUpOverlay.style.display = "block";
+        });
+
+        btnExitCreateItem.addEventListener("click", () => {
+            reload();
+        });
 
         });
 
