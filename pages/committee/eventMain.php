@@ -57,7 +57,7 @@
         </div>
         
         <div class="add-icon" onclick="window.location.href='eventCreate.php'">
-            <i class="fas fa-plus"></i>
+            <i class="fas fa-add"></i>
         </div>
     </div>
 
