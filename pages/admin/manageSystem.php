@@ -255,6 +255,49 @@
                     </form>
                 </div>
 
+                <div class="popup" id="popup-add-badge">
+                    <div class="popup-header">
+                        <div class="info-title">
+                            <h3>Add Badge</h3>
+                            <div class="line"></div>
+                        </div>
+                        <button id="popup-add-badge-close-menu" class="icon-menu">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <form action="../../backend/addBadge.php" method="POST" enctype="multipart/form-data" class="popup-form addNewBadge-form">
+                        <!-- used to know what form submited  -->
+                        <input type="hidden" name="formType" value="addNewBadge">
+                        <div class="popup-scroll-area">
+                            <div class="popup-input">
+                                <label for="badgeName">Badge Name *</label>
+                                <input type="text" name="badgeName" id="badgeName">
+                                <div class="popup-error-text" id="error-badge-name">Enter a Valid Badge Name</div>
+                            </div>
+
+                            <div class="popup-input">
+                                <label for="points">Required Points *</label>
+                                <input type="number" name="points" id="points">
+                                <div class="popup-error-text" id="error-point-number">Enter a Valid Number</div>
+                            </div>
+
+                            <div class="popup-input">
+                                <label for="points">Badge Image *</label>
+                                <input type="file" id="badge_image" name="badge_image" style="border: none; padding: 0; border-radius: 0; margin-top: 0.5em;">
+                                <div class="popup-error-text" id="error-file">Upload a Valid Badge Image</div>
+                            </div>
+                        </div>
+
+                        <div class="submit-container">
+                            <button name="btnSubmit" value="Submit" class="submit-btn" id="btnSubmit-addNewBadge">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                <p>Save Changes</p>
+                            </button>
+                        </div>            
+                    </form>
+                </div>
+
                 <div class="manage-system-big-container">
                     <div class="manage-system-container">
                         <div class="manage-system-header">
@@ -299,7 +342,7 @@
                         <div class="manage-system-header">
                             <h3>Badges</h3>
 
-                            <button class="add-new-btn">
+                            <button class="add-new-btn addnewBadge-btn">
                                 <i class="fa-solid fa-circle-plus"></i>
                                 <p>Add</p>
                             </button>
@@ -346,6 +389,7 @@
 
         <script src="../../scripts/admin.js"></script>
         <script src="../../scripts/admin_popup_addAnnouncement.js"></script>
+        <script src="../../scripts/admin_popup_addBadge.js"></script>
         <script src="../../scripts/validation.js"></script>
     </body>
 </html>

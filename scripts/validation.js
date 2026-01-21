@@ -342,6 +342,80 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// [Admin] Add New Badge (pop-up) Validation
+document.addEventListener("DOMContentLoaded", () => {
+    const btnAddBadge = document.querySelector("#btnSubmit-addNewBadge");
+
+    const badgeName = document.getElementById("badgeName");
+    const requiredPoints = document.getElementById("points");
+    const badgeImage = document.getElementById("badge_image");
+
+    const badgeNameError = document.getElementById("error-badge-name");
+    const requiredPointsError = document.getElementById("error-point-number");
+    const fileError = document.getElementById("error-file");
+
+    if (badgeName) {
+        badgeName.addEventListener("input", () => {
+            if (badgeName.value.trim() !== "") {
+                badgeNameError.style.display = "none";
+            }
+        });
+    }
+
+    if (requiredPoints) {
+        requiredPoints.addEventListener("input", () => {
+            if (requiredPoints.value.trim() !== "") {
+                requiredPointsError.style.display = "none";
+            }
+        });
+    }
+
+    if (badgeImage) {
+        badgeImage.addEventListener("input", () => {
+            if (badgeImage.value.trim() !== "") {
+                fileError.style.display = "none";
+            }
+        });
+    }
+
+    if (btnAddBadge) {
+        btnAddBadge.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            let status = true;
+
+            if (badgeName.value.trim() === "") {
+                badgeNameError.style.display = "block";
+                status = false;
+            }
+            else {
+                badgeNameError.style.display = "none";
+            }
+
+            if (requiredPoints.value.trim() === "") {
+                requiredPointsError.style.display = "block";
+                status = false;
+            }
+            else {
+                requiredPointsError.style.display = "none";
+            }
+
+            if (badgeImage.value.trim() === "") {
+                fileError.style.display = "block";
+                status = false;
+            }
+            else {
+                fileError.style.display = "none";
+            }
+
+            if (status) {
+                const form = document.querySelector(".addNewBadge-form");
+                form.submit();
+            }
+        })
+    }
+});
+
 // [Admin] Update Badge Information Validation
 document.addEventListener("DOMContentLoaded", () => {
     const btnUpdateBadge = document.querySelector("#btnSubmit-update-badge-info");
@@ -396,4 +470,4 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
     }
-})
+});
