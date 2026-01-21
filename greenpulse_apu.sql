@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2026 at 02:27 AM
+-- Generation Time: Jan 22, 2026 at 05:26 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -256,7 +256,7 @@ CREATE TABLE `modules` (
   `user_id` varchar(8) NOT NULL,
   `module_name` varchar(100) NOT NULL,
   `module_description` varchar(255) NOT NULL,
-  `module_meterial` varchar(255) NOT NULL,
+  `module_material` varchar(255) NOT NULL,
   `module_video` varchar(255) NOT NULL,
   `module_status` varchar(50) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -265,8 +265,8 @@ CREATE TABLE `modules` (
 -- Dumping data for table `modules`
 --
 
-INSERT INTO `modules` (`module_id`, `user_id`, `module_name`, `module_description`, `module_meterial`, `module_video`, `module_status`) VALUES
-('M001', 'U002', 'Malaysia’S Green Technology', 'Explore Malaysia’s efforts in green technology, including sustainable energy solutions, eco-friendly innovations, and initiatives promoting environmental awareness.', 'src/moduleMaterials/Green-Technology-2022-2023.pdf', 'src/moduleMaterials/Green-Technology-2022-2023.mp4', 'Active');
+INSERT INTO `modules` (`module_id`, `user_id`, `module_name`, `module_description`, `module_material`, `module_video`, `module_status`) VALUES
+('M001', 'U002', 'Malaysia’s Green Technology', 'Explore Malaysia’s efforts in green technology, including sustainable energy solutions, eco-friendly innovations, and initiatives promoting environmental awareness.', 'src/moduleMaterials/Green-Technology-2022-2023.pdf', 'src/moduleMaterials/Green-Technology-2022-2023.mp4', 'Active');
 
 -- --------------------------------------------------------
 
@@ -280,15 +280,15 @@ CREATE TABLE `module_history` (
   `highest_score` varchar(50) NOT NULL,
   `awarded_points` int(11) NOT NULL,
   `total_attempt` int(11) NOT NULL,
-  `finsih_date` date NOT NULL
+  `finish_datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `module_history`
 --
 
-INSERT INTO `module_history` (`module_id`, `user_id`, `highest_score`, `awarded_points`, `total_attempt`, `finsih_date`) VALUES
-('M001', 'U004', '3', 450, 1, '2026-01-21');
+INSERT INTO `module_history` (`module_id`, `user_id`, `highest_score`, `awarded_points`, `total_attempt`, `finish_datetime`) VALUES
+('M001', 'U004', '3', 450, 1, '2026-01-21 11:47:18');
 
 -- --------------------------------------------------------
 
