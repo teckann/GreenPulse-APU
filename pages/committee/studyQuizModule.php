@@ -62,17 +62,23 @@
     <section class="event-controls-event-main">
         <div class = "white-color-box">
             <div class = "study-quiz-module-name-box">
-                <div class = "module-name">Module Name</div>
+                <div class = "study-quiz-title">Module Name</div>
+                <input type="text" placeholder = "Module Name" class="event-box">
             </div>
 
             <div class = "study-quiz-description-box">
                 <div class = "study-quiz-title">Description</div>
-                <textarea placeholder="Event Description" class="study-quiz-description" rows="5"></textarea>
+                <textarea placeholder="Event Description" class="event-big-box" rows="5"></textarea>
+            </div>
+
+            <div class = "study-quiz-module-upload">
+                <div class = "study-quiz-title">Study Video</div>
+                <input type="file" class="event-big-box">
             </div>
 
             <div class = "study-quiz-module-upload">
                 <div class = "study-quiz-title">Study Material</div>
-                <input type="file" class="study-quiz-big-box">
+                <input type="file" class="event-big-box">
             </div>
 
 
