@@ -127,6 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const itemFilter1 = document.querySelector("#itemCategory");
     const itemFilter2 = document.querySelector("#itemStatus");
 
+    const moduleFilter = document.querySelector("#moduleStatus");
+
     const submissionFilter = document.querySelector("#submission-status");
 
     const logFilter1 = document.querySelector("#logSort");
@@ -159,6 +161,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         itemFilter2.addEventListener("change", () => {
+            form.submit();
+        });
+    }
+
+    if (moduleFilter) {
+        moduleFilter.addEventListener("change", () => {
+            const form = document.getElementById("module-form");
             form.submit();
         });
     }

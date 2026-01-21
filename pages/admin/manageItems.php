@@ -53,8 +53,10 @@
     $result = mysqli_query($conn, $sql);
 
     $items = array();
-    while ($row = mysqli_fetch_assoc($result)) {
-        $items[] = $row;
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $items[] = $row;
+        }
     }
 ?>
 
@@ -79,7 +81,7 @@
             <div class="action-bar" style="margin: 1em 0;">
                 <form action="" method="GET">
                     <div class="table-search-box">
-                        <input type="text" name="target" placeholder="Search user here">
+                        <input type="text" name="target" placeholder="Search item here">
                         <i class="fa-solid fa-magnifying-glass"></i>
 
                         <button name="btnSearch" type="submit" value="Search" class="table-btnSearch" title="Search"></button>
@@ -158,7 +160,7 @@
                                                     </button>
                                                 </form>
 
-                                                <a href="viewItem.php?id=' . $row['item_id'] . '" class="action-btn" title="View">
+                                                <a href="viewItemDetails.php?id=' . $row['item_id'] . '" class="action-btn" title="View">
                                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                                 </a>
                                             </div>
@@ -228,7 +230,7 @@
                                         </button>
                                     </form>
 
-                                    <a href="viewItem.php?id=' . $row['item_id'] . '" title="View">
+                                    <a href="viewItemDetails.php?id=' . $row['item_id'] . '" title="View">
                                         <button class="card-action-btn card-view-btn">
                                             View User Details
                                         </button>

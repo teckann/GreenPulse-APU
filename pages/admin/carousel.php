@@ -1,17 +1,17 @@
 <div class="slideshow-container">
     <div class="mySlides fade">
         <div class="numbertext">1 / 5</div>
-        <img src="../../src/elements/slide1.jpg" style="width:100%">
+        <img src="../../src/elements/slide1_desktop.png" style="width:100%">
     </div>
 
     <div class="mySlides fade">
         <div class="numbertext">2 / 5</div>
-        <img src="../../src/elements/slide2.jpg" style="width:100%">
+        <img src="../../src/elements/slide2_desktop.png" style="width:100%">
     </div>
 
     <div class="mySlides fade">
         <div class="numbertext">3 / 5</div>
-        <img src="../../src/elements/slide3.jpg" style="width:100%">
+        <img src="../../src/elements/slide3_desktop.png" style="width:100%">
     </div>
 
     <div class="mySlides fade">
