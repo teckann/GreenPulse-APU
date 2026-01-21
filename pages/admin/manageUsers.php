@@ -35,8 +35,8 @@
         }
     }
 
-    $currentStatus = "";
     $currentRole = "";
+    $currentStatus = "";
 
     if (isset($_GET["txtRole"]) || isset($_GET["txtStatus"])) {
         $role = $_GET["txtRole"];

@@ -12,34 +12,43 @@
         $sql = "SELECT * FROM log WHERE log_event LIKE '%{$target}%'";
     }
 
-    if (isset($_GET["btnFilter"])) {
+    $currentSort = "";
+    $currentStatus = "";
+
+    if (isset($_GET["txtSort"]) || isset($_GET["txtStatus"])) {
         $sort = $_GET["txtSort"];
         $logStatus = $_GET["txtStatus"];
 
-        if (!empty($sort) && !empty($logStatus)) {
+        $currentSort = $sort;
+        $currentStatus = $logStatus;
+
+        if (!empty($sort)) {
+            $sql = "SELECT * FROM log ORDER BY log_datetime $sort";
+        }
+        elseif (!empty($sort) || !empty($logStatus)) {
             if ($logStatus === "today") {
                 $sql = "SELECT * FROM log
                         WHERE log_datetime >= CURDATE()
                         AND log_datetime < CURDATE() + INTERVAL 1 DAY
-                        GROUP BY log_datetime $sort";
+                        ORDER BY log_datetime $sort";
             }
             else if ($logStatus === "this_week") {
                 $sql = "SELECT * FROM log
                         WHERE log_datetime >= DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY)
                         AND log_datetime < DATE_ADD(DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY), INTERVAL 7 DAY)
-                        GROUP BY log_datetime $sort";
+                        ORDER BY log_datetime $sort";
             }
             else if ($logStatus === "this_month") {
                 $sql = "SELECT * FROM log
                         WHERE log_datetime >= DATE_FORMAT(NOW(), '%Y-%m-01')
                         AND log_datetime <  DATE_ADD(DATE_FORMAT(CURDATE(), '%Y-%m-01'), INTERVAL 1 MONTH)
-                        GROUP BY log_datetime $sort";
+                        ORDER BY log_datetime $sort";
             }
             else if ($logStatus === "this_year") {
                 $sql = "SELECT * FROM log
                         WHERE log_datetime >= MAKEDATE(YEAR(CURDATE()), 1)
                         AND log_datetime <  MAKEDATE(YEAR(CURDATE()) + 1, 1)
-                        GROUP BY log_datetime $sort";
+                        ORDER BY log_datetime $sort";
             }
         }
     }
@@ -82,29 +91,33 @@
                     </div>
                 </form>
 
-                <form action="" method="GET" class="select-container">
+                <form action="" method="GET" class="select-container" id="log-form">
                     <div class="select-boxs">
                         <div>
-                            <label for="sort">Sort: </label>
-                            <select name="txtSort" id="sort">
-                                <option value="ASC">Ascending</option>
-                                <option value="DESC">Descending</option>
+                            <label for="logSort">Sort: </label>
+                            <select name="txtSort" id="logSort">
+                                <option value="ASC" <?php if($currentSort === "ASC") echo "selected" ?>>Ascending</option>
+                                <option value="DESC" <?php if($currentSort === "DESC") echo "selected" ?>>Descending</option>
                             </select>
                         </div>
 
                         <div>
-                            <label for="status">Status: </label>
-                            <select name="txtStatus" id="status">
-                                <option value="">All</option>
-                                <option value="today">Today</option>
-                                <option value="this_week">This Week</option>
-                                <option value="this_month">This Month</option>
-                                <option value="this_year">This Year</option>
+                            <label for="losStatus">Status: </label>
+                            <select name="txtStatus" id="logStatus">
+                                <option value="" <?php if($currentStatus === "") echo "selected" ?>>All</option>
+                                <option value="today" <?php if($currentStatus === "today") echo "selected" ?>>Today</option>
+                                <option value="this_week" <?php if($currentStatus === "this_week") echo "selected" ?>>This Week</option>
+                                <option value="this_month" <?php if($currentStatus === "this_month") echo "selected" ?>>This Month</option>
+                                <option value="this_year" <?php if($currentStatus === "this_year") echo "selected" ?>>This Year</option>
                             </select>
                         </div>
+
+                        <button class="print" onclick="window.print()">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
                     </div>
 
-                    <div class="action-btns">
+                    <!-- <div class="action-btns">
                         <button name="btnFilter" type="submit" value="Filter" class="filter-btn">
                             <i class="fa-solid fa-filter"></i>
                             <p>Filter</p>
@@ -113,7 +126,7 @@
                         <button class="print" onclick="window.print()">
                             <i class="fa-solid fa-print"></i>
                         </button>
-                    </div>
+                    </div> -->
                 </form>
             </div>
 
