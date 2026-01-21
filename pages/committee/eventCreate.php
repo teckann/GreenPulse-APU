@@ -159,7 +159,7 @@
                 <span class="menu-text">Events</span>
             </a>
 
-            <a href="study&Quiz.php" class="menu-item">
+            <a href="studyQuizMain.php" class="menu-item">
                 <div class="menu-icon"><i class="fa-solid fa-book-open"></i></div>
                 <span class="menu-text">Study & Quiz</span>
             </a>

@@ -852,6 +852,7 @@ input[type="textarea"]::placeholder {
 
 .date-time {
     display: flex;
+    justify-content: end;
     flex-direction: row;
     gap: 1rem;
 }
@@ -884,16 +885,12 @@ input[type="textarea"]::placeholder {
 /* ======================================================================================================================================= */
 /*  EVENT MORE PAGE */
 /* ======================================================================================================================================== */
-.more-container {
-    background-color: #FAF9F6;
-}
-
 .details-upper {
     display: flex;
-    gap: 20px; /*gap put here eh, not .event-name, -event-id there*/
-    justify-content: flex-start;
-    padding: 15px 15px 0 15px;
-    margin-bottom: 0;   
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .event-name,.event-id {
@@ -926,11 +923,216 @@ input[type="textarea"]::placeholder {
     border: rgb(192, 192, 192) solid 1px;
     margin-top: 10px;
     background-color: white;
-    padding: 80px 15px;
-    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); */
-    margin-bottom: 20px;
+    color: #2d5a27;
+    border: 2px solid #2d5a27;
 }
 
+.btn-share-details:hover {
+    background-color: #f5f5f5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* @media */
+@media (min-width: 968px) {
+    .event-details-container {
+        flex-direction: row;
+    }
+    
+    .left-side-container {
+        flex: 0 0 400px;
+    }
+    
+    .right-side-container {
+        flex: 1;
+    }
+    
+    .more-poster img {
+        height: 300px;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 600px) {
+    .event-name {
+        font-size: 1.5rem;
+    }
+    
+    .details-upper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .detail-box,
+    .detail-box-small {
+        padding: 15px;
+    }
+}
+
+/* ======================================================================================================================================= */
+/*  EVENT MORE PAGE */
+/* ======================================================================================================================================== */
+.attendance-row {
+    display: flex;
+    align-items: center;
+    background-color: #EDF4F1;
+    width: 97%;
+    border-radius: 5px;
+    padding: 15px;
+    margin: auto 0;
+}
+
+.numbering,.tpnumber,.name,.date-time {
+    flex: 1;
+}
+
+.numbering {
+    
+    padding-left: 15px;
+}
+
+.name {
+    flex: 2;
+    text-align: center;
+}
+
+/* ======================================================================================================================================== */
+/* STUDY & QUIZ - MODULE MAIN PAGE*/
+/* ======================================================================================================================================== */
+.module-span span {
+    font-size: 0.9rem;
+    color: grey;
+    margin-bottom: 8px;
+    font-family: "Roboto", sans-serif;
+}
+
+.module-name-box {
+    background-color: red;
+    height: 100px;
+    width: 100%;
+}
+
+
+.module-name-box {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #FAF9F6;
+    height: 40px;              
+    width: 100%;
+    border-radius: 4px;
+}
+
+/* ======================================================================================================================================== */
+/* STUDY & QUIZ - MODULE PAGE*/
+/* ======================================================================================================================================== */
+.module-name {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+}
+
+.module-id {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: grey;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+}
+
+.study-quiz-description {
+    background-color: #FAF9F6;
+    color: #969696;
+    padding: 15px 15px;
+    width: 100%;
+    height: 100px;
+    border-radius: 7px;
+    box-sizing: border-box; 
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+}
+
+.study-quiz-description-box textarea{
+   border: none;
+}
+
+.study-quiz-big-box {
+    background-color: #FAF9F6;
+    color: #969696;
+    padding: 15px 15px;
+    width: 100%;
+    height: 100px;
+    border-radius: 7px;
+    box-sizing: border-box; 
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+}
+
+.study-quiz-big-box textarea {
+    border: none;
+}
+
+.study-quiz-title, .study-quiz-row-title{
+    font-size: 15px;
+    color: black;
+    margin-bottom: 8px;
+    font-family: "Roboto", sans-serif;
+}
+
+.study-quiz-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAF9F6;
+    width: 97%;
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin: 10px auto;
+}
+
+.study-quiz-row .study-quiz-button {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.study-quiz-row .btn-edit,
+.study-quiz-row .btn-delete {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px 2px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background-color: white;
+}
+
+.study-quiz-row .btn-edit:hover {
+    background-color: white;
+    border-color: #90caf9;
+}
+
+.study-quiz-row .btn-edit:hover svg {
+    fill: #1976d2;
+}
+
+.study-quiz-row .btn-delete:hover {
+    background-color: #ffebee;
+    border-color: #ef9a9a;
+}
+
+.study-quiz-row .btn-delete:hover svg {
+    fill: #d32f2f;
+}
 
 /* ======================================================================================================================================== */
 /* @media*/

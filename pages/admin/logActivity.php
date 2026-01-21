@@ -84,7 +84,7 @@
             <div class="action-bar" style="margin: 1em 0;">
                 <form action="" method="GET">
                     <div class="table-search-box">
-                        <input type="text" name="target" placeholder="Search event here">
+                        <input type="text" name="target" placeholder="Search log event here">
                         <i class="fa-solid fa-magnifying-glass"></i>
 
                         <button name="btnSearch" type="submit" value="Search" class="table-btnSearch" title="Search"></button>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2026 at 05:24 PM
+-- Generation Time: Jan 22, 2026 at 12:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,8 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`announcement_id`, `user_id`, `announcement_details`, `announcement_datetime`) VALUES
-('A001', 'U001', 'New Feature Released', '2025-12-23 22:04:14');
+('A001', 'U001', 'New Feature Released', '2025-12-23 22:04:14'),
+('A002', 'U001', 'Start collecting points and level up from Rising Talent to Master Legend!', '2026-01-20 22:16:07');
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,11 @@ CREATE TABLE `badges` (
 --
 
 INSERT INTO `badges` (`badge_id`, `badge_name`, `badge_image`, `points_required`) VALUES
-('B001', 'Level 1', 'src/badgeImages/badge1.png', 3000);
+('B001', 'Rising Star', 'src/badgeImages/U001_badge_1768930255.png', 500),
+('B002', 'Top Contributor', 'src/badgeImages/02_topContributor_badge.png', 1500),
+('B003', 'Pro Achiever', 'src/badgeImages/03_proAchiever_badge.png', 3000),
+('B004', 'Elite Performer', 'src/badgeImages/04_elitePerformer_badge.png', 5000),
+('B005', 'Master Legend', 'src/badgeImages/05_masterLegend_badge.png', 10000);
 
 -- --------------------------------------------------------
 
@@ -104,7 +109,8 @@ CREATE TABLE `contact_submission` (
 --
 
 INSERT INTO `contact_submission` (`submission_id`, `user_id`, `full_name`, `email_address`, `contact_number`, `subject`, `content`, `submission_datetime`, `submission_status`) VALUES
-('S001', NULL, 'Marcus Tan', 'marcus0101@gmail.com', '0123456789', 'Account Registration', 'Enquiries related to account registration and sign-up issues.', '2025-12-23 22:08:42', 'Pending');
+('S001', NULL, 'Marcus Tan', 'marcus0101@gmail.com', '0123456789', 'Account Registration', 'Enquiries related to account registration and sign-up issues.', '2025-12-23 22:08:42', 'Complete'),
+('S002', 'U004', 'Lim Jin Ming', 'TP083424@mail.apu.edu.my', '0129692700', 'Event Registration', 'I am unable to register for the event. Am I being restricted?', '2026-01-19 23:25:08', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -133,7 +139,8 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`event_id`, `user_id`, `event_title`, `event_poster`, `event_description`, `event_datetime`, `duration`, `location`, `capacity`, `available_spot`, `points_given`, `posted_date`, `event_status`) VALUES
-('E001', 'U002', 'Go Green Workshop', 'src/eventPosters/poster1.png', 'An interactive workshop focused on sustainability and environmentally friendly practices.', '2025-12-30 13:30:00', '2h 30m', 'Auditorium 4 @ Level 3 | APU Campus', 120, 120, 450, '2025-12-23', 'Active');
+('E001', 'U002', 'Go Green Workshop', 'src/eventPosters/poster1.png', 'An interactive workshop focused on sustainability and environmentally friendly practices.', '2026-01-14 15:30:00', '2h 30m', 'Auditorium 4 @ Level 3 | APU Campus', 120, 120, 450, '2025-12-23', 'Active'),
+('E002', 'U003', 'Go Green 3.0', 'src/eventPosters/poster1.png', 'A hand-on workshop and threory based event.', '2026-01-21 15:00:00', '1h 30m', 'Auditorium 5 @ Level 3 | APU Campus', 50, 50, 150, '2026-01-14', 'Active');
 
 -- --------------------------------------------------------
 
@@ -173,7 +180,15 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`item_id`, `user_id`, `item_name`, `item_image`, `item_description`, `item_redeem_points`, `item_stock`, `category`, `posted_date`, `item_status`) VALUES
-('I001', 'U003', 'GreenPulse T-Shirt', 'src/itemImages/item1.png', 'A GreenPulse branded T-shirt supporting green initiatives and environmental awareness. Available in sizes M, L, XL, and XXL for a comfortable fit.', 6000, 50, 'merchandise', '2026-01-01', 'Active');
+('I001', 'U003', 'GreenPulse T-Shirt', 'src/itemImages/t-shirt.png', 'A GreenPulse branded T-shirt supporting green initiatives and environmental awareness. Available in sizes M, L, XL, and XXL for a comfortable fit.', 6000, 50, 'merchandise', '2026-01-01', 'Active'),
+('I002', 'U002', 'GreenPulse Canvas Bag', 'src/itemImages/canvasBag.png', 'Reusable GreenPulse canvas bag created to encourage eco-friendly practices and reduce single-use plastic.', 4500, 60, 'merchandise', '2026-01-21', 'Active'),
+('I003', 'U002', 'GreenPulse Keychain', 'src/itemImages/keychain.png', 'Official GreenPulse merchandise designed to promote sustainability and environmental awareness in everyday use.', 600, 120, 'merchandise', '2026-01-21', 'Active'),
+('I004', 'U002', 'GreenPulse Card Holder', 'src/itemImages/cardHolder.png', 'Practical GreenPulse card holder designed for daily convenience while representing the GreenPulse platform.', 1000, 180, 'merchandise', '2026-01-21', 'Inactive'),
+('I005', 'U002', 'Frangipani Tree', 'src/itemImages/frangipaniTree.png', 'A popular ornamental tree in Malaysia, admired for its fragrant flowers and elegant appearance, commonly planted in parks and gardens.', 2500, 26, 'tree', '2026-01-21', 'Active'),
+('I006', 'U003', 'Yellow Flame Tree', 'src/itemImages/yellowFlameTree.png', 'A beautiful flowering tree widely used in Malaysian landscapes, known for its bright yellow blooms and strong visual impact.', 2300, 15, 'tree', '2026-01-22', 'Active'),
+('I007', 'U003', 'Rain Tree', 'src/itemImages/rainTree.png', 'A large and visually impressive shade tree with a wide canopy, commonly used in parks and open areas for its scenic appeal.', 2750, 10, 'tree', '2026-01-22', 'Active'),
+('I008', 'U002', 'Royal Palm', 'src/itemImages/royalPalm.png', 'A tall and elegant palm tree frequently used in Malaysian landscaping, creating a clean and prestigious visual effect.', 1790, 27, 'tree', '2026-01-22', 'Active'),
+('I009', 'U002', 'Bougainvillea Tree', 'src/itemImages/bougainvilleaTree.png', 'A vibrant ornamental plant commonly found in Malaysia, valued for its colorful flowers and decorative landscaping use.', 3000, 6, 'tree', '2026-01-22', 'Inactive');
 
 -- --------------------------------------------------------
 
@@ -193,7 +208,9 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`log_id`, `user_id`, `log_event`, `log_datetime`) VALUES
-('L001', 'U001', 'Successful Login', '2026-01-02 02:49:32');
+('L001', 'U001', 'Successful Login', '2026-01-02 02:49:32'),
+('L002', 'U001', 'Successful Logout', '2026-01-18 16:01:13'),
+('L003', 'U001', 'Successful Login', '2026-01-18 16:06:57');
 
 -- --------------------------------------------------------
 
@@ -236,6 +253,7 @@ CREATE TABLE `milestone` (
 
 CREATE TABLE `modules` (
   `module_id` varchar(8) NOT NULL,
+  `user_id` varchar(8) NOT NULL,
   `module_name` varchar(100) NOT NULL,
   `module_description` varchar(255) NOT NULL,
   `module_meterial` varchar(255) NOT NULL,
@@ -247,8 +265,8 @@ CREATE TABLE `modules` (
 -- Dumping data for table `modules`
 --
 
-INSERT INTO `modules` (`module_id`, `module_name`, `module_description`, `module_meterial`, `module_video`, `module_status`) VALUES
-('M001', 'Malaysia’S Green Technology', 'Explore Malaysia’s efforts in green technology, including sustainable energy solutions, eco-friendly innovations, and initiatives promoting environmental awareness.', 'src/moduleMaterials/Green-Technology-2022-2023.pdf', 'src/moduleMaterials/Green-Technology-2022-2023.mp4', 'Active');
+INSERT INTO `modules` (`module_id`, `user_id`, `module_name`, `module_description`, `module_meterial`, `module_video`, `module_status`) VALUES
+('M001', 'U002', 'Malaysia’S Green Technology', 'Explore Malaysia’s efforts in green technology, including sustainable energy solutions, eco-friendly innovations, and initiatives promoting environmental awareness.', 'src/moduleMaterials/Green-Technology-2022-2023.pdf', 'src/moduleMaterials/Green-Technology-2022-2023.mp4', 'Active');
 
 -- --------------------------------------------------------
 
@@ -264,6 +282,13 @@ CREATE TABLE `module_history` (
   `total_attempt` int(11) NOT NULL,
   `finsih_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `module_history`
+--
+
+INSERT INTO `module_history` (`module_id`, `user_id`, `highest_score`, `awarded_points`, `total_attempt`, `finsih_date`) VALUES
+('M001', 'U004', '3', 450, 1, '2026-01-21');
 
 -- --------------------------------------------------------
 
@@ -342,10 +367,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `nationality`, `gender`, `date_of_birth`, `contact_number`, `education_email`, `course_name`, `registration_date`, `password`, `safety_question_1`, `answer_1`, `safety_question_2`, `answer_2`, `green_points`, `total_earned`, `avatar`, `role`, `last_login`, `account_status`) VALUES
-('U001', 'Gan Teck Ann', 'Malaysian', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$RcYQHeQf2XXmpDHaQTg8W.HaGPPAnHCocBXeMHZt58Z5rF9aI0ylO', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U001_avatar.png', 'admin', '2026-01-11 17:10:48', 'Active'),
+('U001', 'Gan Teck Ann', 'Malaysian', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pgDrsLW6Dik0wdk0hRTC4eAzpKHtUUFsEcjsBoOyEYBR4qaA5Mts.', 'What is your secondary school name?', 'SDBL', 'What is the city name were you born in?', 'Batu Pahat', NULL, NULL, 'src/avatars/U001_avatar_1768494571.png', 'admin', '2026-01-20 02:00:18', 'Active'),
 ('U002', 'Goh Yang Ee', 'Malaysian', 'M', '2006-07-24', '0125508144', 'TP084231@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$/FqDThXUlgrkHbNEmlF4cuiwcndPCgObsnDj7k/9u7JMRoYPHtWBe', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U002_avatar.png', 'committee', '2026-01-07 15:00:36', 'Active'),
-('U003', 'Cynthia Tan Xin Ru', 'Malaysian', 'F', '2006-01-21', '01155034966', 'TP084369@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pOUI7Dv/WdOlaO/fca0MHOPafP3I.a55FhuVKme4X8SZzB7l/tyaC', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U003_avatar.png', 'committee', '2026-01-07 14:57:58', 'Active'),
-('U004', 'Lim Jin Ming', 'Malaysian', 'M', '2006-06-09', '0129692700', 'TP083424@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$hrkNchWg.uYwsRLpPlVTveGyMV0fFr1cSTgYC7MY0ec.3rxEIKdyS', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/U004_avatar.png', 'volunteer', '2026-01-02 03:07:07', 'Active');
+('U003', 'Cynthia Tan Xin Ru', 'Malaysian', 'F', '2006-01-21', '01155034966', 'TP084369@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pOUI7Dv/WdOlaO/fca0MHOPafP3I.a55FhuVKme4X8SZzB7l/tyaC', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U003_avatar.png', 'committee', '2026-01-18 18:46:05', 'Active'),
+('U004', 'Lim Jin Ming', 'Malaysian', 'M', '2006-06-09', '0129692700', 'TP083424@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$hrkNchWg.uYwsRLpPlVTveGyMV0fFr1cSTgYC7MY0ec.3rxEIKdyS', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/U004_avatar.png', 'volunteer', '2026-01-02 03:07:07', 'Active'),
+('U005', 'Marcus Tan', 'Australian', 'M', '2005-05-10', '0123456789', 'TP084129@mail.apu.edu.my', 'Diploma in ICT (Data Informatics)', '2026-01-16', '$2y$10$w9E9PpVuQkyp9XdELtAp5ORUs6j/8CTwaZEydt3dgbiweR2FpvgEK', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', NULL, 'Inactive');
 
 --
 -- Indexes for dumped tables
@@ -426,7 +452,8 @@ ALTER TABLE `milestone`
 -- Indexes for table `modules`
 --
 ALTER TABLE `modules`
-  ADD PRIMARY KEY (`module_id`);
+  ADD PRIMARY KEY (`module_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `module_history`
@@ -517,6 +544,12 @@ ALTER TABLE `merchandise_purchase_history`
 ALTER TABLE `milestone`
   ADD CONSTRAINT `milestone_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   ADD CONSTRAINT `milestone_ibfk_2` FOREIGN KEY (`badge_id`) REFERENCES `badges` (`badge_id`);
+
+--
+-- Constraints for table `modules`
+--
+ALTER TABLE `modules`
+  ADD CONSTRAINT `modules_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
 -- Constraints for table `module_history`
