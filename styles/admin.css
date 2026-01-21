@@ -1469,6 +1469,10 @@ select {
     border-radius: 5px;
 }
 
+.mobile-carousel {
+    display: none;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
@@ -1993,5 +1997,13 @@ select {
     .badge-image {
         width: 180px;
         height: 180px;
+    }
+
+    .mobile-carousel {
+        display: block;
+    }
+
+    .desktop-carousel {
+        display: none;
     }
 }

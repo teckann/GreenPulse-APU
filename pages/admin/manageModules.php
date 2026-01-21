@@ -160,12 +160,14 @@
             <div class="flex-container mobile-card" style="margin: 1em 0;">
                 <?php
                     foreach ($modules as $row) {
-                        $config = tableConfig($row["item_status"]);
+                        $config = tableConfig($row["module_status"]);
 
                         $bgColor = $config[0];
                         $icon = $config[1];
                         $title = $config[2];
                         $nextStatus = $config[3];
+
+                        $text = $nextStatus;
 
                         $author = getUserName($conn, $row["user_id"]);
                         $totalEnrolled = totalEnrolled($conn, $row["module_id"]);
