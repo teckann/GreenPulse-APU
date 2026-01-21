@@ -1,6 +1,25 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php");
+    include("../../backend/utility.php");
+
+    $sql = "SELECT * FROM items";
+
+    if (isset($_GET["btnSearch"])) {
+        $target = $_GET["target"];
+
+        $sql = "SELECT * FROM items WHERE item_name LIKE '%{$target}%'";
+    }
+
+    $currentCategory = "";
+    $currentStatus = "";
+
+    $result = mysqli_query($conn, $sql);
+    
+    $items = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        $items[] = $row;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -21,8 +40,161 @@
             <h1>Manage Items</h1>
             <h2 class="page-subTitle">Overview of all posted items</h2>
 
-            <div class="flex-container">
-                
+            <div class="action-bar" style="margin: 1em 0;">
+                <form action="" method="GET">
+                    <div class="table-search-box">
+                        <input type="text" name="target" placeholder="Search user here">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <button name="btnSearch" type="submit" value="Search" class="table-btnSearch" title="Search"></button>
+                    </div>
+                </form>
+
+                <form action="" method="GET" class="select-container" id="user-form">
+                    <div class="select-boxs">
+                        <div>
+                            <label for="itemCategory">Category: </label>
+                            <select name="txtCategory" id="itemCategory">
+                                <option value="" <?php if($currentCategory === "") echo "selected" ?>>All</option>
+                                <option value="merchandise" <?php if($currentCategory === "merchandise") echo "selected" ?>>Merchandise</option>
+                                <option value="tree" <?php if($currentCategory === "tree") echo "selected" ?>>Tree</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="itemStatus">Status: </label>
+                            <select name="txtStatus" id="itemStatus">
+                                <option value="" <?php if($currentStatus === "") echo "selected" ?>>All</option>
+                                <option value="Active" <?php if($currentStatus === "Active") echo "selected" ?>>Active</option>
+                                <option value="Inactive" <?php if($currentStatus === "Inactive") echo "selected" ?>>Inactive</option>
+                            </select>
+                        </div>
+
+                        <button class="print" onclick="window.print()">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="flex-container desktop-table" style="margin: 1em 0;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item ID</th>
+                            <th>Item Name</th>
+                            <th>Posted By</th>
+                            <th>Stock</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php
+                            foreach ($items as $row) {
+                                $config = tableConfig($row["item_status"]);
+
+                                $textColor = $config[0];
+                                $icon = $config[1];
+                                $title = $config[2];
+                                $nextStatus = $config[3];
+
+                                $author = getUserName($conn, $row["user_id"]);
+
+                                echo '<tr>
+                                        <td>' . $row['item_id'] . '</td>
+                                        <td>' . $row['item_name'] . '</td>
+                                        <td>' . $author. '</td>
+                                        <td>' . $row['item_stock'] . '</td>
+                                        <td>' . ucwords($row['category']) . '</td>
+                                        <td style="color:' . $textColor . '">' . $row['item_status'] . '</td>
+                                        
+                                        <td>
+                                            <div class="action-container">
+                                                <form action="" method="GET">
+                                                    <input type="hidden" name="target_userID" value="' . $row['item_id'] . '">
+                                                    <input type="hidden" name="next_status" value="' . $nextStatus . '">
+
+                                                    <button name="btnChangeStatus" type="submit" class="action-btn" title="'. $title .'">
+                                                        ' . $icon . '
+                                                    </button>
+                                                </form>
+
+                                                <a href="viewItem.php?id=' . $row['item_id'] . '" class="action-btn" title="View">
+                                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>';
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex-container mobile-card" style="margin: 1em 0;">
+                <?php
+                    foreach ($users as $row) {
+                        $config = tableConfig($row["account_status"]);
+
+                        $bgColor = $config[0];
+                        $icon = $config[1];
+                        $title = $config[2];
+                        $nextStatus = $config[3];
+
+                        $text = $nextStatus;
+
+                        echo '<div class="cards">
+                                <div class="card-header">
+                                    <div class="card-id">
+                                        <p>User ID</p>
+                                        <h3>' . $row['user_id'] . '</h3>
+                                    </div>
+
+                                    <div class="card-status" style="background-color:' . $bgColor . '">
+                                        <p>' . $row['account_status'] . '</p>
+                                    </div>
+                                </div>
+
+                                <div class="card-content">
+                                    <div class="card-data">
+                                        <p>Name</p>
+                                        <p>' . $row['name'] . '</p>
+                                    </div>
+
+                                    <div class="card-data">
+                                        <p>Education Email</p>
+                                        <p>' . $row['education_email'] . '</p>
+                                    </div>
+
+                                    <div class="card-data">
+                                        <p>Role</p>
+                                        <p>' . ucwords($row['role']) . '</p>
+                                    </div>
+                                </div>
+
+                                <div class="card-btns">
+                                    <form action="" method="GET">
+                                        <input type="hidden" name="target_userID" value="' . $row['user_id'] . '">
+                                        <input type="hidden" name="next_status" value="' . $nextStatus . '">
+
+                                        <button name="btnChangeStatus" type="submit" class="card-action-btn card-status-btn" title="'. $title .'">
+                                            ' . $icon . '
+                                            <p>' . $text . '</p>
+                                        </button>
+                                    </form>
+
+                                    <a href="viewUserProfile.php?id=' . $row['user_id'] . '" title="View">
+                                        <button class="card-action-btn card-view-btn">
+                                            View User Details
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>';
+                    }
+                ?>
             </div>
         </main>
         <?php include("footer.php"); ?>

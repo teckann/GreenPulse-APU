@@ -12,8 +12,11 @@
         $sql = "SELECT * FROM events WHERE event_title LIKE '%{$target}%'";
     }
 
-    if (isset($_GET["btnFilter"])) {
+    $currentStatus = "";
+
+    if (isset($_GET["txtStatus"])) {
         $eventStatus = $_GET["txtStatus"];
+        $currentStatus = $eventStatus;
 
         if (!empty($eventStatus)) {
             $sql = "SELECT * FROM events WHERE event_status = '$eventStatus'";
@@ -72,27 +75,20 @@
                     </div>
                 </form>
 
-                <form action="" method="GET" class="select-container">
+                <form action="" method="GET" class="select-container" id="event-form">
                     <div class="select-boxs">
                         <div>
-                            <label for="status">Status: </label>
-                            <select name="txtStatus" id="status">
-                                <option value="">All</option>
-                                <option value="Active">Active</option>
-                                <option value="Inactive">Inactive</option>
-                            </select>
+                            <label for="eventStatus">Status: </label>
+                            <select name="txtStatus" id="eventStatus">
+                                <option value="" <?php if ($currentStatus === "") echo "selected" ?>>All</option>
+                                <option value="Active" <?php if ($currentStatus === "Active") echo "selected" ?>>Active</option>
+                                <option value="Inactive" <?php if ($currentStatus === "Inactive") echo "selected" ?>>Inactive</option>
+                            </select>   
                         </div>
 
-                        <div class="action-btns">
-                            <button name="btnFilter" type="submit" value="Filter" class="filter-btn">
-                                <i class="fa-solid fa-filter"></i>
-                                <p>Filter</p>
-                            </button>
-
-                            <button class="print" onclick="window.print()">
-                                <i class="fa-solid fa-print"></i>
-                            </button>
-                        </div>
+                        <button class="print" onclick="window.print()">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
                     </div>
                 </form>
             </div>
