@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2026 at 02:20 AM
+-- Generation Time: Jan 22, 2026 at 02:27 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,7 +51,7 @@ INSERT INTO `announcement` (`announcement_id`, `user_id`, `announcement_details`
 CREATE TABLE `attendance` (
   `event_id` varchar(8) NOT NULL,
   `user_id` varchar(8) NOT NULL,
-  `event_register_date` date NOT NULL,
+  `event_register_datetime` datetime NOT NULL,
   `attendance_status` varchar(50) NOT NULL DEFAULT 'Absent'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -59,8 +59,8 @@ CREATE TABLE `attendance` (
 -- Dumping data for table `attendance`
 --
 
-INSERT INTO `attendance` (`event_id`, `user_id`, `event_register_date`, `attendance_status`) VALUES
-('E001', 'U004', '2025-12-24', 'Absent');
+INSERT INTO `attendance` (`event_id`, `user_id`, `event_register_datetime`, `attendance_status`) VALUES
+('E001', 'U004', '2025-12-24 09:23:18', 'Absent');
 
 -- --------------------------------------------------------
 

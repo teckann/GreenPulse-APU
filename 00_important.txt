@@ -16,6 +16,7 @@ Version: V6 - 22.01.2026
 # make green_points, total_earned default is NULL
 # remove available_spot (events table)
 # add user_id (Foriegn Key) in modules table
+# make event_register_date (Date) to event_register_datetime (DateTime)
 # make merchandise_purchase_date (Date) to merchandise_purchase_datetime (DateTime)
 # make tree_adoption_date (Date) to tree_adoption_datetime (DateTime)
 
