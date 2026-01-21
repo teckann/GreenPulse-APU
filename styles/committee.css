@@ -1242,6 +1242,7 @@ input[type="textarea"]::placeholder {
 .upItemCard {
     display: flex;
     flex-direction: row;
+    height: 8em;
 }
 
 .upItemCard div {
@@ -1275,6 +1276,7 @@ input[type="textarea"]::placeholder {
     font-size: 1.2em;
     color: #FFFFFF;
     border-radius: 10px;
+    margin-top: 0;
 }
 
 .middleItemCard {
@@ -1293,6 +1295,7 @@ input[type="textarea"]::placeholder {
     width: 100%;
     border-radius: 15px;
     height: 100%;
+    /* border: 5px solid gray; */
 }
 
 .itemInventory, .itemRelatedInfo {
@@ -1705,6 +1708,16 @@ input[type="textarea"]::placeholder {
     padding: 0.5em 0.8em;
 }
 
+.itemButton form .adoptedUpdateStatusBtn {
+    background-color: #3AA7A3;
+    font-size: 1em;
+}
+
+.itemButton form .markAsFertilizedBtn {
+    background-color: #628B48;
+    font-size: 1em;
+}
+
 @media(min-width: 800px) {
     #upperTreeCard form {
         flex-direction: row;
@@ -1762,7 +1775,7 @@ input[type="textarea"]::placeholder {
 
     .treeCard {
         width: 19em;
-        height: 27em;
+        height: 30em;
     }
 
     .itemUploadInfo {
@@ -1815,5 +1828,13 @@ input[type="textarea"]::placeholder {
 
     .createItem {
         padding: 0 0 0 15%;
+    }
+
+    #middleItemCardAdoptedTree {
+        height: 12em;
+    }  
+
+    #treeCardAdoptedTree {
+        height: 32em;
     }
 }

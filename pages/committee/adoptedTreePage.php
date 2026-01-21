@@ -5,34 +5,6 @@
 
     $sql = "SELECT * FROM tree_adoption_history T ";
 
-    // to see what type of tree user adoption have
-    // $allRecords = mysqli_query($conn, $sql);
-
-    // $allTrees = array();
-
-    // while ($eachRow = mysqli_fetch_assoc($allRecords)) {
-    //     $allTrees[] = $eachRow["item_id"];
-    // }
-
-    // to retrive the unique item is by using the array_unique, the first exist index become key, the unique value become value
-    // then just use array_values get value
-    // $uniqueItems = array_values(array_unique($allTrees));
-
-    // function treeNames($conn, array $uniqueItemList) {
-    //     $uniqueTreeName = array();
-    //     foreach ($uniqueItemList as $eachItem) {
-    //         $sqlSearch = "SELECT * FROM items WHERE item_id = '$eachItem' AND category = 'tree'";
-    //         $searchResult = mysqli_query($conn, $sqlSearch);
-
-    //         while ($row = mysqli_fetch_assoc($searchResult)) {
-    //             $uniqueTreeName[] = $row["item_name"];
-    //         }
-    //     }
-    //     return $uniqueTreeName;
-    // }
-
-    // $treeNameFilters = treeNames($conn, $uniqueItems);
-
     $search = '';
     $treeStatus = '';
     $treeCreatorStatus = '';
@@ -43,6 +15,9 @@
     }
 
     $treeTypeStatus ='';
+
+    // use status to detect the popup
+    $updateItemPopUp = false;
     
     
 
@@ -58,7 +33,7 @@
     }
 
     if (!empty($search)) {
-        $sql = "SELECT * FROM tree_adoption_history WHERE given_name LIKE '%{$search}%'";
+        $sql = "SELECT *, T.user_id AS adoptionUserId, I.user_id AS itemUserId FROM tree_adoption_history T INNER JOIN items I ON T.item_id = I.item_id  WHERE given_name LIKE '%{$search}%'";
     }
     else {
         if ($treeStatus === "" && $treeTypeStatus === "") {
@@ -90,9 +65,6 @@
     // while ($rows = mysqli_fetch_assoc($result)) {
     //     echo "<script>alert(' ". $rows['tree_adoption_id']. " ');</script>";
     // }
-
-    $count = mysqli_num_rows($result);
-    echo "<script>alert('$count')</script>";
 ?>
 
 <!DOCTYPE html>
@@ -185,28 +157,21 @@
                             $counter = 0;
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $counter += 1;
-                                // Planted
-                                    // Germinating
-                                    // Growing
-                                    // Mature
-                                    // Diseased
-                                    // Dead"
-                                // $trees[] = $row;
                                 $rowStatus = $row["tree_adoption_status"];
                                 $statusColor = "";
-                                if ($rowStatus === "Planted") {
+                                if ($rowStatus == "Planted") {
                                     $statusColor = "#A8E6A3";
                                 }
-                                    else if ($rowStatus = "Germinating") {
+                                    else if ($rowStatus == "Germinating") {
                                     $statusColor = "#4DB6AC";
                                 }
-                                else if ($rowStatus = "Growing") {
+                                else if ($rowStatus == "Growing") {
                                     $statusColor = "#43A047";
                                 }
-                                else if ($rowStatus = "Mature") {
+                                else if ($rowStatus == "Mature") {
                                     $statusColor = "#1B5E20";
                                 }
-                                else if ($rowStatus = "Diseased") {
+                                else if ($rowStatus == "Diseased") {
                                     $statusColor = "#FB8C00";
                                 }
                                 else {
@@ -244,7 +209,7 @@
                                 $adoptionYear = date("Y", $adoptionTimeStamp);
                                 $currentYear = date("Y", $todayTimeStamp);
 
-                                $age = $adoptionYear - $currentYear;
+                                $age = $currentYear - $adoptionYear;
                                 $treeAgeDisplayText = "";
                                 if ($age > 1) {
                                     $treeAgeDisplay = $age . " Years old";
@@ -259,7 +224,7 @@
 
 
                                 echo "
-                                    <div class='treeCard'>
+                                    <div class='treeCard' id='treeCardAdoptedTree'>
                                         <div class='upItemCard'>
                                             <div>
                                                 <div>
@@ -273,7 +238,7 @@
                                                 <p class='itemStatus' style='background-color: ". $statusColor ."'>". $row["tree_adoption_status"] ."</p>
                                             </div>
                                         </div>
-                                        <div class='middleItemCard'>
+                                        <div class='middleItemCard' id='middleItemCardAdoptedTree'>
                                             <div class='itemImage'>
                                                 <img src='../../". $row['item_image'] ."' alt='tree image'>
                                             </div>
@@ -297,22 +262,16 @@
                                                 <b>Adopted by:</b>
                                                 <p>" . $userName . "</p>
                                             </div>
-                                            <div class='adoptedDate'>
-                                                <p><i>Adopted at: " . $adoptDate . "</i></p>
+                                            <div class='itemUploadInfo'>
+                                                <p><i>Adopted At " . $adoptDate . "</i></p>
                                             </div>
                                         </div>
                                         <div class='itemButton'>
                                             <form action='#' method='GET'>
                                                 <input type='hidden' name='targetItemID' value='" . $row['item_id'] . "'>
-                                                <input type='hidden' name='targetUserID' value='" . $row['user_id'] . "'>
-                                                <input type='hidden' name='targetItemName' value='" . $row['item_name'] . "'>
-                                                <input type='hidden' name='targetItemImage' value='" . $row['item_image'] . "'>
-                                                <input type='hidden' name='targetItemDescription' value='" . $row['item_description'] . "'>
-                                                <input type='hidden' name='targetRedeemPoints' value='" . $row['item_redeem_points'] . "'>
-                                                <input type='hidden' name='targetStock' value='" . $row['item_stock'] . "'>
-                                                <button type='submit' name='deleteBtn' class='itemDeleteBtn'>Delete</button>
-                                                <button type='submit' name='editBtn' class='itemEditBtn'>Edit</button>
-                                                
+                                                <input type='hidden' name='targetTreeAdoptionStatus' value='" . $row['tree_adoption_status'] . "'>
+                                                <button type='submit' name='btnUpdateStatus' class='adoptedUpdateStatusBtn'>Update Status</button>
+                                                <button type='submit' name='btnMarkAsFertilized' class='markAsFertilizedBtn'>Mark as Fertilized</button>
                                             </form>
                                         </div>
                                     </div>";
@@ -322,6 +281,124 @@
                 </div>
             </div>
         </div>
+
+        <div id="itemOverlay"></div>
+
+        <?php
+            if (isset($_GET["btnUpdateStatus"])) {
+                $treeStatus = $_GET["targetTreeAdoptionStatus"];
+                $adoptedTreeId = $_GET["targetItemID"];
+                ?>
+                    <script>
+                        // const 
+                    </script>
+                <?php
+            }
+        ?>
+
+        <div id="itemPopUp">
+            <div class="popUpHeader">
+                <div><button id='btnExitPopUp' class='btnExitPopUps'><i class="fa-solid fa-arrow-left"></i></button></div>
+                <div id="popUpHeaderText"><b id="editTreeText"></b></div>
+
+                
+            </div>
+            <?php 
+
+                
+
+            ?>
+            <!-- // edit item information -->
+            <form action='#' method='POST' class='popUpForm'>
+                <div class='popUpShow'>
+                    <div class='itemPopUpInput'>
+                        <label for='itemNameEdit'>Tree Name:</label>
+                        <select name="adoptedUpdateStatusSelector" id="adoptedUpdateStatusSelector">
+                            <option value="">All Status</option>
+                            <option value="Planted">Planted</option>
+                            <option value="Germinating">Germinating</option>
+                            <option value="Growing">Growing</option>
+                            <option value="Mature">Mature</option>
+                            <option value="Diseased">Diseased</option>
+                            <option value="Dead">Dead</option>
+                        </select>
+                    </div>
+                    <?php   if (isset($_GET["btnUpdateStatus"])) { ?>
+                    <script>
+                        const statusSelector = document.querySelector("#adoptedUpdateStatusSelector");
+                        statusSelector.value = "<?php echo $treeStatus; ?>";
+                    </script>
+                    <?php  } ?>
+                    <input type='hidden' name='itemIdEdit' value='<?php echo "$adoptedTreeID"?>'>
+                    <div class='editConfirmButton'>
+                        <button name='btnConfirmEdit' type='submit' value='Confirm' id='btnConfirmEdit'><i class="fa-solid fa-circle-check" style="color: #28a745;"></i>  Confirm</button>
+                    </div>
+                </div>
+            </form>
+            <div class='navToEditPhoto'>
+                <button name="btnNavToEditPhoto" id="btnNavToEditPhoto">Change Tree Photo?</button>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const treeStatus = document.getElementById("filterAvailableTreeStatus");
+                const popUpOverlay = document.querySelector("#itemOverlay");
+                const itemPopUp1 = document.querySelector("#itemPopUp");
+
+                // check the session has record or not, if don't have record, will become null
+                const savedStatusOfTree = sessionStorage.getItem("selectedTreeStatus");
+                // if there have record, will asign it into the the selectbox value
+                if (savedStatusOfTree !== null) { 
+                    treeStatus.value = savedStatusOfTree;
+                }
+
+                treeStatus.addEventListener('change', function() {
+                    sessionStorage.setItem('selectedTreeStatus', this.value);
+                });
+
+                const treeType = document.getElementById("filterAvailableTreeType");
+
+                const savedTreeType = sessionStorage.getItem("selectedTreeType");
+
+                if (savedTreeType != null) {
+                    treeType.value = savedTreeType;
+                }
+
+                treeType.addEventListener("change", function() {
+                    sessionStorage.setItem('selectedTreeType', this.value);
+                })
+
+                const treeCards = document.querySelectorAll(".treeCard");
+
+                treeCards.forEach((treeCard) => {
+                const itemStatus = treeCard.querySelector('.itemStatus');
+                const statusText = itemStatus.innerText;
+                const updateStatusBtn = treeCard.querySelector(".adoptedUpdateStatusBtn");
+                const markAsFertilizeBtn = treeCard.querySelector(".markAsFertilizedBtn");
+
+                if (statusText === "Dead") {
+                    updateStatusBtn.classList.add("disableButton");
+                    markAsFertilizeBtn.classList.add("disableButton");
+                }
+
+                updateStatusBtn.addEventListener("click", () => {
+                    popUpOverlay.style.display = "block";
+                    itemPopUp1.style.display = "flex";
+                })
+            })
+
+            popUpOverlay.addEventListener("click", () => {
+                reload();
+            })
+
+            const reload = () => {
+                sessionStorage.setItem('selectedTreeStatus', '');
+                sessionStorage.setItem('selectedTreeType', '');
+                window.location.href = 'adoptedTreePage.php';
+            }
+        });
+        </script>
         <script src="../../scripts/committee.js"></script>
 </body>
 </html>
