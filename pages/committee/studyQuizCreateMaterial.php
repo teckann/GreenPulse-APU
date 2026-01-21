@@ -62,38 +62,31 @@
     <section class="event-controls-event-main">
         <div class = "white-color-box">
 
-            <div class = "module-span">
-                <span>Material Name</span>
-            </div>
-            
-            <div class = "module-name-box">
-                
+           <div class = "study-quiz-module-name-box">
+                <div class = "study-quiz-title">Module Name</div>
+                <input type="text" placeholder = "Module Name" class="event-box">
             </div>
 
-
-            <div class = "module-span">
-                <span>Description</span>
-            </div>
-            
-            <div class = "module-description-box">
-                
+          <div class = "study-quiz-description-box">
+                <div class = "study-quiz-title">Description</div>
+                <textarea placeholder="Event Description" class="event-big-box" rows="5"></textarea>
             </div>
 
+            <div class = "study-quiz-module-upload">
+                <div class = "study-quiz-title">Study Video</div>
+                <input type="file" class="event-big-box">
+            </div>
 
+            <div class = "study-quiz-module-upload">
+                <div class = "study-quiz-title">Study Material</div>
+                <input type="file" class="event-big-box">
+            </div>
 
+          
 
-
-
-
-
-
-
-
-
-
-
-
-
+            <button class="btnCreateEvent" onclick = "window.location.href='studyQuizCreateQuiz.php'">
+                        Create Quiz
+                    </button>
 
 
 
