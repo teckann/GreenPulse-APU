@@ -33,7 +33,7 @@
             <a href="treeAdoption.php">Tree Adoption</a>
             <a href="merchandises.php">Merchandises</a>
             <a href="eventMain.php">Events</a>
-            <a href="study&Quiz.php">Study & Quiz</a>
+            <a href="studyQuizMain.php">Study & Quiz</a>
         </div>
 
         <div class = "profile">
@@ -139,7 +139,7 @@
                 <span class="menu-text">Events</span>
             </a>
 
-            <a href="study&Quiz.php" class="menu-item">
+            <a href="studyQuizMain.php" class="menu-item">
                 <div class="menu-icon"><i class="fa-solid fa-book-open"></i></div>
                 <span class="menu-text">Study & Quiz</span>
             </a>

@@ -852,6 +852,7 @@ input[type="textarea"]::placeholder {
 
 .date-time {
     display: flex;
+    justify-content: end;
     flex-direction: row;
     gap: 1rem;
 }
@@ -884,14 +885,12 @@ input[type="textarea"]::placeholder {
 /* ======================================================================================================================================= */
 /*  EVENT MORE PAGE */
 /* ======================================================================================================================================== */
-
 .details-upper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0;
     padding-bottom: 0;
-
 }
 
 .event-name {
@@ -1212,6 +1211,115 @@ input[type="textarea"]::placeholder {
     width: 100%;
     border-radius: 4px;
 }
+
+/* ======================================================================================================================================== */
+/* STUDY & QUIZ - MODULE PAGE*/
+/* ======================================================================================================================================== */
+.module-name {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+}
+
+.module-id {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: grey;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+}
+
+.study-quiz-description {
+    background-color: #FAF9F6;
+    color: #969696;
+    padding: 15px 15px;
+    width: 100%;
+    height: 100px;
+    border-radius: 7px;
+    box-sizing: border-box; 
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+}
+
+.study-quiz-description-box textarea{
+   border: none;
+}
+
+.study-quiz-big-box {
+    background-color: #FAF9F6;
+    color: #969696;
+    padding: 15px 15px;
+    width: 100%;
+    height: 100px;
+    border-radius: 7px;
+    box-sizing: border-box; 
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+}
+
+.study-quiz-big-box textarea {
+    border: none;
+}
+
+.study-quiz-title, .study-quiz-row-title{
+    font-size: 15px;
+    color: black;
+    margin-bottom: 8px;
+    font-family: "Roboto", sans-serif;
+}
+
+.study-quiz-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAF9F6;
+    width: 97%;
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin: 10px auto;
+}
+
+.study-quiz-row .study-quiz-button {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.study-quiz-row .btn-edit,
+.study-quiz-row .btn-delete {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px 2px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background-color: white;
+}
+
+.study-quiz-row .btn-edit:hover {
+    background-color: white;
+    border-color: #90caf9;
+}
+
+.study-quiz-row .btn-edit:hover svg {
+    fill: #1976d2;
+}
+
+.study-quiz-row .btn-delete:hover {
+    background-color: #ffebee;
+    border-color: #ef9a9a;
+}
+
+.study-quiz-row .btn-delete:hover svg {
+    fill: #d32f2f;
+}
+
 /* ======================================================================================================================================== */
 /* @media*/
 /* ======================================================================================================================================== */
