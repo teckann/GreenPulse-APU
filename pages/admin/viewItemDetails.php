@@ -65,7 +65,7 @@
     else {
         echo "<script>
                 alert('Invalid Access');
-                window.location.href = 'manageUsers.php';
+                window.location.href = 'manageItems.php';
               </script>";
     }
 ?>

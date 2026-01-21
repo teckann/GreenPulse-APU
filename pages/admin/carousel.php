@@ -16,12 +16,12 @@
 
     <div class="mySlides fade">
         <div class="numbertext">4 / 5</div>
-        <img src="../../src/elements/slide4.jpg" style="width:100%">
+        <img src="../../src/elements/slide4_desktop.png" style="width:100%">
     </div>
 
     <div class="mySlides fade">
         <div class="numbertext">5 / 5</div>
-        <img src="../../src/elements/slide5.jpg" style="width:100%">
+        <img src="../../src/elements/slide5_desktop.png" style="width:100%">
     </div>
 </div>
 

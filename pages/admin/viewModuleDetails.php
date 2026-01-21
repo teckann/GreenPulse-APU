@@ -1,6 +1,7 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php");
+    include("../../backend/utility.php");
 
     if (isset($_GET["btnBack"])) {
         header("Location: manageModules.php");
@@ -11,7 +12,10 @@
 
     }
     else {
-        
+        echo "<script>
+                alert('Invalid Access');
+                window.location.href = 'manageModules.php';
+              </script>";
     }
 ?>
 
