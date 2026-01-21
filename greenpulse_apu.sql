@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2026 at 12:01 AM
+-- Generation Time: Jan 22, 2026 at 02:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -180,7 +180,7 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`item_id`, `user_id`, `item_name`, `item_image`, `item_description`, `item_redeem_points`, `item_stock`, `category`, `posted_date`, `item_status`) VALUES
-('I001', 'U003', 'GreenPulse T-Shirt', 'src/itemImages/t-shirt.png', 'A GreenPulse branded T-shirt supporting green initiatives and environmental awareness. Available in sizes M, L, XL, and XXL for a comfortable fit.', 6000, 50, 'merchandise', '2026-01-01', 'Active'),
+('I001', 'U003', 'GreenPulse T-Shirt', 'src/itemImages/t-shirt.png', 'A GreenPulse branded T-shirt supporting green initiatives and environmental awareness. Available in sizes M, L, XL, and XXL for a comfortable fit.', 6000, 49, 'merchandise', '2026-01-01', 'Active'),
 ('I002', 'U002', 'GreenPulse Canvas Bag', 'src/itemImages/canvasBag.png', 'Reusable GreenPulse canvas bag created to encourage eco-friendly practices and reduce single-use plastic.', 4500, 60, 'merchandise', '2026-01-21', 'Active'),
 ('I003', 'U002', 'GreenPulse Keychain', 'src/itemImages/keychain.png', 'Official GreenPulse merchandise designed to promote sustainability and environmental awareness in everyday use.', 600, 120, 'merchandise', '2026-01-21', 'Active'),
 ('I004', 'U002', 'GreenPulse Card Holder', 'src/itemImages/cardHolder.png', 'Practical GreenPulse card holder designed for daily convenience while representing the GreenPulse platform.', 1000, 180, 'merchandise', '2026-01-21', 'Inactive'),
@@ -222,7 +222,7 @@ CREATE TABLE `merchandise_purchase_history` (
   `merchandise_purchase_id` varchar(8) NOT NULL,
   `item_id` varchar(8) NOT NULL,
   `user_id` varchar(8) NOT NULL,
-  `merchandise_purchase_date` date NOT NULL,
+  `merchandise_purchase_datetime` datetime NOT NULL,
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -230,8 +230,8 @@ CREATE TABLE `merchandise_purchase_history` (
 -- Dumping data for table `merchandise_purchase_history`
 --
 
-INSERT INTO `merchandise_purchase_history` (`merchandise_purchase_id`, `item_id`, `user_id`, `merchandise_purchase_date`, `amount`) VALUES
-('MP001', 'I001', 'U003', '2026-01-01', 1);
+INSERT INTO `merchandise_purchase_history` (`merchandise_purchase_id`, `item_id`, `user_id`, `merchandise_purchase_datetime`, `amount`) VALUES
+('MP001', 'I001', 'U004', '2026-01-01 11:23:47', 1);
 
 -- --------------------------------------------------------
 
@@ -328,7 +328,7 @@ CREATE TABLE `tree_adoption_history` (
   `item_id` varchar(8) NOT NULL,
   `user_id` varchar(8) NOT NULL,
   `given_name` varchar(100) NOT NULL,
-  `tree_adoption_date` date NOT NULL,
+  `tree_adoption_datetime` datetime NOT NULL,
   `fertilization_datetime` datetime DEFAULT NULL,
   `tree_adoption_status` varchar(50) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
