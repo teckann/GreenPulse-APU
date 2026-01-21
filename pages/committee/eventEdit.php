@@ -119,7 +119,7 @@
                         <input type="file" class="event-big-box">
                     </div>
                     <button class="btnCreateEvent">
-                        Create Event
+                        Edit Event
                     </button>
 
                     <div class = "short-tagline">

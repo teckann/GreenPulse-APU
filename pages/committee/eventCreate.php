@@ -55,8 +55,6 @@
             <div class="heroSection">
                 <h1>CREATE NEW EVENT</h1> <p>FILL IN THE DETAILS TO LAUNCH A GREEN INITIATIVE.</p>
             </div>
-            
-            
         </div>
 
         <!-- STARTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT -->
