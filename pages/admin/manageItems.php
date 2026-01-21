@@ -144,7 +144,12 @@
                                 echo '<tr>
                                         <td>' . $row['item_id'] . '</td>
                                         <td>' . $row['item_name'] . '</td>
-                                        <td>' . $author. '</td>
+                                        <td>
+                                            <a href="viewUserProfile.php?id=' . $row['user_id'] . '&event=Event" class="redirect-link" title="View User Profile">
+                                                ' . $author . '
+                                                <i class="fa-solid fa-angle-double-right table-linkIcon"></i>
+                                            </a>
+                                        </td>
                                         <td>' . $row['item_stock'] . '</td>
                                         <td>' . ucwords($row['category']) . '</td>
                                         <td style="color:' . $textColor . '">' . $row['item_status'] . '</td>
@@ -205,7 +210,12 @@
 
                                     <div class="card-data">
                                         <p>Posted By</p>
-                                        <p>' . $author . '</p>
+                                        <p>
+                                            <a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">
+                                                ' . $author . '
+                                                <i class="fa-solid fa-angle-double-right table-linkIcon"></i>
+                                            </a>
+                                        </p>
                                     </div>
 
                                     <div class="card-data">
