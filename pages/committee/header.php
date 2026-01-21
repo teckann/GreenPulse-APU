@@ -1,11 +1,10 @@
 <?php
-    // $sql = "SELECT * FROM users WHERE user_id = '$userID'";
+    $sql_avatar = "SELECT * FROM users WHERE user_id = '$userID'";
 
-    // $result = mysqli_query($conn, $sql);
+    $result_avatar = mysqli_query($conn, $sql_avatar);
 
-    // while ($row = mysqli_fetch_assoc($result)) {
-    //     $profilePhoto = $row["avatar"];
-    // }
+    $row = mysqli_fetch_assoc($result_avatar);
+    $profilePhoto = $row["avatar"];
 ?> 
 
 <nav class = "navigation-bar">
@@ -29,7 +28,7 @@
         </div>
         
         <div class = "profile">
-            <img src="../../src/committee/profilePicture.jpg" alt="Profile Picture">
+            <img src="../../<?php echo $profilePhoto ?>" alt="Profile Picture">
         </div>
     </nav>
 

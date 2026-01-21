@@ -40,11 +40,11 @@
             <i class="fa-solid fa-calendar-check"></i> Manage Events
         </a>
 
-        <a id="manageItems" href="#">
+        <a id="manageItems" href="manageItems.php">
             <i class="fa-solid fa-box-open"></i> Manage Items
         </a>
 
-        <a id="manageModules" href="#">
+        <a id="manageModules" href="manageModules.php">
             <i class="fa-solid fa-layer-group"></i> Manage Modules
         </a>
 

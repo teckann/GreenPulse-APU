@@ -119,13 +119,76 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // select box
 document.addEventListener("DOMContentLoaded", () => {
+    const userFilter1 = document.querySelector("#userRole");
+    const userFilter2 = document.querySelector("#userStatus");
+
+    const eventFilter = document.querySelector("#eventStatus");
+
+    const itemFilter1 = document.querySelector("#itemCategory");
+    const itemFilter2 = document.querySelector("#itemStatus");
+
+    const moduleFilter = document.querySelector("#moduleStatus");
+
     const submissionFilter = document.querySelector("#submission-status");
+
+    const logFilter1 = document.querySelector("#logSort");
+    const logFilter2 = document.querySelector("#logStatus");
+
+    if (userFilter1 || userFilter2) {
+        const form = document.getElementById("user-form");
+
+        userFilter1.addEventListener("change", () => {
+            form.submit();
+        });
+
+        userFilter2.addEventListener("change", () => {
+            form.submit();
+        });
+    }
+
+    if (eventFilter) {
+        eventFilter.addEventListener("change", () => {
+            const form = document.getElementById("event-form");
+            form.submit();
+        });
+    }
+
+    if (itemFilter1 || itemFilter2) {
+        const form = document.getElementById("item-form");
+
+        itemFilter1.addEventListener("change", () => {
+            form.submit();
+        });
+
+        itemFilter2.addEventListener("change", () => {
+            form.submit();
+        });
+    }
+
+    if (moduleFilter) {
+        moduleFilter.addEventListener("change", () => {
+            const form = document.getElementById("module-form");
+            form.submit();
+        });
+    }
 
     if (submissionFilter) {
         submissionFilter.addEventListener("change", () => {
             const form = document.getElementById("submission-form");
             form.submit();
-        })
+        });
+    }
+
+    if (logFilter1 || logFilter2) {
+        const form = document.getElementById("log-form");
+
+        logFilter1.addEventListener("change", () => {
+            form.submit();
+        });
+
+        logFilter2.addEventListener("change", () => {
+            form.submit();
+        });
     }
 });
 

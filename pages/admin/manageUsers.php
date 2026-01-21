@@ -35,9 +35,15 @@
         }
     }
 
-    if (isset($_GET["btnFilter"])) {
+    $currentRole = "";
+    $currentStatus = "";
+
+    if (isset($_GET["txtRole"]) || isset($_GET["txtStatus"])) {
         $role = $_GET["txtRole"];
         $accountStatus = $_GET["txtStatus"];
+
+        $currentRole = $role;
+        $currentStatus = $accountStatus;
 
         if (!empty($role) && !empty($accountStatus)) {
             $sql = "SELECT * FROM users 
@@ -133,36 +139,31 @@
                     </div>
                 </form>
 
-                <form action="" method="GET" class="select-container">
+                <form action="" method="GET" class="select-container" id="user-form">
                     <div class="select-boxs">
                         <div>
-                            <label for="role">Role: </label>
-                            <select name="txtRole" id="role">
-                                <option value="">All</option>
-                                <option value="admin">Admin</option>
-                                <option value="committee">Committee</option>
-                                <option value="volunteer">Volunteer</option>
+                            <label for="userRole">Role: </label>
+                            <select name="txtRole" id="userRole">
+                                <option value="" <?php if($currentRole === "") echo "selected" ?>>All</option>
+                                <option value="admin" <?php if($currentRole === "admin") echo "selected" ?>>Admin</option>
+                                <option value="committee" <?php if($currentRole === "committee") echo "selected" ?>>Committee</option>
+                                <option value="volunteer" <?php if($currentRole === "volunteer") echo "selected" ?>>Volunteer</option>
                             </select>
                         </div>
 
                         <div>
-                            <label for="status">Status: </label>
-                            <select name="txtStatus" id="status">
-                                <option value="">All</option>
-                                <option value="Active">Active</option>
-                                <option value="Inactive">Inactive</option>
+                            <label for="userStatus">Status: </label>
+                            <select name="txtStatus" id="userStatus">
+                                <option value="" <?php if($currentStatus === "") echo "selected" ?>>All</option>
+                                <option value="Active" <?php if($currentStatus === "Active") echo "selected" ?>>Active</option>
+                                <option value="Inactive" <?php if($currentStatus === "Inactive") echo "selected" ?>>Inactive</option>
                             </select>
                         </div>
-
-                        <button class="print" onclick="window.print()">
-                            <i class="fa-solid fa-print"></i>
-                        </button>
                     </div>
 
                     <div class="action-btns">
-                        <button name="btnFilter" type="submit" value="Filter" class="filter-btn">
-                            <i class="fa-solid fa-filter"></i>
-                            <p>Filter</p>
+                        <button class="print" onclick="window.print()">
+                            <i class="fa-solid fa-print"></i>
                         </button>
 
                         <button type="button" class="addNewUser-btn">

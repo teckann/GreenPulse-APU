@@ -25,6 +25,22 @@
         $sql = "SELECT * FROM badges WHERE badge_id = '$id'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $badgeName = $_POST["badgeName"];
+            $requiredPoints = $_POST["points"];
+
+            $sql_updateBadgeInfo = "UPDATE badges SET
+                                    badge_name = '$badgeName', points_required = '$requiredPoints'
+                                    WHERE badge_id = '$id'";
+
+            if (mysqli_query($conn, $sql_updateBadgeInfo)) {
+                echo "<script>
+                        alert('--- Successfully Updated Badge Infomation ---\\nThe badge criteria have been successfully updated.');
+                        window.location.href = 'updateBadge.php';
+                      </script>";
+            }
+        }
     }
     else {
         echo "<script>
@@ -106,9 +122,7 @@
                         </form>
                     </div>
 
-                    <form action="" method="POST" class="popup-form" style="margin-top: 0.5em;">
-                        <!-- used to know what form submited  -->
-                        <input type="hidden" name="formType" value="addNewUser">
+                    <form action="" method="POST" class="popup-form update-badge-info-form" style="margin-top: 0.5em;">
                         <div class="popup-input">
                             <label for="badgeID">Badge ID</label>
                             <input type="text" id="badgeID" value="<?php echo $row["badge_id"] ?>" disabled>
@@ -117,13 +131,13 @@
                         <div class="popup-input">
                             <label for="badgeName">Badge Name *</label>
                             <input type="text" name="badgeName" id="badgeName" value="<?php echo $row["badge_name"] ?>">
-                            <div class="popup-error-text" id="error-email">Enter a Valid Badge Name</div>
+                            <div class="popup-error-text" id="error-badge-name">Enter a Valid Badge Name</div>
                         </div>
 
                         <div class="popup-input">
                             <label for="points">Required Points *</label>
                             <input type="number" name="points" id="points" value="<?php echo $row["points_required"] ?>">
-                            <div class="popup-error-text" id="error-email">Enter a Valid Number</div>
+                            <div class="popup-error-text" id="error-point-number">Enter a Valid Number</div>
                         </div>
 
                         <div class="badge-submit-container">

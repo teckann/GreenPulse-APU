@@ -3,41 +3,35 @@
     include("../../backend/sessionData.php"); 
     include("../../backend/utility.php");
 
-    $sql = "SELECT * FROM tree_adoption_history";
+    $sql = "SELECT * FROM tree_adoption_history T ";
 
     // to see what type of tree user adoption have
-    $allRecords = mysqli_query($conn, $sql);
+    // $allRecords = mysqli_query($conn, $sql);
 
-    $allTrees = array();
+    // $allTrees = array();
 
-    while ($eachRow = mysqli_fetch_assoc($allRecords)) {
-        $allTrees[] = $eachRow["item_id"];
-    }
+    // while ($eachRow = mysqli_fetch_assoc($allRecords)) {
+    //     $allTrees[] = $eachRow["item_id"];
+    // }
 
     // to retrive the unique item is by using the array_unique, the first exist index become key, the unique value become value
     // then just use array_values get value
-    $uniqueItems = array_values(array_unique($allTrees));
+    // $uniqueItems = array_values(array_unique($allTrees));
 
-    function treeNames($conn, array $uniqueItemList) {
-        $uniqueTreeName = array();
-        foreach ($uniqueItemList as $eachItem) {
-            $sqlSearch = "SELECT * FROM items WHERE item_id = '$eachItem' AND category = 'tree'";
-            $searchResult = mysqli_query($conn, $sqlSearch);
+    // function treeNames($conn, array $uniqueItemList) {
+    //     $uniqueTreeName = array();
+    //     foreach ($uniqueItemList as $eachItem) {
+    //         $sqlSearch = "SELECT * FROM items WHERE item_id = '$eachItem' AND category = 'tree'";
+    //         $searchResult = mysqli_query($conn, $sqlSearch);
 
-            while ($row = mysqli_fetch_assoc($searchResult)) {
-                $uniqueTreeName[] = $row["item_name"];
-            }
-        }
-        return $uniqueTreeName;
-    }
+    //         while ($row = mysqli_fetch_assoc($searchResult)) {
+    //             $uniqueTreeName[] = $row["item_name"];
+    //         }
+    //     }
+    //     return $uniqueTreeName;
+    // }
 
-    $treeNameFilters = treeNames($conn, $uniqueItems);
-
-    
-
-    foreach ($haha as $eachUniqueTreeType) {
-        echo "<script>alert('$eachUniqueTreeType');</script>";
-    }
+    // $treeNameFilters = treeNames($conn, $uniqueItems);
 
     $search = '';
     $treeStatus = '';
@@ -48,11 +42,18 @@
         $search = $_GET["searchTree"];
     }
 
+    $treeTypeStatus ='';
+    
+    
+
     //assign the filter value first
     if (!empty($_GET["filterAvailableTreeStatus"])) {
         $treeStatus = $_GET["filterAvailableTreeStatus"];
     }
     if (!empty($_GET["filterAvailableTreeType"])) {
+        ?>
+            <!-- <script>alert('has data')</script> -->
+        <?php
         $treeTypeStatus = $_GET["filterAvailableTreeType"];
     }
 
@@ -61,22 +62,37 @@
     }
     else {
         if ($treeStatus === "" && $treeTypeStatus === "") {
-            $sql = "SELECT * FROM tree_adoption_history";
+            $sql = "SELECT *, T.user_id AS adoptionUserId, I.user_id AS itemUserId FROM tree_adoption_history T INNER JOIN items I ON T.item_id = I.item_id WHERE category = 'tree'";
+             ?>
+                <!-- <script>alert('hihi');</script> -->
+            <?php
         }
         else if ($treeStatus === "") {
-            $sql = "SELECT * FROM tree_adoption_history WHERE ";
+
+            ?>
+                <!-- <script>alert('hihi');</script> -->
+            <?php
+            $sql = "SELECT *, T.user_id AS adoptionUserId, I.user_id AS itemUserId FROM tree_adoption_history T INNER JOIN items I ON T.item_id = I.item_id WHERE I.item_name = '$treeTypeStatus' AND category = 'tree'";
         }
         else if ($treeTypeStatus === "") {
-            $sql = "SELECT * FROM tree_adoption_history WHERE item_status = '$treeStatus' AND category = 'tree'";
+            $sql = "SELECT *, T.user_id AS adoptionUserId, I.user_id AS itemUserId FROM tree_adoption_history T INNER JOIN items I ON T.item_id = I.item_id WHERE T.tree_adoption_status = '$treeStatus' AND category = 'tree'";
         }
         else {
-            $sql = "SELECT * FROM tree_adoption_history WHERE item_status = '$treeStatus' AND user_id = '$userID' AND category = 'tree'";
+            $sql = "SELECT *, T.user_id AS adoptionUserId, I.user_id AS itemUserId FROM tree_adoption_history T INNER JOIN items I ON T.item_id = I.item_id WHERE I.item_name = '$treeTypeStatus' AND T.tree_adoption_status = '$treeStatus' AND category = 'tree'";
         }
     }
 
 
+
     // $sql = "SELECT * from items where item_name like '%{$search}%'";
     $result = mysqli_query($conn, $sql);
+
+    // while ($rows = mysqli_fetch_assoc($result)) {
+    //     echo "<script>alert(' ". $rows['tree_adoption_id']. " ');</script>";
+    // }
+
+    $count = mysqli_num_rows($result);
+    echo "<script>alert('$count')</script>";
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +114,7 @@
                     <h1>Tree Management <i class="fa-solid fa-tree" style="color: #228B22;"></i></h1>
                     <p>Add new, manage available tree adoption for volunteers to redeem</p>
                 </div>
-                <button id="btnAddItem" name="btnAddItem"><span class="showDesktop">Add Tree</span><span class="showMobile"><i class="fa-solid fa-plus" style="color: white;"></i></span></button>
+                <button id="btnMarkAllFertilized" name="btnMarkAllFertilizedItem"><span class="showDesktop">Mark All As Fertilized</span><span class="showMobile">Fertilize<br>All  <i class="fa-solid fa-flask"></i></span></button>
             </div>
             <div id="showTreeClass">
                 <button id="btnAvailableTree" class="treeClass">
@@ -128,11 +144,11 @@
                                 <select name="filterAvailableTreeStatus" id="filterAvailableTreeStatus" class="filterTree">
                                     <option value="">All Status</option>
                                     <option value="Planted">Planted</option>
-                                    <option value="Inactive">Germinating</option>
-                                    <option value="Inactive">Growing</option>
-                                    <option value="Inactive">Mature</option>
-                                    <option value="Inactive">Diseased</option>
-                                    <option value="Inactive">Dead</option>
+                                    <option value="Germinating">Germinating</option>
+                                    <option value="Growing">Growing</option>
+                                    <option value="Mature">Mature</option>
+                                    <option value="Diseased">Diseased</option>
+                                    <option value="Dead">Dead</option>
                                 </select>
                             </div>
 
@@ -141,9 +157,18 @@
                                 <select name="filterAvailableTreeType" id="filterAvailableTreeType" class="filterTree">
                                     <option value="">All Types</option>
                                     <?php
-                                        foreach ($treeNameFilters as $treeName) {
+                                        $uniqueTreeSql = "SELECT DISTINCT item_name FROM items I INNER JOIN tree_adoption_history T ON I.item_id = T.item_id ORDER BY item_name ASC";
+                                        $resultOfTreeName = mysqli_query($conn, $uniqueTreeSql);
+
+                                        $treeArray = array();
+
+                                        while ($row = mysqli_fetch_assoc($resultOfTreeName)) {
+                                            $treeArray[] = $row["item_name"];
+                                        }
+
+                                        foreach ($treeArray as $treeName) {
                                             echo "
-                                                <option value='" . $treeName . "'>" .$treeName . "</option>
+                                            <option value='" . $treeName . "'>" .$treeName . "</option>
                                             ";
                                         }
                                     ?>
@@ -156,61 +181,124 @@
                 <div class="showTreeCardsSpace">
                     <div class="showTreeCards">
                         <?php 
-                            $trees = array();
+                            // $trees = array();
+                            $counter = 0;
                             while ($row = mysqli_fetch_assoc($result)) {
-                                $trees[] = $row;
+                                $counter += 1;
+                                // Planted
+                                    // Germinating
+                                    // Growing
+                                    // Mature
+                                    // Diseased
+                                    // Dead"
+                                // $trees[] = $row;
+                                $rowStatus = $row["tree_adoption_status"];
                                 $statusColor = "";
-                                if ($row["item_status"] === "Active") {
-                                    $statusColor = "green";
+                                if ($rowStatus === "Planted") {
+                                    $statusColor = "#A8E6A3";
+                                }
+                                    else if ($rowStatus = "Germinating") {
+                                    $statusColor = "#4DB6AC";
+                                }
+                                else if ($rowStatus = "Growing") {
+                                    $statusColor = "#43A047";
+                                }
+                                else if ($rowStatus = "Mature") {
+                                    $statusColor = "#1B5E20";
+                                }
+                                else if ($rowStatus = "Diseased") {
+                                    $statusColor = "#FB8C00";
                                 }
                                 else {
-                                    $statusColor = "#dc3545";
+                                    $statusColor = "red";
                                 }
 
                                 // $targetID = $row
-                                $findUploadName = "SELECT * FROM users WHERE user_id = '{$row['user_id']}'";
-                                $uploaderResult = mysqli_query($conn, $findUploadName);
-                                $uploaderName = mysqli_fetch_assoc($uploaderResult)['name'];
-                                $uploadDate = date("d M Y", strtotime($row['posted_date']));
+                                $findUser = "SELECT * FROM users WHERE user_id = '{$row['adoptionUserId']}'";
+                                $userResult = mysqli_query($conn, $findUser);
+                                $userName = mysqli_fetch_assoc($userResult)['name'];
+                                $treeType = $row["itemUserId"];
+
+                                $adoptDate = date("d M Y", strtotime($row['tree_adoption_date']));
+
+                                $fertilizeInDB = $row['fertilization_datetime'];
+                                $showFertilizeText = "";
+
+                                $todayTimeStamp = time();
+                                if (!empty($fertilizeInDT) && $fertilizeInDB !== '0000-00-00 00:00:00') {
+                                    $fertilizeDT = strtotime($fertilizeInDB); 
+                                    if (date('Y-m-d', $fertilizeInDT) === date('Y-m-d', $nowDT)) {
+                                        // if today fertilized
+                                        $showFertilizeText = "Today, " . date('H:i', $fertilizeDT);
+                                    } 
+                                    else {
+                                        // if in different day
+                                        $showFertilizeText = date('d M Y, H:i', $fertilizeDT);
+                                    }
+                                } else {
+                                    $showFertilizeText = '-'; // No fertilization date
+                                }
+
+                                $adoptionTimeStamp = strtotime($row["tree_adoption_date"]);
+
+                                $adoptionYear = date("Y", $adoptionTimeStamp);
+                                $currentYear = date("Y", $todayTimeStamp);
+
+                                $age = $adoptionYear - $currentYear;
+                                $treeAgeDisplayText = "";
+                                if ($age > 1) {
+                                    $treeAgeDisplay = $age . " Years old";
+                                }
+                                else if ($age == 1) {
+                                    $treeAgeDisplay = $age . " Year old";
+                                }
+                                else {
+                                    $treeAgeDisplay = "Less than 1 year old.";
+                                }
+
+
 
                                 echo "
                                     <div class='treeCard'>
                                         <div class='upItemCard'>
                                             <div>
                                                 <div>
-                                                    <b class='itemId'>" . $row["item_id"] . "</b>
+                                                    <b class='itemId'>" . $row["tree_adoption_id"] . "</b>
                                                 </div>
                                                 <div>
                                                     <p class='itemName'>" . $row["item_name"] ."</p>
                                                 </div>
                                             </div>
                                             <div class='itemStatusContainer'>
-                                                <p class='itemStatus' style='background-color: ". $statusColor ."'>". $row["item_status"] ."</p>
+                                                <p class='itemStatus' style='background-color: ". $statusColor ."'>". $row["tree_adoption_status"] ."</p>
                                             </div>
                                         </div>
                                         <div class='middleItemCard'>
                                             <div class='itemImage'>
                                                 <img src='../../". $row['item_image'] ."' alt='tree image'>
                                             </div>
-                                            <div class='itemInventory'>
-                                                <div class='treePoint'>
-                                                    <b>Points Required:</b>
-                                                    <p>" . $row['item_redeem_points'] . "</p>
+                                            <div class='itemRelatedInfo'>
+                                                <div class='givenName'>
+                                                    <b>Given Name:</b>
+                                                    <p>" . $row['given_name'] . "</p>
                                                 </div>
-                                                <div class='itemStock'>
-                                                    <b>Stocks:</b>
-                                                    <p>" . $row['item_stock'] . "</p>
+                                                <div class='age'>
+                                                    <b>Tree Age:</b>
+                                                    <p>" . $treeAgeDisplay . "</p>
+                                                </div>
+                                                <div class='userName'>
+                                                    <b>Last Fertilized:</b>
+                                                    <p>" . $showFertilizeText . "</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class='itemInfo'>
-                                            <div class='itemDescription'>
-                                                <b>Description:</b>
-                                                <p>" . $row['item_description'] . "</p>
+                                            <div class='owner'>
+                                                <b>Adopted by:</b>
+                                                <p>" . $userName . "</p>
                                             </div>
-                                            <div class='itemUploadInfo'>
-                                                <p><i>Uploaded by " . $uploaderName . "</i></p>
-                                                <p> (" . $uploadDate . ")</p>
+                                            <div class='adoptedDate'>
+                                                <p><i>Adopted at: " . $adoptDate . "</i></p>
                                             </div>
                                         </div>
                                         <div class='itemButton'>
@@ -234,5 +322,6 @@
                 </div>
             </div>
         </div>
+        <script src="../../scripts/committee.js"></script>
 </body>
 </html>
