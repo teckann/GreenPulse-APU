@@ -55,9 +55,6 @@
             <p>CREATE AND MANAGE GREEN INITIATIVE EVENTS.</p>
         </div>
   
-        <div class="add-icon" onclick="window.location.href='eventMore.php'">
-            <i class="fa-solid fa-pen"></i>
-        </div>
 
     </div>
 
