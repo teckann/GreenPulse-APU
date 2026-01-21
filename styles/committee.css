@@ -1268,7 +1268,9 @@ input[type="textarea"]::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 4em;
+    /* width: 4em; */
+    width: auto;
+    padding: 0 0.2em;
     height: 2em;
     font-size: 1.2em;
     color: #FFFFFF;
@@ -1293,7 +1295,7 @@ input[type="textarea"]::placeholder {
     height: 100%;
 }
 
-.itemInventory {
+.itemInventory, .itemRelatedInfo {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -1698,6 +1700,10 @@ input[type="textarea"]::placeholder {
     border-radius: 10px;
 }
 
+#upperTree #btnMarkAllFertilized {
+    color: #ffff;
+    padding: 0.5em 0.8em;
+}
 
 @media(min-width: 800px) {
     #upperTreeCard form {
@@ -1729,8 +1735,11 @@ input[type="textarea"]::placeholder {
     }
 
     .showTreeCardsSpace {
-    display: flex;
-    justify-content: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: blue; */
+        /* background-color: red; */
     }
 
     .showTreeCards {
@@ -1741,9 +1750,10 @@ input[type="textarea"]::placeholder {
         align-items: center;
         /* right: 1em; */
         width: 90%;
-        position: absolute;
+        /* position: absolute; */
         /* right: 1em; */
-        left: 5%;
+        /* left: 5%; */
+        /* background-color: red; */
     }
 
     .middleItemCard {
