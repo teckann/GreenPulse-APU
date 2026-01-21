@@ -528,7 +528,7 @@
         const btnUpdateTreePhoto = document.querySelector(".btnChangeTreePhoto");
         const btnFileChangeTreePhoto = document.querySelector("#fileChangeTreePhoto");
 
-        // font give the button able at first
+        // font give the button unable at first
         btnUpdateTreePhoto.classList.add("disableButton");
         
 

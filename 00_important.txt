@@ -9,16 +9,18 @@ Try Login Details as below:
 
 Please update your database
 
-Version: V5 - 22.01.2026
+Version: V6 - 22.01.2026
 
 # items table add posted_date
 # change fertilization_datetime to allow NULL
 # make green_points, total_earned default is NULL
 # remove available_spot (events table)
 # add user_id (Foriegn Key) in modules table
+# make event_register_date (Date) to event_register_datetime (DateTime)
+# make merchandise_purchase_date (Date) to merchandise_purchase_datetime (DateTime)
+# make tree_adoption_date (Date) to tree_adoption_datetime (DateTime)
 
 # add avatar for each person
 
 -> Important Rules: the events/modules/items only the author can delete/update
 -> Note: Delete means make the status to "Inactive"
-

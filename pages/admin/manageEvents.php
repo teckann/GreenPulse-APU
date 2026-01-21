@@ -126,7 +126,7 @@
                                         <td>' . $row['event_id'] . '</td>
                                         <td>' . $row['event_title'] . '</td>
                                         <td>
-                                            <a href="viewUserProfile.php?id=' . $row['user_id'] . '&event=Event" class="redirect-link" title="View User Profile">
+                                            <a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">
                                                 ' . $author . '
                                                 <i class="fa-solid fa-angle-double-right table-linkIcon"></i>
                                             </a>

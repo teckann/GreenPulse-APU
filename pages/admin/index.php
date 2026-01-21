@@ -39,7 +39,7 @@
     // item line graph data
     // latest date of both merchandise and tree table
     $date_target_table = array("merchandise_purchase_history", "tree_adoption_history");
-    $date_target_column = array("merchandise_purchase_date", "tree_adoption_date");
+    $date_target_column = array("merchandise_purchase_datetime", "tree_adoption_datetime");
     $latest_date_result = array("", ""); // cannot NULL, strtotime() will pop-up error
 
     for ($i = 0; $i < 2; $i++) {
@@ -104,8 +104,8 @@
     }
 
     // now call the countTotal function and find out the data for merchandise, tree and all
-    $merchandiseData = countTotal($conn, "merchandise_purchase_history", "merchandise_purchase_date", $monthsQueryKeys);
-    $treeData = countTotal($conn, "tree_adoption_history", "tree_adoption_date", $monthsQueryKeys);
+    $merchandiseData = countTotal($conn, "merchandise_purchase_history", "merchandise_purchase_datetime", $monthsQueryKeys);
+    $treeData = countTotal($conn, "tree_adoption_history", "tree_adoption_datetime", $monthsQueryKeys);
 
     $allData = array();
     for ($i = 0; $i < 5; $i++) {
