@@ -62,7 +62,7 @@
 
 
         // find all participants
-        $sql_allParticipants = "SELECT U.*, A.event_register_date, A.attendance_status FROM attendance A
+        $sql_allParticipants = "SELECT U.*, A.event_register_datetime, A.attendance_status FROM attendance A
                                 INNER JOIN users U ON A.user_id = U.user_id
                                 WHERE A.event_id = '$id'";
         
@@ -237,7 +237,7 @@
                                         echo '<tr>
                                                 <td>' . $row['user_id'] . '</td>
                                                 <td>' . $row['name'] . '</td>
-                                                <td>' . $row['event_register_date'] . '</td>
+                                                <td>' . $row['event_register_datetime'] . '</td>
                                                 <td>' . $row['attendance_status'] . '</td>
                                               </tr>';
                                     endforeach

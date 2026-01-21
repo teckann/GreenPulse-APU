@@ -53,7 +53,7 @@
             </div>
             
             <div class="heroSection">
-                <h1>EDIT EVENT</h1> <p>FILL IN THE DETAILS TO LAUNCH A GREEN INITIATIVE.</p>
+                <h1>EDIT EVENT</h1> <p>UPDATE THE DETAILS TO REFINE YOUR GREEN INITIATIVE EVENT.</p>
             </div>
             
             

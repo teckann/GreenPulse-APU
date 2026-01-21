@@ -11,6 +11,21 @@
         $sql = "SELECT * FROM modules WHERE module_name LIKE '%{$target}%'";
     }
 
+    if (isset($_GET["btnChangeStatus"])) {
+        $targetModuleID = $_GET["target_moduleID"];
+        $nextStatus = $_GET["next_status"];
+
+        $sql_updateStatus = "UPDATE modules SET module_status = '$nextStatus'
+                             WHERE module_id = '$targetModuleID'";
+        
+        if(mysqli_query($conn, $sql_updateStatus)) {
+            echo "<script>
+                    alert('--- Successfully Updated Module Status ---\\nModule ID: $targetModuleID\\nNew Status: $nextStatus');
+                    window.location.href = 'manageModules.php';
+                    </script>";
+        }
+    }
+
     $currentStatus = "";
 
     if (isset($_GET["txtStatus"])) {
@@ -105,20 +120,17 @@
                                 $nextStatus = $config[3];
 
                                 $author = getUserName($conn, $row["user_id"]);
-
-                                $moduleID = $row["module_id"];
-
-                                $sql_totalEnrolled = "SELECT COUNT(*) AS total FROM module_history
-                                                      WHERE module_id = '$moduleID'";
-                                
-                                $result_totalEnrolled = mysqli_query($conn, $sql_totalEnrolled);
-                                $row_totalEnrolled = mysqli_fetch_assoc($result_totalEnrolled);
-                                $totalEnrolled = $row_totalEnrolled["total"];
+                                $totalEnrolled = totalEnrolled($conn, $row["module_id"]);
 
                                 echo '<tr>
                                         <td>' . $row['module_id'] . '</td>
                                         <td>' . $row['module_name'] . '</td>
-                                        <td>' . $author. '</td>
+                                        <td>
+                                            <a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">
+                                                ' . $author . '
+                                                <i class="fa-solid fa-angle-double-right table-linkIcon"></i>
+                                            </a>
+                                        </td>
                                         <td>' . $totalEnrolled . '</td>
                                         <td style="color:' . $textColor . '">' . $row['module_status'] . '</td>
                                         
@@ -147,8 +159,8 @@
 
             <div class="flex-container mobile-card" style="margin: 1em 0;">
                 <?php
-                    foreach ($items as $row) {
-                        $config = tableConfig($row["item_status"]);
+                    foreach ($modules as $row) {
+                        $config = tableConfig($row["module_status"]);
 
                         $bgColor = $config[0];
                         $icon = $config[1];
@@ -156,45 +168,47 @@
                         $nextStatus = $config[3];
 
                         $text = $nextStatus;
+
                         $author = getUserName($conn, $row["user_id"]);
+                        $totalEnrolled = totalEnrolled($conn, $row["module_id"]);
 
                         echo '<div class="cards">
                                 <div class="card-header">
                                     <div class="card-id">
-                                        <p>Item ID</p>
-                                        <h3>' . $row['item_id'] . '</h3>
+                                        <p>Module ID</p>
+                                        <h3>' . $row['module_id'] . '</h3>
                                     </div>
 
                                     <div class="card-status" style="background-color:' . $bgColor . '">
-                                        <p>' . $row['item_status'] . '</p>
+                                        <p>' . $row['module_status'] . '</p>
                                     </div>
                                 </div>
 
                                 <div class="card-content">
                                     <div class="card-data">
-                                        <p>Item Name</p>
-                                        <p>' . $row['item_name'] . '</p>
+                                        <p>Module Name</p>
+                                        <p>' . $row['module_name'] . '</p>
                                     </div>
 
                                     <div class="card-data">
-                                        <p>Posted By</p>
-                                        <p>' . $author . '</p>
+                                        <p>Added By</p>
+                                        <p>
+                                            <a href="viewUserProfile.php?id=' . $row['user_id'] . '" class="redirect-link" title="View User Profile">
+                                                ' . $author . '
+                                                <i class="fa-solid fa-angle-double-right table-linkIcon"></i>
+                                            </a>
+                                        </p>
                                     </div>
 
                                     <div class="card-data">
-                                        <p>Stock</p>
-                                        <p>' . $row['item_stock'] . '</p>
-                                    </div>
-
-                                    <div class="card-data">
-                                        <p>Category</p>
-                                        <p>' . ucwords($row['category']) . '</p>
+                                        <p>Total Enrolled</p>
+                                        <p>' . $totalEnrolled . '</p>
                                     </div>
                                 </div>
 
                                 <div class="card-btns">
                                     <form action="" method="GET">
-                                        <input type="hidden" name="target_itemID" value="' . $row['item_id'] . '">
+                                        <input type="hidden" name="target_moduleID" value="' . $row['module_id'] . '">
                                         <input type="hidden" name="next_status" value="' . $nextStatus . '">
 
                                         <button name="btnChangeStatus" type="submit" class="card-action-btn card-status-btn" title="'. $title .'">
@@ -203,7 +217,7 @@
                                         </button>
                                     </form>
 
-                                    <a href="viewItemDetails.php?id=' . $row['item_id'] . '" title="View">
+                                    <a href="viewModuleDetails.php?id=' . $row['module_id'] . '" title="View">
                                         <button class="card-action-btn card-view-btn">
                                             View User Details
                                         </button>

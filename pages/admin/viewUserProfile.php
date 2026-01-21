@@ -4,14 +4,8 @@
     include("../../backend/utility.php");
 
     if (isset($_GET["btnBack"])) {
-        if (isset($_GET["event"])) {
-            header("Location: manageEvents.php");
-            exit;
-        }
-        else {
-            header("Location: manageUsers.php");
-            exit;
-        }
+        header("Location: manageUsers.php");
+        exit;
     }
 
     $data = array();
@@ -139,6 +133,8 @@
 
             <div class="flex-container viewDetails">
                 <form action="" action="GET">
+                    <input type="text" name="event" hidden>
+
                     <button name="btnBack" class="back-btn" type="submit" value="Back">
                         <i class="fa-solid fa-arrow-left"></i>
                         <p>Back</p>

@@ -1456,6 +1456,23 @@ select {
     width: 100% !important;
 }
 
+.module-material-download-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em 1em;
+    gap: 7px;
+    border: none;
+    background-color: #0463c9;
+    color: white;
+    border-radius: 5px;
+}
+
+.mobile-carousel {
+    display: none;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
@@ -1980,5 +1997,13 @@ select {
     .badge-image {
         width: 180px;
         height: 180px;
+    }
+
+    .mobile-carousel {
+        display: block;
+    }
+
+    .desktop-carousel {
+        display: none;
     }
 }

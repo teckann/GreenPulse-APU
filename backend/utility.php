@@ -117,4 +117,14 @@
             return "End";
         }
     }
+
+    function totalEnrolled($conn, $moduleID) {
+        $sql = "SELECT COUNT(*) AS total FROM module_history
+                WHERE module_id = '$moduleID'";
+        
+        $result= mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        
+        return $row["total"];
+    }
 ?>
