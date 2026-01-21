@@ -124,6 +124,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const eventFilter = document.querySelector("#eventStatus");
 
+    const itemFilter1 = document.querySelector("#itemCategory");
+    const itemFilter2 = document.querySelector("#itemStatus");
+
     const submissionFilter = document.querySelector("#submission-status");
 
     const logFilter1 = document.querySelector("#logSort");
@@ -144,6 +147,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (eventFilter) {
         eventFilter.addEventListener("change", () => {
             const form = document.getElementById("event-form");
+            form.submit();
+        });
+    }
+
+    if (itemFilter1 || itemFilter2) {
+        const form = document.getElementById("item-form");
+
+        itemFilter1.addEventListener("change", () => {
+            form.submit();
+        });
+
+        itemFilter2.addEventListener("change", () => {
             form.submit();
         });
     }

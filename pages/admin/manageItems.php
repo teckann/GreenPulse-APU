@@ -11,11 +11,47 @@
         $sql = "SELECT * FROM items WHERE item_name LIKE '%{$target}%'";
     }
 
+    if (isset($_GET["btnChangeStatus"])) {
+        $targetItemID = $_GET["target_itemID"];
+        $nextStatus = $_GET["next_status"];
+
+        $sql_updateStatus = "UPDATE items SET item_status = '$nextStatus' 
+                             WHERE item_id = '$targetItemID'";
+    
+        if(mysqli_query($conn, $sql_updateStatus)) {
+            echo "<script>
+                    alert('--- Successfully Updated Item Status ---\\nItem ID: $targetItemID\\nNew Status: $nextStatus');
+                    window.location.href = 'manageItems.php';
+                    </script>";
+        }
+    }
+
     $currentCategory = "";
     $currentStatus = "";
 
+    if (isset($_GET["txtCategory"]) || isset($_GET["txtStatus"])) {
+        $category = $_GET["txtCategory"];
+        $status = $_GET["txtStatus"];
+
+        $currentCategory = $category;
+        $currentStatus = $status;
+
+        if (!empty($category) && !empty($status)) {
+            $sql = "SELECT * FROM items
+                    WHERE category = '$category' AND item_status = '$status'";
+        }
+        elseif (!empty($category)) {
+            $sql = "SELECT * FROM items
+                    WHERE category = '$category'";
+        }
+        elseif (!empty($status)) {
+            $sql = "SELECT * FROM items
+                    WHERE item_status = '$status'";
+        }
+    }
+
     $result = mysqli_query($conn, $sql);
-    
+
     $items = array();
     while ($row = mysqli_fetch_assoc($result)) {
         $items[] = $row;
@@ -50,7 +86,7 @@
                     </div>
                 </form>
 
-                <form action="" method="GET" class="select-container" id="user-form">
+                <form action="" method="GET" class="select-container" id="item-form">
                     <div class="select-boxs">
                         <div>
                             <label for="itemCategory">Category: </label>
@@ -114,7 +150,7 @@
                                         <td>
                                             <div class="action-container">
                                                 <form action="" method="GET">
-                                                    <input type="hidden" name="target_userID" value="' . $row['item_id'] . '">
+                                                    <input type="hidden" name="target_itemID" value="' . $row['item_id'] . '">
                                                     <input type="hidden" name="next_status" value="' . $nextStatus . '">
 
                                                     <button name="btnChangeStatus" type="submit" class="action-btn" title="'. $title .'">
@@ -136,8 +172,8 @@
 
             <div class="flex-container mobile-card" style="margin: 1em 0;">
                 <?php
-                    foreach ($users as $row) {
-                        $config = tableConfig($row["account_status"]);
+                    foreach ($items as $row) {
+                        $config = tableConfig($row["item_status"]);
 
                         $bgColor = $config[0];
                         $icon = $config[1];
@@ -145,39 +181,45 @@
                         $nextStatus = $config[3];
 
                         $text = $nextStatus;
+                        $author = getUserName($conn, $row["user_id"]);
 
                         echo '<div class="cards">
                                 <div class="card-header">
                                     <div class="card-id">
-                                        <p>User ID</p>
-                                        <h3>' . $row['user_id'] . '</h3>
+                                        <p>Item ID</p>
+                                        <h3>' . $row['item_id'] . '</h3>
                                     </div>
 
                                     <div class="card-status" style="background-color:' . $bgColor . '">
-                                        <p>' . $row['account_status'] . '</p>
+                                        <p>' . $row['item_status'] . '</p>
                                     </div>
                                 </div>
 
                                 <div class="card-content">
                                     <div class="card-data">
-                                        <p>Name</p>
-                                        <p>' . $row['name'] . '</p>
+                                        <p>Item Name</p>
+                                        <p>' . $row['item_name'] . '</p>
                                     </div>
 
                                     <div class="card-data">
-                                        <p>Education Email</p>
-                                        <p>' . $row['education_email'] . '</p>
+                                        <p>Posted By</p>
+                                        <p>' . $author . '</p>
                                     </div>
 
                                     <div class="card-data">
-                                        <p>Role</p>
-                                        <p>' . ucwords($row['role']) . '</p>
+                                        <p>Stock</p>
+                                        <p>' . $row['item_stock'] . '</p>
+                                    </div>
+
+                                    <div class="card-data">
+                                        <p>Category</p>
+                                        <p>' . ucwords($row['category']) . '</p>
                                     </div>
                                 </div>
 
                                 <div class="card-btns">
                                     <form action="" method="GET">
-                                        <input type="hidden" name="target_userID" value="' . $row['user_id'] . '">
+                                        <input type="hidden" name="target_itemID" value="' . $row['item_id'] . '">
                                         <input type="hidden" name="next_status" value="' . $nextStatus . '">
 
                                         <button name="btnChangeStatus" type="submit" class="card-action-btn card-status-btn" title="'. $title .'">
@@ -186,7 +228,7 @@
                                         </button>
                                     </form>
 
-                                    <a href="viewUserProfile.php?id=' . $row['user_id'] . '" title="View">
+                                    <a href="viewItem.php?id=' . $row['item_id'] . '" title="View">
                                         <button class="card-action-btn card-view-btn">
                                             View User Details
                                         </button>
