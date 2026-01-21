@@ -55,30 +55,106 @@
             <p>CREATE AND MANAGE GREEN INITIATIVE EVENTS.</p>
         </div>
   
+        <div class="add-icon" onclick="window.location.href='eventMore.php'">
+            <i class="fa-solid fa-pen"></i>
+        </div>
+
     </div>
 
     <!-- Lower Part  -->
     <section class="event-controls-event-main">
         <div class = "white-color-box">
-            <div class = "more-container">
-                <!-- 1. Event Name, Event ID -->
             <div class = "details-upper">
-                <span class = "event-name">Event Name</span>
-                <span class = "event-id">Event ID</span>
+                <h2 class = "event-name">Event Name</h2>
+                <!-- <span class = "event-id">Event ID</span> -->
+                                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="btn-manage-attendees" onclick = "window.location.href = 'eventAttendance.php'">
+                            <i class="fas fa-users"></i> Attendance
+                        </button>
+                        <button class="btn-share-details" onclick = "window.location.href = 'eventFeedback.php'">
+                            <i class="fas fa-book"></i> Feedback
+                        </button>
+                    </div>
             </div>
 
-            <div class = "details-lower-right">
-                <span class = "posted-by">Posted by: </span>
-                <span class = "posted-edited">Posted / Edited Date: </span>
-                <span class = "status">Status: </span>
+           <div class="event-details-container">
+                <!-- Left -->
+                <div class="left-side-container">
 
-                <div class = "event-poster-container">
-                    <input type="file" class = "event-poster">
+                    <div class="left-side-info-box">
+
+                        <div class="more-poster">
+                            <img src="../../src/eventPosters/poster1.png" alt="Event Poster">
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Posted by:</span>
+                            <span class="info-value">Alex Rivera</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Date Created:</span>
+                            <span class="info-value">Oct 12, 2023</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Status:</span>
+                            <span class="status-badge active">
+                                <span class="circle"></span> ACTIVE
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    
+                    
                 </div>
-            
-            </div>
-            
+                
+                <!-- Right -->
+                <div class="right-side-container">
+                    <!-- Date & Time -->
+                    <div class="detail-box">
+                        <div class="detail-content">
+                            <span class="detail-label">DATE & TIME</span>
+                            <span class="detail-value">Saturday, May 15, 2024</span>
+                            <span class="detail-subvalue">08:00 AM - 02:00 PM</span>
+                        </div>
+                    </div>
 
+                    <!-- Location -->
+                    <div class="detail-box">
+                        <div class="detail-content">
+                            <span class="detail-label">LOCATION</span>
+                            <span class="detail-value">Green Valley Reserve</span>
+                            <span class="detail-subvalue">Sector 4, North Entrance</span>
+                        </div>
+                    </div>
+
+                    <!-- Participation & Points -->
+                    <div class="detail-box-row">
+                        <div class="detail-box-small">
+                            <div class="detail-content">
+                                <span class="detail-label">PARTICIPATION</span>
+                                <span class="detail-value">150</span>
+                                <span class="detail-subvalue">Points per attendee</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="description-container">
+                        <div class="detail-icon">
+                            <i class="fas fa-align-left"></i>
+                        </div>
+                        <div class="detail-content">
+                            <span class="detail-label">EVENT DESCRIPTION</span>
+                            <p class="description-text">
+                                Join our community effort to restore the local biodiversity at Green Valley Reserve. 
+                                We will be planting over 200 native saplings and clearing invasive species along the riverbank.
+                               
+                            
+                            </p>
+                        </div>
+                    </div>
+                </div>
         </div>
     </section>
 </body>

@@ -120,12 +120,26 @@ document.addEventListener("DOMContentLoaded", () => {
 // select box
 document.addEventListener("DOMContentLoaded", () => {
     const submissionFilter = document.querySelector("#submission-status");
+    const userFilter1 = document.querySelector("#userRole");
+    const userFilter2 = document.querySelector("#userStatus");
 
     if (submissionFilter) {
         submissionFilter.addEventListener("change", () => {
             const form = document.getElementById("submission-form");
             form.submit();
-        })
+        });
+    }
+
+    if (userFilter1 || userFilter2) {
+        const form = document.getElementById("user-form");
+
+        userFilter1.addEventListener("change", () => {
+            form.submit();
+        });
+
+        userFilter2.addEventListener("change", () => {
+            form.submit();
+        });
     }
 });
 

@@ -8,11 +8,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Page</title>
+    <title>Study & Quiz Main Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png"> -->
-</head>
 </head>
 <body>
     <nav class = "navigation-bar">
@@ -52,8 +51,9 @@
         </div>
         
         <div class="heroSection">
-            <h1>EVENT MANAGEMENT</h1>
-            <p>CREATE AND MANAGE GREEN INITIATIVE EVENTS.</p>
+            <h1>STUDY & QUIZ MANAGEMENT</h1>
+            <p>MANAGE STUDY MATERIALS AND QUIZZES IN ONE PLACE.</p>
+
         </div>
         
         <div class="add-icon" onclick="window.location.href='eventCreate.php'">
@@ -61,18 +61,14 @@
         </div>
     </div>
 
-    <!-- Lower Part  -->
+    <!-- DETAILS PART !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11 -->
     <section class="event-controls-event-main">
         <div class = "white-color-box">
             <div class="search-filter-group">
                 <div class="search-bar">
                     <input type="text" placeholder="Search Events..." class="searchInput">
                 </div>
-                <select class="status-dropdown">
-                    <option>All Status</option>
-                    <option>Pending</option>
-                    <option>Approved</option>
-                </select>
+              
             </div>
 
             <section class="container-event">
@@ -102,21 +98,15 @@
                 <div class="event-right-section">
                     <div class="event-meta-row">
                         <div class="meta-item">
-                            <span class="meta-label">ORGANIZER ID</span>
+                            <span class="meta-label">MODULE ID</span>
                             <span class="meta-value">E-8829-GRN</span>
                         </div>
-                        <div class="meta-item">
-                            <span class="meta-label">SCHEDULED DATE</span>
-                            <span class="meta-value">Dec 12, 2024</span>
-                        </div>
+                        
                     </div>
 
                 <!-- Status and Points Row -->
                 <div class="status-points-row">
-                    <div class="event-status">
-                        <span class="circle"></span>
-                        <span>EVENT ACTIVE</span>
-                    </div>
+                    
                     <span class="points-badge">500 pts</span>
                     <div class="more-section" onclick = "window.location.href = 'eventMore.php'">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
