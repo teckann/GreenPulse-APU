@@ -1698,6 +1698,11 @@ input[type="textarea"]::placeholder {
     border-radius: 10px;
 }
 
+#upperTree #btnMarkAllFertilized {
+        color: #fff;
+        padding: 0.5em 0.8em;
+    }
+
 
 @media(min-width: 800px) {
     #upperTreeCard form {

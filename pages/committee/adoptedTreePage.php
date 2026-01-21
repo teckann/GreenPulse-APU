@@ -6,38 +6,32 @@
     $sql = "SELECT * FROM tree_adoption_history";
 
     // to see what type of tree user adoption have
-    $allRecords = mysqli_query($conn, $sql);
+    // $allRecords = mysqli_query($conn, $sql);
 
-    $allTrees = array();
+    // $allTrees = array();
 
-    while ($eachRow = mysqli_fetch_assoc($allRecords)) {
-        $allTrees[] = $eachRow["item_id"];
-    }
+    // while ($eachRow = mysqli_fetch_assoc($allRecords)) {
+    //     $allTrees[] = $eachRow["item_id"];
+    // }
 
     // to retrive the unique item is by using the array_unique, the first exist index become key, the unique value become value
     // then just use array_values get value
-    $uniqueItems = array_values(array_unique($allTrees));
+    // $uniqueItems = array_values(array_unique($allTrees));
 
-    function treeNames($conn, array $uniqueItemList) {
-        $uniqueTreeName = array();
-        foreach ($uniqueItemList as $eachItem) {
-            $sqlSearch = "SELECT * FROM items WHERE item_id = '$eachItem' AND category = 'tree'";
-            $searchResult = mysqli_query($conn, $sqlSearch);
+    // function treeNames($conn, array $uniqueItemList) {
+    //     $uniqueTreeName = array();
+    //     foreach ($uniqueItemList as $eachItem) {
+    //         $sqlSearch = "SELECT * FROM items WHERE item_id = '$eachItem' AND category = 'tree'";
+    //         $searchResult = mysqli_query($conn, $sqlSearch);
 
-            while ($row = mysqli_fetch_assoc($searchResult)) {
-                $uniqueTreeName[] = $row["item_name"];
-            }
-        }
-        return $uniqueTreeName;
-    }
+    //         while ($row = mysqli_fetch_assoc($searchResult)) {
+    //             $uniqueTreeName[] = $row["item_name"];
+    //         }
+    //     }
+    //     return $uniqueTreeName;
+    // }
 
-    $treeNameFilters = treeNames($conn, $uniqueItems);
-
-    
-
-    foreach ($haha as $eachUniqueTreeType) {
-        echo "<script>alert('$eachUniqueTreeType');</script>";
-    }
+    // $treeNameFilters = treeNames($conn, $uniqueItems);
 
     $search = '';
     $treeStatus = '';
@@ -48,11 +42,18 @@
         $search = $_GET["searchTree"];
     }
 
+    $treeTypeStatus ='';
+    
+    
+
     //assign the filter value first
     if (!empty($_GET["filterAvailableTreeStatus"])) {
         $treeStatus = $_GET["filterAvailableTreeStatus"];
     }
     if (!empty($_GET["filterAvailableTreeType"])) {
+        ?>
+            <!-- <script>alert('has data')</script> -->
+        <?php
         $treeTypeStatus = $_GET["filterAvailableTreeType"];
     }
 
@@ -62,21 +63,33 @@
     else {
         if ($treeStatus === "" && $treeTypeStatus === "") {
             $sql = "SELECT * FROM tree_adoption_history";
+             ?>
+                <!-- <script>alert('hihi');</script> -->
+            <?php
         }
         else if ($treeStatus === "") {
-            $sql = "SELECT * FROM tree_adoption_history WHERE ";
+
+            ?>
+                <!-- <script>alert('hihi');</script> -->
+            <?php
+            $sql = "SELECT * FROM tree_adoption_history T INNER JOIN items I ON T.item_id = I.item_id WHERE I.item_name = '$treeTypeStatus'";
         }
         else if ($treeTypeStatus === "") {
-            $sql = "SELECT * FROM tree_adoption_history WHERE item_status = '$treeStatus' AND category = 'tree'";
+            $sql = "SELECT * FROM tree_adoption_history T INNER JOIN items I ON T.item_id = I.item_id WHERE T.tree_adoption_status = '$treeStatus'";
         }
         else {
-            $sql = "SELECT * FROM tree_adoption_history WHERE item_status = '$treeStatus' AND user_id = '$userID' AND category = 'tree'";
+            $sql = "SELECT * FROM tree_adoption_history T INNER JOIN items I ON T.item_id = I.item_id WHERE I.item_name = '$treeTypeStatus' AND T.tree_adoption_status = '$treeStatus'";
         }
     }
 
 
+
     // $sql = "SELECT * from items where item_name like '%{$search}%'";
     $result = mysqli_query($conn, $sql);
+
+    // while ($rows = mysqli_fetch_assoc($result)) {
+    //     echo "<script>alert(' ". $rows['tree_adoption_id']. " ');</script>";
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +111,7 @@
                     <h1>Tree Management <i class="fa-solid fa-tree" style="color: #228B22;"></i></h1>
                     <p>Add new, manage available tree adoption for volunteers to redeem</p>
                 </div>
-                <button id="btnAddItem" name="btnAddItem"><span class="showDesktop">Add Tree</span><span class="showMobile"><i class="fa-solid fa-plus" style="color: white;"></i></span></button>
+                <button id="btnMarkAllFertilized" name="btnMarkAllFertilizedItem"><span class="showDesktop">Mark All As Fertilized</span><span class="showMobile">Fertilize<br>All  <i class="fa-solid fa-flask"></i></span></button>
             </div>
             <div id="showTreeClass">
                 <button id="btnAvailableTree" class="treeClass">
@@ -128,11 +141,11 @@
                                 <select name="filterAvailableTreeStatus" id="filterAvailableTreeStatus" class="filterTree">
                                     <option value="">All Status</option>
                                     <option value="Planted">Planted</option>
-                                    <option value="Inactive">Germinating</option>
-                                    <option value="Inactive">Growing</option>
-                                    <option value="Inactive">Mature</option>
-                                    <option value="Inactive">Diseased</option>
-                                    <option value="Inactive">Dead</option>
+                                    <option value="Germinating">Germinating</option>
+                                    <option value="Growing">Growing</option>
+                                    <option value="Mature">Mature</option>
+                                    <option value="Diseased">Diseased</option>
+                                    <option value="Dead">Dead</option>
                                 </select>
                             </div>
 
@@ -141,9 +154,18 @@
                                 <select name="filterAvailableTreeType" id="filterAvailableTreeType" class="filterTree">
                                     <option value="">All Types</option>
                                     <?php
-                                        foreach ($treeNameFilters as $treeName) {
+                                        $uniqueTreeSql = "SELECT DISTINCT item_name FROM items I INNER JOIN tree_adoption_history T ON I.item_id = T.item_id ORDER BY item_name ASC";
+                                        $resultOfTreeName = mysqli_query($conn, $uniqueTreeSql);
+
+                                        $treeArray = array();
+
+                                        while ($row = mysqli_fetch_assoc($resultOfTreeName)) {
+                                            $treeArray[] = $row["item_name"];
+                                        }
+
+                                        foreach ($treeArray as $treeName) {
                                             echo "
-                                                <option value='" . $treeName . "'>" .$treeName . "</option>
+                                            <option value='" . $treeName . "'>" .$treeName . "</option>
                                             ";
                                         }
                                     ?>
@@ -158,20 +180,59 @@
                         <?php 
                             $trees = array();
                             while ($row = mysqli_fetch_assoc($result)) {
+                                // Planted
+                                    // Germinating
+                                    // Growing
+                                    // Mature
+                                    // Diseased
+                                    // Dead"
                                 $trees[] = $row;
+                                $rowStatus = $row["tree_adoption_history"];
                                 $statusColor = "";
-                                if ($row["item_status"] === "Active") {
-                                    $statusColor = "green";
+                                if ($rowStatus === "Planted") {
+                                    $statusColor = "#A8E6A3";
+                                }
+                                    else if ($rowStatus = "Germinating") {
+                                    $statusColor = "#4DB6AC";
+                                }
+                                else if ($rowStatus = "Growing") {
+                                    $statusColor = "#43A047";
+                                }
+                                else if ($rowStatus = "Mature") {
+                                    $statusColor = "#1B5E20";
+                                }
+                                else if ($rowStatus = "Diseased") {
+                                    $statusColor = "#FB8C00";
                                 }
                                 else {
-                                    $statusColor = "#dc3545";
+                                    $statusColor = "red";
                                 }
 
                                 // $targetID = $row
-                                $findUploadName = "SELECT * FROM users WHERE user_id = '{$row['user_id']}'";
-                                $uploaderResult = mysqli_query($conn, $findUploadName);
-                                $uploaderName = mysqli_fetch_assoc($uploaderResult)['name'];
-                                $uploadDate = date("d M Y", strtotime($row['posted_date']));
+                                $findUser = "SELECT * FROM users WHERE user_id = '{$row['adopted_tree_history.user_id']}'";
+                                $userResult = mysqli_query($conn, $findUploadName);
+                                $userName = mysqli_fetch_assoc($userResult)['name'];
+
+                                $adoptDate = date("d M Y", strtotime($row['tree_adoption_date']));
+
+                                $fertilizeInDB = $row['fertilization_datetime'];
+                                $showFertilizeText = "";
+
+                                if (!empty($fertilizeInDB) && $fertilizeInDB !== '0000-00-00 00:00:00') {
+                                    $fertilizeDT = new DateTime($fertilizeInDB);
+                                    $nowDT = new DateTime(); 
+                                    if ($fertilizeDT->format('Y-m-d') === $nowDT->format('Y-m-d')) {
+                                        // if today fertilized
+                                        $showFertilizeText = "Today, " . $fertilizeDT->format('H:i');
+                                    } 
+                                    else {
+                                        // if in different day
+                                        $showFertilizeText = $fertilizeDT->format('d M Y, H:i');
+                                    }
+                                } else {
+                                    $showFertilizeText = '-'; // No fertilization date
+                                }
+
 
                                 echo "
                                     <div class='treeCard'>
@@ -234,5 +295,6 @@
                 </div>
             </div>
         </div>
+        <script src="../../scripts/committee.js"></script>
 </body>
 </html>
