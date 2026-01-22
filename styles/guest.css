@@ -325,6 +325,9 @@ nav a:hover {
 
 .member-card {
     background: url("../src/elements/memberCard_background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     box-shadow: 0 20px 40px rgba(11, 52, 0, 0.3);
     border-radius: 10px;
     width: 250px;
