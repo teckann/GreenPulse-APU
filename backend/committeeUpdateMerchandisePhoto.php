@@ -3,7 +3,7 @@
     include("sessionData.php");
     include("utility.php");
     
-    if (isset($_POST["btnChangeTreePhoto"])) {
+    if (isset($_POST["btnChangeMerchandisePhoto"])) {
         $itemID = $_POST["itemId"];
         $file = $_FILES["updateFile"];
 
@@ -14,7 +14,7 @@
         $target_dir = "../src/itemImages/"; // target folder that save the image
         $imageFileType = strtolower(pathinfo($fileName,PATHINFO_EXTENSION)); // format file
 
-        $newFileName = $itemID . "_treeImage_" . time() . "." . $imageFileType;
+        $newFileName = $itemID . "_merchandiseImage_" . time() . "." . $imageFileType;
         $target_file = $target_dir . $newFileName;  // file that system will save
 
         $allowFormat = array("png", "jpg", "jpeg");
@@ -27,7 +27,7 @@
             $uploadOk = 0;
             echo "<script>
                     alert('The photo is not upload successfully');
-                    window.location.href = '../pages/committee/availableTreePage.php';
+                    window.location.href = '../pages/committee/merchandiseManagement.php';
                   </script>";
         }
 
@@ -35,7 +35,7 @@
             $uploadOk = 0;
             echo "<script>
                     alert('Maximum file size is 5 MB only.');
-                    window.location.href = '../pages/committee/availableTreePage.php';
+                    window.location.href = '../pages/committee/merchandiseManagement.php';
                   </script>";
         }
 
@@ -43,7 +43,7 @@
             $uploadOk = 0;
             echo "<script>
                     alert('System only support png, jpg, and jpeg image format.');
-                    window.location.href = '../pages/committee/availableTreePage.php';
+                    window.location.href = '../pages/committee/merchandiseManagement.php';
                   </script>";
         }
 
@@ -56,25 +56,25 @@
                         WHERE item_id = '$itemID'";
                 
                 if (mysqli_query($conn, $sql)) {
-                    addLog($conn, $userID, "Change available tree photo");
+                    addLog($conn, $userID, "Change available merchandise photo");
                     
                     echo "<script>
                             alert('Image is updated successfully');
-                            window.location.href = '../pages/committee/availableTreePage.php';
+                            window.location.href = '../pages/committee/merchandiseManagement.php';
                           </script>";
                 }
             }
             else {
                 echo "<script>
                         alert('Image failed to upload.');
-                        window.location.href = '../pages/admin/profile.php';
+                        window.location.href = '../pages/committee/merchandiseManagement.php';
                       </script>";
             }
         }
         else {
             echo "<script>
                     alert('Image failed to upload.');
-                    window.location.href = '../pages/admin/profile.php';
+                    window.location.href = '../pages/committee/merchandiseManagement.php';
                   </script>";
         }
     }
