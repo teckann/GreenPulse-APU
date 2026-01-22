@@ -21,8 +21,8 @@
 
         <div class = "desktopMenu">
             <a href="index.php">Home</a>
-            <a href="treeAdoption.php">Tree Adoption</a>
-            <a href="merchandises.php">Merchandises</a>
+            <a href="availableTreePage.php">Tree Adoption</a>
+            <a href="merchandiseManagement.php">Merchandises</a>
             <a href="eventMain.php">Events</a>
             <a href="study&Quiz.php">Study & Quiz</a>
         </div>

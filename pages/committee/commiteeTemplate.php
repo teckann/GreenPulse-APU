@@ -22,8 +22,8 @@
 
         <div class = "desktopMenu">
             <a href="index.php">Home</a>
-            <a href="treeAdoption.php">Tree Adoption</a>
-            <a href="merchandises.php">Merchandises</a>
+            <a href="availableTreePage.php">Tree Adoption</a>
+            <a href="merchandiseManagement.php">Merchandises</a>
             <a href="eventMain.php">Events</a>
             <a href="study&Quiz.php">Study & Quiz</a>
         </div>
@@ -63,7 +63,7 @@
                 <div class="menu-icon">🌳</div>
                 <span class="menu-text">Tree Adoption</span>
             </a>
-            <a href="merchandises.php" class="menu-item">
+            <a href="merchandiseManagement.php" class="menu-item">
                 <div class="menu-icon">🛍️</div>
                 <span class="menu-text">Merchandises</span>
             </a>

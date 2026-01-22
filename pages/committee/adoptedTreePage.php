@@ -39,6 +39,20 @@
         mysqli_query($conn, $sqlFertilize);
     }
 
+    if (isset($_POST["btnMarkAllFertilizedItem"])) {
+
+        $sqlUpdateRestOfTree = "UPDATE tree_adoption_history SET fertilization_datetime = NOW() WHERE ( fertilization_datetime IS NULL OR fertilization_datetime < CURRENT_DATE()) AND tree_adoption_status != 'DEAD'";
+
+        if (mysqli_query($conn, $sqlUpdateRestOfTree)) {
+            ?>
+                <script>
+                    alert('Successfully marked all as fertilized.');
+                    window.location.href = "adoptedTreePage.php";
+                </script>
+            <?php
+        }
+    }
+
     // use status to detect the popup
     $updateItemPopUp = false;
     
@@ -109,7 +123,9 @@
                     <h1>Tree Management <i class="fa-solid fa-tree" style="color: #228B22;"></i></h1>
                     <p>Add new, manage available tree adoption for volunteers to redeem</p>
                 </div>
-                <button id="btnMarkAllFertilized" name="btnMarkAllFertilizedItem"><span class="showDesktop">Mark All As Fertilized</span><span class="showMobile">Fertilize<br>All  <i class="fa-solid fa-flask"></i></span></button>
+                <form action="#" method="POST">
+                    <button id="btnMarkAllFertilized" name="btnMarkAllFertilizedItem"><span class="showDesktop">Mark All As Fertilized</span><span class="showMobile">Fertilize<br>All  <i class="fa-solid fa-flask"></i></span></button>
+                </form>
             </div>
             <div id="showTreeClass">
                 <button id="btnAvailableTree" class="treeClass">
@@ -118,7 +134,7 @@
                         <p><b>Available Tree</b></p>
                     </a>
                 </button>
-                <button id="btnAdoptedTree" class="treeClass">
+                <button id="btnAdoptedTree" class="treeClass selectedButton">
                     <a href="adoptedTreePage.php" style="text-decoration: none;">
                         <i class="fa-solid fa-house" style="color: #2e8b57;"></i>
                         <p><b>Adopted Tree</b></p>
@@ -198,7 +214,7 @@
                                     $statusColor = "#FB8C00";
                                 }
                                 else {
-                                    $statusColor = "red";
+                                    $statusColor = "#B02E0C";
                                 }
 
                                 // $targetID = $row
@@ -340,16 +356,20 @@
 
             let canUse = false;
             const markAllAsFertilizedButton = document.querySelector("#btnMarkAllFertilized");
+            counter = 0;
             treeCards.forEach((each) => {
+                counter ++;
                 const fertilize = each.querySelector(".fertilizeText");
                 const fertilizeText = fertilize.innerText;
-                if (!fertilizeText.startsWith("Today")) {
+                const status = each.querySelector(".itemStatus");
+                const statusText = status.innerText;
+                if (!fertilizeText.startsWith("Today") && !(statusText == "Dead")) {
                     canUse = true;
                 }
             });
 
             if (!canUse) {
-                markAllAsFertilizedButton.style.backgroundColor = "Gray";
+                markAllAsFertilizedButton.style.backgroundColor = "gray";
                 markAllAsFertilizedButton.classList.add("disableButton");
             }
         </script>
@@ -362,11 +382,6 @@
                 $treeStatus = $_GET["targetTreeAdoptionStatus"];
                 $adoptedTreeId = $_GET["targetItemID"];
                 $targetTreeName = $_GET["targetTreeAdoptionName"];
-                ?>
-                    <script>
-                        
-                    </script>
-                <?php
             }
         ?>
 
@@ -455,8 +470,8 @@
                 const markAsFertilizeBtn = treeCard.querySelector(".markAsFertilizedBtn");
 
                 if (statusText === "Dead") {
-                    updateStatusBtn.classList.add("disableButton");
-                    markAsFertilizeBtn.classList.add("disableButton");
+                    updateStatusBtn.classList.add("notUseButton");
+                    markAsFertilizeBtn.classList.add("notUseButton");
                 }
             })
 
