@@ -1,0 +1,2131 @@
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Figtree:ital,wght@0,300..900;1,300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Figtree:ital,wght@0,300..900;1,300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family:'Nunito', 'Roboto', sans-serif;
+}
+
+body, html{
+    max-width: 100%;
+}
+
+body {
+    background-color: #faffe8;
+}
+
+/* Haeder */
+
+#header {
+    position: fixed;
+    display: flex;
+    width: 100%;
+
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px;
+    
+    height: 70px;
+    box-shadow: 0px 2px 6px -1px #00000020;
+
+    animation-name: headerBounce;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+
+    z-index: 3;
+}
+
+@keyframes headerBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }50% {
+        transform: translateY(10px);
+    }65% {
+        transform: translateY(-10px);
+    }
+    75% {
+        transform: translateY(5px);
+    }90% {
+        transform: translateY(-2px);
+    }95% {
+        transform: translateY(1px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+#logoLink {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    text-decoration: none;
+    font-family: 'Balsamiq Sans', sans-serif;
+}
+#logoImg {
+    position: static;
+    font-size: 10px;
+    height: 50px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.searchBar {
+    position: relative;
+    border: none;
+    align-items: center;
+    width: 300px;
+}
+
+
+#headerSearchArea {
+    padding: 15px 40px 15px 10px;
+}
+
+
+
+.searchArea {
+    position: relative;
+    display: flex;
+    width: 100%;
+    font-size: 14px;
+    height: 25px;
+    border: 1px solid rgb(148, 146, 146);
+    border-radius: 24px;
+
+
+
+    padding-left: 10px;
+    padding-right: 40px;
+}
+
+#headerSearchButton {
+    font-size: 18px;
+    top: 3.5px;
+}
+
+.searchButton {
+    font-size: 12px;
+    height: 25px;
+    right: 10px;
+    color: rgb(49, 49, 49);
+    position: absolute;
+    background: none;
+    top: 0%;
+    border: none;
+    border-radius: 4px;
+}
+
+.dropDown {
+    display: none;
+    position: absolute;
+    top: 25px; 
+    left: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0 0 12px 12px;
+    border: 1px solid #b1b1b1;
+    overflow: hidden;
+    border-top: none;
+    z-index: 1000;
+    list-style: none; 
+    flex-wrap: wrap;
+}
+
+.dropDownItem {
+    padding: 10px 15px;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    width: 100%;
+    
+    
+}
+
+.dropDownItem:hover {
+    background-color: #757575;
+}
+
+.dropDownItem:last-child {
+    border-radius: 0 0 12px 12px;
+}
+
+.navBar {
+    display: flex;
+    gap: 40px;
+    margin-right: 40px;
+    
+}
+
+.navLink {
+    text-decoration: none;
+    color: #757575;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 20px;
+}
+
+#menuButton {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+}
+
+#pushDown {
+
+    padding-top: 70px;
+    width: 100%;
+    height: 30px;
+    display: flex;
+
+}
+
+
+#pushDown p {
+    display: none;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+
+#banner {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: end ;
+    
+}
+
+#banner p {
+    display: none;
+    font-size: 14px;
+    width: 100%;
+    background-color: #ff949480;
+    
+    padding: 5px 10px;
+    text-align: center;
+
+}
+
+/* Home */
+
+/* point bar*/
+
+.pointBar {
+    display: flex;
+    align-items: center;
+    background-color: #27712B;
+    color: white;
+    padding: 30px;
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+    height: 230px;
+}
+
+.pointBar-left {
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#profilePointBar-left {
+    padding: 0;
+    position: relative;
+    
+    left: 20px;
+
+}
+
+.profilePic {
+    border-radius: 100%;
+    height: 200px;
+    width: 200px;
+
+    background-color: #000;
+
+}
+
+.pointDetails {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+#pointLabel {
+    font-size: 20px;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.pointAmount {
+    font-size: 48px;
+    margin: 0;
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-weight: 1;
+    margin-left: 20px;
+}
+
+#pointLine {
+    border-top: 1px solid rgba(255, 255, 255, 0.49);
+    margin-bottom: 20px;
+    width: 60%;
+    margin-left: 20px;
+}
+
+.progressBar {
+    background-color: rgb(255, 255, 255);
+    height: 7px;
+    border-radius: 25px;
+    width: 80%;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.currentProgress {
+    background-color: #c6ff00;
+    height: 100%;
+
+}
+
+#pointMilestone {
+    font-size: 12px;
+    margin-left: 20px;
+
+
+}
+
+.viewPoint {
+    position: absolute;
+    bottom: 5px;
+    right: 8px;
+    color: white;
+    font-size: 12px;
+
+}
+
+#redeemViewPoint {
+    position: static; 
+    
+    color: white;
+    font-size: 12px;
+    white-space: nowrap;     
+    
+    margin-left: auto;      
+    padding-left: 15px;
+}
+
+#redeemDown {
+    display: flex;           
+    align-items: center;     
+    width: 100%;             
+    margin-top: 0px;        
+}
+
+#redeemPointLine {    
+    border-top: 1px solid rgba(255, 255, 255, 0.49);
+    
+    width: 60%;              
+    margin: 0;               
+    margin-left: 20px;      
+}
+
+#redeemPointDetails {
+    margin: 0;
+    padding: 0;
+}
+
+#redeemPointBar {
+    padding: 0px 20px;
+    
+}
+
+.viewPoint:hover {
+    color: #c6ff00;
+}
+
+
+/* event - home*/
+
+.event {
+    padding: 20px 30px 10px 10px;
+    width: 100%;
+    color: rgb(0, 0, 0);
+}
+
+.upcomingEvent {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.upcomingDate {
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    font-weight: 400;
+}
+
+
+
+.eventBox {
+    display: flex;
+
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25) ;
+
+    
+    padding: 15px;
+    gap: 15px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    position: relative;
+
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+
+
+
+}
+
+.event-left {
+    border-radius: 10px;
+    height: 145px;
+    width: 145px;
+    flex-shrink: 0;
+
+    overflow: hidden;
+}
+
+.eventPic {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}
+
+
+
+.eventDetail {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    margin-left: 10px;
+    justify-content: center;
+    padding-bottom: 10px;
+
+}
+
+.eventTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+
+.eventRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    align-items: center;
+}
+
+.eventDetail span{
+    margin-left: 6px;
+    font-size: 16px;
+}
+
+.viewEvent {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+
+    background-color: #E8F5E9;
+    color: #2E7D32;
+
+    padding: 6px 24px;
+    border: none;
+    border-radius: 100px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+}
+
+.noEvents {
+    text-align: center;
+}
+
+.viewEvent:hover {
+    background-color: #2E7D32;
+    color: #E8F5E9;
+}
+
+
+.reloadSpace {
+    display: none;
+    justify-content: center;
+
+}
+
+#reloadIcon {
+    color: #c6ff00;
+
+    animation-name: spin;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 2.5;
+
+
+    font-size: 25px;
+    
+
+
+}
+
+footer {
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background-color: #c8e1f8;
+}
+
+
+
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+/* event - event */
+
+.eventLabel{
+    display: flex;
+    justify-content: space-between; 
+    align-items: baseline; 
+    width: 100%;
+    margin-bottom: 5px;
+    padding-right: 10px; 
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+}
+
+.eventLabel a{
+    font-size: 12px;
+    font-weight: 350;
+    color: #27712B;
+}
+
+.eventLabel a:hover{
+
+    color: #2d45ff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* event - Myevent */
+
+.eventHead{
+    display: flex;
+
+    background-color: rgb(192, 255, 173);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 120px 0px 20px;
+    
+    height: 50px;
+}
+
+.profileHead {
+    display: flex;
+    width: 100%;
+
+    background-color: rgb(192, 255, 173);
+    justify-content: left;
+    align-items: center;
+    padding: 0px 120px 0px 0px;
+    
+    height: 50px;
+}
+
+.backEvent {
+    color: #000;
+}
+
+.filter {
+    position: relative;
+
+}
+
+.filterBtn {
+    background-color: white;
+    border: 1px solid #777;
+    border-radius: 4px;
+    padding: 6px 10px;
+
+    font-size: 16px;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+#filterDropDown {
+    min-width: 150px;
+
+    top: 99%; 
+    right: 40px;
+
+
+}
+
+#filterDropDown li {
+    padding: 10px 15px;
+    font-size: 14px;
+    width: 100%;
+}
+
+
+/* event - Availableevent */
+
+#availableEventHead {
+    padding-right: 600px;
+}
+
+/* study - General */
+
+.secondGeneralHeader {
+    display: flex;
+    width: 100%;
+
+    background-color: rgba(238, 255, 204, 0.629);
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0px 0px 20px;
+    
+    height: 50px;
+}
+
+
+.containerSmallNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+
+}
+
+.smallNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    background-color: #f4fb9b;
+    border-radius: 50px;
+    height: 35px;
+
+    max-width: 600px; 
+
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden; 
+}
+
+.smallNavBtn {
+    border: none;
+    background-color: transparent;
+
+
+    width: 100%;
+
+
+    font-size: 16px;
+    font-weight: 700;
+    color: #555;
+    height: 100%;
+
+}
+
+.smallNavColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    width: 100%;
+    height: 100%;
+
+
+    
+}
+
+
+#navStudy1 {
+    background-color: #ffbb00;
+}
+
+#navStudy2 {
+    background-color: transparent;
+}
+
+#completedStudy {
+    display: none;
+}
+
+
+.studyMain {
+
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 30px; 
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    align-items: center;
+    
+
+
+}
+
+
+
+
+
+
+.moduleCard {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 300px;
+    max-width: 350px;
+
+    height: 280px;
+
+    background-color: #ffffff;
+    border-radius: 20px; 
+    border: 1px solid #f0f0f0; 
+    
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    
+    overflow: hidden;
+    position: relative;
+    margin: 0; 
+
+
+}
+
+.moduleCard:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+}
+
+.studyCoverBox {
+    border-radius: 20px 20px 0px 0px;
+    height: 40%;
+    width: 100%;
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 160px;
+
+    position: relative;
+
+    border: 2px solid #757575;
+}
+
+.studyCoverPage {
+
+    height: 100%;
+    width: 100%;
+}
+
+
+.downStudy {
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    flex-grow: 1;
+    padding: 10px;
+    height: auto;
+
+    border-radius: 0px 0px 20px 20px;
+
+    
+    height: 100%;
+    width: 100%;
+
+    border-bottom: 2px solid #757575;
+    border-left: 2px solid #757575;
+    border-right: 2px solid #757575;
+}
+
+.moduleCardTitle {
+
+
+    text-align: left;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin: 0;
+    
+    text-overflow: ellipsis;
+
+    overflow: hidden;
+
+
+}
+
+
+.moduleCardDetail {
+
+    text-align: left;
+
+    align-items: left;
+
+    line-height: 1.4;
+
+    margin-top: 5px;
+
+    overflow: hidden;
+
+
+
+}
+
+
+/* redeem - */
+
+#navRedeem1 {
+    background-color: #ffbb00;
+}
+
+#navRedeem2 {
+    background-color: transparent;
+}
+
+.redeemMain {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 30px; 
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    align-items: center;
+    
+
+}
+
+.redeemCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 350px;
+
+    padding: 0px;
+
+    
+    background-color: #ffffff;
+    border-radius: 20px; 
+    border: 1px solid #f0f0f0; 
+    
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    
+    overflow: hidden;
+    position: relative;
+    margin: 0; 
+
+}
+
+.redeemPicBox {
+    border-radius: 20px 20px 0px 0px;
+    height: 40%;
+    width: 100%;
+
+    overflow: hidden;
+
+
+    position: relative;
+
+    border-bottom: 2px solid #000;
+
+}
+
+.redeemPic {
+    
+    height: 100%;
+    width: 100%;
+}
+
+.centerRedeem {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    flex-grow: 1;
+    padding: 10px;
+    height: auto;
+
+    border-radius: 0px 0px 20px 20px;
+
+    
+    height: 100%;
+    width: 100%;
+}
+
+.redeemCardTitle {
+    
+    text-align: left;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin: 0;
+    
+    text-overflow: ellipsis;
+
+    overflow: hidden;
+
+}
+
+.redeemCardDetail {
+    text-align: center;
+
+
+    line-height: 1.4;
+
+    margin-top: 5px;
+
+    overflow: hidden;
+
+}
+
+.redeemCardBtn {
+
+    width: 80%;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 12px; 
+    border: none;
+    
+    background-color: #c6ff00;
+    color: rgb(29, 108, 10);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.2);
+
+
+
+
+
+}
+
+
+.redeemCardBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(46, 125, 50, 0.3);
+}
+
+
+
+
+/* change point bar to side bar only in desktop mode */
+
+@media (min-width: 1050px) {
+
+
+
+    #redeemSmallNav {
+        margin: 70px;
+    }
+
+    #redeemSecondHeader{
+        position: fixed;
+        width: 100%;
+
+        background-color: rgb(238, 255, 204);
+        justify-content: center;
+        align-items: center;
+        padding: 0px 300px 0px 20px;
+        z-index: 2;
+        height: 50px;
+    }
+
+    #redeemPointBar {
+        position: fixed;       
+        right: 0;               
+        margin-top: 0px;     
+        padding: 0;      
+        
+        width: 300px;           
+        height: 100%;
+        
+        flex-direction: column; 
+        justify-content: start; 
+        align-items: center;    
+        
+
+        margin: 0;
+        padding-top: 50px;      
+        z-index: 2;            
+    }
+
+
+    #redeemPointDetails {
+        align-items: center;   
+        width: 100%;
+    }
+
+
+
+    #redeemDown {
+        flex-direction: column; 
+        width: 100%;
+        margin-top: 30px;
+        gap: 15px;             
+    }
+
+    .sidePointAmount{
+        width: 90%;
+        height: 270px;
+
+        background-color: #27712b6a;
+        border: 20px solid #ffffff42;
+        border-radius: 100%;
+
+            display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sidePointAmount .pointAmount {
+
+    font-size: 40px; 
+
+    }
+
+
+    #redeemPointLine {
+        display: none;       
+    }
+
+
+    #redeemViewPoint {
+        margin-left: 0;        
+        padding-left: 0;
+        background-color: rgba(255, 255, 255, 0.234);
+        padding: 10px 20px;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+    #redeemViewPoint:hover {
+        background-color: rgba(255, 255, 255, 0.411);
+    }
+
+ 
+    }
+
+/* end changing */ 
+
+.phoneHamburger {
+    display: none;
+}
+
+/* Profile */
+.profileActionContainer{
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+
+    flex-wrap: wrap;
+
+    padding: 20px;
+
+
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 30px; 
+
+
+    
+}
+.profileActionContainer a{
+    text-decoration: none;
+}
+
+.profileAction {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+
+    max-width: 350px;
+
+    padding: 0px;
+    
+    overflow: hidden;
+    position: relative;
+    margin: 20px; 
+}
+
+.profileCircleIcon {
+    border-radius: 100%;
+    background-color: #1bac2268;
+    width: 200px;
+    height: 200px;
+    color: #27712B;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 50px;
+
+    margin-bottom: 10px;
+
+    margin: auto 5px 10px 5px;;
+
+}
+
+.profileActionText {
+    display: flex;
+    border-radius: 20px;
+    background-color: #27712B;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    font-size: 18px;
+    font-weight: 800;
+    color: #FAFFE8;
+}
+
+#editProfileBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    right: 40px;
+    top: 80px;
+    color: #000;
+    background-color: #f5f5f5;
+    border-radius: 100%;
+    border: none;
+    height: 40px;
+    width: 40px;
+    font-size: 25px;
+    
+}
+#uploadPicBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    right: 40px;
+    top: 80px;
+    color: #000;
+    background-color: #f5f5f5;
+    border-radius: 100%;
+    border: none;
+    height: 40px;
+    width: 40px;
+    font-size: 25px;
+    
+    
+    box-shadow: 0px 1px 2px black;
+}
+
+#editProfilePic {
+    margin-top: 20px;
+
+    position: relative;
+
+    left: 20px;
+
+    margin-bottom: 20px;
+
+}
+
+
+#profileDetailContainer {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+
+    justify-content: center;
+
+    border: none;
+
+    margin: 0px;
+    padding: 0px;
+
+
+}
+
+#profileTable {
+    width: 50%;
+    border: none;
+}
+
+.profileDetailLine{
+    
+
+
+    background-color: #b7f7af;
+    display: flex;
+
+
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+
+    font-size: 15px;
+
+    margin: 0px;
+    
+    border-top: 0.5px solid #5ab0529e;
+    border-left: 0.5px solid #5ab0529e;
+    border-right: 0.5px solid #5ab0529e;
+    padding: 20px 5px 20px 5px;
+    text-align: center;
+
+}
+
+.profileDetailLine:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+.profileDetailLine:last-child {
+    border-radius: 0 0 10px 10px;
+}
+  
+
+
+
+
+.labelProfile {
+    border: none;
+
+    font-weight: bold;
+
+
+}
+
+.inputProfile input {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    padding: 0px 10px;
+    text-align: center;
+}
+
+.inputProfile input:focus {
+    border: none;
+    border-radius: 10px;
+    text-align: left;
+}
+.inputProfile input {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+.buttonProfile {
+    background-color: transparent;
+    border: none;
+
+}
+
+.buttonProfile button {
+    border: none;
+    background-color: transparent;
+}
+
+/* point */
+
+#pointHead {
+    display: flex;
+
+    background-color: rgb(192, 255, 173);
+    justify-content: left;
+    align-items: center;
+    padding: 0px 0px 0px 0px;
+    
+    height: 50px;
+}
+
+.backPoint {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+#realPointBigContainer {
+    margin-top: 10px;
+    background-color: #64be58;
+    border-radius: 10px;
+    padding: 10px 5px;
+    height: auto;
+
+}
+#realPointDetails {
+    background-color: #C7EEC2;
+    color: #254F1B;
+    margin: 0 5px;
+    display: flex;
+    align-items: left;
+    text-align: left;
+    border-radius: 10px;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 1px 2px white;
+    
+    
+}
+
+
+
+
+#realPointLine {
+    color: #000;
+    width: 30%;
+    border-top: 2px solid rgb(0, 0, 0);
+
+    margin-left: 20px;
+}
+
+#editBadgeImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    right: 40px;
+    top: 80px;
+    color: #000;
+    background-color: #f5f5f5;
+    border-radius: 100%;
+    border: none;
+    height: 40px;
+    width: 40px;
+    font-size: 25px;
+    
+}
+
+
+
+#totalPointBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    position: relative;
+    padding: 0px 40px;
+}
+
+#totalPointBar-left {
+
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+#badgePic {
+    border-radius: 100%;
+    height: 200px;
+    width: 200px;
+
+    background-color: #000;
+
+}
+
+#totalPointDetails {
+    margin-top: 0;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    padding-top: 0;
+    margin-bottom: 60px;
+}
+
+#badgeName {
+    display: flex;
+    background-color: #cdfdfa;
+    width: 40%;
+
+    color: #40ac83;
+
+    margin-top: 0;
+    
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 30px;
+
+    margin-bottom: 20px;
+}
+
+#totalPointLabel {
+    font-size: 20px;
+    opacity: 0.9;
+    margin: 10px 0;
+}
+
+#totalEarnedPoint {
+    font-size: 24px;
+    margin: 0;
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-weight: 1;
+}
+
+#realPointDown {
+    margin-top: 30px;
+
+    padding: 5px;
+    position: relative;
+}
+
+#pointProgressBar {
+    background-color: rgb(255, 255, 255);
+    height: 7px;
+    border-radius: 25px;
+    width: 90%;
+    overflow: hidden;
+    margin-left: 20px;
+    border: 1px solid black;
+}
+
+
+
+#realPointMilestone {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+
+    color: rgb(0, 0, 0);
+
+
+}
+
+#linkBadgeMilestone {
+    display: flex;
+    justify-self: right;
+
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+
+    background-color: white;
+
+    justify-content: center;
+
+    width: 230px;
+
+    border-radius: 100px;
+    bottom: 5px;
+    right: 8px;
+    font-weight: 700;
+    color: #0a670e;
+    font-size: 16px;
+
+}
+
+#pointFlowBtnContainer {
+    
+    flex-direction: row;
+    gap: 10px;
+    
+    display: flex;
+    justify-content: center;
+
+}
+
+.pointFlowBtn {
+    
+
+    margin-top: 20px;
+    background-color: #00BA4B;
+    height: 100px;
+    
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 100px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+    
+}
+#pointFlowBtnContainer a {
+    text-decoration: none;
+    color: rgb(222, 245, 179);
+
+    width: 49%;
+
+
+}
+
+.phoneHamburger{
+
+    display: none;
+}
+
+.phoneProfilePic{
+    display: none;
+}
+
+/* history */
+.historyHeader {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#firstHistoryHeader {
+    margin-top: 20px;
+}
+
+.historyAmount {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border: none;
+
+    margin: 0px;
+    padding: 10px;
+
+    background-color: #b7f7af;
+
+    margin-bottom: 0px;
+
+
+}
+
+.labelHistory {
+    font-size: 20;
+    font-weight: 700;
+    padding-left: 10px;
+}
+
+.amountLinkHistory {
+    
+    font-size: 20;
+
+
+
+    text-align: left;
+
+    padding-right: 10px;
+
+}
+
+.amountHistory {
+    margin-right: 10px;
+}
+
+#lastHistoryAmount {
+    border-top: 1px solid #5ab05251;
+}
+
+
+@media (max-width: 1050px) and (min-width: 801px) {
+    #headerSearchBar {
+        display: none;
+    }
+}
+
+/* 
+ =================================================================================================
+                    Phone mode
+ =================================================================================================
+*/
+ @media (max-width: 800px) {
+
+
+/* hamburger */
+
+
+    .phoneHamburger {
+        display: none;
+        position: fixed;  
+        right: 0;               
+        margin-top: 0px;     
+        padding: 0;      
+        
+        width: 300px;           
+        height: 100%;
+        
+        flex-direction: column; 
+        justify-content: flex-start; 
+        align-items: center;    
+        
+        flex-grow: 1;
+
+        margin: 0;
+        padding-top: 0;      
+        z-index: 1000; 
+
+        background-color: #ffffff;
+
+
+        animation-name: slideLeft;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+
+    
+    @keyframes slideLeft {
+        0% {
+            width: 0%;
+        }
+        100% {
+            width: 50%;
+        }
+    }
+
+
+    #hamburgerUp {
+        display: flex;
+        gap: 60px;
+        flex-direction: row;
+
+        margin-top: 10px;
+    }
+    #hamburgerUp a{
+        text-decoration: none;
+
+    }
+
+    .close-btn {
+        position: relative;
+        
+
+        font-size: 50px;
+        font-weight: bold;
+        text-align: right;
+        color: #000000;
+        background: none;
+        border: none;
+        padding: 0;
+        
+    }
+
+    #userNameSideBar {
+        font-size: 20px;
+        
+    }
+    
+
+    #phoneSearchBar {
+        display: flex;
+        margin: 0px;
+        width: 80%;
+    }
+
+    #phoneSearchButton {
+        position: absolute;
+        
+    }
+
+    #sidebarUp {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        color: #000;
+        align-items: center;
+
+    }
+
+    .phoneProfilePic {
+
+        position: relative;
+
+        display: block;
+        width: 50px;
+        height: 50px;
+        border: 1px solid rgba(98, 98, 98, 0.363);
+        border-radius: 100%;
+
+        margin-right: 10px;
+        
+    }
+
+    #phoneSearchDropDown {
+        z-index: 2200;
+    }
+
+    
+    #phoneSearchButton {
+        height: 0px;
+        right: 100px;
+        top: 20%;
+    }
+
+    .dropDown {
+        width: 100%;
+    }
+
+    #headerNavBar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    
+
+
+
+/* hamburger enddddddddddddd*/
+
+    #logoImg {
+        width: 120px;
+        height: 40px;
+    }
+
+    #headerSearchBar {
+        display: none;
+    }
+
+    .navBar {
+        display: none;
+    }
+
+    #menuButton {
+        display: block;
+    }
+
+    .pointBar {
+        flex-direction: column;
+        background-color: transparent;
+        padding: 0;
+        margin-top: 0;
+        height: auto;
+    }
+
+    
+    #redeemPointBar {
+        padding: 0px;
+        margin-top: 20px;
+    
+    }
+
+    #redeemPointDetails {
+
+    padding: 10px;
+}
+
+    .pointBar-left {
+        margin-bottom: 10px;
+        justify-content: center;
+        z-index: 2;
+        
+    }
+
+    .profilePic {
+        
+        width: 150px;
+        height: 150px;
+        border: 1px solid rgba(98, 98, 98, 0.363);
+        
+    }
+
+    #badgePic {
+        
+        width: 150px;
+        height: 150px;
+        border: 1px solid rgba(98, 98, 98, 0.363);
+        
+    }
+
+    .pointDetails{
+        width: 100%;
+        background-color: #27712B;
+        padding: 10px 20px 20px 10px;
+        text-align: left;
+        align-items: left;
+    }
+
+    #pointLabel {
+        
+        font-size: 16px;
+    }
+    .pointAmount {
+        font-size: 40px;
+
+    }
+
+    #pointLine {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    .progressBar {
+        width: 90%;
+    }
+
+    #pointMilestone {
+        font-size: 11px;
+    }
+
+    .viewPoint {
+        font-size: 9px;
+    }
+
+    
+    /* event */
+
+        
+    .event {
+        padding: 20px 10px 10px 5px;
+    }
+
+
+
+    .upcomingEvent {
+        font-size: 19px;
+        margin-bottom: 5px;
+        margin-left: 2px;
+    }
+
+    .upcomingDate {
+        font-size: 16px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+    }
+
+
+
+    .eventBox {
+        padding: 15px;
+        gap: 5px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+
+
+
+    }
+
+    .event-left {
+        border-radius: 10px;
+        height: 100px;
+        width: 100px;
+
+    }
+
+
+    .eventDetail {
+
+        margin-left: 10px;
+
+        padding-bottom: 10px;
+
+    }
+
+    .eventTitle {
+        font-size: 20px;
+        margin-bottom: 0px;
+    }
+
+    .eventRow {
+        gap: 0px;
+        margin-bottom: 0px;
+        font-size: 16px;
+    }
+
+    .eventDetail span{
+        margin-left: 6px;
+        font-size: 13px;
+    }
+
+    .viewEvent {
+
+        padding: 3px 20px;
+        font-size: 12px;
+
+    }
+
+    /* event - Myevent */
+
+    
+    .eventHead  {
+
+        padding: 0px 70px 0px 10px;
+        
+
+    }
+
+    .profileHead {
+        padding: 0px 70px 0px 0px;
+    }
+
+    #availableEventHead {
+        padding: 0px 20px 0px 10px;
+    }
+
+    #mySearchBar {
+        width: 150px;
+    }
+
+    #availableSearchBar {
+        width: 200px;
+    }
+
+    #filterDropDown {
+        min-width: 100px;
+
+    }
+
+    #filterDropDown li {
+        padding: 5px 5px;
+        font-size: 12px;
+    }
+
+    #filterDropDown input[type="radio"] {
+        transform: scale(0.75);
+        margin-top: 10px;
+    }
+
+    #studySearchBar {
+        width: 200px;
+    }
+
+    /* profile */
+
+    .profileAction {
+
+
+        margin: 10px; 
+    }
+
+    .profileCircleIcon {
+
+        width: 150px;
+        height: 150px;
+
+
+
+    }
+
+    .profileActionText {
+        width: 160px;
+    }
+
+    #editProfileBtn {
+        box-shadow: 0px 1px 2px black;
+        right: 40px;
+        top: 55px;
+    }
+    #uploadPicBtn {
+        box-shadow: 0px 1px 2px black;
+        right: 40px;
+        top: 55px;
+    }
+    
+
+    /* edit profile*/
+
+    
+    #profileTable {
+        width: 100%;
+    }
+
+    .profileBreakLine {
+        display: block;
+    }
+
+    /* point */
+
+    #backFromPoint{
+        color: #000;
+    }
+
+    #totalPointBar {
+        padding-right: 10px;
+        padding-left: 5px;
+    }
+
+    #totalPointBar-left {
+        margin-right: 0px;
+        margin-left: 0px;
+        padding-left: 0;
+        padding-right: 0px;
+    }
+
+
+    #realPointDetails {
+        color: #000;
+        padding: 10px 20px 20px 10px;
+        
+        width: auto;
+    }
+
+    #editBadgeImg {
+        box-shadow: 0px 1px 2px black;
+        right: 40px;
+        top: 55px;
+    }
+
+    #realPointLine {
+        width: 50%;
+    }
+
+    #totalPointDetails {
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    #badgeName {
+        font-size: 24px;
+        width: 100%;
+    }
+
+    #totalPointLabel {
+        font-size: 14px;
+    }
+
+    #realPointMilestone {
+        font-size: 14px;
+    }
+
+    #pointProgressBar {
+        border: 1px solid black;
+    }
+
+    #linkBadgeMilestone {
+
+    margin-top: 10px;
+
+    width: 190px;
+
+    padding: 5px 10px;
+
+    font-weight: 700;
+    font-size: 16px;
+
+    }
+
+
+    #pointFlowBtnContainer {
+        
+        flex-direction: row;
+        gap: 10px;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 9px;
+
+    }
+
+    .pointFlowBtn {
+        
+
+        margin-top: 20px;
+        width: 250px;
+        background-color: #00BA4B;
+        height: 100px;
+        
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 100px;
+
+        font-size: 20px;
+
+        font-weight: bold;
+        
+    }
+    #pointFlowBtnContainer a {
+        display: flex;
+        text-decoration: none;
+        color: rgb(222, 245, 179);
+    }
+
+
+    
+
+
+}
+
+/* align-item: up and down
+justify content: left right
+z-index: bring forward or backward
+flex-direction: make thing like a 排好来
+flex-grow: 1; make the flexbox fit the empty space
+flex-shrink: make the element inside box smaller than the box
+                (so will not /bigger than the box)
+
+
+box-shadow: 0px 2px 4px 0(optional) color;
+左右（po = right), 上下（po = down), blur(po = more blur), size, color
+
+Thin	    100	
+Extra Light 200
+Light       300	
+Regular	    400	
+Medium	    500	
+Semi-Bold   600	
+Bold	    700
+Extra Bold 	800	
+
+*/
