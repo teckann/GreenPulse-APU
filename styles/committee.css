@@ -2084,3 +2084,51 @@ input[type="textarea"]::placeholder {
         height: 32em;
     }
 }
+
+/* TEST */
+/* -------------------------*/
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #EDF4F1;
+    width: 97%;
+    border-radius: 5px;
+    padding: 15px;
+    margin: auto 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+} 
+
+.numbering,.tpnumber,.date-time {
+    flex: 1;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.numbering {
+    
+    padding-left: 15px;
+
+}
+
+.info-label {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 600;
+}
+
+.name {
+    flex: 2;
+    text-align: center;
+}
+
+.info-value {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.95rem;
+    color: #333;
+    font-weight: 500;
+}
