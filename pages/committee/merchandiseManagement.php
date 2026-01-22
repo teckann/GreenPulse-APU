@@ -124,24 +124,10 @@
         <div id="fullPage">
             <div id="upperTree">
                 <div id="treeManageText">
-                    <h1>Tree Management <i class="fa-solid fa-tree" style="color: #228B22;"></i></h1>
-                    <p>Add new, manage available tree adoption for volunteers to redeem</p>
+                    <h1 class="merchandisePageTitle">Merchandise Management <i class="fa-solid fa-bag-shopping"  style="color:#301A4B"></i></h1>
+                    <p>Add new, manage available merchandise for user to redeem</p>
                 </div>
-                <button id="btnAddItem" name="btnAddItem"><span class="showDesktop">Add Tree</span><span class="showMobile"><i class="fa-solid fa-plus" style="color: white;"></i></span></button>
-            </div>
-            <div id="showTreeClass">
-                <button id="btnAvailableTree" class="treeClass selectedButton">
-                    <a href="availableTreePage.php" style="text-decoration: none;">
-                        <i class="fa-solid fa-circle-check" style="color: #28a745;"></i>
-                        <p><b>Available Tree</b></p>
-                    </a>
-                </button>
-                <button id="btnAdoptedTree" class="treeClass">
-                    <a href="adoptedTreePage.php" style="text-decoration: none;">
-                        <i class="fa-solid fa-house" style="color: #2e8b57;"></i>
-                        <p><b>Adopted Tree</b></p>
-                    </a>
-                </button>
+                <button id="btnAddItem" name="btnAddItem"><span class="showDesktop">Add Merchandise</span><span class="showMobile"><i class="fa-solid fa-plus" style="color: white;"></i></span></button>
             </div>
             <hr>
             <div id="displayTreeCard">
