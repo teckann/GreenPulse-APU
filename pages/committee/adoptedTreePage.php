@@ -14,12 +14,35 @@
         $search = $_GET["searchTree"];
     }
 
-    $treeTypeStatus ='';
+    if (isset($_POST["btnConfirmUpdate"])) {
+        $updateTreeId = $_POST["targetItemIdUpdate"];
+        $newStatus = $_POST["adoptedUpdateStatusSelector"];
+        $updateTreeName = $_POST["targetUpdateItemName"];
+
+        $sqlUpdateStatus = "UPDATE tree_adoption_history SET tree_adoption_status = '$newStatus' WHERE tree_adoption_id = '$updateTreeId'";
+
+        if (mysqli_query($conn, $sqlUpdateStatus)) {
+            echo "<script>
+            alert('{$updateTreeName}s status is changed to $newStatus');
+            window.location.href='adoptedTreePage.php';
+            </script>";
+        }
+        else {
+            echo "<script>alert('{$updateTreeName}s status cannot be changed, please try again');</script>";
+        }
+    }
+
+    if (isset($_GET["btnMarkAsFertilized"])) {
+        $fertilizeItemId = $_GET['targetItemID'];
+        $sqlFertilize = "UPDATE tree_adoption_history SET fertilization_datetime = NOW() WHERE tree_adoption_id = '$fertilizeItemId'";
+
+        mysqli_query($conn, $sqlFertilize);
+    }
 
     // use status to detect the popup
     $updateItemPopUp = false;
     
-    
+    $treeTypeStatus ='';
 
     //assign the filter value first
     if (!empty($_GET["filterAvailableTreeStatus"])) {
@@ -186,15 +209,19 @@
 
                                 $adoptDate = date("d M Y", strtotime($row['tree_adoption_date']));
 
-                                $fertilizeInDB = $row['fertilization_datetime'];
+                                $fertilizeInDT = $row['fertilization_datetime'];
                                 $showFertilizeText = "";
 
                                 $todayTimeStamp = time();
-                                if (!empty($fertilizeInDT) && $fertilizeInDB !== '0000-00-00 00:00:00') {
-                                    $fertilizeDT = strtotime($fertilizeInDB); 
-                                    if (date('Y-m-d', $fertilizeInDT) === date('Y-m-d', $nowDT)) {
+
+                                $fertilizeButtonUsed = false;
+                                if (!empty($fertilizeInDT) && $fertilizeInDT !== '0000-00-00 00:00:00') {
+                                    $fertilizeDT = strtotime($fertilizeInDT); 
+                                    if (date('Y-m-d', strtotime($fertilizeInDT)) === date('Y-m-d', $todayTimeStamp)) {
                                         // if today fertilized
                                         $showFertilizeText = "Today, " . date('H:i', $fertilizeDT);
+                                        // change the color of button status
+                                        $fertilizeButtonUsed = true;
                                     } 
                                     else {
                                         // if in different day
@@ -253,7 +280,7 @@
                                                 </div>
                                                 <div class='userName'>
                                                     <b>Last Fertilized:</b>
-                                                    <p>" . $showFertilizeText . "</p>
+                                                    <p class='fertilizeText'>" . $showFertilizeText . "</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -268,13 +295,30 @@
                                         </div>
                                         <div class='itemButton'>
                                             <form action='#' method='GET'>
-                                                <input type='hidden' name='targetItemID' value='" . $row['item_id'] . "'>
+                                                <input type='hidden' name='targetItemID' value='" . $row['tree_adoption_id'] . "'>
                                                 <input type='hidden' name='targetTreeAdoptionStatus' value='" . $row['tree_adoption_status'] . "'>
+                                                <input type='hidden' name='targetTreeAdoptionName' value='" . $row['given_name'] . "'>
                                                 <button type='submit' name='btnUpdateStatus' class='adoptedUpdateStatusBtn'>Update Status</button>
                                                 <button type='submit' name='btnMarkAsFertilized' class='markAsFertilizedBtn'>Mark as Fertilized</button>
                                             </form>
                                         </div>
                                     </div>";
+                                    // change the fertilized button color
+                                //     if ($fertilizeButtonUsed) {
+                                
+                                    // <script>
+                                    //     const treeCards = querySelectorAll(".treeCard");
+                                    //     forEach((each) => {
+                                    //         const markAsFertilizedButton = each.querySelector(".markAsFertilizedBtn");
+                                    //         const buttonText = markAsFertilizedButton.innerText;
+                                    //         if (buttonText.startsWith("Today")) {
+                                    //             markAsFertilizedButton.style.backgroundColor = "Gray";
+                                    //             markAsFertilizedButton.classList.add("disableButton");
+                                    //         }
+                                    //     })
+                                    // </script>
+                                
+                            // }
                             }
                         ?>                
                     </div>
@@ -282,15 +326,45 @@
             </div>
         </div>
 
+        <script>
+            const treeCards = document.querySelectorAll(".treeCard");
+            treeCards.forEach((each) => {
+                const markAsFertilizedButton = each.querySelector(".markAsFertilizedBtn");
+                const fertilize = each.querySelector(".fertilizeText");
+                const fertilizeText = fertilize.innerText;
+                if (fertilizeText.startsWith("Today")) {
+                    markAsFertilizedButton.style.backgroundColor = "Gray";
+                    markAsFertilizedButton.classList.add("disableButton");
+                }                
+            })
+
+            let canUse = false;
+            const markAllAsFertilizedButton = document.querySelector("#btnMarkAllFertilized");
+            treeCards.forEach((each) => {
+                const fertilize = each.querySelector(".fertilizeText");
+                const fertilizeText = fertilize.innerText;
+                if (!fertilizeText.startsWith("Today")) {
+                    canUse = true;
+                }
+            });
+
+            if (!canUse) {
+                markAllAsFertilizedButton.style.backgroundColor = "Gray";
+                markAllAsFertilizedButton.classList.add("disableButton");
+            }
+        </script>
+
         <div id="itemOverlay"></div>
 
         <?php
             if (isset($_GET["btnUpdateStatus"])) {
+                
                 $treeStatus = $_GET["targetTreeAdoptionStatus"];
                 $adoptedTreeId = $_GET["targetItemID"];
+                $targetTreeName = $_GET["targetTreeAdoptionName"];
                 ?>
                     <script>
-                        // const 
+                        
                     </script>
                 <?php
             }
@@ -299,20 +373,20 @@
         <div id="itemPopUp">
             <div class="popUpHeader">
                 <div><button id='btnExitPopUp' class='btnExitPopUps'><i class="fa-solid fa-arrow-left"></i></button></div>
-                <div id="popUpHeaderText"><b id="editTreeText"></b></div>
+                <div id="popUpHeaderText"><b id="changeAdoptionTreeStatus">Update Adopted status</b></div>
 
                 
             </div>
-            <?php 
-
-                
-
-            ?>
             <!-- // edit item information -->
-            <form action='#' method='POST' class='popUpForm'>
+            <form action='#' method='POST' class='popUpForm popUpFormStatus'>
                 <div class='popUpShow'>
-                    <div class='itemPopUpInput'>
-                        <label for='itemNameEdit'>Tree Name:</label>
+                    <div class ='showCurrentStatus'>
+                        <b><?php echo $targetTreeName ?>'s Current Status:</b><br>
+                        <p><?php echo $treeStatus ?></p>
+                        <hr>
+                    </div>
+                    <div class='itemPopUpInput updateAdoptedTreeStatusPart'>
+                        <label for='adoptedUpdateStatusSelector'>New Status</label>
                         <select name="adoptedUpdateStatusSelector" id="adoptedUpdateStatusSelector">
                             <option value="">All Status</option>
                             <option value="Planted">Planted</option>
@@ -323,28 +397,32 @@
                             <option value="Dead">Dead</option>
                         </select>
                     </div>
-                    <?php   if (isset($_GET["btnUpdateStatus"])) { ?>
+                    <?php   if (isset($_GET["btnUpdateStatus"])) {
+                        $updateItemPopUp = true;
+                    ?>
                     <script>
                         const statusSelector = document.querySelector("#adoptedUpdateStatusSelector");
                         statusSelector.value = "<?php echo $treeStatus; ?>";
                     </script>
                     <?php  } ?>
-                    <input type='hidden' name='itemIdEdit' value='<?php echo "$adoptedTreeID"?>'>
-                    <div class='editConfirmButton'>
-                        <button name='btnConfirmEdit' type='submit' value='Confirm' id='btnConfirmEdit'><i class="fa-solid fa-circle-check" style="color: #28a745;"></i>  Confirm</button>
+                    <input type="hidden" name="targetUpdateItemName" value=' <?php echo $targetTreeName ?>"'>
+                    <input type='hidden' name='targetItemIdUpdate' value='<?php echo "$adoptedTreeId"?>'>
+                    <div class='updateConfirmButton'>
+                        <button name='btnConfirmUpdate' type='submit' value='Confirm' id='btnConfirmUpdate'><i class="fa-solid fa-circle-check" style="color: #28a745;"></i>  Confirm</button>
                     </div>
                 </div>
             </form>
-            <div class='navToEditPhoto'>
-                <button name="btnNavToEditPhoto" id="btnNavToEditPhoto">Change Tree Photo?</button>
-            </div>
         </div>
+
+
 
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 const treeStatus = document.getElementById("filterAvailableTreeStatus");
                 const popUpOverlay = document.querySelector("#itemOverlay");
                 const itemPopUp1 = document.querySelector("#itemPopUp");
+                const btnExitPopUp = document.querySelector("#btnExitPopUp");
+                const btnMarkAllFertilized = document.querySelector("#btnMarkAllFertilized");
 
                 // check the session has record or not, if don't have record, will become null
                 const savedStatusOfTree = sessionStorage.getItem("selectedTreeStatus");
@@ -358,7 +436,6 @@
                 });
 
                 const treeType = document.getElementById("filterAvailableTreeType");
-
                 const savedTreeType = sessionStorage.getItem("selectedTreeType");
 
                 if (savedTreeType != null) {
@@ -381,23 +458,28 @@
                     updateStatusBtn.classList.add("disableButton");
                     markAsFertilizeBtn.classList.add("disableButton");
                 }
-
-                updateStatusBtn.addEventListener("click", () => {
-                    popUpOverlay.style.display = "block";
-                    itemPopUp1.style.display = "flex";
-                })
             })
 
             popUpOverlay.addEventListener("click", () => {
                 reload();
             })
 
-            const reload = () => {
-                sessionStorage.setItem('selectedTreeStatus', '');
-                sessionStorage.setItem('selectedTreeType', '');
-                window.location.href = 'adoptedTreePage.php';
-            }
+            btnExitPopUp.addEventListener("click", () => {
+                reload();
+            })
+
+            <?php if ($updateItemPopUp) { ?>
+                popUpOverlay.style.display = "block";
+                itemPopUp1.style.display = "flex";
+                btnMarkAllFertilized.style.display = "none";
+            <?php } ?>
         });
+
+        const reload = () => {
+            sessionStorage.setItem('selectedTreeStatus', '');
+            sessionStorage.setItem('selectedTreeType', '');
+            window.location.href = 'adoptedTreePage.php';
+        }
         </script>
         <script src="../../scripts/committee.js"></script>
 </body>

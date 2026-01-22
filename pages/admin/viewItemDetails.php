@@ -220,7 +220,7 @@
                                         }
                                         elseif ($data["category"] === "tree") {
                                             echo '<tr>
-                                                    <td>' . $row['tree_adoption_is'] . '</td>
+                                                    <td>' . $row['tree_adoption_id'] . '</td>
                                                     <td>' . $row['user_id'] . '</td>
                                                     <td>' . $user_name . '</td>
                                                     <td>' . $row['tree_adoption_datetime'] . '</td>

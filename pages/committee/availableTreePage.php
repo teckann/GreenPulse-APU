@@ -460,11 +460,13 @@
             <?php if ($showPopUp) {?> 
                 itemPopUpOverlay.style.display = 'block';
                 itemPopUp.style.display = 'flex';
+                btnAddNewItem.style.display = "none";
             <?php } ?>
 
             <?php if ($showDeletePopUp) {?>
                 itemPopUpOverlay.style.display = 'block';
                 itemDeletePopUp.style.display = 'flex';
+                btnAddNewItem.style.display = "none";
             <?php } ?>
 
             // close pop up page when the user click overlay
@@ -542,15 +544,14 @@
         })
         
         btnExitDeleteItem.addEventListener("click", () => {
-            itemDeletePopUp.style.display = "none";
-            itemPopUpOverlay.style.display = "none";
-            window.location.href = "availableTreePage.php";
+            reload();
         });
 
         // to open create new tree page
         btnAddNewItem.addEventListener("click", () => {
             itemCreatePopUp.style.display = "flex";
             itemPopUpOverlay.style.display = "block";
+            btnAddNewItem.style.display = "none";
         });
 
         btnExitCreateItem.addEventListener("click", () => {
@@ -559,48 +560,7 @@
 
         });
 
-        // const treeStatus = document.getElementById("filterAvailableTreeStatus");
-
-        // // check the session has record or not, if don't have record, will become null
-        // const savedStatusValue = sessionStorage.getItem("selectedTreeStatus");
-        // // if there have record, will asign it into the the selectbox value
-        // if (savedStatusValue !== null) { 
-        //     treeStatus.value = savedStatusValue;
-        // }
-
-        // // place the listener to listen if the sleect box has change or not, if change it will assign new data inyo session
-        // // and the page will refresh due to this is submit type, the set value will become can get one
-        // treeStatus.addEventListener('change', function() {
-        //     sessionStorage.setItem('selectedTreeStatus', this.value);
-        // });
-
-        // const treeCreator = document.querySelector("#filterAvailableTreeCreator");
-        // const savedCreatorValue = sessionStorage.getItem("selectedTreeCreator");
-        // if (savedCreatorValue != null) {
-        //     treeCreator.value = savedCreatorValue;
-        // }
         
-        // // only funcyion() have their this, arrow  function don;t have this (this refer to window), but can use function(e) or (e) => , and use the e.target.value
-        // treeCreator.addEventListener('change', function() {
-        //     sessionStorage.setItem("selectedTreeCreator", this.value);
-        // });
-
-        // btnExitPopUp.addEventListener("click", () => {
-        //     reload();
-        // })
-
-        // const btnBackToEditItem = document.querySelector("#btnBackEditItem");
-
-        // btnBackToEditItem.addEventListener("click", () => {
-
-        // })
-
-        // const reload = () => {
-
-        //     sessionStorage.setItem('selectedTreeStatus', '');
-        //     sessionStorage.setItem('selectedTreeCreator', '');
-        //     window.location.href = 'availableTreePage.php';
-        // }
     </script>
     <script src="../../scripts/committee.js"></script>
 </body>

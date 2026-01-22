@@ -9,7 +9,7 @@ Try Login Details as below:
 
 Please update your database
 
-Version: V6 - 22.01.2026
+Version: V7 - 22.01.2026
 
 # items table add posted_date
 # change fertilization_datetime to allow NULL
@@ -19,6 +19,7 @@ Version: V6 - 22.01.2026
 # make event_register_date (Date) to event_register_datetime (DateTime)
 # make merchandise_purchase_date (Date) to merchandise_purchase_datetime (DateTime)
 # make tree_adoption_date (Date) to tree_adoption_datetime (DateTime)
+# make finish_date (Date) to finish_datetime (DateTime)
 
 # add avatar for each person
 
