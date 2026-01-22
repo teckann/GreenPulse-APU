@@ -3,9 +3,9 @@
     <img src="../../src/elements/logo_vertical.png" alt="Logo" height="60px" width="60px" class="mobile-logo">
 
     <nav>
-        <a href="#">Home</a>
-        <a href="aboutUs.php">About Us</a>
-        <a href="contactUs.PHP">Contact Us</a>
-        <a href="login.php">Login</a>
+        <a href="index.php" id="home">Home</a>
+        <a href="aboutUs.php" id="aboutUs">About Us</a>
+        <a href="contactUs.PHP" id="contactUs">Contact Us</a>
+        <a href="login.php" id="login">Login</a>
     </nav>
 </header>
