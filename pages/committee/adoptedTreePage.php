@@ -26,6 +26,7 @@
             alert('{$updateTreeName}s status is changed to $newStatus');
             window.location.href='adoptedTreePage.php';
             </script>";
+            addLog($conn, $userID, "Change Tree Status ($updateTreeId)");
         }
         else {
             echo "<script>alert('{$updateTreeName}s status cannot be changed, please try again');</script>";
@@ -36,7 +37,9 @@
         $fertilizeItemId = $_GET['targetItemID'];
         $sqlFertilize = "UPDATE tree_adoption_history SET fertilization_datetime = NOW() WHERE tree_adoption_id = '$fertilizeItemId'";
 
-        mysqli_query($conn, $sqlFertilize);
+        if (mysqli_query($conn, $sqlFertilize)) {
+            addLog($conn, $userID, "Fertilize Tree ($fertilizeItemId)");
+        }
     }
 
     if (isset($_POST["btnMarkAllFertilizedItem"])) {
@@ -50,6 +53,7 @@
                     window.location.href = "adoptedTreePage.php";
                 </script>
             <?php
+            addLog($conn, $userID, "Fertilize All Trees");
         }
     }
 
@@ -223,7 +227,7 @@
                                 $userName = mysqli_fetch_assoc($userResult)['name'];
                                 $treeType = $row["itemUserId"];
 
-                                $adoptDate = date("d M Y", strtotime($row['tree_adoption_date']));
+                                $adoptDate = date("d M Y", strtotime($row['tree_adoption_datetime']));
 
                                 $fertilizeInDT = $row['fertilization_datetime'];
                                 $showFertilizeText = "";
@@ -247,7 +251,7 @@
                                     $showFertilizeText = '-'; // No fertilization date
                                 }
 
-                                $adoptionTimeStamp = strtotime($row["tree_adoption_date"]);
+                                $adoptionTimeStamp = strtotime($row["tree_adoption_datetime"]);
 
                                 $adoptionYear = date("Y", $adoptionTimeStamp);
                                 $currentYear = date("Y", $todayTimeStamp);

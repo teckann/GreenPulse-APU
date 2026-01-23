@@ -2053,6 +2053,71 @@ input[type="textarea"]::placeholder {
     flex-direction: column;
 }
 
+.profileUpper {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+}
+
+.profileText {
+    margin-bottom: 0;
+}
+
+.profileMiddle {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 10em;
+    background-color: pink;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileStatus {
+    position: absolute;
+    top: 0.2em;
+    right: 0.5em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6em;
+    font-size: 1.3em;
+    border-radius: 1em;
+    color: #fff;
+}
+
+
+.photosPart img {
+    width: 6em;
+    height: 6em;;
+    border-radius: 100%;
+}
+
+.photosPart {
+    position: relative;
+    width: 6em;
+    height: 6em;
+}
+
+.btnChangeProfilePhoto {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 3em;
+    height: 3em;
+    border:none;
+    border-radius: 100%;
+    opacity: 0.8;
+}
+
+.btnChangeProfilePhoto:hover {
+    background-color: #222A68;
+    color: #fff;
+}
+
+
+
 @media(min-width: 800px) {
     #upperTreeCard form,
     #upperMerchandiseCard form {
