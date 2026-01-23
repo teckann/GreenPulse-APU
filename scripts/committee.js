@@ -4,7 +4,7 @@ const treeStatusFilter = document.querySelectorAll(".filterTree");
 for (eachFilter of treeStatusFilter) {
     eachFilter.addEventListener("change", function() {
         eachFilter.form.submit();
-        console.log("select box is clickedd")
+        console.log("select box is clicked")
     })
 }
 
@@ -15,3 +15,12 @@ for (eachFilter of treeStatusFilter) {
     
 // }
 
+const merchandiseStatusFilter = document.querySelectorAll(".filterMerchandise");
+// console.log(treeStatusFilter);
+
+for (eachFilter of merchandiseStatusFilter) {
+    eachFilter.addEventListener("change", function() {
+        eachFilter.form.submit();
+        console.log("select box is clicked")
+    })
+}
