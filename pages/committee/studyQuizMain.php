@@ -1,6 +1,9 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
+
+    $sql = "SELECT * FROM modules";
+    $result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -63,6 +66,14 @@
 
     <!-- DETAILS PART !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11 -->
     <section class="event-controls-event-main">
+         <?php
+                if (mysqli_num_rows($result) <= 0) {
+                    die ("<script>alert('No data from database!');</script>");
+                }
+                else {
+                    while ($rows = mysqli_fetch_array($result)){
+                ?>
+               
         <div class = "white-color-box">
             <div class="search-filter-group">
                 <div class="search-bar">
@@ -72,6 +83,7 @@
             </div>
 
             <section class="container-event">
+                
                 <div class="content-card-event">
 
                 <!-- Left Side: Image Section -->
@@ -88,32 +100,34 @@
                     <div class="event-meta-row">
                         <div class="meta-item">
                             <span class="meta-label">MODULE ID</span>
-                            <span class="meta-value">E-8829-GRN</span>
+                            <span class="meta-value"><?php echo $rows['module_id']?></span>
                         </div>
                         
                     </div>
 
                 <!-- Status and Points Row -->
                 <div class="status-points-row">
-                    
-                    <span class="points-badge">500 pts</span>
+                
                     <div class="more-section" onclick = "window.location.href = 'studyQuizModule.php'">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </div>
                 </div>
 
                 <!-- Event Title -->
-                <h2 class="event-title">Urban Tree Restoration</h2>
+                <h2 class="event-title"><?php echo $rows['module_name']?></h2>
 
                 <!-- Event Description -->
                 <p class="event-description">
-                    A premium workshop focused on local biodiversity and sustainable urban planning. 
-                    Participants will learn hands-on tree planting techniques and maintenance.
+                  <?php echo $rows['module_description']?>
                 </p>
                 </div>
                 </div>
             </section>
         </div>
+          <?php 
+        } 
+    } 
+    ?>
     </section>
 
     <!-- Hamburger Menu -->

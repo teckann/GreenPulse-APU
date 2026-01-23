@@ -19,6 +19,9 @@
                              WHERE module_id = '$targetModuleID'";
         
         if(mysqli_query($conn, $sql_updateStatus)) {
+            // record action into log
+            // addLog($conn, $userID, "Change Module Status ($targetModuleID)");
+
             echo "<script>
                     alert('--- Successfully Updated Module Status ---\\nModule ID: $targetModuleID\\nNew Status: $nextStatus');
                     window.location.href = 'manageModules.php';

@@ -26,6 +26,9 @@
                              WHERE submission_id = '$targetSubmissionID'";
         
         if(mysqli_query($conn, $sql_updateStatus)) {
+            // record action into log
+            // addLog($conn, $userID, "Complete Contact Submission ($targetSubmissionID)");
+
             echo "<script>
                     alert('--- Successfully Updated Contact Submission Status ---\\nUser ID: $targetSubmissionID\\nNew Status: $nextStatus');
                     window.location.href = 'manageSystem.php';
@@ -52,6 +55,9 @@
                     VALUES ('$announcementID', '$userID', '$newAnnouncement', '$today')";
 
             if (mysqli_query($conn, $sql)) {
+                // record action into log
+                // addLog($conn, $userID, "Add New Announcement ($announcementID)");
+
                 echo "<script>
                         alert('--- Successfully Added Announcement ---\\nThe latest notifications will be displayed on the banner.');
                         window.location.href = 'manageSystem.php';

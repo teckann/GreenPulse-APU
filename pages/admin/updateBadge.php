@@ -35,6 +35,9 @@
                                     WHERE badge_id = '$id'";
 
             if (mysqli_query($conn, $sql_updateBadgeInfo)) {
+                // record action into log
+                addLog($conn, $userID, "Update Badge Information ($id)");
+                
                 echo "<script>
                         alert('--- Successfully Updated Badge Infomation ---\\nThe badge criteria have been successfully updated.');
                         window.location.href = 'updateBadge.php';

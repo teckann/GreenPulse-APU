@@ -1,3 +1,3 @@
 <footer>
-    <p>&copy; 2025 GreenPulse APU. All rights reserved.</p>
+    <p>Copyright 2026 &copy; GreenPulse APU. All rights reserved.</p>
 </footer>

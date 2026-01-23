@@ -44,7 +44,7 @@ nav a:hover {
 }
 
 footer {
-    background-color: #707c68;
+    background-color: #aed197;
     width: 100%;
     padding: 1em 3em;
     display: flex;
@@ -55,7 +55,8 @@ footer {
 .footer-details {
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
+    align-items: center;
+    justify-content: space-between;
     height: 90%;
     /* background-color: green; */
 }
@@ -71,9 +72,46 @@ footer {
 }
 
 .footer-section1 {
-    width: 50%;
-    background-color: blue;
+    /* width: 50%; */
+    /* background-color: blue; */
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 350px;
+}
+
+.footer-section1-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-header {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.footer-header h2 {
+    color: #28351f;
+}
+
+.footer-header p {
+    color: #47533f;
+    font-weight: lighter;
+}
+
+.social-media {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    font-size: 2em;
+}
+
+.social-media a {
+    text-decoration: none;
+    color: black;
 }
 
 .footer-logo {
@@ -86,15 +124,44 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px;
-    width: 50%;
-    background-color: red;
+    gap: 30px;
+    /* width: 25%; */
+    /* background-color: red; */
 }
 
 .footer-section2 a {
     text-decoration: none;
     color: black;
     font-weight: 500;
+    font-size: 1.1em;
+}
+
+.footer-section3 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 400px;
+    /* background-color: #fff; */
+}
+
+.footer-our-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.icon-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: #28351f;
+}
+
+.footer-our-info p {
+    font-weight: lighter;
+    color: #47533f;
 }
 
 .login {
@@ -103,8 +170,8 @@ footer {
     justify-content: center;
     align-items: center;
     height: 89vh;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
-        url("../src/elements/apuBackground.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("../src/elements/loginBg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -114,7 +181,7 @@ footer {
     width: 500px;
     height: 500px;
     padding: 1em;
-    background-color: #ffffff;
+    background-color: #A9BA9D;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     padding: 10px;
@@ -135,8 +202,12 @@ footer {
     /* background-color: #ccc; */
 }
 
+.login-header h1 {
+    color: #28351f;
+}
+
 .login-header p {
-    color: #666;
+    color: #47533f;
 }
 
 .login-form {
@@ -165,6 +236,15 @@ footer {
     width: 3em;
     text-align: left;
     padding-right: 10px;
+}
+
+.login-form-table input,
+.login-form input {
+    background-color: #93a08a;
+}
+
+.login-form-table input {
+    outline: 1px solid #707c68;
 }
 
 .password-labelText,
@@ -460,7 +540,7 @@ footer {
 
 
     .login {
-        background-color: white;
+        background-color: #A9BA9D;
         background-image: none;
     }
 
@@ -482,15 +562,19 @@ footer {
         flex-direction: column;
         align-items: start;
         /* background: linear-gradient(to right, #CFE5F3 0%, #B1C6D7 100%); */
-        background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
-            url("../src/elements/apuBackground.jpg");
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+            url("../src/elements/loginBg.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
     }
 
+    .login-header h1 {
+        color: white;
+    }
+
     .login-header p {
-        color: #565656;
+        color: white;
         font-weight: 500;
     }
 
@@ -565,5 +649,23 @@ footer {
     .visitUs-map {
         border-radius: 8px;
         height: 300px;
+    }
+
+    footer {
+        padding: 1em 2em;
+    }
+
+    .footer-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 50px;
+    }
+
+    .footer-section2 {
+        align-items: flex-start;
+    }
+
+    .copy-right {
+        font-size: 0.9em;
     }
 }
