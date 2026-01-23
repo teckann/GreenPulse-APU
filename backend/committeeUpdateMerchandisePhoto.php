@@ -62,6 +62,8 @@
                             alert('Image is updated successfully');
                             window.location.href = '../pages/committee/merchandiseManagement.php';
                           </script>";
+                    
+                    addLog($conn, $userID, "Update Available Merchandise Photo ($itemID)");
                 }
             }
             else {

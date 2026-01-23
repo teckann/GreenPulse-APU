@@ -1,6 +1,9 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
+
+    $sql = "SELECT * FROM events";
+    $result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +54,7 @@
         </div>
         
         <div class="heroSection">
+
             <h1>EVENT DETAILS</h1>
             <p>CREATE AND MANAGE GREEN INITIATIVE EVENTS.</p>
         </div>
@@ -60,9 +64,16 @@
 
     <!-- Lower Part  -->
     <section class="event-controls-event-main">
+         <?php
+                if (mysqli_num_rows($result) <= 0) {
+                    die ("<script>alert('No data from database!');</script>");
+                }
+                else {
+                    while ($rows = mysqli_fetch_array($result)){
+                ?>
         <div class = "white-color-box">
             <div class = "details-upper">
-                <h2 class = "event-name">Event Name</h2>
+                <h2 class = "event-name"><?php echo $rows['event_title']?></h2>
                 <!-- <span class = "event-id">Event ID</span> -->
                                     <!-- Action Buttons -->
                     <div class="action-buttons">
@@ -111,8 +122,8 @@
                     <div class="detail-box">
                         <div class="detail-content">
                             <span class="detail-label">DATE & TIME</span>
-                            <span class="detail-value">Saturday, May 15, 2024</span>
-                            <span class="detail-subvalue">08:00 AM - 02:00 PM</span>
+                            <span class="detail-value"><?php echo $rows['event_datetime']; ?> (<?php echo $rows['duration']; ?>)</span>
+                            
                         </div>
                     </div>
 
@@ -120,8 +131,8 @@
                     <div class="detail-box">
                         <div class="detail-content">
                             <span class="detail-label">LOCATION</span>
-                            <span class="detail-value">Green Valley Reserve</span>
-                            <span class="detail-subvalue">Sector 4, North Entrance</span>
+                            <span class="detail-value"><?php echo $rows['location']; ?></span>
+                  
                         </div>
                     </div>
 
@@ -130,7 +141,7 @@
                         <div class="detail-box-small">
                             <div class="detail-content">
                                 <span class="detail-label">PARTICIPATION</span>
-                                <span class="detail-value">150</span>
+                                <span class="detail-value"><?php echo $rows['points_given']; ?></span>
                                 <span class="detail-subvalue">Points per attendee</span>
                             </div>
                         </div>
@@ -144,15 +155,17 @@
                         <div class="detail-content">
                             <span class="detail-label">EVENT DESCRIPTION</span>
                             <p class="description-text">
-                                Join our community effort to restore the local biodiversity at Green Valley Reserve. 
-                                We will be planting over 200 native saplings and clearing invasive species along the riverbank.
-                               
+                               <?php echo $rows['event_description']; ?>
                             
                             </p>
                         </div>
                     </div>
                 </div>
         </div>
+         <?php 
+        } 
+    } 
+    ?>
     </section>
 </body>
 </html>

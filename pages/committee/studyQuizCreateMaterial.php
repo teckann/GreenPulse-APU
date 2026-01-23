@@ -1,6 +1,101 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
+    include("../../backend/utility.php");
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") { 
+        
+      
+        if (isset($_POST["formType"]) && $_POST["formType"] === "createNewMaterial") {
+
+            // 1. Setup Target Directory
+            // Make sure the folder 'src/moduleMaterials' exists in your project root!
+            $targetDir = "../../src/moduleMaterials/";
+            
+            // 2. Handle Material File (PDF/Image)
+            $materialFileName = basename($_FILES["study_material"]["name"]);
+            $materialTargetFilePath = $targetDir . $materialFileName;
+            $materialFileType = pathinfo($materialTargetFilePath, PATHINFO_EXTENSION);
+
+            // 3. Handle Video File (mp4/webm)
+            $videoFileName = basename($_FILES["study_video"]["name"]);
+            $videoTargetFilePath = $targetDir . $videoFileName;
+            $videoFileType = pathinfo($videoTargetFilePath, PATHINFO_EXTENSION);
+
+            // Define allowed types
+            $allowDocTypes = array('pdf');
+            $allowVideoTypes = array('mp4');
+
+            // 4. Validation & Upload Logic
+            $uploadOk = 1;
+
+            // Check Material
+            if(!in_array(strtolower($materialFileType), $allowDocTypes)){
+                echo "<script>alert('Invalid Material file type (PDF/Images only).');</script>";
+                $uploadOk = 0;
+            }
+            
+            // Check Video
+            if(!in_array(strtolower($videoFileType), $allowVideoTypes)){
+                echo "<script>alert('Invalid Video file type (mp4 only).');</script>";
+                $uploadOk = 0;
+            }
+
+            // 5. If checks pass, move files and Insert DB
+            if ($uploadOk == 1) {
+                
+                // Move Material
+                if (move_uploaded_file($_FILES["study_material"]["tmp_name"], $materialTargetFilePath) && 
+                    move_uploaded_file($_FILES["study_video"]["tmp_name"], $videoTargetFilePath)) {
+                    
+                    // File Paths to save in DB (Relative to root)
+                    $materialPath = "src/moduleMaterials/" . $materialFileName; 
+                    $videoPath = "src/moduleMaterials/" . $videoFileName;
+
+                    // 6. Sanitize Inputs
+                    $moduleName = mysqli_real_escape_string($conn, $_POST['module_name']);
+                    $moduleDesc = mysqli_real_escape_string($conn, $_POST['module_description']);
+                    
+                    // 7. Generate Required Data (ID, User, Status)
+                    $moduleID = "M" . rand(1000, 9999); // Simple ID generation
+                    $creatorID = isset($userID) ? $userID : $_SESSION['user_id'];
+                    $status = "Active";
+
+                    // 8. SQL Insert (Matching your SQL Schema)
+                    $sql = "INSERT INTO modules (
+                                module_id, 
+                                user_id, 
+                                module_name, 
+                                module_description, 
+                                module_material, 
+                                module_video, 
+                                module_status
+                            ) VALUES (
+                                '$moduleID',
+                                '$creatorID',
+                                '$moduleName',
+                                '$moduleDesc',
+                                '$materialPath',
+                                '$videoPath',
+                                '$status'
+                            )";
+
+                    if (mysqli_query($conn, $sql)) {
+                        echo "<script>
+                                alert('Module Created Successfully!'); 
+                                window.location.href='studyQuizMain.php';
+                              </script>";
+                    } else {
+                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+
+                } else {
+                    echo "<script>alert('Error moving files to server. Check permissions.');</script>";
+                }
+            }
+        }
+    }
+    // --- PHP LOGIC END ---
 ?>
 
 <!DOCTYPE html>
@@ -11,9 +106,9 @@
     <title>Study & Quiz Create Material</title>
     <link rel="stylesheet" href="../../styles/committee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png"> -->
 </head>
 <body>
+    <!-- NAVIGATION (Same as before) -->
     <nav class = "navigation-bar">
         <div class = "hamburger-menu">
             <button onclick = "toggleMenu()">
@@ -52,49 +147,54 @@
         
         <div class="heroSection">
             <h1>CREATE MATERIAL</h1>
-            <p>MANAGE STUDY MATERIALS AND QUIZZES IN ONE PLACE.</p>
-
+            <p>UPLOAD STUDY MATERIALS AND VIDEOS.</p>
         </div>
-
     </div>
 
-    <!-- DETAILS PART !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11 -->
-    <section class="event-controls-event-main">
-        <div class = "white-color-box">
+    <!-- FORM START -->
+    <form action="#" method="POST" enctype="multipart/form-data">
+        
+        <input type="hidden" name="formType" value="createNewMaterial">
+                
+        <section class="event-controls-event-main">
+            <div class = "white-color-box">
 
-           <div class = "study-quiz-module-name-box">
+            <div class = "study-quiz-module-name-box">
                 <div class = "study-quiz-title">Module Name</div>
-                <input type="text" placeholder = "Module Name" class="event-box">
+                <input type="text" name="module_name" placeholder="Module Name" class="event-box" required>
             </div>
 
-          <div class = "study-quiz-description-box">
+            <div class = "study-quiz-description-box">
                 <div class = "study-quiz-title">Description</div>
-                <textarea placeholder="Event Description" class="event-big-box" rows="5"></textarea>
+                <input type="text" name="module_description" placeholder="Module Description" class="event-box" required>
             </div>
 
             <div class = "study-quiz-module-upload">
-                <div class = "study-quiz-title">Study Video</div>
-                <input type="file" class="event-big-box">
+                <div class = "study-quiz-title">Study Material (PDF/Image)</div>
+                <input type="file" name="study_material" class="event-big-box" required>
             </div>
 
             <div class = "study-quiz-module-upload">
-                <div class = "study-quiz-title">Study Material</div>
-                <input type="file" class="event-big-box">
+                <div class = "study-quiz-title">Study Video (MP4)</div>
+                <input type="file" name="study_video" class="event-big-box" required>
             </div>
 
-          
+            
+            <button type="submit" class="btnCreateEvent">
+                Save Material
+            </button>
 
-            <button class="btnCreateEvent" onclick = "window.location.href='studyQuizCreateQuiz.php'">
-                        Create Quiz
-                    </button>
+            <!-- If you want a button to go to next page without saving, use this: -->
+            <!-- <button type="button" onclick="window.location.href='studyQuizCreateQuiz.php'">Create Quiz</button> -->
 
+            <div class = "short-tagline">
+                Create. Inspire. Impact.
+            </div>
 
+            </div>
+        </section>
+    </form>
 
-        </div>
-    </section>
-    
-
-    <!--Hamburger Menu sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">
@@ -143,9 +243,6 @@
     <!-- Overlay -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT FOR HAMBURGER MENU - MUST BE AT THE END -->
-    <!-- ============================================ -->
     <script>
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
@@ -155,14 +252,12 @@
             overlay.classList.toggle('active');
         }
 
-        // Close menu when clicking on menu items
         document.querySelectorAll('.menu-item').forEach(item => {
             item.addEventListener('click', () => {
                 toggleMenu();
             });
         });
 
-        // Close menu with ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 const sidebar = document.getElementById('sidebar');
