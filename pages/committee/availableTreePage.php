@@ -130,7 +130,7 @@
                 <button id="btnAddItem" name="btnAddItem"><span class="showDesktop">Add Tree</span><span class="showMobile"><i class="fa-solid fa-plus" style="color: white;"></i></span></button>
             </div>
             <div id="showTreeClass">
-                <button id="btnAvailableTree" class="treeClass">
+                <button id="btnAvailableTree" class="treeClass selectedButton">
                     <a href="availableTreePage.php" style="text-decoration: none;">
                         <i class="fa-solid fa-circle-check" style="color: #28a745;"></i>
                         <p><b>Available Tree</b></p>
@@ -305,11 +305,11 @@
                     <div class='popUpNumberSelector itemPopUpInput'>
                         <div>
                             <label for='itemPointsEdit'>Points Required:</label>
-                            <input type='number' name='itemPointsEdit' id='itemPointsEdit' value='<?php echo "$itemPoints" ?>' min='0'  max='1000' required>
+                            <input type='number' name='itemPointsEdit' id='itemPointsEdit' value='<?php echo "$itemPoints" ?>' min='0' required>
                         </div>
                         <div>
                             <label for='itemStockEdit'>Tree Stocks:</label>
-                            <input type='number' name='itemStockEdit' id='itemStockEdit' value='<?php echo "$itemStocks" ?>' min='0'  max='1000' required>
+                            <input type='number' name='itemStockEdit' id='itemStockEdit' value='<?php echo "$itemStocks" ?>' min='0' required>
                         </div>
                     </div>
                     <input type='hidden' name='itemIdEdit' value='<?php echo "$itemID"?>'>
@@ -330,7 +330,7 @@
                 <div id="popUpHeaderText"><b id="changeItemPhotoText">Current Tree Photo</b></div>
             </div>
             
-            <form action="../../backend/committeeUpdatePhoto.php" method="POST" enctype="multipart/form-data" class='popUpForm'>
+            <form action="../../backend/committeeUpdateTreePhoto.php" method="POST" enctype="multipart/form-data" class='popUpForm'>
                 <div class='popUpShow treePhotoEditPage'>
                     <img id="oldItemImage" src="../../<?php echo $itemImage ?>" alt="Tree Image">
                     
@@ -404,11 +404,11 @@
                             <div class="createItemNumbersPart">
                                 <div>
                                     <label for="createItemPoints"><b>Points<br>Required</b></label>
-                                    <input type="number" name="createItemPoints" id="createItemPoints" min='0'  max='1000' required>
+                                    <input type="number" name="createItemPoints" id="createItemPoints" min='0' required>
                                 </div>
                                 <div>
                                     <label for="createItemStock"><b>Stock</b></label>
-                                    <input type="number" name="createItemStock" id="createItemStock" min='0'  max='1000' required>
+                                    <input type="number" name="createItemStock" id="createItemStock" min='0' required>
                                 </div>
                             </div>
                             <div class="createItemDescriptionPart">

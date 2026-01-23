@@ -63,7 +63,7 @@
     }
 
     function tableConfig($status) {
-        $icon; $textColor; $nextStatus;
+        $icon = ""; $textColor = ""; $nextStatus = "";
 
         switch ($status) {
             case "Active":

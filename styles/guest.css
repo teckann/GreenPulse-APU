@@ -1,19 +1,187 @@
 @import url("general.css");
 
+body {
+    background-color: #A9BA9D;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 2.5em;
+    position: sticky;
+    top: 0px;
+    background-color: white;
+    z-index: 1000;
+}
+
+.mobile-logo {
+    display: none;
+}
+
+nav {
+    /* background-color: red; */
+    width: 40%;
+    font-size: 1.1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+nav a,
+nav a:visited {
+    font-size: 1em;
+    color: black;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #707c68;
+    transform: scale(1.10);
+    font-weight: bold;
+}
+
+footer {
+    background-color: #aed197;
+    width: 100%;
+    padding: 1em 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 90%;
+    /* background-color: green; */
+}
+
+.copy-right {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid black;
+    padding-top: 1em;
+}
+
+.footer-section1 {
+    /* width: 50%; */
+    /* background-color: blue; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 350px;
+}
+
+.footer-section1-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-header {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.footer-header h2 {
+    color: #28351f;
+}
+
+.footer-header p {
+    color: #47533f;
+    font-weight: lighter;
+}
+
+.social-media {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    font-size: 2em;
+}
+
+.social-media a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-logo {
+    width: 150px;
+    height: 50px;
+}
+
+.footer-section2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    /* width: 25%; */
+    /* background-color: red; */
+}
+
+.footer-section2 a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.footer-section3 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 400px;
+    /* background-color: #fff; */
+}
+
+.footer-our-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.icon-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: #28351f;
+}
+
+.footer-our-info p {
+    font-weight: lighter;
+    color: #47533f;
+}
+
 .login {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #D9D9D9;
+    height: 89vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("../src/elements/loginBg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .login-container {
     width: 500px;
     height: 500px;
     padding: 1em;
-    background-color: #ffffff;
+    background-color: #A9BA9D;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     padding: 10px;
@@ -34,8 +202,12 @@
     /* background-color: #ccc; */
 }
 
+.login-header h1 {
+    color: #28351f;
+}
+
 .login-header p {
-    color: #666;
+    color: #47533f;
 }
 
 .login-form {
@@ -64,6 +236,15 @@
     width: 3em;
     text-align: left;
     padding-right: 10px;
+}
+
+.login-form-table input,
+.login-form input {
+    background-color: #93a08a;
+}
+
+.login-form-table input {
+    outline: 1px solid #707c68;
 }
 
 .password-labelText,
@@ -138,9 +319,229 @@
     text-decoration: underline;
 }
 
+.about-us-container {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 2em;
+}
+
+.about-us-header {
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../src/elements/aboutUs.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.model {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.about-us-header h1 {
+    font-size: 8em;
+    font-weight: 800;
+    letter-spacing: 10px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    -webkit-text-stroke: 1px white;
+
+    background: url("../src/elements/aboutUs.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-clip: text;
+    color: transparent;
+}
+
+.flex-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 7em;
+}
+
+.container-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vision-mission-container {
+    width: 60%;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vision-mission-title,
+.meet-our-team-title {
+    font-weight: light;
+    font-size: 1.2em;
+    color: #194a7a;
+}
+
+.mission-vision-content {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.mission-vision-details {
+    /* background-color: #666; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mission-vision-details h1,
+.container-2 h1 {
+    color: #194a7a;
+    font-size: 2.8em;
+}
+
+.mission-vision-details p {
+    font-weight: lighter;
+    font-size: 1.1em;
+    line-height: 1.4;
+}
+
+.vision-mission-image {
+    width: 300px;
+    height: 350px;
+    border-radius: 10px;
+}
+
+.team-container {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* background-color: red; */
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 3em; */
+}
+
+.container-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.member-card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 1em;
+}
+
+.member-card {
+    background: url("../src/elements/memberCard_background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 20px 40px rgba(11, 52, 0, 0.3);
+    border-radius: 10px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.member-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(9, 29, 3, 0.6);
+}
+
+.member-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.member-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.member-details h3 {
+    font-size: 1.3em;
+    color: #28351f;
+}
+
+.member-details p {
+    color: #47533f;
+}
+
+.visit-us-container {
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+}
+
+.map-container {
+    width: 100%;
+}
+
+.visitUs-map {
+    width: 100%;
+    height: 500px;
+    border-radius: 24px;
+    border: 1px #A9BA9D solid;
+}
+
 @media(max-width: 800px) {
+    header {
+        padding: 0.5em 1em;
+    }
+
+    .mobile-logo {
+        display: block;
+    }
+
+    .desktop-logo {
+        display: none;
+    }
+
+    nav {
+        /* background-color: red; */
+        width: 75%;
+        font-size: 1em;
+    }
+
+
     .login {
-        background-color: white;
+        background-color: #A9BA9D;
+        background-image: none;
     }
 
     .login-container {
@@ -160,7 +561,21 @@
         display: flex;
         flex-direction: column;
         align-items: start;
-        background: linear-gradient(to right, #CFE5F3 0%, #B1C6D7 100%);
+        /* background: linear-gradient(to right, #CFE5F3 0%, #B1C6D7 100%); */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+            url("../src/elements/loginBg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .login-header h1 {
+        color: white;
+    }
+
+    .login-header p {
+        color: white;
+        font-weight: 500;
     }
 
     .login-form {
@@ -169,5 +584,88 @@
 
     .btn-login {
         margin-top: 2.5em;
+    }
+
+    .about-us-header {
+        height: 250px;
+    }
+
+    .about-us-header h1 {
+        font-size: 3.5em;
+    }
+
+    .mission-vision-content {
+        width: 90%;
+    }
+
+    .flex-container {
+        width: 90%;
+        /* background-color: red; */
+    }
+
+    .container-1 {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .vision-mission-container {
+        /* background-color: blue; */
+        width: 100%;
+    }
+
+    .team-container {
+        width: 90%;
+    }
+
+    .visit-us-container {
+        width: 90%;
+    }
+
+    .team-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 50px;
+        width: 100%;
+    }
+
+    .member-card-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 70px;
+    }
+
+    .member-card {
+        width: 80%;
+        height: 350px;
+    }
+
+    .visit-us-container {
+        width: 100%;
+    }
+
+    .visitUs-map {
+        border-radius: 8px;
+        height: 300px;
+    }
+
+    footer {
+        padding: 1em 2em;
+    }
+
+    .footer-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 50px;
+    }
+
+    .footer-section2 {
+        align-items: flex-start;
+    }
+
+    .copy-right {
+        font-size: 0.9em;
     }
 }

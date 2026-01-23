@@ -55,6 +55,8 @@
                         WHERE badge_id = '$badgeID'";
                 
                 if (mysqli_query($conn, $sql)) {
+                    // record action into log
+                    // addLog($conn, $userID, "Update Badge Image ($badgeID)");
                     echo "<script>
                             alert('--- Successfully Updated Badge ---\\nTarget Badge: $badgeID\\nNew Badge: $newFileName');
                             window.location.href = '../pages/admin/updateBadge.php';

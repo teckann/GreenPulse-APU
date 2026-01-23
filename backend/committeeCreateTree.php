@@ -83,14 +83,14 @@
                 else {
                     echo "<script>
                             alert('Image failed to upload, default tree will be show in system.');
-                            window.location.href = '../pages/admin/profile.php';
+                            window.location.href = '../pages/committee/availableTreePage.php';
                         </script>";
                 }
             }
             else {
                 echo "<script>
                         alert('Image failed to upload.');
-                        window.location.href = '../pages/admin/profile.php';
+                        window.location.href = '../pages/committee/availableTreePage.php';
                     </script>";
             }
         }
