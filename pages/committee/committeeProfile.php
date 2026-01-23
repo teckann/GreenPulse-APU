@@ -25,7 +25,8 @@
         $registrationDate = $row["registration_date"];
         $role = $row["role"];
         $accountStatus = $row["account_status"];
-        $age = (date("Y-m-d"));
+        $todayTimeStamp = time();
+        $age = date("Y", $todayTimeStamp) - date("Y", $DOCTimeStamp);
         $photo = $row["avatar"];
 
         $statusColor = "";
@@ -61,9 +62,64 @@
             <img src="../../<?php echo $photo ?>" alt="profile photo">
             <button class="btnChangeProfilePhoto" name="btnChangeProfilePhoto"><i class="fa-solid fa-camera"></i></button>
         </div>
-            <div class="profileStatus" style="background-color: <?php echo $statusColor ?>"><p><?php echo $accountStatus ?></p></div>
-        <div>
+        <div class="profileName">
+            <b><?php echo $userName ?></php></b>
+            <b><?php echo $userID ?></b>
+        </div>
+        <div class="profileStatus" style="background-color: <?php echo $statusColor ?>">
+                <p><?php echo $accountStatus ?></p>
+        </div>
+    </div>
+    <div class="profileBottom">
+        <div class="info">
+            <div class="personalData">
+                <div><p>Role</p></div>
+                <div><p>: <?php echo $role ?></p></div>
+            </div>
+            <div class="personalData">
+                <div><p>Gender</p></div>
+                <div><p>: <?php echo $gender ?></p></div>
+            </div>
+            <div class="personalData">
+                <div><p>Date of Birth</p></div>
+                <div><p>: <?php echo $DOB ?></p></div>
+            </div>
+            <div class="personalData">
+                <div><p>Age<p></div>
+                <div><p>: <?php echo $age ?> years old</p></div>
+            </div>
+            <div class="personalData">
+                <div><p>Nationality<p></div>
+                <div><p>: <?php echo $nationality ?></p></div>
+            </div>
+            <div class="personalData">
+                <div><p>Contact Number<p></div>
+                <div><p>: <?php echo $contactNumber ?></p></div>
+            </div>
+            <div class="personalData">
+                <div><p>Education Email<p></div>
+                <div><p>: <?php echo $email ?></p></div>
+            </div>
+            <div class="personalData">
+                <div><p>Registration Date<p></div>
+                <div><p>: <?php echo $registrationDate ?></p></div>
+            </div>
+        </div>
+        <div class="editProfileButtonPart">
+            <button class="btnEditProfile">Edit</button>
+        </div>
+    </div>
 
+    <div class="popUpOverlay"></div>
+
+    <div class="showChangePhotoPopUp">
+        <div>
+            <button id="changeCurrentPhotoBtn" class="photoRelatedBtn"><i class="fa-solid fa-pen-to-square"></i></button>
+            <label>Change Photo</label>
+        </div>
+        <div>
+            <button id="deleteCurrentPhotoBtn" class="photoRelatedBtn"><i class="fa-solid fa-trash"></i></button>
+            <label>Delete Photo</label>
         </div>
     </div>
 </body>
