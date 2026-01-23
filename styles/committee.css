@@ -14,7 +14,7 @@
 /* import google font*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-body{
+body {
     margin: 0px;
 }
 
@@ -39,22 +39,23 @@ body{
 
     /* iii. Design*/
     background-color: #FAF9F6;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hamburger-menu {
-    flex: 1; /* Use one section*/
+    flex: 1;
+    /* Use one section*/
     text-align: left;
 }
 
 .hamburger-menu img {
     width: 30px;
     height: auto;
-    
+
 }
 
 .logo {
-    flex:1;
+    flex: 1;
     text-align: center;
 }
 
@@ -70,16 +71,18 @@ body{
 }
 
 .profile img {
-    width: 40px; 
-    height: 40px; 
-    border-radius: 50%; /* Circle */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* Circle */
 }
 
 .banner {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
-    overflow: hidden; /* Make sure the <marquee> won't overflow*/
+    overflow: hidden;
+    /* Make sure the <marquee> won't overflow*/
     height: 40px;
     background-color: #ffffff;
     letter-spacing: 0.5px;
@@ -98,8 +101,10 @@ body{
 
 .heroSection {
     background-color: #FAF9F6;
-    flex: 1;                  /* Takes up the remaining middle space */
-    background-color: transparent !important; /* Prevents double background colors */
+    flex: 1;
+    /* Takes up the remaining middle space */
+    background-color: transparent !important;
+    /* Prevents double background colors */
     text-align: center;
     padding: 2rem 0;
 }
@@ -110,7 +115,7 @@ body{
     letter-spacing: 1px;
     margin: 0.5rem 0;
     font-weight: bold;
-    color: #043927; 
+    color: #043927;
 }
 
 .heroSection p {
@@ -133,7 +138,7 @@ body{
     border-radius: 20px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .content-card h3 {
@@ -155,12 +160,13 @@ body{
 .card-button {
     background-color: #ededed;
     border: none;
-    border-radius: 8px;  
+    border-radius: 8px;
     padding: 0.6rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor:pointer; /*When the cursor hover the button, the cursor will become a "hand" shape*/
+    cursor: pointer;
+    /*When the cursor hover the button, the cursor will become a "hand" shape*/
     font-family: "Roboto", sans-serif;
     font-size: 0.85rem;
     width: 100%;
@@ -256,13 +262,16 @@ body{
 }
 
 .menu-icon i {
-    color: #2d5a27; /* Dark green */
-    font-size: 20px; /* Optional: adjust size */
+    color: #2d5a27;
+    /* Dark green */
+    font-size: 20px;
+    /* Optional: adjust size */
 }
 
 /* Change color when you hover over the menu item */
 .menu-item:hover .menu-icon i {
-    color: #4CAF50; /* Brighter green on hover */
+    color: #4CAF50;
+    /* Brighter green on hover */
 }
 
 .menu-text {
@@ -329,7 +338,7 @@ body{
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -358,21 +367,24 @@ body{
     background-color: white;
     border-radius: 12px;
     padding: 2rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    max-width: 65rem; 
-    width: 90%; 
-    margin: 0 auto; /* Centers the box horizontally */
-    display: flex;           
-    flex-direction: column;  
-    gap: 20px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    max-width: 65rem;
+    width: 90%;
+    margin: 0 auto;
+    /* Centers the box horizontally */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .header-content {
     display: flex;
-    align-items: center;      /* Vertically align icons with text */
-    justify-content: space-between; 
+    align-items: center;
+    /* Vertically align icons with text */
+    justify-content: space-between;
     background-color: #FAF9F6;
-    padding: 0 5%;            /* Gives breathing room on the sides */
+    padding: 0 5%;
+    /* Gives breathing room on the sides */
     width: 100%;
     box-sizing: border-box;
 }
@@ -388,7 +400,7 @@ body{
     letter-spacing: 1px;
     margin: 0.5rem 0;
     font-weight: bold;
-    color: #043927; 
+    color: #043927;
 }
 
 .header-text p {
@@ -405,7 +417,8 @@ body{
     transition: all 0.3s ease;
     background-color: #f5f5f5;
     height: 50px;
-    width: 50px;              /* Fixed width for both ensures center is true center */
+    width: 50px;
+    /* Fixed width for both ensures center is true center */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -451,19 +464,20 @@ body{
 }
 
 .search-bar {
-    flex: 3; 
+    flex: 3;
     display: flex;
     align-items: center;
     border-radius: 4px;
     padding: 10px 12px;
     background: white;
     border: none;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .searchInput {
     border: none;
-    outline: none; /*This is make the searchbar like when you click then no border*/
+    outline: none;
+    /*This is make the searchbar like when you click then no border*/
     width: 100%;
     font-size: 0.95rem;
     padding-left: 0.6rem;
@@ -479,11 +493,11 @@ body{
     font-family: "Roboto", sans-serif;
     font-size: 0.95rem;
     color: #787878;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     padding-left: 0.6rem;
 }
 
-.container-event{
+.container-event {
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -500,7 +514,7 @@ body{
     padding: 0;
     width: 100%;
     box-sizing: border-box;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: row;
     gap: 0;
@@ -554,7 +568,7 @@ body{
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-} 
+}
 
 .btn-edit:hover,
 .btn-delete:hover {
@@ -573,11 +587,20 @@ body{
     gap: 1.5rem;
 }
 
+.event-posted-info {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.event-title-row {
+    margin-bottom: 10px;
+}
 
 /* Meta Info Row */
 .event-meta-row {
     display: flex;
-    justify-content: space-between;
+    gap: 150px;
     align-items: flex-start;
 }
 
@@ -587,7 +610,7 @@ body{
     gap: 5px;
 }
 
-.meta-label {
+.meta-label,.event-posted-date-id {
     font-size: 0.7rem;
     color: #999;
     text-transform: uppercase;
@@ -603,14 +626,28 @@ body{
     font-family: "Roboto", sans-serif;
 }
 
+.event-status-row {
+    margin-bottom: 10px;
+}
+
+.event-more {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
 /* Status and Points Row */
 .status-points-row {
     display: flex;
     gap: 15px;
     align-items: center;
-    flex-wrap: wrap;
     width: 100%;
     font-family: "Roboto", sans-serif;
+    flex-wrap: nowrap;
 }
 
 .event-status {
@@ -656,6 +693,9 @@ body{
     font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
+    margin-left: auto;
+    flex-shrink: 0;
+
 }
 
 .more-section:hover {
@@ -695,7 +735,7 @@ body{
     padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 20px; 
+    gap: 20px;
 }
 
 .btnCreateEvent {
@@ -710,7 +750,7 @@ body{
 
 
 .container {
-    background-color: #ffffff; 
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 4px;
     display: flex;
@@ -737,24 +777,25 @@ body{
 }
 
 .event-box {
-    border: 1.3px solid rgb(162, 162, 162);  /*THIS BORDER OKAY AH*/
+    border: 1.3px solid rgb(162, 162, 162);
+    /*THIS BORDER OKAY AH*/
     background-color: #ffffff;
     color: #969696;
     padding: 15px 15px;
     width: 100%;
     border-radius: 7px;
-    box-sizing: border-box; 
-    text-align: left; 
+    box-sizing: border-box;
+    text-align: left;
     font-family: "Roboto", sans-serif;
 }
 
-.two-column{
+.two-column {
     display: flex;
     flex-direction: row;
     gap: 1rem;
 }
 
-.event-big-box{
+.event-big-box {
     border: 1.3px solid rgb(162, 162, 162);
     background-color: #ffffff;
     color: #969696;
@@ -762,7 +803,7 @@ body{
     width: 100%;
     height: 100px;
     border-radius: 7px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     text-align: left;
     font-family: "Roboto", sans-serif;
 }
@@ -786,7 +827,7 @@ input[type="file"]::placeholder {
 
 input[type="textarea"]::placeholder {
     color: rgb(172, 172, 172);
-    text-align:start;
+    text-align: start;
     flex-direction: row;
 
 }
@@ -805,7 +846,7 @@ input[type="textarea"]::placeholder {
 /* ======================================================================================================================================= */
 /*  EVENT FEEDBACK PAGE */
 /* ======================================================================================================================================== */
-.title{
+.title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -813,7 +854,7 @@ input[type="textarea"]::placeholder {
     font-family: "Roboto", sans-serif;
 }
 
-.event-feedback-outer-box{
+.event-feedback-outer-box {
     background-color: #FAF9F6;
     padding: 2rem;
     border-radius: 8px;
@@ -823,7 +864,7 @@ input[type="textarea"]::placeholder {
 }
 
 .title {
-/* no need flex: 1, bcos it will auto go to left */
+    /* no need flex: 1, bcos it will auto go to left */
     font-size: 20px;
     color: grey;
 }
@@ -832,18 +873,18 @@ input[type="textarea"]::placeholder {
     /* I want make like when hover the button change color */
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    background-color: #faf8ee   ;
+    background-color: #faf8ee;
 }
 
-.feedback-header{
-    display:flex;
+.feedback-header {
+    display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
     padding: 0 5px;
 }
 
-.title-feedback{
+.title-feedback {
     flex: 1;
     font-family: "Roboto", sans-serif;
     font-size: 0.9rem;
@@ -859,25 +900,26 @@ input[type="textarea"]::placeholder {
 
 .title-date {
     display: flex;
-    justify-content:flex-end;
+    justify-content: flex-end;
     text-align: left;
     font-family: "Roboto", sans-serif;
     font-size: 0.9rem;
-    color: #999; 
+    color: #999;
 }
 
-.title-time{
+.title-time {
     display: flex;
-    justify-content:flex-end;;
+    justify-content: flex-end;
+    ;
     text-align: left;
     font-family: "Roboto", sans-serif;
     font-size: 0.9rem;
-    color: #999; 
+    color: #999;
 }
 
-.event-feedback-inner-box{
+.event-feedback-inner-box {
     background-color: #ffffff;
-    height: 40px;              
+    height: 40px;
     width: 100%;
     border-radius: 4px;
 }
@@ -931,7 +973,7 @@ input[type="textarea"]::placeholder {
     width: 100%;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .more-poster img {
@@ -1138,20 +1180,24 @@ input[type="textarea"]::placeholder {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.detail-box:hover {
+    border-left: 4px solid orange;
+}
+
 /* Responsive Design */
 @media (min-width: 968px) {
     .event-details-container {
         flex-direction: row;
     }
-    
+
     .left-side-container {
         flex: 0 0 400px;
     }
-    
+
     .right-side-container {
         flex: 1;
     }
-    
+
     .more-poster img {
         height: 300px;
         object-fit: cover;
@@ -1162,50 +1208,52 @@ input[type="textarea"]::placeholder {
     .event-name {
         font-size: 1.5rem;
     }
-    
+
     .details-upper {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
-    
+
     .action-buttons {
         flex-direction: column;
     }
-    
+
     .detail-box,
     .detail-box-small {
         padding: 15px;
     }
 }
+
 /* ======================================================================================================================================== */
 /* @media*/
 /* ======================================================================================================================================== */
 
 .desktopMenu {
-    display: none; 
+    display: none;
 }
 
 /* Mobile */
 @media (max-width: 480px) {
-    .hamburger-menu img { 
+    .hamburger-menu img {
         max-width: 32px;
     }
 
     .logo img {
-        max-width: 120px; 
+        max-width: 120px;
     }
-    
+
     .profile img {
         width: 32px;
-        height: 32px; 
+        height: 32px;
         border-radius: 50%;
     }
 }
-    
+
 
 /* desktop */
 @media (min-width: 801px) {
+
     /* Hide hamburger menu */
     .hamburger-menu {
         display: none;
@@ -1214,7 +1262,8 @@ input[type="textarea"]::placeholder {
     /* Show desktop menu */
     .desktopMenu {
         display: flex;
-        gap: 20px; /* space between menu items */
+        gap: 20px;
+        /* space between menu items */
         align-items: center;
         font-family: 'Montserrat', sans-serif;
         font-weight: 500;
@@ -1242,7 +1291,7 @@ input[type="textarea"]::placeholder {
     .navigation-bar {
         justify-content: space-between;
         align-items: center;
-        padding: 0 2rem; 
+        padding: 0 2rem;
     }
 
     .logo {
@@ -1251,7 +1300,7 @@ input[type="textarea"]::placeholder {
     }
 
     .profile {
-        text-align: right; 
+        text-align: right;
     }
 }
 
@@ -1261,19 +1310,19 @@ input[type="textarea"]::placeholder {
     .content-card-event {
         flex-direction: column;
     }
-    
+
     .event-left-section {
         min-width: 100%;
     }
-    
+
     .eventImage {
         min-height: 300px;
     }
-    
+
     .event-right-section {
         padding: 1.5rem;
     }
-    
+
     .event-title {
         font-size: 1.5rem;
     }
@@ -1284,32 +1333,32 @@ input[type="textarea"]::placeholder {
         width: 95%;
         padding: 1rem;
     }
-    
+
     .event-header-section {
         padding: 2rem rem;
     }
-    
+
     .header-text h1 {
         font-size: 2rem;
     }
-    
+
     .event-meta-row {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .status-points-row {
         flex-wrap: wrap;
     }
-    
+
     .event-title {
         font-size: 1.3rem;
     }
-    
+
     .event-description {
         font-size: 0.9rem;
     }
-    
+
     .back-icon,
     .add-icon {
         width: 40px;
@@ -1323,16 +1372,36 @@ input[type="textarea"]::placeholder {
         max-width: 1000px;
         margin: 0 auto;
     }
-    
+
     .event-left-section {
         max-width: 45%;
     }
-    
+
     .event-right-section {
         max-width: 55%;
     }
 }
 
+@media (max-width: 768px) {
+    .content-card-event {
+        flex-direction: column;
+    }
+
+    .event-left-section {
+        width: 100%;
+        min-width: 100%;
+        height: 250px;
+    }
+    
+    .event-image {
+        min-height: 250px;
+    }
+
+    .event-meta-row {
+        gap: 20px; /* Reduce gap on mobile */
+        flex-direction: column; /* Stack meta info vertically on very small screens if needed */
+    }
+}
 
 /* ======================================================================================================================================== */
 /* Tree Adoption (Testing) */
@@ -1343,7 +1412,7 @@ input[type="textarea"]::placeholder {
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    
+
 }
 
 #upperTree button {
@@ -1352,7 +1421,7 @@ input[type="textarea"]::placeholder {
     font-size: 1em;
     background-color: darkseagreen;
     border-radius: 10%;
-    margin-right: 1em;  
+    margin-right: 1em;
     position: fixed;
     bottom: 10px;
     right: 10px;
@@ -1377,7 +1446,7 @@ input[type="textarea"]::placeholder {
 }
 
 .treeClass a {
-    display:flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
     padding: 1em auto;
@@ -1423,7 +1492,7 @@ input[type="textarea"]::placeholder {
     font-size: 1em;
 }
 
-#upperTreeCard form select{
+#upperTreeCard form select {
     padding: 1px 5px;
     font-size: 1em;
     border-radius: 5px;
@@ -1443,12 +1512,12 @@ input[type="textarea"]::placeholder {
 }
 
 #filterBar div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5em;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
 
 .showMobile {
     display: block;
@@ -1459,9 +1528,9 @@ input[type="textarea"]::placeholder {
 }
 
 #upperTreeCard form {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
 .showTreeCards {
@@ -1544,7 +1613,8 @@ input[type="textarea"]::placeholder {
     /* border: 5px solid gray; */
 }
 
-.itemInventory, .itemRelatedInfo {
+.itemInventory,
+.itemRelatedInfo {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -1605,7 +1675,7 @@ input[type="textarea"]::placeholder {
 
 
 .itemUploadInfo {
-    opacity:0.5;
+    opacity: 0.5;
 }
 
 .itemDeleteBtn {
@@ -1633,8 +1703,11 @@ input[type="textarea"]::placeholder {
     z-index: 1000;
 }
 
-#itemPopUp, #itemPopUp2, #itemPopUp3, #itemPopUp4 {
-    display:none;
+#itemPopUp,
+#itemPopUp2,
+#itemPopUp3,
+#itemPopUp4 {
+    display: none;
     background-color: #fff;
     position: absolute;
     top: 15%;
@@ -1713,7 +1786,7 @@ input[type="textarea"]::placeholder {
     font-weight: bold;
 }
 
-.itemPopUpInput input[type ='text'] {
+.itemPopUpInput input[type='text'] {
     width: 50%;
 }
 
@@ -1757,7 +1830,8 @@ input[type="textarea"]::placeholder {
     padding: 0 2em;
 }
 
-.showCurrentStatus b, .showCurrentStatus p {
+.showCurrentStatus b,
+.showCurrentStatus p {
     font-size: 1.3em;
 }
 
@@ -1910,7 +1984,8 @@ input[type="textarea"]::placeholder {
     flex-direction: column;
 } */
 
-.createItemNamePart, .createItemDescriptionPart {
+.createItemNamePart,
+.createItemDescriptionPart {
     gap: 0.2em;
 }
 
@@ -1921,16 +1996,18 @@ input[type="textarea"]::placeholder {
     gap: 1em;
 }
 
-.createItemNumbersPart div input[type = 'number'] {
+.createItemNumbersPart div input[type='number'] {
     width: 50%;
 }
 
 
-.createItem div label, .createItem div input, .createItem div textarea {
+.createItem div label,
+.createItem div input,
+.createItem div textarea {
     font-size: 1.5em;
 }
 
-.createItem div input[type = 'text'] {
+.createItem div input[type='text'] {
     width: 80%;
 }
 
@@ -2013,7 +2090,7 @@ input[type="textarea"]::placeholder {
     }
 
     #upperTree button {
-        position:static;
+        position: static;
         z-index: auto;
     }
 
@@ -2023,7 +2100,7 @@ input[type="textarea"]::placeholder {
         box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
         transform: translateY(-0.25em);
         transition: border-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.25s;
-        cursor:  pointer;
+        cursor: pointer;
     }
 
     #filterBar {
@@ -2082,13 +2159,13 @@ input[type="textarea"]::placeholder {
     }
 
     .showMobile {
-    display: none;
+        display: none;
     }
 
     .showDesktop {
         display: block;
-    } 
-    
+    }
+
     .itemPopUpInput:nth-of-type(2) div {
         width: 60%;
     }
@@ -2097,7 +2174,9 @@ input[type="textarea"]::placeholder {
         justify-content: center;
     }
 
-    #itemPopUp, #itemPopUp2, #itemPopUp3 {
+    #itemPopUp,
+    #itemPopUp2,
+    #itemPopUp3 {
         width: 50%;
         position: absolute;
         left: 25%;
@@ -2120,7 +2199,7 @@ input[type="textarea"]::placeholder {
 
     #middleItemCardAdoptedTree {
         height: 12em;
-    }  
+    }
 
     #treeCardAdoptedTree {
         height: 32em;
@@ -2140,9 +2219,11 @@ input[type="textarea"]::placeholder {
     margin: auto 0;
     padding: 10px 0;
     border-bottom: 1px solid #e0e0e0;
-} 
+}
 
-.numbering,.tpnumber,.date-time {
+.numbering,
+.tpnumber,
+.date-time {
     flex: 1;
 }
 
@@ -2151,7 +2232,7 @@ input[type="textarea"]::placeholder {
 }
 
 .numbering {
-    
+
     padding-left: 15px;
 
 }

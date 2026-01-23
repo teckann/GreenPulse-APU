@@ -1,6 +1,9 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
+
+    $sql = "SELECT * FROM feedback";
+    $result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -65,49 +68,26 @@
 
                 <span class = "title">Event Feedback</span>
             <div class = "event-feedback-outer-box">
+                 <?php
+                if (mysqli_num_rows($result) <= 0) {
+                    die ("<script>alert('No data from database!');</script>");
+                }
+                else {
+                    while ($rows = mysqli_fetch_array($result)){
+                ?>
                 <div class = "feedback-header">
-                    <span class = "title-feedback">Feedback</span>
+                    <span class = "title-feedback"><?php echo $rows['feedback_id']; ?></span>
                     <div class = "date-time">
                         <span class = "title-date">Date</span>
                         <span class = title-time>Time</span>
                     </div>
                 </div>
-                <div class = "event-feedback-inner-box"></div>
-            </div>
-
-            <div class = "event-feedback-outer-box">
-                <div class = "feedback-header">
-                    <span class = "title-feedback">Feedback</span>
-                    <div class = "date-time">
-                        <span class = "title-date">Date</span>
-                        <span class = title-time>Time</span>
-                    </div>
-                </div>
-                <div class = "event-feedback-inner-box"></div>
-            </div>
-
-            <div class = "event-feedback-outer-box">
-                <div class = "feedback-header">
-                    <span class = "title-feedback">Feedback</span>
-                    <div class = "date-time">
-                        <span class = "title-date">Date</span>
-                        <span class = title-time>Time</span>
-                    </div>
-                </div>
-                <div class = "event-feedback-inner-box"></div>
-            </div>
-
-                    <div class = "event-feedback-outer-box">
-                <div class = "feedback-header">
-                    <span class = "title-feedback">Feedback</span>
-                    <div class = "date-time">
-                        <span class = "title-date">Date</span>
-                        <span class = title-time>Time</span>
-                    </div>
-                </div>
-                <div class = "event-feedback-inner-box"></div>
-            </div>
+               
         </div>
+          <?php 
+        } 
+    } 
+    ?>
     </section>
    <!-- Hamburger Menu sidebar -->
     <div class="sidebar" id="sidebar">

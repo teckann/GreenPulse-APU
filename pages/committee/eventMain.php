@@ -1,6 +1,9 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
+
+    $sql = "SELECT * FROM events";
+    $result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -76,12 +79,19 @@
             </div>
 
             <section class="container-event">
-                <div class="content-card-event">
+                <?php
+                if (mysqli_num_rows($result) <= 0) {
+                    die ("<script>alert('No data from database!');</script>");
+                }
+                else {
+                    while ($rows = mysqli_fetch_array($result)){
+                ?>
+                <div class="content-card-event"> 
 
                 <!-- Left Side: Image Section -->
                 <div class="event-left-section">
                     <div class="event-image">
-                        <img src="../../src/elements/greenCampaignTest.jpg" alt="Event Image">
+                        <img src="../../<?php echo $rows['event_poster']; ?>" alt="Event Image">
                     </div>
 
                     <div class="button">
@@ -98,43 +108,104 @@
                     </div>
                 </div>
 
+
+
                 <!-- Right Side: Details Section -->
                 <div class="event-right-section">
-                    <div class="event-meta-row">
-                        <div class="meta-item">
-                            <span class="meta-label">ORGANIZER ID</span>
-                            <span class="meta-value">E-8829-GRN</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">SCHEDULED DATE</span>
-                            <span class="meta-value">Dec 12, 2024</span>
-                        </div>
+
+                <div class = "event-posted-info">
+
+                <div class = "event-posted">
+                        <div class = "event-posted-date-id">Event ID: <?php echo $rows['event_id']?></div>
+                    </div>
+                <div class = "event-posted">
+                        <div class = "event-posted-date-id">Posted by: <?php echo $rows['user_id']?></div>
+                    </div>
+                    <div class = "event-posted">
+                        <div class = "event-posted-date-id"><?php echo $rows['posted_date']?></div>
                     </div>
 
-                <!-- Status and Points Row -->
+                    
+
+                </div>
+
+                    <div class = "event-title-row">
+                                     <!-- Event Title -->
+                        <h2 class="event-title"><?php echo $rows['event_title']; ?></h2>
+
+                        <!-- Event Description -->
+                        <p class="event-description">
+                            <?php echo $rows['event_description']; ?>
+                        </p>
+                    </div>
+
+                                    <!-- Status and Points Row -->
                 <div class="status-points-row">
+                    <div class = "event-status-row">
+
+                     <div class="event-status">
+                        <span class="circle"></span>
+                        <span>CAPACITY: <?php echo $rows['capacity']?></span>
+                    </div>
+
                     <div class="event-status">
                         <span class="circle"></span>
-                        <span>EVENT ACTIVE</span>
+                        <span>AVAILABLE SPOT: <?php echo $rows['available_spot']?></span>
                     </div>
-                    <span class="points-badge">500 pts</span>
-                    <div class="more-section" onclick = "window.location.href = 'eventMore.php'">
+
+                    
+
+                    <span class="points-badge"><?php echo $rows['points_given']; ?> pts</span>
+
+                    <div class="event-more" onclick = "window.location.href = 'eventMore.php'">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </div>
+   
+                        
+                    </div>
                 </div>
+                   
 
-                <!-- Event Title -->
-                <h2 class="event-title">Urban Tree Restoration</h2>
 
-                <!-- Event Description -->
-                <p class="event-description">
-                    A premium workshop focused on local biodiversity and sustainable urban planning. 
-                    Participants will learn hands-on tree planting techniques and maintenance.
-                </p>
+                    <div class="event-meta-row">
+                        
+                         <div class="meta-item">
+                            <span class="meta-label">SCHEDULED DATE</span>
+                           <span class="meta-value">
+                                <?php echo date('M d, Y - h:i A', strtotime($rows['event_datetime'])); ?>
+                            </span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">DURATION</span>
+                           <span class="meta-value"><?php echo $rows['duration']; ?></span>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="event-meta-row">
+                      
+
+
+                          <div class="meta-item">
+                            <span class="meta-label">LOCATION</span>
+                            <span class="meta-value"><?php echo $rows['location']; ?></span>
+                        </div>
+                    </div>
+
+
+
+
                 </div>
+                
                 </div>
             </section>
         </div>
+        <?php 
+        } 
+    } 
+    ?>
     </section>
 
     <!-- Hamburger Menu -->
