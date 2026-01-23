@@ -3,20 +3,20 @@
     include("../../backend/sessionData.php"); 
     include("../../backend/utility.php");
 
-    // to update tree data
+    // to update merchandise data
     if (isset($_POST['btnConfirmEdit'])) {
-        $newTreeName = $_POST['itemNameEdit'];
+        $newMerchandiseName = $_POST['itemNameEdit'];
         $newDescription = $_POST['itemDescriptionEdit'];
         $newPoints = $_POST['itemPointsEdit'];
         $newStock = $_POST['itemStockEdit'];
-        $treeId = $_POST['itemIdEdit'];
+        $merchandiseId = $_POST['itemIdEdit'];
 
-        $sqlChange = "UPDATE items SET item_name = '$newTreeName', item_description = '$newDescription', item_redeem_points = '$newPoints', item_stock = '$newStock' WHERE item_id = '$treeId'";
+        $sqlChange = "UPDATE items SET item_name = '$newMerchandiseName', item_description = '$newDescription', item_redeem_points = '$newPoints', item_stock = '$newStock' WHERE item_id = '$merchandiseId'";
 
         if (mysqli_query($conn, $sqlChange)) {
 
             // record activity into logs
-            addLog($conn, $userID, "Edit available tree information");
+            addLog($conn, $userID, "Edit available merchandise information");
             ?>
                 <script>
                     document.addEventListener("DOMContentLoaded", () => {
@@ -26,7 +26,7 @@
                     const itemPopUp = document.querySelector("#itemPopUp");
                     itemPopUpOverlay.style.display = 'none';
                     itemPopUp.style.display = 'none';
-                    window.location.href='availableTreePage.php';
+                    window.location.href='merchandiseManagement.php';
                     // reload();
                     })
                     
@@ -36,69 +36,69 @@
         }
     }
 
-    if (isset($_POST['btnDeleteTree'])) {
-        $treeID = $_POST['deleteTreeID'];
+    if (isset($_POST['btnDeleteMerchandise'])) {
+        $merchandiseID = $_POST['deleteMerchandiseID'];
         
 
-        $sqlDelete = "UPDATE items SET item_status = 'Inactive' WHERE item_id = '$treeID'";
+        $sqlDelete = "UPDATE items SET item_status = 'Inactive' WHERE item_id = '$merchandiseID'";
         
-        echo "<script>alert('$treeID')</script>";
+        echo "<script>alert('$merchandiseID')</script>";
 
         if (mysqli_query($conn, $sqlDelete)) { 
 
         // record actifivy into logs
-        addLog($conn, $userID, "Delete available tree");
+        addLog($conn, $userID, "Delete available merchandise");
             ?>
             <script>
                 document.addEventListener("DOMContentLoaded", () => {
-                    alert('Tree deleted successfully');
+                    alert('Merchandise deleted successfully');
                     const itemPopUpOverlay = document.querySelector("#itemOverlay");
                     const deletePopUp = document.querySelector("#itemPopUp3");
                     itemPopUpOverlay.style.display = 'none';
                     deletePopUp.style.display = 'none';
-                    window.location.href='availableTreePage.php';
+                    window.location.href='merchandiseManagement.php';
                 });
             </script>
             <?php
         }
     }
 
-        // to change the tree photo
+        // to change the merchandise photo
 
-    $sql = "SELECT * FROM items WHERE category = 'tree'";
+    $sql = "SELECT * FROM items WHERE category = 'merchandise'";
 
     $search = '';
-    $treeStatus = '';
-    $treeCreatorStatus = '';
+    $merchandiseStatus = '';
+    $merchandiseCreatorStatus = '';
 
     // check is the search is used or not
-    if (!empty($_GET["searchTree"])) {
-        $search = $_GET["searchTree"];
+    if (!empty($_GET["searchMerchandise"])) {
+        $search = $_GET["searchMerchandise"];
     }
 
     //assign the filter value first
-    if (!empty($_GET["filterAvailableTreeStatus"])) {
-        $treeStatus = $_GET["filterAvailableTreeStatus"];
+    if (!empty($_GET["filterAvailableMerchandiseStatus"])) {
+        $merchandiseStatus = $_GET["filterAvailableMerchandiseStatus"];
     }
-    if (!empty($_GET["filterAvailableTreeCreator"])) {
-        $treeCreatorStatus = $_GET["filterAvailableTreeCreator"];
+    if (!empty($_GET["filterAvailableMerchandiseCreator"])) {
+        $merchandiseCreatorStatus = $_GET["filterAvailableMerchandiseCreator"];
     }
 
     if (!empty($search)) {
-        $sql = "SELECT * FROM items WHERE item_name LIKE '%{$search}%' AND category = 'tree'";
+        $sql = "SELECT * FROM items WHERE item_name LIKE '%{$search}%' AND category = 'merchandise'";
     }
     else {
-        if ($treeStatus === "" && $treeCreatorStatus === "") {
-            $sql = "SELECT * FROM items WHERE category = 'tree'";
+        if ($merchandiseStatus === "" && $merchandiseCreatorStatus === "") {
+            $sql = "SELECT * FROM items WHERE category = 'merchandise'";
         }
-        else if ($treeStatus === "") {
-            $sql = "SELECT * FROM items WHERE user_id = '$userID' AND category = 'tree'";
+        else if ($merchandiseStatus === "") {
+            $sql = "SELECT * FROM items WHERE user_id = '$userID' AND category = 'merchandise'";
         }
-        else if ($treeCreatorStatus === "") {
-            $sql = "SELECT * FROM items WHERE item_status = '$treeStatus' AND category = 'tree'";
+        else if ($merchandiseCreatorStatus === "") {
+            $sql = "SELECT * FROM items WHERE item_status = '$merchandiseStatus' AND category = 'merchandise'";
         }
         else {
-            $sql = "SELECT * FROM items WHERE item_status = '$treeStatus' AND user_id = '$userID' AND category = 'tree'";
+            $sql = "SELECT * FROM items WHERE item_status = '$merchandiseStatus' AND user_id = '$userID' AND category = 'merchandise'";
         }
     }
 
@@ -112,7 +112,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available Tree Management Page</title>
+    <title>Merchandise Management Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png">
@@ -122,25 +122,25 @@
 
     <main>
         <div id="fullPage">
-            <div id="upperTree">
-                <div id="treeManageText">
+            <div id="upperMerchandise">
+                <div id="merchandiseManageText">
                     <h1 class="merchandisePageTitle">Merchandise Management <i class="fa-solid fa-bag-shopping"  style="color:#301A4B"></i></h1>
                     <p>Add new, manage available merchandise for user to redeem</p>
                 </div>
                 <button id="btnAddItem" name="btnAddItem"><span class="showDesktop">Add Merchandise</span><span class="showMobile"><i class="fa-solid fa-plus" style="color: white;"></i></span></button>
             </div>
             <hr>
-            <div id="displayTreeCard">
-                <div id="upperTreeCard">
+            <div id="displayMerchandiseCard">
+                <div id="upperMerchandiseCard">
                     <form action="" method="GET">
-                        <div id="treeSearchBar">
-                            <i class="fa-solid fa-magnifying-glass" for="searchTree" id="treeSearchIcon"></i>
-                            <input type="text" id="searchTree" name="searchTree" placeholder="Search Tree by Name">
+                        <div id="merchandiseSearchBar">
+                            <i class="fa-solid fa-magnifying-glass" for="searchMerchandise" id="merchandiseSearchIcon"></i>
+                            <input type="text" id="searchMerchandise" name="searchMerchandise" placeholder="Search Merchandise by Name">
                         </div>
                         <div id="filterBar">
                             <div>
-                                <label for="filterAvailableTreeStatus">Tree Status: </label>
-                                <select name="filterAvailableTreeStatus" id="filterAvailableTreeStatus" class="filterTree">
+                                <label for="filterAvailableMerchandiseStatus">Merchandise Status: </label>
+                                <select name="filterAvailableMerchandiseStatus" id="filterAvailableMerchandiseStatus" class="filterMerchandise">
                                     <option value="">All Status</option>
                                     <option value="Active">Active</option>
                                     <option value="Inactive">Inactive</option>
@@ -148,8 +148,8 @@
                             </div>
 
                             <div>
-                                <label for="filterAvailableTreeCreator">Trees Created by: </label>
-                                <select name="filterAvailableTreeCreator" id="filterAvailableTreeCreator" class="filterTree">
+                                <label for="filterAvailableMerchandiseCreator">Merchandises Created by: </label>
+                                <select name="filterAvailableMerchandiseCreator" id="filterAvailableMerchandiseCreator" class="filterMerchandise">
                                     <option value="">All Users</option>
                                     <option value="user">Me</option>
                                 </select>
@@ -158,12 +158,12 @@
                     </form>
                 </div>
 
-                <div class="showTreeCardsSpace">
-                    <div class="showTreeCards">
+                <div class="showMerchandiseCardsSpace">
+                    <div class="showMerchandiseCards">
                         <?php 
-                            $trees = array();
+                            $merchandises = array();
                             while ($row = mysqli_fetch_assoc($result)) {
-                                $trees[] = $row;
+                                $merchandises[] = $row;
                                 $statusColor = "";
                                 if ($row["item_status"] === "Active") {
                                     $statusColor = "green";
@@ -179,7 +179,7 @@
                                 $uploadDate = date("d M Y", strtotime($row['posted_date']));
 
                                 echo "
-                                    <div class='treeCard'>
+                                    <div class='merchandiseCard'>
                                         <div class='upItemCard'>
                                             <div>
                                                 <div>
@@ -195,10 +195,10 @@
                                         </div>
                                         <div class='middleItemCard'>
                                             <div class='itemImage'>
-                                                <img src='../../". $row['item_image'] ."' alt='tree image'>
+                                                <img src='../../". $row['item_image'] ."' alt='merchandise image'>
                                             </div>
                                             <div class='itemInventory'>
-                                                <div class='treePoint'>
+                                                <div class='merchandisePoint'>
                                                     <b>Points Required:</b>
                                                     <p>" . $row['item_redeem_points'] . "</p>
                                                 </div>
@@ -245,7 +245,7 @@
         <div id="itemPopUp">
             <div class="popUpHeader">
                 <div><button id='btnExitPopUp' class='btnExitPopUps'><i class="fa-solid fa-arrow-left"></i></button></div>
-                <div id="popUpHeaderText"><b id="editTreeText">Edit Tree</b></div>
+                <div id="popUpHeaderText"><b id="editMerchandiseText">Edit Merchandise</b></div>
             </div>
             <?php 
 
@@ -279,11 +279,11 @@
             <form action='#' method='POST' class='popUpForm'>
                 <div class='popUpShow'>
                     <div class='itemPopUpInput'>
-                        <label for='itemNameEdit'>Tree Name:</label>
+                        <label for='itemNameEdit'>Merchandise Name:</label>
                         <input type='text' name='itemNameEdit' id='itemNameEdit' value='<?php echo "$itemName" ?>'>
                     </div>
                     <div class='itemPopUpInput'>
-                        <label for='itemDescriptionEdit'>Tree Description</label>
+                        <label for='itemDescriptionEdit'>Merchandise Description</label>
                         <div>
                             <textarea name='itemDescriptionEdit' id='itemDescriptionEdit' rows='3' required><?php echo "$itemDescription" ?></textarea>
                         </div>
@@ -294,7 +294,7 @@
                             <input type='number' name='itemPointsEdit' id='itemPointsEdit' value='<?php echo "$itemPoints" ?>' min='0'  max='1000' required>
                         </div>
                         <div>
-                            <label for='itemStockEdit'>Tree Stocks:</label>
+                            <label for='itemStockEdit'>Merchandise Stocks:</label>
                             <input type='number' name='itemStockEdit' id='itemStockEdit' value='<?php echo "$itemStocks" ?>' min='0'  max='1000' required>
                         </div>
                     </div>
@@ -305,7 +305,7 @@
                 </div>
             </form>
             <div class='navToEditPhoto'>
-                <button name="btnNavToEditPhoto" id="btnNavToEditPhoto">Change Tree Photo?</button>
+                <button name="btnNavToEditPhoto" id="btnNavToEditPhoto">Change Merchandise Photo?</button>
             </div>
         </div>
 
@@ -313,26 +313,21 @@
         <div id="itemPopUp2">
             <div class="popUpHeader">
                 <div><button id='btnBackEditItem' class='btnExitPopUps'><i class="fa-solid fa-arrow-left"></i></button></div>
-                <div id="popUpHeaderText"><b id="changeItemPhotoText">Current Tree Photo</b></div>
+                <div id="popUpHeaderText"><b id="changeItemPhotoText">Current Merchandise Photo</b></div>
             </div>
             
             <form action="../../backend/committeeUpdatePhoto.php" method="POST" enctype="multipart/form-data" class='popUpForm'>
-                <div class='popUpShow treePhotoEditPage'>
-                    <img id="oldItemImage" src="../../<?php echo $itemImage ?>" alt="Tree Image">
+                <div class='popUpShow merchandisePhotoEditPage'>
+                    <img id="oldItemImage" src="../../<?php echo $itemImage ?>" alt="Merchandise Image">
                     
-                    <!-- <label for="changeTreePhoto">
-                        <button>
-                        <i class="fa-solid fa-cloud-arrow-up"></i>
-                        <p>Choose Image</p>
-                        </button>
-                    </label> -->
+
                     <input type="hidden" name="itemId" value="<?php echo $itemID ?>">
                     <div class="fileUploadPart">
                         <span class="attachPhotoText"><b>Please attach photo here</b></span>
                         <span class="uploadFileText">Upload one supported files (e.g. png, jpg, jpeg), Each file up to 5 MB in size.</span>
-                        <input type="file" name="updateFile" id="fileChangeTreePhoto">
+                        <input type="file" name="updateFile" id="fileChangeMerchandisePhoto">
                     </div>
-                    <button type="submit" name="btnChangeTreePhoto" class="btnChangeTreePhoto">Update Tree Photo</button>
+                    <button type="submit" name="btnChangeMerchandisePhoto" class="btnChangeMerchandisePhoto">Update Merchandise Photo</button>
                     
                 </div>
             </form>
@@ -342,42 +337,42 @@
             <div id="itemPopUp3">
                 <div class="popUpHeader">
                     <button id='btnExitDeletePopUp' class='btnExitPopUps'><i class="fa-solid fa-arrow-left"></i></button>
-                    <div id="popUpHeaderText"><b id="deleteItemText">Delete Tree Page</b></div>
+                    <div id="popUpHeaderText"><b id="deleteItemText">Delete Merchandise Page</b></div>
                 </div>
             
                 <form action="#" method="POST" class='popUpForm'>
-                    <div class='popUpShow deleteTreePage'>
+                    <div class='popUpShow deleteMerchandisePage'>
                         <div class="allDeleteInfo">
-                            <input type="hidden" value="<?php echo $itemID ?>" name="deleteTreeID">
+                            <input type="hidden" value="<?php echo $itemID ?>" name="deleteMerchandiseID">
                             <div class="askForDelete">
-                                <p>Do you want to delete the tree?</p>
+                                <p>Do you want to delete the merchandise?</p>
                             </div>
-                            <div class="deleteTreeInfo">
+                            <div class="deleteMerchandiseInfo">
                                 <div>
-                                    <p><b>Tree's information</b></p>
-                                    <p>Tree ID: <?php echo $itemID ?></p>
-                                    <p>Tree Name: <?php echo $itemName ?> </p>
+                                    <p><b>Merchandise's information</b></p>
+                                    <p>Merchandise ID: <?php echo $itemID ?></p>
+                                    <p>Merchandise Name: <?php echo $itemName ?> </p>
                                 </div>
                             </div>
                             <hr>
                             <div class="statusDeleteInfo">
-                                <p>The tree status will be changed from:</p>
+                                <p>The merchandise status will be changed from:</p>
                                 <p class="deleteStatusChangeText"><span style="color: green;">Active</span> <i class="fa-solid fa-arrow-right"></i> <span style="color: red;">Inactive</span></p>
-                                <p>You are not allowed to reactive the tree unless with the help of system admin.</p>
+                                <p>You are not allowed to reactive the merchandise unless with the help of system admin.</p>
                             </div>
                         </div>
                         <div class="deleteItemBtns">
-                            <button type="submit" name="btnDeleteTree" class="btnDeleteTree">Delete Tree</button>
+                            <button type="submit" name="btnDeleteMerchandise" class="btnDeleteMerchandise">Delete Merchandise</button>
                         </div>
                     </div>
                 </form>
             </div>
 
-            <!-- create new available tree -->
+            <!-- create new available mercahndise -->
              <div id="itemPopUp4">
                 <div class="popUpHeader">
                     <button id='btnExitCreateNewItemPopUp' class='btnExitPopUps'><i class="fa-solid fa-arrow-left"></i></button>
-                    <div id="popUpHeaderText"><b id="createItemText">Add New Available Tree</b></div>
+                    <div id="popUpHeaderText"><b id="createItemText">Add New Available Merchandise</b></div>
                 </div>
             
                 <form action="../../backend/committeeCreateTree.php" method="POST" enctype="multipart/form-data" class='popUpForm'>
@@ -385,7 +380,7 @@
                         <div class="createItem">
                             <div class="createItemNamePart">
                                 <label for="createItemName"><b>Tree Name</b></label>
-                                <input type="text" id="createItemName" name="createItemName" class="createItemName" placeholder="e.g. Oak Tree" required>
+                                <input type="text" id="createItemName" name="createItemName" class="createItemName" placeholder="e.g. Eco NoteBook" required>
                             </div>
                             <div class="createItemNumbersPart">
                                 <div>
@@ -399,7 +394,7 @@
                             </div>
                             <div class="createItemDescriptionPart">
                                 <label for="createItemDescripton"><b>Description</b></label>
-                                <textarea name="createItemDescription" id="createItemDescription" placeholder="e.g. Provides shade and oxygen" required rows="5"></textarea>
+                                <textarea name="createItemDescription" id="createItemDescription" placeholder="e.g. Eco notebook made from recycled paper." required rows="5"></textarea>
                             </div>
                             <div class="createItemPhotoPart">
                                 <label for="createItemPhoto"><b>Item Photo</b></label>
@@ -407,7 +402,7 @@
                             </div>
                         </div>
                         <div class="createItemButtonPart">
-                            <button type="submit" name="btnCreateTree" class="btnCreateTree">Create Tree</button>
+                            <button type="submit" name="btnCreateMerchandise" class="btnCreateMerchandise">Create Tree</button>
                         </div>
                     </div>
                 </form>
@@ -419,7 +414,7 @@
             const btnEditItem = document.querySelectorAll(".itemEditBtn");
             const itemPopUpOverlay = document.querySelector("#itemOverlay");
             const itemPopUp = document.querySelector("#itemPopUp");
-            const treeCards = document.querySelectorAll(".treeCard");
+            const merchandiseCards = document.querySelectorAll(".merchandiseCard");
             const btnExitPopUp = document.querySelector("#btnExitPopUp");
             const btnNavToEditPhoto = document.querySelector("#btnNavToEditPhoto");
             const btnExitDelete = document.querySelector("#btnExitDelete");
@@ -431,11 +426,11 @@
             
 
             // to make the button unable to click when the status is inactive
-            treeCards.forEach((treeCard) => {
-                const itemStatus = treeCard.querySelector('.itemStatus');
+            merchandiseCards.forEach((merchandiseCard) => {
+                const itemStatus = merchandiseCard.querySelector('.itemStatus');
                 const statusText = itemStatus.innerText;
-                const itemEditBtn = treeCard.querySelector(".itemEditBtn");
-                const itemDeleteBtn = treeCard.querySelector(".itemDeleteBtn");
+                const itemEditBtn = merchandiseCard.querySelector(".itemEditBtn");
+                const itemDeleteBtn = merchandiseCard.querySelector(".itemDeleteBtn");
 
                 if (statusText === "Inactive") {
                     itemEditBtn.classList.add("disableButton");
@@ -463,30 +458,30 @@
             reload();
             })
 
-            const treeStatus = document.getElementById("filterAvailableTreeStatus");
+            const merchandiseStatus = document.getElementById("filterAvailableMerchandiseStatus");
 
         // check the session has record or not, if don't have record, will become null
-        const savedStatusValue = sessionStorage.getItem("selectedTreeStatus");
+        const savedStatusValue = sessionStorage.getItem("selectedMerchandiseStatus");
         // if there have record, will asign it into the the selectbox value
         if (savedStatusValue !== null) { 
-            treeStatus.value = savedStatusValue;
+            merchandiseStatus.value = savedStatusValue;
         }
 
         // place the listener to listen if the sleect box has change or not, if change it will assign new data inyo session
         // and the page will refresh due to this is submit type, the set value will become can get one
-        treeStatus.addEventListener('change', function() {
-            sessionStorage.setItem('selectedTreeStatus', this.value);
+        merchandiseStatus.addEventListener('change', function() {
+            sessionStorage.setItem('selectedMerchandiseStatus', this.value);
         });
 
-        const treeCreator = document.querySelector("#filterAvailableTreeCreator");
-        const savedCreatorValue = sessionStorage.getItem("selectedTreeCreator");
+        const merchandiseCreator = document.querySelector("#filterAvailableMerchandiseCreator");
+        const savedCreatorValue = sessionStorage.getItem("selectedMerchandiseCreator");
         if (savedCreatorValue != null) {
-            treeCreator.value = savedCreatorValue;
+            merchandiseCreator.value = savedCreatorValue;
         }
         
         // only funcyion() have their this, arrow  function don;t have this (this refer to window), but can use function(e) or (e) => , and use the e.target.value
-        treeCreator.addEventListener('change', function() {
-            sessionStorage.setItem("selectedTreeCreator", this.value);
+        merchandiseCreator.addEventListener('change', function() {
+            sessionStorage.setItem("selectedMerchandiseCreator", this.value);
         });
 
         btnExitPopUp.addEventListener("click", () => {
@@ -508,24 +503,24 @@
         })
 
         const reload = () => {
-            sessionStorage.setItem('selectedTreeStatus', '');
-            sessionStorage.setItem('selectedTreeCreator', '');
-            window.location.href = 'availableTreePage.php';
+            sessionStorage.setItem('selectedMerchandiseStatus', '');
+            sessionStorage.setItem('selectedMerchandiseCreator', '');
+            window.location.href = 'merchandiseManagement.php';
         }
 
-        const btnUpdateTreePhoto = document.querySelector(".btnChangeTreePhoto");
-        const btnFileChangeTreePhoto = document.querySelector("#fileChangeTreePhoto");
+        const btnUpdateMerchandisePhoto = document.querySelector(".btnChangeMerchandisePhoto");
+        const btnFileChangeMerchandisePhoto = document.querySelector("#fileChangeMerchandisePhoto");
 
         // font give the button unable at first
-        btnUpdateTreePhoto.classList.add("disableButton");
+        btnUpdateMerchandisePhoto.classList.add("disableButton");
         
 
-        btnFileChangeTreePhoto.addEventListener("change", () => {
-            if (btnFileChangeTreePhoto.value !== "") {
-                btnUpdateTreePhoto.classList.remove("disableButton");
+        btnFileChangeMerchandisePhoto.addEventListener("change", () => {
+            if (btnFileChangeMerchandisePhoto.value !== "") {
+                btnUpdateMerchandisePhoto.classList.remove("disableButton");
             }
             else {
-                btnUpdateTreePhoto.classList.add("disableButton");
+                btnUpdateMerchandisePhoto.classList.add("disableButton");
             }
         })
         
@@ -533,7 +528,7 @@
             reload();
         });
 
-        // to open create new tree page
+        // to open create new merchandise page
         btnAddNewItem.addEventListener("click", () => {
             itemCreatePopUp.style.display = "flex";
             itemPopUpOverlay.style.display = "block";

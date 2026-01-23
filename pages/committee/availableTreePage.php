@@ -330,7 +330,7 @@
                 <div id="popUpHeaderText"><b id="changeItemPhotoText">Current Tree Photo</b></div>
             </div>
             
-            <form action="../../backend/committeeUpdatePhoto.php" method="POST" enctype="multipart/form-data" class='popUpForm'>
+            <form action="../../backend/committeeUpdateTreePhoto.php" method="POST" enctype="multipart/form-data" class='popUpForm'>
                 <div class='popUpShow treePhotoEditPage'>
                     <img id="oldItemImage" src="../../<?php echo $itemImage ?>" alt="Tree Image">
                     
