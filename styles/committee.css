@@ -1739,6 +1739,10 @@ input[type="textarea"]::placeholder {
     border-radius: 10px;
 }
 
+.itemPopUpInput input[type="number"] {
+    width: 50%;
+}
+
 .popUpNumberSelector {
     display: flex;
 }
@@ -1803,7 +1807,7 @@ input[type="textarea"]::placeholder {
 
 #btnNavToEditPhoto {
     border: none;
-    background-color: #fff;
+    background-color: inherit;
     color: blue;
     text-decoration: underline;
     font-size: 1.2em;
@@ -1914,6 +1918,10 @@ input[type="textarea"]::placeholder {
     border-radius: 10px;
 }
 
+.btnDeleteMerchandise {
+    width: 10em;
+}
+
 .deleteItemBtns {
     display: flex;
     justify-content: center;
@@ -1994,6 +2002,10 @@ input[type="textarea"]::placeholder {
     border-radius: 10px;
 }
 
+.btnCreateMerchandise {
+    width: 10em;
+}
+
 #upperTree #btnMarkAllFertilized {
     color: #ffff;
     padding: 0.5em 0.8em;
@@ -2034,6 +2046,11 @@ input[type="textarea"]::placeholder {
 
 .merchandisePageTitle {
     font-size: 1.8em;
+}
+
+.createMerchandiseName {
+    display: flex;
+    flex-direction: column;
 }
 
 @media(min-width: 800px) {

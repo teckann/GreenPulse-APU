@@ -278,7 +278,7 @@
             <!-- // edit item information -->
             <form action='#' method='POST' class='popUpForm'>
                 <div class='popUpShow'>
-                    <div class='itemPopUpInput'>
+                    <div class='itemPopUpInput createMerchandiseName'>
                         <label for='itemNameEdit'>Merchandise Name:</label>
                         <input type='text' name='itemNameEdit' id='itemNameEdit' value='<?php echo "$itemName" ?>'>
                     </div>
@@ -291,11 +291,11 @@
                     <div class='popUpNumberSelector itemPopUpInput'>
                         <div>
                             <label for='itemPointsEdit'>Points Required:</label>
-                            <input type='number' name='itemPointsEdit' id='itemPointsEdit' value='<?php echo "$itemPoints" ?>' min='0'  max='1000' required>
+                            <input type='number' name='itemPointsEdit' id='itemPointsEdit' value='<?php echo "$itemPoints" ?>' min='0' required>
                         </div>
                         <div>
                             <label for='itemStockEdit'>Merchandise Stocks:</label>
-                            <input type='number' name='itemStockEdit' id='itemStockEdit' value='<?php echo "$itemStocks" ?>' min='0'  max='1000' required>
+                            <input type='number' name='itemStockEdit' id='itemStockEdit' value='<?php echo "$itemStocks" ?>' min='0' required>
                         </div>
                     </div>
                     <input type='hidden' name='itemIdEdit' value='<?php echo "$itemID"?>'>
@@ -375,21 +375,21 @@
                     <div id="popUpHeaderText"><b id="createItemText">Add New Available Merchandise</b></div>
                 </div>
             
-                <form action="../../backend/committeeCreateTree.php" method="POST" enctype="multipart/form-data" class='popUpForm'>
+                <form action="../../backend/committeeCreateMerchandise.php" method="POST" enctype="multipart/form-data" class='popUpForm'>
                     <div class='popUpShow createItemPage'>
                         <div class="createItem">
                             <div class="createItemNamePart">
-                                <label for="createItemName"><b>Tree Name</b></label>
+                                <label for="createItemName"><b>Merchandise Name</b></label>
                                 <input type="text" id="createItemName" name="createItemName" class="createItemName" placeholder="e.g. Eco NoteBook" required>
                             </div>
                             <div class="createItemNumbersPart">
                                 <div>
                                     <label for="createItemPoints"><b>Points<br>Required</b></label>
-                                    <input type="number" name="createItemPoints" id="createItemPoints" min='0'  max='1000' required>
+                                    <input type="number" name="createItemPoints" id="createItemPoints" min='0' required>
                                 </div>
                                 <div>
                                     <label for="createItemStock"><b>Stock</b></label>
-                                    <input type="number" name="createItemStock" id="createItemStock" min='0'  max='1000' required>
+                                    <input type="number" name="createItemStock" id="createItemStock" min='0' required>
                                 </div>
                             </div>
                             <div class="createItemDescriptionPart">
@@ -402,7 +402,7 @@
                             </div>
                         </div>
                         <div class="createItemButtonPart">
-                            <button type="submit" name="btnCreateMerchandise" class="btnCreateMerchandise">Create Tree</button>
+                            <button type="submit" name="btnCreateMerchandise" class="btnCreateMerchandise">Create Merchandise</button>
                         </div>
                     </div>
                 </form>

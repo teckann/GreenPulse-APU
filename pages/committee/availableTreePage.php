@@ -305,11 +305,11 @@
                     <div class='popUpNumberSelector itemPopUpInput'>
                         <div>
                             <label for='itemPointsEdit'>Points Required:</label>
-                            <input type='number' name='itemPointsEdit' id='itemPointsEdit' value='<?php echo "$itemPoints" ?>' min='0'  max='1000' required>
+                            <input type='number' name='itemPointsEdit' id='itemPointsEdit' value='<?php echo "$itemPoints" ?>' min='0' required>
                         </div>
                         <div>
                             <label for='itemStockEdit'>Tree Stocks:</label>
-                            <input type='number' name='itemStockEdit' id='itemStockEdit' value='<?php echo "$itemStocks" ?>' min='0'  max='1000' required>
+                            <input type='number' name='itemStockEdit' id='itemStockEdit' value='<?php echo "$itemStocks" ?>' min='0' required>
                         </div>
                     </div>
                     <input type='hidden' name='itemIdEdit' value='<?php echo "$itemID"?>'>
@@ -404,11 +404,11 @@
                             <div class="createItemNumbersPart">
                                 <div>
                                     <label for="createItemPoints"><b>Points<br>Required</b></label>
-                                    <input type="number" name="createItemPoints" id="createItemPoints" min='0'  max='1000' required>
+                                    <input type="number" name="createItemPoints" id="createItemPoints" min='0' required>
                                 </div>
                                 <div>
                                     <label for="createItemStock"><b>Stock</b></label>
-                                    <input type="number" name="createItemStock" id="createItemStock" min='0'  max='1000' required>
+                                    <input type="number" name="createItemStock" id="createItemStock" min='0' required>
                                 </div>
                             </div>
                             <div class="createItemDescriptionPart">

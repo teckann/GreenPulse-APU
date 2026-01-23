@@ -17,7 +17,7 @@
         // create data
         $sqlCreateData = "INSERT INTO items (item_id, user_id, item_name, item_image, item_description,
         item_redeem_points, item_stock, category, posted_date, item_status) VALUES 
-        ('$itemID', '$userID', '$itemName', '$defaultItemImage', '$description', '$requiredPoints', '$itemStock', 'category', '$postedDate', 'Active')";
+        ('$itemID', '$userID', '$itemName', '$defaultItemImage', '$description', '$requiredPoints', '$itemStock', 'merchandise', '$postedDate', 'Active')";
 
         $fileName = $file["name"];
         $fileTmpName = $file["tmp_name"];
