@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2026 at 05:26 AM
+-- Generation Time: Jan 23, 2026 at 05:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -367,10 +367,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `nationality`, `gender`, `date_of_birth`, `contact_number`, `education_email`, `course_name`, `registration_date`, `password`, `safety_question_1`, `answer_1`, `safety_question_2`, `answer_2`, `green_points`, `total_earned`, `avatar`, `role`, `last_login`, `account_status`) VALUES
-('U001', 'Gan Teck Ann', 'Malaysian', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pgDrsLW6Dik0wdk0hRTC4eAzpKHtUUFsEcjsBoOyEYBR4qaA5Mts.', 'What is your secondary school name?', 'SDBL', 'What is the city name were you born in?', 'Batu Pahat', NULL, NULL, 'src/avatars/U001_avatar_1768494571.png', 'admin', '2026-01-20 02:00:18', 'Active'),
+('U001', 'Gan Teck Ann', 'Malaysian', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pgDrsLW6Dik0wdk0hRTC4eAzpKHtUUFsEcjsBoOyEYBR4qaA5Mts.', 'What is your secondary school name?', 'SDBL', 'What is the city name were you born in?', 'Batu Pahat', NULL, NULL, 'src/avatars/U001_avatar_1768494571.png', 'admin', '2026-01-23 00:24:35', 'Active'),
 ('U002', 'Goh Yang Ee', 'Malaysian', 'M', '2006-07-24', '0125508144', 'TP084231@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$/FqDThXUlgrkHbNEmlF4cuiwcndPCgObsnDj7k/9u7JMRoYPHtWBe', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U002_avatar.png', 'committee', '2026-01-07 15:00:36', 'Active'),
 ('U003', 'Cynthia Tan Xin Ru', 'Malaysian', 'F', '2006-01-21', '01155034966', 'TP084369@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pOUI7Dv/WdOlaO/fca0MHOPafP3I.a55FhuVKme4X8SZzB7l/tyaC', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U003_avatar.png', 'committee', '2026-01-18 18:46:05', 'Active'),
-('U004', 'Lim Jin Ming', 'Malaysian', 'M', '2006-06-09', '0129692700', 'TP083424@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$hrkNchWg.uYwsRLpPlVTveGyMV0fFr1cSTgYC7MY0ec.3rxEIKdyS', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/U004_avatar.png', 'volunteer', '2026-01-02 03:07:07', 'Active'),
+('U004', 'Lim Jin Ming', 'Malaysian', 'M', '2006-06-09', '0129692700', 'TP083424@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$hrkNchWg.uYwsRLpPlVTveGyMV0fFr1cSTgYC7MY0ec.3rxEIKdyS', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/U004_avatar.png', 'volunteer', '2026-01-23 04:08:26', 'Active'),
 ('U005', 'Marcus Tan', 'Australian', 'M', '2005-05-10', '0123456789', 'TP084129@mail.apu.edu.my', 'Diploma in ICT (Data Informatics)', '2026-01-16', '$2y$10$w9E9PpVuQkyp9XdELtAp5ORUs6j/8CTwaZEydt3dgbiweR2FpvgEK', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', NULL, 'Inactive');
 
 --

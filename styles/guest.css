@@ -43,6 +43,60 @@ nav a:hover {
     font-weight: bold;
 }
 
+footer {
+    background-color: #707c68;
+    width: 100%;
+    padding: 1em 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-details {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    height: 90%;
+    /* background-color: green; */
+}
+
+.copy-right {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid black;
+    padding-top: 1em;
+}
+
+.footer-section1 {
+    width: 50%;
+    background-color: blue;
+    height: 100%;
+}
+
+.footer-logo {
+    width: 150px;
+    height: 50px;
+}
+
+.footer-section2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 50%;
+    background-color: red;
+}
+
+.footer-section2 a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
 .login {
     display: flex;
     flex-direction: column;
