@@ -22,7 +22,7 @@
         $currentSort = $sort;
         $currentStatus = $logStatus;
 
-        if (!empty($sort)) {
+        if (!empty($sort) && empty($logStatus)) {
             $sql = "SELECT * FROM log ORDER BY log_datetime $sort";
         }
         elseif (!empty($sort) || !empty($logStatus)) {
@@ -116,21 +116,10 @@
                             <i class="fa-solid fa-print"></i>
                         </button>
                     </div>
-
-                    <!-- <div class="action-btns">
-                        <button name="btnFilter" type="submit" value="Filter" class="filter-btn">
-                            <i class="fa-solid fa-filter"></i>
-                            <p>Filter</p>
-                        </button>
-
-                        <button class="print" onclick="window.print()">
-                            <i class="fa-solid fa-print"></i>
-                        </button>
-                    </div> -->
                 </form>
             </div>
 
-            <div class="flex-container desktop-table" style="margin: 1em 0;">
+            <div class="flex-container" style="margin: 1em 0;">
                 <table>
                     <thead>
                         <tr>
@@ -163,7 +152,7 @@
                 </table>
             </div>
 
-            <div class="flex-container mobile-card" style="margin: 1em 0;">
+            <!-- <div class="flex-container mobile-card" style="margin: 1em 0;">
                 <?php
                     foreach ($logs as $row) {
                         $user_name = getUserName($conn, $row["user_id"]);
@@ -195,7 +184,7 @@
                               </div>';
                     }
                 ?>
-            </div>
+            </div> -->
         </main>
         <?php include("footer.php"); ?>
 
