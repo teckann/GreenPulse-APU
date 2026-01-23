@@ -32,6 +32,9 @@
                              WHERE event_id = '$targetEventID'";
         
         if(mysqli_query($conn, $sql_updateStatus)) {
+            // record action into log
+            // addLog($conn, $userID, "Change Event Status ($targetEventID)");
+
             echo "<script>
                     alert('--- Successfully Updated Event Status ---\\nUser ID: $targetEventID\\nNew Status: $nextStatus');
                     window.location.href = 'manageEvents.php';

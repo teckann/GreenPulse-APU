@@ -59,6 +59,9 @@
                             VALUES ('$badgeID', '$badgeName', '$databasePath', '$requiredPoints')";
                     
                     if (mysqli_query($conn, $sql)) {
+                        // record action into log
+                        // addLog($conn, $userID, "Add New Badge ($badgeID)");
+
                         echo "<script>
                                 alert('--- Successfully added Badge ---\\nBadge ID: $badgeID\\nBadge Name: $badgeName\\nRequired Points: $requiredPoints');
                                 window.location.href = '../pages/admin/manageSystem.php';

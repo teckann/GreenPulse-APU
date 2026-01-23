@@ -19,6 +19,9 @@
                              WHERE item_id = '$targetItemID'";
     
         if(mysqli_query($conn, $sql_updateStatus)) {
+            // record action into log
+            // addLog($conn, $userID, "Change Item Status ($targetItemID)");
+
             echo "<script>
                     alert('--- Successfully Updated Item Status ---\\nItem ID: $targetItemID\\nNew Status: $nextStatus');
                     window.location.href = 'manageItems.php';

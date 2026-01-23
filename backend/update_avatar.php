@@ -54,6 +54,8 @@
                         WHERE user_id = '$userID'";
                 
                 if (mysqli_query($conn, $sql)) {
+                    // record action into log
+                    // addLog($conn, $userID, "Update Profile Picture ($userID)");
                     echo "<script>
                             alert('--- Successfully Updated Avatar ---\\nTarget Account: $userID\\nNew Avatar: $newFileName');
                             window.location.href = '../pages/admin/profile.php';
