@@ -47,7 +47,6 @@
         </marquee>
     </div>
 
-    <!-- !!! -->
     <div class="header-content">
         <div class="back-icon" onclick="history.back()">
             <i class="fas fa-arrow-left"></i>

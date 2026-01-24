@@ -71,21 +71,19 @@
                 <div class="search-bar">
                     <input type="text" placeholder="Search Events..." class="searchInput">
                 </div>
-                <select class="status-dropdown">
-                    <option>All Status</option>
-                    <option>Pending</option>
-                    <option>Approved</option>
-                </select>
+                
             </div>
 
+           
             <section class="container-event">
-                <?php
+                 <?php
                 if (mysqli_num_rows($result) <= 0) {
                     die ("<script>alert('No data from database!');</script>");
                 }
                 else {
                     while ($rows = mysqli_fetch_array($result)){
                 ?>
+                
                 <div class="content-card-event"> 
 
                 <!-- Left Side: Image Section -->

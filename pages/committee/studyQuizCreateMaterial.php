@@ -7,26 +7,22 @@
         
       
         if (isset($_POST["formType"]) && $_POST["formType"] === "createNewMaterial") {
-
-            // 1. Setup Target Directory
-            // Make sure the folder 'src/moduleMaterials' exists in your project root!
             $targetDir = "../../src/moduleMaterials/";
             
-            // 2. Handle Material File (PDF/Image)
+            // Handle Material File
             $materialFileName = basename($_FILES["study_material"]["name"]);
             $materialTargetFilePath = $targetDir . $materialFileName;
             $materialFileType = pathinfo($materialTargetFilePath, PATHINFO_EXTENSION);
 
-            // 3. Handle Video File (mp4/webm)
+            // Handle Video File 
             $videoFileName = basename($_FILES["study_video"]["name"]);
             $videoTargetFilePath = $targetDir . $videoFileName;
             $videoFileType = pathinfo($videoTargetFilePath, PATHINFO_EXTENSION);
 
-            // Define allowed types
-            $allowDocTypes = array('pdf');
+            $allowDocTypes = array('pdf', 'png'); // CHANGE THIS [PNG] JUST FOR TESTING
             $allowVideoTypes = array('mp4');
 
-            // 4. Validation & Upload Logic
+            // Validation & Upload Logic
             $uploadOk = 1;
 
             // Check Material
@@ -41,7 +37,7 @@
                 $uploadOk = 0;
             }
 
-            // 5. If checks pass, move files and Insert DB
+            // If checks pass, move files and Insert DB
             if ($uploadOk == 1) {
                 
                 // Move Material
@@ -64,7 +60,7 @@
                     // 8. SQL Insert (Matching your SQL Schema)
                     $sql = "INSERT INTO modules (
                                 module_id, 
-                                user_id, 
+                                user_id,
                                 module_name, 
                                 module_description, 
                                 module_material, 
@@ -95,7 +91,6 @@
             }
         }
     }
-    // --- PHP LOGIC END ---
 ?>
 
 <!DOCTYPE html>
