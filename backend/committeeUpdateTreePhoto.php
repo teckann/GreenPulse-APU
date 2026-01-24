@@ -56,7 +56,7 @@
                         WHERE item_id = '$itemID'";
                 
                 if (mysqli_query($conn, $sql)) {
-                    addLog($conn, $userID, "Change available tree photo");
+                    addLog($conn, $userID, "Update Available Tree Photo ($itemID)");
                     
                     echo "<script>
                             alert('Image is updated successfully');
