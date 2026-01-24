@@ -2,7 +2,35 @@
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
 
+    // Search Bar Step
+
+    //1. Check if user click on the button
+    $search = isset($_GET['search'])?$_GET['search']:'';
+
+    //2 . trim and make word user seach to lower case
+    $search = trim($search);
+    $lowerSearch = strtolower($search);
+
+
+    // . Build SQL query
     $sql = "SELECT * FROM events";
+
+    // . If search is not empty then add WHERE clause
+    if (!empty ($search)){
+        // originally i type $sql = " WHERE... [=] but need to add [.] in front the =
+        // = is assign [means change, cover, rewrite?]
+        // . means concatenation assignment, so will add the sql clause after 
+        // if no use [.] then the $sql will become " WHERE event_title LIKE '%search%' OR event_description LIKE '%$search%'"; 
+        // [no "SELECT * FROM events";] so have error
+
+        // LOWER(event_title) = temporary change the event_title in database into lowercase so can compare with user type eh word
+        // wont change the word in database
+        $sql .= " WHERE LOWER(event_title) LIKE '%$lowerSearch%' OR LOWER(event_description) LIKE '%$lowerSearch%'";
+    }
+
+    // the arrange the event by date
+    $sql .= " ORDER BY event_id  DESC";
+
     $result = mysqli_query($conn, $sql);
 ?>
 
@@ -65,25 +93,34 @@
     </div>
 
     <!-- Lower Part  -->
+     
     <section class="event-controls-event-main">
-        <div class = "white-color-box">
+        <form action="#" method = "GET">
             <div class="search-filter-group">
                 <div class="search-bar">
-                    <input type="text" placeholder="Search Events..." class="searchInput">
+                    <input type="text" name = "search" placeholder="Search Events by title or description" class="searchInput"
+                    value = "<?php echo $search;?>">
+                    <button type="submit" class = "event-search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                        
                 </div>
                 
             </div>
+            </form>
 
-           
+        
+        <div class = "white-color-box">
+
+                
             <section class="container-event">
-                 <?php
+                <?php
                 if (mysqli_num_rows($result) <= 0) {
                     die ("<script>alert('No data from database!');</script>");
                 }
                 else {
                     while ($rows = mysqli_fetch_array($result)){
                 ?>
-                
                 <div class="content-card-event"> 
 
                 <!-- Left Side: Image Section -->
@@ -120,7 +157,7 @@
                         <div class = "event-posted-date-id">Posted by: <?php echo $rows['user_id']?></div>
                     </div>
                     <div class = "event-posted">
-                        <div class = "event-posted-date-id"><?php echo $rows['posted_date']?></div>
+                        <div class = "event-posted-date-id">Posted on: <?php echo $rows['posted_date']?></div>
                     </div>
 
                     
@@ -153,7 +190,7 @@
 
                     
 
-                    <span class="points-badge"><?php echo $rows['points_given']; ?> pts</span>
+                    <span class="points-badge"><?php echo $rows['points_given']; ?> points</span>
 
                     <div class="event-more" onclick = "window.location.href = 'eventMore.php'">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -198,13 +235,12 @@
                 </div>
                 
                 </div>
+           <?php 
+                } 
+            } 
+            ?>
             </section>
         </div>
-        <?php 
-        } 
-    } 
-    ?>
-    </section>
 
     <!-- Hamburger Menu -->
     <div class="sidebar" id="sidebar">

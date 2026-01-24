@@ -74,9 +74,51 @@
                     // if got $userID then use that userID, if no then use user id from $_SEESION
                     $creatorID = isset($userID) ? $userID : $_SESSION['user_id'];
 
-                    // Generate Event ID (Simple auto-increment simulation or random string)
-                    // You can improve this logic later, but for now let's just use a random ID
-                    $eventID = "E" . rand(1000, 9999); 
+                    // auto generated id
+                    $sqlEventID = "SELECT event_id FROM events ORDER BY event_id DESC LIMIT 1";
+                    $resultEventID = mysqli_query($conn, $sqlEventID);
+
+                        // --- AUTO GENERATE EVENT ID (Sequential) ---
+    
+                    // 1. Get the latest event ID from the database
+                    // DESC LIMIT 1 = big to small, only take the top first data
+                    $sqlCheckID = "SELECT event_id FROM events ORDER BY event_id DESC LIMIT 1";
+                    // run the $sqlCheckID, and put the run result into resultID
+                    $resultID = mysqli_query($conn, $sqlCheckID);
+
+                    if (mysqli_num_rows($resultID) > 0) {
+                        // 2. If got data edi (E001)
+
+                        // then take that data out
+                        $row = mysqli_fetch_assoc($resultID);
+                        // set $lastID = $row = mysqli_fetch_assoc($resultID);
+                        $lastID = $row['event_id'];
+                        
+                        // 3. Remove the "E" and convert to number (001 becomes 1)
+                        // substr = "cut the word"
+                        // (substr($lastID, 1) = cut $lastID, from [1]
+                        // index  :  0   1   2   3
+                        // string :  E   0   0   1
+                        // so the result is 001
+                        //  intval = make from string to integer
+
+                        $lastNumber = intval(substr($lastID, 1)); 
+                        
+                        // 4. Add 1 (1 becomes 2)
+                        $newNumber = $lastNumber + 1;
+                        
+                        // 5. Pad with zeros (2 becomes "002")
+                        // need 3 number, if not enough then add 0 from left
+                        $paddedNumber = str_pad($newNumber, 3, "0", STR_PAD_LEFT);
+                        
+                        // 6. Create new ID (E002)
+                        $eventID = "E" . $paddedNumber;
+                        
+                    } else {
+                        // If database is empty, start from E001
+                        $eventID = "E001";
+                    }
+                    
 
                     // Set initial available spots equal to capacity
                     $availableSpot = $capacity;
@@ -198,15 +240,23 @@
 
             <section class="event-controls-event-main">
                 <div class = "white-color-box">
+                    <!-- <div class = "white-color-box-event-create"> -->
+
 
                     <div class = "two-column">
                         <div class="input-group">
-                            <label>Event name</label>
-                            <input type="text" name="event_title" placeholder="Enter the event name" class="event-box" required>
+                            <div class = "row">
+                                <label>Event Name</label>
+                                <span> *</span>
+                            </div>
+                            <input type="text" name="event_title" placeholder="e.g. Go Green: Campus Cleanup Day" class="event-box" required>
                         </div>
 
                         <div class="input-group">
-                            <label>Event Date Time</label>
+                            <div class = "row">
+                                <label>Event Date Time</label>
+                                <span> *</span>
+                            </div>
                             <input type="datetime-local" name="event_datetime" class="event-box" required>  
                         </div>
                     </div>
@@ -214,49 +264,72 @@
 
                     <div class = "two-column">
                         <div class="input-group">
-                            <label>Location</label>
+                            <div class = "row">
+                                <label>Location</label>
+                                <span> *</span>
+                            </div>
                             <!-- Name matches PHP: $_POST['event_Location'] -->
-                            <input type="text" name="event_Location" placeholder="S-08-01" class="event-box" required>
+                            <input type="text" name="event_Location" placeholder="e.g. Level 3 | APU Campus" class="event-box" required>
                         </div>
 
                         <div class="input-group">
-                            <label>Duration</label>
+                            <div class = "row">
+                                <label>Duration</label>
+                                <span> *</span>
+                            </div>
                             <!-- Name matches PHP: $_POST['event_duration'] -->
-                            <input type="text" name="event_duration" placeholder="2 hours" class="event-box" required>
+                            <input type="text" name="event_duration" placeholder="e.g. 3h" class="event-box" required>
                         </div>
                     </div>
 
                     <div class = "two-column">
                         <div class="input-group">
-                            <label>Available Spots</label>
+                            <div class = "row">
+                                <label>Available Spot</label>
+                                <span> *</span>
+                            </div>
                             <!-- Name matches PHP: $_POST['event_capacity'] -->
-                            <input type="number" name="event_capacity" placeholder="50" class="event-box" required>
+                            <input type="number" name="event_capacity" placeholder="e.g. 50" class="event-box" required>
                         </div>
 
                         <div class="input-group">
-                            <label>Points Given</label>
+                            <div class = "row">
+                                <label>Points Given</label>
+                                <span> *</span>
+                            </div>
                             <!-- Name matches PHP: $_POST['event_points'] -->
-                            <input type="number" name="event_points" placeholder="100" class="event-box" required>
+                            <input type="number" name="event_points" placeholder="e.g. 100" class="event-box" required>
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <label>Description</label>
-                        <textarea name="event_description" placeholder="Event Description" class="event-big-box" rows="5" required></textarea>
-                    </div>
 
                     <div class="input-group">
-                        <label>Event Poster</label>
+                        <div class = "row">
+                                <label>Description</label>
+                                <span> *</span>
+                            </div>
+                        <textarea name="event_description" placeholder="Share your event’s green goals and activities..." class="event-big-box" rows="5" required></textarea>
+                    </div>
+
+                    
+                    <div class="input-group">
+                        <div class = "row">
+                                <label>Event Poster</label>
+                                <span> *</span>
+                            </div>
                         <input type="file" name="event_poster" class="event-big-box" required>
                     </div>
-                    
-                    <button type="submit" class="btnCreateEvent">
+         
+                  
+                    <button type="submit" class="btn-create-event">
                         Create Event
                     </button>
+                   
 
                     <div class = "short-tagline">
                         Create. Inspire. Impact.
                     </div>
+                    <!-- </div> -->
 
                 </div>
             </section>

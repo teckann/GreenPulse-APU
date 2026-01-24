@@ -62,69 +62,93 @@
         <!-- STARTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT -->
         <section class="event-controls-event-main">
             <div class = "white-color-box">
-                    <div class="input-group">
-                        <label>Event name</label>
-                        <input type="text" placeholder="Enter the event name" class="event-box">
+                <!-- <div class = "white-color-box-event-create"> -->
+                    <div class = "two-column">
+                        <div class="input-group">
+                            <div class = "row">
+                                <label>Event Name</label>
+                                <span> *</span>
+                            </div>
+                            <input type="text" name="event_title" placeholder="e.g. Go Green: Campus Cleanup Day" class="event-box" required>
+                        </div>
+
+                        <div class="input-group">
+                            <div class = "row">
+                                <label>Event Date Time</label>
+                                <span> *</span>
+                            </div>
+                            <input type="datetime-local" name="event_datetime" class="event-box" required>  
+                        </div>
                     </div>
+
+
+                    <div class = "two-column">
+                        <div class="input-group">
+                            <div class = "row">
+                                <label>Location</label>
+                                <span> *</span>
+                            </div>
+                            <!-- Name matches PHP: $_POST['event_Location'] -->
+                            <input type="text" name="event_Location" placeholder="e.g. Level 3 | APU Campus" class="event-box" required>
+                        </div>
+
+                        <div class="input-group">
+                            <div class = "row">
+                                <label>Duration</label>
+                                <span> *</span>
+                            </div>
+                            <!-- Name matches PHP: $_POST['event_duration'] -->
+                            <input type="text" name="event_duration" placeholder="e.g. 3h" class="event-box" required>
+                        </div>
+                    </div>
+
+                    <div class = "two-column">
+                        <div class="input-group">
+                            <div class = "row">
+                                <label>Available Spot</label>
+                                <span> *</span>
+                            </div>
+                            <!-- Name matches PHP: $_POST['event_capacity'] -->
+                            <input type="number" name="event_capacity" placeholder="e.g. 50" class="event-box" required>
+                        </div>
+
+                        <div class="input-group">
+                            <div class = "row">
+                                <label>Points Given</label>
+                                <span> *</span>
+                            </div>
+                            <!-- Name matches PHP: $_POST['event_points'] -->
+                            <input type="number" name="event_points" placeholder="e.g. 100" class="event-box" required>
+                        </div>
+                    </div>
+
+
+                    <div class="input-group">
+                        <div class = "row">
+                                <label>Description</label>
+                                <span> *</span>
+                            </div>
+                        <textarea name="event_description" placeholder="Share your event’s green goals and activities..." class="event-big-box" rows="5" required></textarea>
+                    </div>
+
                     
-                    <div class = "two-column">
-                        <div class="input-group">
-                            <label>Event Date</label>
-                            <input type="date" class="event-box">
-                        </div>
-
-                        <div class="input-group">
-                            <label>Time</label>
-                        <input type="time" class="event-box">
-
-                        </div>
-                    </div>
-
-                    <div class = "two-column">
-                        <div class="input-group">
-                            <label>Location</label>
-                            <input type="text" placeholder="S-08-01" class="event-box">
-                        </div>
-
-                        <div class="input-group">
-                            <label>Duration</label>
-                        <input type="text" placeholder="2 hours" class="event-box">
-
-                        </div>
-                    </div>
-
-                    <div class = "two-column">
-                        <div class="input-group">
-                            <label>Available Spots</label>
-                            <input type="number" placeholder="50" class="event-box">
-                        </div>
-
-                        <div class="input-group">
-                            <label>Points Given</label>
-                            <input type="number" placeholder="100" class="event-box">
-                        </div>
-
-                       
-                    </div>
-
                     <div class="input-group">
-                        <label>Description</label>
-                        <textarea placeholder="Event Description" class="event-big-box" rows="5"></textarea>
-                        <!-- TEXTAREA NEED TO CLOSE TAG!! DIFFERENT WITH OTHER INPUT" TYPE AHHH-->
-                        <!-- row = "5" is to like make the text area "go to next line" -->
+                        <div class = "row">
+                                <label>Event Poster</label>
+                                <span> *</span>
+                            </div>
+                        <input type="file" name="event_poster" class="event-big-box" required>
                     </div>
-
-                    <div class="input-group">
-                        <label>Event Poster</label>
-                        <input type="file" class="event-big-box">
-                    </div>
-                    <button class="btnCreateEvent">
-                        Edit Event
+         
+                    
+                    <button type="submit" class="btn-create-event">
+                        Create Event
                     </button>
 
                     <div class = "short-tagline">
                         Create. Inspire. Impact.
                     </div>
+<!-- </div> -->
             </div>
         </section>
 
