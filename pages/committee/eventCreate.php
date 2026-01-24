@@ -3,6 +3,11 @@
     include("../../backend/sessionData.php");
     include("../../backend/utility.php");
 
+    if (!isset($_SESSION['userID'])) {
+        echo "<script>alert('Please login first!'); window.location.href='../../pages/guest/login.php';</script>";
+        exit;
+    }
+
     // 1. ONLY RUN THIS CODE IF THE FORM IS SUBMITTED
     // $_SERVER["REQUEST_METHOD"] means the how the page be request [POST or GET] 
     // POST = Submit Form
@@ -123,6 +128,7 @@
                     // Set initial available spots equal to capacity
                     $availableSpot = $capacity;
                     
+                    date_default_timezone_set("Asia/Kuala_Lumpur");
                     $postedDate = date("Y-m-d"); // Today's date
 
                     // --- C. SQL QUERY (UPDATED TO MATCH YOUR SCHEMA) ---
@@ -154,15 +160,19 @@
                                 '$postedDate'
                             )";
 
-                    // Execute Query
+  
                     if (mysqli_query($conn, $sql)) {
+                        // IMPORTANT: Added exit; to stop code execution here
                         echo "<script>
                                 alert('Event Created Successfully!'); 
                                 window.location.href='eventMain.php';
-                            </script>";
+                              </script>";
+                        exit; 
+                        
                     } else {
                         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                     }
+                    
                 } else {
                     echo "<script>alert('Error uploading file. Check folder permissions.');</script>";
                 }
@@ -181,6 +191,7 @@
     <title>Create Event Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 <body>
     <!-- Navigation (Keeping your existing nav structure) -->
@@ -217,7 +228,9 @@
 
     
     <!-- hero -->
-    <div class="header-content">
+
+
+        <div class="header-content">
             <div class="back-icon" onclick="history.back()">
                 <i class="fas fa-arrow-left"></i>
             </div>
@@ -225,6 +238,8 @@
             <div class="heroSection">
                 <h1>CREATE NEW EVENT</h1> <p>FILL IN THE DETAILS TO LAUNCH A GREEN INITIATIVE.</p>
             </div>
+            
+            
         </div>
 
         <!-- 

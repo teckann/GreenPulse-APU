@@ -2,8 +2,16 @@
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
 
-    $sql = "SELECT * FROM events";
+    $eventID = mysqli_real_escape_string($conn, $_GET['event_id']);
+    $sql = "SELECT * FROM events WHERE event_id = '$eventID'";
     $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) <= 0) {
+        echo "<script>alert('Event not found!'); window.location.href='eventMain.php';</script>";
+        exit;
+    }
+
+    $rows = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
@@ -63,18 +71,10 @@
 
     <!-- Lower Part  -->
     <section class="event-controls-event-main">
-         <?php
-                if (mysqli_num_rows($result) <= 0) {
-                    die ("<script>alert('No data from database!');</script>");
-                }
-                else {
-                    while ($rows = mysqli_fetch_array($result)){
-                ?>
         <div class = "white-color-box">
             <div class = "details-upper">
                 <h2 class = "event-name"><?php echo $rows['event_title']?></h2>
-                <!-- <span class = "event-id">Event ID</span> -->
-                                    <!-- Action Buttons -->
+                
                     <div class="action-buttons">
                         <button class="btn-manage-attendees" onclick = "window.location.href = 'eventAttendance.php'">
                             <i class="fas fa-users"></i> Attendance
@@ -86,67 +86,50 @@
             </div>
 
            <div class="event-details-container">
-                <!-- Left -->
                 <div class="left-side-container">
-
                     <div class="left-side-info-box">
-
                         <div class="more-poster">
-                            <img src="../../src/eventPosters/poster1.png" alt="Event Poster">
+                            <img src="../../<?php echo $rows['event_poster']; ?>" alt="Event Poster">
                         </div>
                         <div class="info-row">
-                            <span class="info-label">Posted by:</span>
-                            <span class="info-value">Alex Rivera</span>
+                            <span class="info-label">Event ID</span>
+                            <span class="info-value"><?php echo $rows['event_id']; ?></span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">Date Created:</span>
-                            <span class="info-value">Oct 12, 2023</span>
+                            <span class="info-value"><?php echo $rows['posted_date']; ?></span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">Status:</span>
-                            <span class="status-badge active">
-                                <span class="circle"></span> ACTIVE
-                            </span>
+                            <span class="info-label">Capacity:</span>
+                            <span class="info-value"><?php echo $rows['capacity']; ?> Participants</span>
                         </div>
                     </div>
-
-                    
-                    
-                    
                 </div>
-                
-                <!-- Right -->
+
                 <div class="right-side-container">
-                    <!-- Date & Time -->
                     <div class="detail-box">
                         <div class="detail-content">
                             <span class="detail-label">DATE & TIME</span>
                             <span class="detail-value"><?php echo $rows['event_datetime']; ?> (<?php echo $rows['duration']; ?>)</span>
-                            
                         </div>
                     </div>
 
-                    <!-- Location -->
                     <div class="detail-box">
                         <div class="detail-content">
                             <span class="detail-label">LOCATION</span>
                             <span class="detail-value"><?php echo $rows['location']; ?></span>
-                  
                         </div>
                     </div>
 
-                    <!-- Participation & Points -->
-                    <div class="detail-box-row">
-                        <div class="detail-box-small">
-                            <div class="detail-content">
-                                <span class="detail-label">PARTICIPATION</span>
-                                <span class="detail-value"><?php echo $rows['points_given']; ?></span>
-                                <span class="detail-subvalue">Points per attendee</span>
-                            </div>
+                    <div class="detail-box">
+                        <div class="detail-content">
+                            <span class="detail-label">POINTS</span>
+                            <span class="detail-value"><?php echo $rows['points_given']; ?></span>
+                            <span class = "detail-subvalue">per attendees</span>
                         </div>
                     </div>
 
-                    <!-- Description -->
+
                     <div class="description-container">
                         <div class="detail-icon">
                             <i class="fas fa-align-left"></i>
@@ -154,17 +137,13 @@
                         <div class="detail-content">
                             <span class="detail-label">EVENT DESCRIPTION</span>
                             <p class="description-text">
-                               <?php echo $rows['event_description']; ?>
-                            
+                            <?php echo $rows['event_description']; ?>
                             </p>
                         </div>
                     </div>
                 </div>
-        </div>
-         <?php 
-        } 
-    } 
-    ?>
+            </div>
+
     </section>
 </body>
 </html>
