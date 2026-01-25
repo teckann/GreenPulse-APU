@@ -1706,7 +1706,7 @@ input[type="textarea"]::placeholder {
     cursor: not-allowed;
 }
 
-#itemOverlay {
+#itemOverlay, .profileOverlay {
     display: none;
     position: fixed;
     top: 0;
@@ -1742,7 +1742,7 @@ input[type="textarea"]::placeholder {
     margin: 1em 0;
 }
 
-.btnExitPopUps {
+.btnExitPopUps, #btnBackToProfile {
     color: #271033;
     background-color: #fff;
     border: none;
@@ -1893,14 +1893,14 @@ input[type="textarea"]::placeholder {
     display: none;
 }
 
-#oldItemImage {
+#oldItemImage, #oldProfileImage {
     width: 50%;
     height: 50%;
 }
 
 .treePhotoEditPage,
-.merchandisePhotoEditPage
- {
+.merchandisePhotoEditPage,
+.profilePhotoEditPage {
     align-items: center;
 }
 
@@ -1925,7 +1925,8 @@ input[type="textarea"]::placeholder {
 }
 
 .btnChangeTreePhoto,
-.btnChangeMerchandisePhoto {
+.btnChangeMerchandisePhoto,
+.btnConfirmChangeProfilePhoto {
     background-color: #2D936C;
     color: #fff;
     border: none;
@@ -1937,7 +1938,12 @@ input[type="textarea"]::placeholder {
 
 .askForDelete {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+}
+
+.askForDelete p {
+    text-align: center;
 }
 
 .popUpHeader b {
@@ -2238,6 +2244,13 @@ input[type="textarea"]::placeholder {
     background-color: #E9B44C;
     border: none;
     border-radius: 8px;
+    margin-bottom: 1em;
+}
+
+.btnEditProfile a {
+    text-decoration: none;
+    font-size: 1.3em;
+    color: white;
 }
 
 .showChangePhotoPopUp {
@@ -2254,10 +2267,207 @@ input[type="textarea"]::placeholder {
     justify-content: center;
 }
 
+.showChangePhotoPopUp {
+    display: flex;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    z-index: 1200;
+    border-radius: 10px 10px 0 0;
+    padding: 0.5em;
+    transform: translateY(100px);
+    transition: transform 0.5s;
+    /* to hide the element */
+    /* not using dislay non cause when change to flex will not trigger transition */
+    visibility: hidden;
+}
+
+.popUpEffect {
+    /* display: flex; */
+    transform: translateY(0);
+    visibility: visible;
+}
+
 .photoRelatedBtn {
     font-size: 1.2em;
     border: none;
     background-color: inherit;
+}
+
+.editProfileUpper {
+    display: flex;
+    align-items: center;
+}
+
+.editProfileTextContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.editProfileDescription {
+    padding: 0 0.5em;
+}
+
+.editProfileDescription p {
+    text-align: center;
+}
+
+.editProfileBottom {
+    padding: 0.5em;
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+}
+
+.editProfileBottom form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.editContainer {
+    margin-top: 3em;
+    width: 80%;
+    padding: 0.5em;
+    background-color: #DCEED1;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.editInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.editInput input, .editInput select {
+    border-radius: 3px;
+    border: none;
+    font-size: 1.2em;
+}
+
+.editInput label {
+    font-size: 1.3em;
+}
+
+.confirmEditProfileBtn {
+   display: flex;
+   justify-content: center;
+}
+
+#btnConfirmEditProfile {
+    background-color: #2D936C;
+    font-size: 1.3em;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.2em;
+    margin-bottom: 1em;
+}
+
+.errorMessages {
+    color: red;
+}
+
+.nameError, .phoneNumberError, 
+.courseError, .nationalityError {
+    display: none;
+}
+
+.deletePhotoBtns {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+}
+
+#popUpHeaderText {
+    text-align: center;
+}
+
+.btnExitDeletePopUp {
+    width: 8em;
+    height: 2em;
+    background-color: #FEA82F;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+}
+
+#safetyVerifyUpperPart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#safetyVerifyUpperPart div:nth-of-type(2) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#safetyVerifyUpperPart div:nth-of-type(2) b {
+    font-size: 2em;
+}
+
+.safetyVerifyDescription {
+    margin: 1em;
+}
+
+.safetyVerifyDescription p {
+    text-align: center;
+}
+
+.safetyVerifyContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #A9DBB8;
+    padding: 1em;
+    border-radius: 10px;
+    gap: 1.5em;
+}
+
+#safetyVerifyBottomPart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5em;
+}
+
+.safetyVerifyContainer div:nth-of-type(1) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.2em;
+}
+
+.safetyVerifyContainer div:nth-of-type(1) input {
+    font-size: 1.2em;
+    border-radius: 10px;
+}
+
+.safetyVerifyContainer div:nth-of-type(2) {
+    width: 100%;
+}
+
+.safetyPasswordInput {
+    width: 100%;
+    background-color: #2D936C;
+    padding: 0.2em;
+    border: none;
+    border-radius: 10px;
+    height: 2em;
+}
+
+#passwordHint {
+    display: none;
 }
 
 @media(min-width: 800px) {
@@ -2384,7 +2594,19 @@ input[type="textarea"]::placeholder {
     #treeCardAdoptedTree {
         height: 32em;
     }
-}
+
+    .personalData {
+        margin: 0;
+    }
+
+    .profileBottom {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .personalData div p {
+        font-size: 1.2em;
+    }
 
 /* TEST */
 /* -------------------------*/
@@ -2432,4 +2654,5 @@ input[type="textarea"]::placeholder {
     font-size: 0.95rem;
     color: #333;
     font-weight: 500;
+}
 }
