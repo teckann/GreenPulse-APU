@@ -2,8 +2,30 @@
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
 
-    $sql = "SELECT * FROM feedback";
+    if (!isset($_GET['event_id'])) {
+        echo "<script>alert('No event selected!'); window.location.href='eventMain.php';</script>";
+        exit;
+    }
+
+    $eventID = mysqli_real_escape_string($conn,$_GET['event_id']);
+    $sqlEventID = " SELECT * FROM events WHERE event_id = '$eventID'";
+    $resultEventID = mysqli_query ($conn,$sqlEventID);
+
+    if (mysqli_num_rows($resultEventID) <= 0) {
+        echo "<script>alert('Event not found!'); window.location.href='eventMain.php';</script>";
+        exit;
+    }
+
+    $eventData = mysqli_fetch_assoc($resultEventID); // get event data
+
+    $sql = "SELECT f.*, u.avatar, u.name
+    FROM feedback f 
+    LEFT JOIN users u ON f.user_id = u.user_id
+    WHERE f.event_id = '$eventID'ORDER BY f.submit_datetime DESC";
     $result = mysqli_query($conn, $sql);
+
+                    
+
 ?>
 
 <!DOCTYPE html>
@@ -15,40 +37,13 @@
     <link rel="stylesheet" href="../../styles/committee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png"> -->
-    
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<nav class = "navigation-bar">
-        <div class = "hamburger-menu">
-            <button onclick = "toggleMenu()">
-                <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
-            </button>
-        </div>
-
-        <div class = "logo" onclick = "window.location.href='index.php'">
-            <img src="../../src/elements/logo_horizontal.png" alt="Logo">
-        </div>
-
-        <div class = "desktopMenu">
-            <a href="index.php">Home</a>
-            <a href="treeAdoption.php">Tree Adoption</a>
-            <a href="merchandises.php">Merchandises</a>
-            <a href="eventMain.php">Events</a>
-            <a href="studyQuizMain.php">Study & Quiz</a>
-        </div>
-
-        <div class = "profile">
-            <img src="../../src/committee/profilePicture.jpg" alt="Profile Picture">
-        </div>
-    </nav>
-
-    <div class = "banner">
-        <marquee direction = "right" scrollamount = "10">
-            <p>Join our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.</p>
-        </marquee>
-    </div>
+<?php include ("header.php");?>
 
     <!-- !!! -->
     <div class="header-content">
@@ -66,105 +61,44 @@
     <section class="event-controls-event-main">
         <div class = "white-color-box">
 
-                <span class = "title">Event Feedback</span>
-            <div class = "event-feedback-outer-box">
-                 <?php
+            <span class = "title">Event Feedback</span>
+            <?php
                 if (mysqli_num_rows($result) <= 0) {
-                    die ("<script>alert('No data from database!');</script>");
+                    echo "<p style='text-align: center; padding: 20px;'>No feedback records for this event.</p>";
                 }
                 else {
                     while ($rows = mysqli_fetch_array($result)){
                 ?>
-                <div class = "feedback-header">
-                    <span class = "title-feedback"><?php echo $rows['feedback_id']; ?></span>
-                    <div class = "date-time">
-                        <span class = "title-date">Date</span>
-                        <span class = title-time>Time</span>
+            
+                <div class="event-feedback-outer-box">
+                    <div class="feedback-header">
+                        <div class="avatar">
+                            <?php if (!empty($rows['avatar'])): ?>
+                                <img src="../../<?php echo $rows['avatar']; ?>" alt="User Avatar" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            <?php else: ?>
+                                <i class="fa-solid fa-user" style="font-size: 30px; color: #999; display: flex; align-items: center; justify-content: center; height: 100%;"></i>
+                            <?php endif; ?>
+                        </div>
+                        <div class="feedback-id-container">
+                            <div class="feedback-id">
+                                <span class="title-feedback">Feedback ID: <?php echo $rows['feedback_id']; ?></span>
+                                <span class="title-feedback">Submitted by: <?php echo $rows['user_id']; ?></span>
+                            </div>
+                            <div class="date-time">
+                                <span class="title-date"><?php echo $rows['submit_datetime']?></span>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="event-feedback-inner-box">"<?php echo $rows['feedback_details']?>"</div>
                 </div>
-               
-        </div>
-          <?php 
+   
+               <?php 
         } 
     } 
     ?>
+        </div>
     </section>
-   <!-- Hamburger Menu sidebar -->
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-logo">
-                <img src="../../src/elements/logo_horizontal.png" alt="Logo">
-            </div>
-            <button class="close-btn" onclick="toggleMenu()">×</button>
-        </div>
-
-        <div class="menu-items">
-            <a href="index.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-house"></i></div>
-                <span class="menu-text">Home</span>
-            </a>
-
-            <a href="treeAdoption.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-tree"></i></div>
-                <span class="menu-text">Tree Adoption</span>
-            </a>
-
-            <a href="merchandises.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-bag-shopping"></i></div>
-                <span class="menu-text">Merchandises</span>
-            </a>
-
-            <a href="eventMain.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                <span class="menu-text">Events</span>
-            </a>
-
-            <a href="studyQuizMain.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-book-open"></i></div>
-                <span class="menu-text">Study & Quiz</span>
-            </a>
-        </div>
-
-        <div class="sidebar-footer">
-            <img src="../../src/committee/profilePicture.jpg" class="user-avatar" alt="User Avatar">
-            <div class="user-info">
-                <div class="user-name">User Name</div>
-                <div class="user-id">User ID</div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Overlay -->
-    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT FOR HAMBURGER MENU - MUST BE AT THE END -->
-    <!-- ============================================ -->
-    <script>
-        function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-
-        // Close menu when clicking on menu items
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.addEventListener('click', () => {
-                toggleMenu();
-            });
-        });
-
-        // Close menu with ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const sidebar = document.getElementById('sidebar');
-                if (sidebar.classList.contains('active')) {
-                    toggleMenu();
-                }
-            }
-        });
-    </script>
+   <?php include ("hamburgerMenu.php");?>
 </body>
 </html>

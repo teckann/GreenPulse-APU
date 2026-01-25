@@ -194,40 +194,7 @@
 
 </head>
 <body>
-    <!-- Navigation (Keeping your existing nav structure) -->
-    <nav class = "navigation-bar">
-        <div class = "hamburger-menu">
-            <button onclick = "toggleMenu()">
-                <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
-            </button>
-        </div>
-
-        <div class = "logo" onclick = "window.location.href='index.php'">
-            <img src="../../src/elements/logo_horizontal.png" alt="Logo">
-        </div>
-
-        <div class = "desktopMenu">
-            <a href="index.php">Home</a>
-            <a href="treeAdoption.php">Tree Adoption</a>
-            <a href="merchandises.php">Merchandises</a>
-            <a href="eventMain.php">Events</a>
-            <a href="studyQuizMain.php">Study & Quiz</a>
-        </div>
-
-        <div class = "profile">
-            <img src="../../src/committee/profilePicture.jpg" alt="Profile Picture">
-        </div>
-    </nav>
-
-    <!-- Banner -->
-    <div class = "banner">
-        <marquee direction = "right" scrollamount = "10">
-            <p>Join our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.</p>
-        </marquee>
-    </div>
-
-    
-    <!-- hero -->
+    <?php include ("header.php");?>
 
 
         <div class="header-content">
@@ -350,30 +317,6 @@
             </section>
         </form>
 
-    <!-- Scripts -->
-    <script>
-        function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.addEventListener('click', () => {
-                toggleMenu();
-            });
-        });
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const sidebar = document.getElementById('sidebar');
-                if (sidebar.classList.contains('active')) {
-                    toggleMenu();
-                }
-            }
-        });
-    </script>
+    <?php include ("hamburgerMenu.php");?>
 </body>
 </html>

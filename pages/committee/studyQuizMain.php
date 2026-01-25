@@ -2,7 +2,22 @@
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
 
+    $search = isset($_GET['search'])?$_GET['search']:'';
+    $search = trim($search);
+    $lowerSearch = strtolower($search);
+    
+    // Initialize SQL query first
     $sql = "SELECT * FROM modules";
+    
+    // Add WHERE clause if search is not empty
+    if (!empty($search)){
+        $sql .= " WHERE LOWER(module_name) LIKE '%$lowerSearch%' OR LOWER(module_description) LIKE '%$lowerSearch%'";
+    }
+    
+    // Order by module_id
+    $sql .= " ORDER BY module_id DESC";
+    
+    // Execute query
     $result = mysqli_query($conn, $sql);
 ?>
 
@@ -17,35 +32,7 @@
     <!-- <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png"> -->
 </head>
 <body>
-    <nav class = "navigation-bar">
-        <div class = "hamburger-menu">
-            <button onclick = "toggleMenu()">
-                <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
-            </button>
-        </div>
-
-        <div class = "logo" onclick = "window.location.href='index.php'">
-            <img src="../../src/elements/logo_horizontal.png" alt="Logo">
-        </div>
-
-        <div class = "desktopMenu">
-            <a href="index.php">Home</a>
-            <a href="treeAdoption.php">Tree Adoption</a>
-            <a href="merchandises.php">Merchandises</a>
-            <a href="eventMain.php">Events</a>
-            <a href="studyQuizMain.php">Study & Quiz</a>
-        </div>
-
-        <div class = "profile">
-            <img src="../../src/committee/profilePicture.jpg" alt="Profile Picture">
-        </div>
-    </nav>
-
-    <div class = "banner">
-        <marquee direction = "right" scrollamount = "10">
-            <p>Join our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.</p>
-        </marquee>
-    </div>
+    <?php include ("header.php");?>
     
     <!-- Upper Part -->
     <div class="header-content">
@@ -56,7 +43,6 @@
         <div class="heroSection">
             <h1>STUDY & QUIZ MANAGEMENT</h1>
             <p>MANAGE STUDY MATERIALS AND QUIZZES IN ONE PLACE.</p>
-
         </div>
         
         <div class="add-icon" onclick="window.location.href='studyQuizCreateQuiz.php'">
@@ -64,150 +50,88 @@
         </div>
     </div>
 
-    <!-- DETAILS PART !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11 -->
+    <!-- DETAILS PART -->
     <section class="event-controls-event-main">
-         <?php
-                if (mysqli_num_rows($result) <= 0) {
-                    die ("<script>alert('No data from database!');</script>");
-                }
-                else {
-                    while ($rows = mysqli_fetch_array($result)){
-                ?>
-               
-        <div class = "white-color-box">
+        <form action="#" method="GET">
             <div class="search-filter-group">
                 <div class="search-bar">
-                    <input type="text" placeholder="Search Events..." class="searchInput">
+                    <input type="text" name="search" placeholder="Search Modules by title or description" class="searchInput"
+                    value="<?php echo htmlspecialchars($search);?>">
+                    <button type="submit" class="event-search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
-              
             </div>
-
+        </form>
+               
+        <div class="white-color-box">
             <section class="container-event">
-                
+                <?php
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($rows = mysqli_fetch_array($result)){
+                            // Check if current user is the creator
+                            $currentUserId = isset($_SESSION['userID']) ? $_SESSION['userID'] : null;
+                            $isCreator = ($currentUserId !== null && $rows['user_id'] == $currentUserId);
+                ?>
                 <div class="content-card-event">
-
-                <!-- Left Side: Image Section -->
-                <div class="event-left-section">
-                    <div class="event-image">
-                        <img src="../../src/elements/greenCampaignTest.jpg" alt="Event Image">
-                    </div>
-
-                    
-                </div>
-
-                <!-- Right Side: Details Section -->
-                <div class="event-right-section">
-                    <div class="event-meta-row">
-                        <div class="meta-item">
-                            <span class="meta-label">MODULE ID</span>
-                            <span class="meta-value"><?php echo $rows['module_id']?></span>
+                    <!-- Left Side: Image Section -->
+                    <div class="event-left-section">
+                        <div class="event-image">
+                            <img src="../../src/elements/greenCampaignTest.jpg" alt="Event Image">
                         </div>
-                        
                     </div>
 
-                <!-- Status and Points Row -->
-                <div class="status-points-row">
-                
-                    <div class="more-section" onclick = "window.location.href = 'studyQuizModule.php'">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <!-- Right Side: Details Section -->
+                    <div class="event-right-section">
+                        <div class = "event-posted-info">
+                            <div class = "event-posted">
+                                    <div class = "event-posted-date-id">Module ID: <?php echo $rows['module_id']?></div>
+                                </div>
+                            <div class = "event-posted">
+                                    <div class = "event-posted-date-id">Posted by: <?php echo $rows['user_id']?></div>
+                                </div>
+                                
+                            </div>
+                        <div class="event-meta-row">
+                            <div class="meta-item">
+                                <span class="meta-label">MODULE ID</span>
+                                <span class="meta-value"><?php echo $rows['module_id']?></span>
+                            </div>
+                        </div>
+
+                        <!-- Status and Points Row -->
+                        <div class="status-points-row">
+                            <?php if ($isCreator): ?>
+                                <div class="more-section" onclick="window.location.href = 'studyQuizModule.php?module_id=<?php echo $rows['module_id'];?>'">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($isCreator): ?>
+                            <div class="event-more" onclick = "window.location.href = 'eventMore.php?event_id=<?php echo $rows['event_id'];?>'">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </div>
+                        <?php endif; ?>
+                        </div>
+
+                        <!-- Module Title -->
+                        <h2 class="event-title"><?php echo $rows['module_name']?></h2>
+
+                        <!-- Module Description -->
+                        <p class="event-description">
+                            <?php echo $rows['module_description']?>
+                        </p>
                     </div>
                 </div>
-
-                <!-- Event Title -->
-                <h2 class="event-title"><?php echo $rows['module_name']?></h2>
-
-                <!-- Event Description -->
-                <p class="event-description">
-                  <?php echo $rows['module_description']?>
-                </p>
-                </div>
-                </div>
+                <?php 
+                        } 
+                    } else {
+                        echo "<p style='text-align: center; padding: 20px;'>No modules found.</p>";
+                    }
+                ?>
             </section>
         </div>
-          <?php 
-        } 
-    } 
-    ?>
     </section>
 
-    <!-- Hamburger Menu -->
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-logo">
-                <img src="../../src/elements/logo_horizontal.png" alt="Logo">
-            </div>
-            <button class="close-btn" onclick="toggleMenu()">×</button>
-        </div>
-
-        <div class="menu-items">
-            <a href="index.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-house"></i></div>
-                <span class="menu-text">Home</span>
-            </a>
-
-            <a href="treeAdoption.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-tree"></i></div>
-                <span class="menu-text">Tree Adoption</span>
-            </a>
-
-            <a href="merchandises.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-bag-shopping"></i></div>
-                <span class="menu-text">Merchandises</span>
-            </a>
-
-            <a href="eventMain.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                <span class="menu-text">Events</span>
-            </a>
-
-            <a href="study&Quiz.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-book-open"></i></div>
-                <span class="menu-text">Study & Quiz</span>
-            </a>
-        </div>
-
-        <div class="sidebar-footer">
-            <img src="../../src/committee/profilePicture.jpg" class="user-avatar" alt="User Avatar">
-            <div class="user-info">
-                <div class="user-name">User Name</div>
-                <div class="user-id">User ID</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Overlay -->
-    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT FOR HAMBURGER MENU - MUST BE AT THE END -->
-    <!-- ============================================ -->
-    <script>
-        function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-
-        // Close menu when clicking on menu items
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.addEventListener('click', () => {
-                toggleMenu();
-            });
-        });
-
-        // Close menu with ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const sidebar = document.getElementById('sidebar');
-                if (sidebar.classList.contains('active')) {
-                    toggleMenu();
-                }
-            }
-        });
-    </script>
-
-
+    <?php include ("hamburgerMenu.php");?>
 </body>
 </html>

@@ -1,8 +1,43 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
-?>
 
+    if (!isset($_GET['event_id'])) {
+        echo "<script>alert('No event selected!'); window.location.href='eventMain.php';</script>";
+        exit;
+    }
+
+    $eventID = mysqli_real_escape_string($conn,$_GET['event_id']);
+    $sqlEventID = " SELECT * FROM events WHERE event_id = '$eventID'";
+    $resultEventID = mysqli_query ($conn,$sqlEventID);
+
+    if (mysqli_num_rows($resultEventID) <= 0) {
+        echo "<script>alert('Event not found!'); window.location.href='eventMain.php';</script>";
+        exit;
+    }
+
+    $eventData = mysqli_fetch_assoc($resultEventID);
+
+    // Handle attendance update
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_attendance'])) {
+        $userID = mysqli_real_escape_string($conn, $_POST['user_id']);
+        $status = mysqli_real_escape_string($conn, $_POST['status']);
+        
+        $updateSql = "UPDATE attendance SET attendance_status = '$status' 
+                      WHERE event_id = '$eventID' AND user_id = '$userID'";
+        mysqli_query($conn, $updateSql);
+        
+        // Redirect to prevent form resubmission
+        header("Location: eventAttendance.php?event_id=" . $eventID);
+        exit;
+    }
+
+    $sql = "SELECT a.*, u.name
+    FROM attendance a 
+    LEFT JOIN users u ON a.user_id = u.user_id
+    WHERE a.event_id = '$eventID' ORDER BY a.event_register_datetime DESC";
+    $result = mysqli_query($conn, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,35 +48,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav class = "navigation-bar">
-        <div class = "hamburger-menu">
-            <button onclick = "toggleMenu()">
-                <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
-            </button>
-        </div>
-
-        <div class = "logo" onclick = "window.location.href='index.php'">
-            <img src="../../src/elements/logo_horizontal.png" alt="Logo">
-        </div>
-
-        <div class = "desktopMenu">
-            <a href="index.php">Home</a>
-            <a href="treeAdoption.php">Tree Adoption</a>
-            <a href="merchandises.php">Merchandises</a>
-            <a href="eventMain.php">Events</a>
-            <a href="studyQuizMain.php">Study & Quiz</a>
-        </div>
-
-        <div class = "profile">
-            <img src="../../src/committee/profilePicture.jpg" alt="Profile Picture">
-        </div>
-    </nav>
-
-    <div class = "banner">
-        <marquee direction = "right" scrollamount = "10">
-            <p>Join our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.</p>
-        </marquee>
-    </div>
+   <?php include ("header.php");?>
 
     <div class="header-content">
         <div class="back-icon" onclick="history.back()">
@@ -52,137 +59,54 @@
             <h1>EVENT ATTENDANCE</h1>
             <p>CREATE AND MANAGE GREEN INITIATIVE EVENTS.</p>
         </div>
-  
-   
     </div>
 
-    <!-- !!! -->
-    <section class="event-controls-event-main">
-        <div class = "white-color-box">
-            <span class = "title"> Attendance</span>
+<section class="event-controls-event-main">
+    <div class="white-color-box">
+        <span class="title"> Attendance</span>
 
-            
-            <!-- HEREEEEEEEEEEEEE -->
-             <div class = "attendance-row">
-                <span class = "numbering">1</span>
-                <span class = "tpnumber">TP084369</span>
-                <span class = "name">Cynthia Tan Xin Ru</span>
-                <span class = "date-time">21 January 2026</span>
-             </div>
-
-             <div class = "attendance-row">
-                <span class = "numbering">2</span>
-                <span class = "tpnumber">TP009878</span>
-                <span class = "name">Gan Teck Ann</span>
-                <span class = "date-time">26 February 2026</span>
-             </div>
-
-             <div class = "attendance-row">
-                <span class = "numbering">3</span>
-                <span class = "tpnumber">TP083433</span>
-                <span class = "name">Goh Yang Ee</span>
-                <span class = "date-time">9 March 2026</span>
-             </div>
-
-             <div class = "attendance-row">
-                <span class = "numbering">4</span>
-                <span class = "tpnumber">TP080862</span>
-                <span class = "name">Lim Jin Ming</span>
-                <span class = "date-time">11 December 2026</span>
-             </div>
-
-             <div class = "attendance-row">
-                <span class = "numbering">5</span>
-                <span class = "tpnumber">TP080837</span>
-                <span class = "name">Jeremiah Lim Chen Kai</span>
-                <span class = "date-time">28 July 2026</span>
-             </div>
-
-
-
-        </div>
-    </section>
-
-    <!--Hamburger Menu sidebar -->
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-logo">
-                <img src="../../src/elements/logo_horizontal.png" alt="Logo">
-            </div>
-            <button class="close-btn" onclick="toggleMenu()">×</button>
-        </div>
-
-        <div class="menu-items">
-            <a href="index.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-house"></i></div>
-                <span class="menu-text">Home</span>
-            </a>
-
-            <a href="treeAdoption.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-tree"></i></div>
-                <span class="menu-text">Tree Adoption</span>
-            </a>
-
-            <a href="merchandises.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-bag-shopping"></i></div>
-                <span class="menu-text">Merchandises</span>
-            </a>
-
-            <a href="eventMain.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                <span class="menu-text">Events</span>
-            </a>
-
-            <a href="studyQuizMain.php" class="menu-item">
-                <div class="menu-icon"><i class="fa-solid fa-book-open"></i></div>
-                <span class="menu-text">Study & Quiz</span>
-            </a>
-        </div>
-
-        <div class="sidebar-footer">
-            <img src="../../src/committee/profilePicture.jpg" class="user-avatar" alt="User Avatar">
-            <div class="user-info">
-                <div class="user-name">User Name</div>
-                <div class="user-id">User ID</div>
-            </div>
-        </div>
-    </div>
-   
-
-    <!-- Overlay -->
-    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT FOR HAMBURGER MENU - MUST BE AT THE END -->
-    <!-- ============================================ -->
-    <script>
-        function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-
-        // Close menu when clicking on menu items
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.addEventListener('click', () => {
-                toggleMenu();
-            });
-        });
-
-        // Close menu with ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const sidebar = document.getElementById('sidebar');
-                if (sidebar.classList.contains('active')) {
-                    toggleMenu();
-                }
+        <?php
+            if (mysqli_num_rows($result) <= 0) {
+                echo "<p style='text-align: center; padding: 20px;'>No attendance records for this event.</p>";
             }
-        });
-    </script>
-    
-</body>
-</html>
+            else {
+                $counter = 1;
+                while ($rows = mysqli_fetch_array($result)){
+            ?>
+        
+        <div class="attendance-row">
+            <span class="numbering"><?php echo $counter++; ?></span>
+            <span class="attendance-user-id"><?php echo $rows['user_id']?></span>
+            <span class="name"><?php echo $rows['name']?></span>
+            <span class="attendance-date-time"><?php echo $rows['event_register_datetime']?></span>
+            <div class="attendance-status">
+                <form method="POST" style="display: inline;">
+                    <input type="hidden" name="user_id" value="<?php echo $rows['user_id']; ?>">
+                    <input type="hidden" name="status" value="Present">
+                    <button type="submit" name="update_attendance" class="btn-present green-color" 
+                            style="<?php echo ($rows['attendance_status'] == 'Present') ? 'font-weight: bold; opacity: 1;' : 'opacity: 0.6;'; ?>">
+                        Present
+                    </button>
+                </form>
+                
+                <form method="POST" style="display: inline;">
+                    <input type="hidden" name="user_id" value="<?php echo $rows['user_id']; ?>">
+                    <input type="hidden" name="status" value="Absent">
+                    <button type="submit" name="update_attendance" class="btn-absent red-color"
+                            style="<?php echo ($rows['attendance_status'] == 'Absent') ? 'font-weight: bold; opacity: 1;' : 'opacity: 0.6;'; ?>">
+                        Absent
+                    </button>
+                </form>
+            </div>
+        </div>
+
+      <?php 
+    } 
+} 
+?>
+    </div>
+</section>
+
+    <?php include ("hamburgerMenu.php");?>
 </body>
 </html>

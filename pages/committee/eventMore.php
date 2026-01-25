@@ -25,35 +25,7 @@
     <!-- <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png"> -->
 </head>
 <body>
-    <nav class = "navigation-bar">
-        <div class = "hamburger-menu">
-            <button onclick = "toggleMenu()">
-                <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
-            </button>
-        </div>
-
-        <div class = "logo" onclick = "window.location.href='index.php'">
-            <img src="../../src/elements/logo_horizontal.png" alt="Logo">
-        </div>
-
-        <div class = "desktopMenu">
-            <a href="index.php">Home</a>
-            <a href="treeAdoption.php">Tree Adoption</a>
-            <a href="merchandises.php">Merchandises</a>
-            <a href="eventMain.php">Events</a>
-            <a href="studyQuiz.php">Study & Quiz</a>
-        </div>
-
-        <div class = "profile">
-            <img src="../../src/committee/profilePicture.jpg" alt="Profile Picture">
-        </div>
-    </nav>
-
-    <div class = "banner">
-        <marquee direction = "right" scrollamount = "10">
-            <p>Join our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.</p>
-        </marquee>
-    </div>
+    <?php include ("header.php");?>
 
     <div class="header-content">
         <div class="back-icon" onclick="history.back()">
@@ -76,10 +48,10 @@
                 <h2 class = "event-name"><?php echo $rows['event_title']?></h2>
                 
                     <div class="action-buttons">
-                        <button class="btn-manage-attendees" onclick = "window.location.href = 'eventAttendance.php'">
+                        <button class="btn-manage-attendees" onclick = "window.location.href = 'eventAttendance.php?event_id=<?php echo $rows['event_id'];?>'">
                             <i class="fas fa-users"></i> Attendance
                         </button>
-                        <button class="btn-share-details" onclick = "window.location.href = 'eventFeedback.php'">
+                        <button class="btn-share-details" onclick = "window.location.href = 'eventFeedback.php?event_id=<?php echo $rows['event_id'];?>'">
                             <i class="fas fa-book"></i> Feedback
                         </button>
                     </div>
@@ -145,5 +117,6 @@
             </div>
 
     </section>
+    <?php include ("hamburgerMenu.php");?>
 </body>
 </html>

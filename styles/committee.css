@@ -856,6 +856,14 @@ body {
 /* ======================================================================================================================================= */
 /*  EVENT FEEDBACK PAGE */
 /* ======================================================================================================================================== */
+.event-feedback-outer-box {
+    background-color: #FAF9F6;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
 .title {
     display: flex;
     justify-content: center;
@@ -864,41 +872,26 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-.event-feedback-outer-box {
-    background-color: #FAF9F6;
-    padding: 2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.title {
-    /* no need flex: 1, bcos it will auto go to left */
-    font-size: 20px;
-    color: grey;
-}
-
 .event-feedback-outer-box:hover {
-    /* I want make like when hover the button change color */
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    background-color: #faf8ee;
+    background-color: #fdfcf6;
 }
 
 .feedback-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
-    margin-bottom: 10px;
+    margin: 0px 15px 15px 15px;
     padding: 0 5px;
+    gap: 20px;
 }
 
 .title-feedback {
     flex: 1;
     font-family: "Roboto", sans-serif;
     font-size: 0.9rem;
-    color: #333;
+    color: #999;
 }
 
 .date-time {
@@ -912,26 +905,45 @@ body {
     display: flex;
     justify-content: flex-end;
     text-align: left;
-    font-family: "Roboto", sans-serif;
-    font-size: 0.9rem;
-    color: #999;
-}
-
-.title-time {
-    display: flex;
-    justify-content: flex-end;
-    ;
-    text-align: left;
-    font-family: "Roboto", sans-serif;
-    font-size: 0.9rem;
+    font-family: "JetBrains Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 14px;
     color: #999;
 }
 
 .event-feedback-inner-box {
-    background-color: #ffffff;
+    background-color: white;
     height: 40px;
-    width: 100%;
+    width: 94%;
     border-radius: 4px;
+    margin: 10px;
+    padding: 20px;
+    font-style: italic;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    font-weight: lighter;
+}
+
+.avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.feedback-id {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-id-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
 }
 
 /* ======================================================================================================================================= */
@@ -1282,6 +1294,90 @@ body {
             grid-template-columns: 1fr 1fr;
             gap: 10px;
         }
+
+
+/* ======================================================================================================================================== */
+/* ATTENDANCE*/
+/* ======================================================================================================================================== */
+.attendance-row {
+    background-color: #f9f9f9;
+    height: 40px;
+    width: 94%;
+    border-radius: 4px;
+    margin: 0px;
+    padding: 5px 15px 5px 15px;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+
+.numbering, .attendance-user-id,.name{
+    flex: 1;
+}
+
+.attendance-date-time {
+    flex: 1.5;
+}
+
+
+.attendance-status {
+    display: flex;
+    flex: 0.5;
+    flex-direction: row;
+    gap: 20px;
+}
+
+
+
+.btn-present, .btn-absent {
+    border: none;
+    width: 60px;
+    height: 35px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-absent:hover{
+    transform: translateY(-1px);
+    background-color: #FEE2E2;
+    border:#B91C1C solid 1px;
+}
+
+.btn-present:hover{
+    transform: translateY(-1px);
+    background-color: #DCFCE7;
+    border:#15803D solid 1px;
+}
+
+.green-color:hover{
+    color: #15803D;
+}
+
+.red-color:hover {
+    color: #B91C1C;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ======================================================================================================================================== */
 /* @media*/
