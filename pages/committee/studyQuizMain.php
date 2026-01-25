@@ -59,7 +59,7 @@
 
         </div>
         
-        <div class="add-icon" onclick="window.location.href='studyQuizCreateMaterial.php'">
+        <div class="add-icon" onclick="window.location.href='studyQuizCreateQuiz.php'">
             <i class="fas fa-add"></i>
         </div>
     </div>

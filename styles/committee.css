@@ -369,7 +369,7 @@ body {
     padding: 2rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     max-width: 65rem;
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     /* Centers the box horizontally */
     display: flex;
@@ -467,11 +467,12 @@ body {
     flex: 3;
     display: flex;
     align-items: center;
-    border-radius: 4px;
-    padding: 10px 12px;
+    border-radius: 10px;
+    padding: 15px 15px;
     background: white;
     border: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin: 0px 90px 15px 90px;
 }
 
 .searchInput {
@@ -725,6 +726,12 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+.event-search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+}
 
 /* ======================================================================================================================================== */
 /*  CREATE EVENT PAGE */
@@ -738,7 +745,8 @@ body {
     gap: 20px;
 }
 
-.btnCreateEvent {
+.btn-create-event {
+    font-size: 16px;
     width: 100%;
     padding: 20px;
     color: white;
@@ -746,8 +754,9 @@ body {
     border: 1px solid #ddd;
     border-radius: 10px;
     cursor: pointer;
-}
+    background-image: linear-gradient(to right, #043927 , #0a7e58);
 
+}
 
 .container {
     background-color: #ffffff;
@@ -765,34 +774,59 @@ body {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+
+}
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
 }
 
 
 
+.row span {
+    color: red;
+}
+
 .input-group label {
-    font-size: 0.9rem;
-    color: grey;
+    font-size: 16px;
+    color: rgb(53, 53, 53);
     margin-bottom: 8px;
     font-family: "Roboto", sans-serif;
 }
 
 .event-box {
     border: 1.3px solid rgb(162, 162, 162);
-    /*THIS BORDER OKAY AH*/
     background-color: #ffffff;
     color: #969696;
     padding: 15px 15px;
     width: 100%;
+    margin: auto 0;
     border-radius: 7px;
     box-sizing: border-box;
     text-align: left;
     font-family: "Roboto", sans-serif;
 }
 
+
+
+.white-color-box-event-create {
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 50rem;
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .two-column {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .event-big-box {
@@ -808,31 +842,6 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-/*  These are used to change the placeholder*/
-/*  input[type="number"]::placeholder = bcos I have a lot different input type placeholder, so I need to use [type = "number"] to
-    specific which placeholder. */
-
-input::placeholder {
-    color: rgb(172, 172, 172);
-}
-
-input[type="number"]::placeholder {
-    color: rgb(172, 172, 172);
-}
-
-input[type="file"]::placeholder {
-    color: rgb(172, 172, 172);
-    text-align: center;
-}
-
-input[type="textarea"]::placeholder {
-    color: rgb(172, 172, 172);
-    text-align: start;
-    flex-direction: row;
-
-}
-
-/*  until here */
 
 .short-tagline {
     display: flex;
@@ -842,6 +851,7 @@ input[type="textarea"]::placeholder {
     color: #969696;
     font-size: 12px;
 }
+
 
 /* ======================================================================================================================================= */
 /*  EVENT FEEDBACK PAGE */
@@ -927,9 +937,7 @@ input[type="textarea"]::placeholder {
 /* ======================================================================================================================================= */
 /*  EVENT MORE PAGE */
 /* ======================================================================================================================================== */
-/* ======================================================================== */
-/* EVENT DETAILS PAGE (eventMore.php) */
-/* ======================================================================== */
+
 
 .details-upper {
     display: flex;
@@ -993,6 +1001,15 @@ input[type="textarea"]::placeholder {
     gap: 15px;
 }
 
+.left-side-info-box-edit-dlt {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .info-row {
     display: flex;
     justify-content: space-between;
@@ -1018,14 +1035,14 @@ input[type="textarea"]::placeholder {
     color: #333;
     font-weight: 500;
 }
-
+/* 
 .status-badge {
     display: inline-flex;
     align-items: center;
-    padding: 6px 14px;
+    padding: 8px 14px;
     background-color: #e8f5f1;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 14px;
     font-weight: 600;
     color: #10b981;
 }
@@ -1036,10 +1053,11 @@ input[type="textarea"]::placeholder {
     background-color: #10b981;
     border-radius: 50%;
     margin-right: 6px;
-}
+} */
 
 /* Right Side - Details */
 .right-side-container {
+    margin: 20px 0px 20px 0px;  
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -1226,6 +1244,44 @@ input[type="textarea"]::placeholder {
         padding: 15px;
     }
 }
+/* ======================================================================================================================================== */
+/* STUDY QUIZ MODULE*/
+/* ======================================================================================================================================== */
+.detail-content video {
+    height: 250px;
+    width: 100%;
+}
+
+.study-quiz-button {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+/* ======================================================================================================================================= */
+/*  STUDY QUIZ CREATE MATERIAL AND QUIZ */
+/* ======================================================================================================================================== */
+.quiz-block {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+        .remove-quiz-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: red;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
 
 /* ======================================================================================================================================== */
 /* @media*/
@@ -2610,49 +2666,8 @@ input[type="textarea"]::placeholder {
 
 /* TEST */
 /* -------------------------*/
-.info-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #EDF4F1;
-    width: 97%;
-    border-radius: 5px;
-    padding: 15px;
-    margin: auto 0;
-    padding: 10px 0;
-    border-bottom: 1px solid #e0e0e0;
-} 
+/* ATTENDANCE
+/* -------------------------*/
 
-.numbering,.tpnumber,.date-time {
-    flex: 1;
-}
 
-.info-row:last-child {
-    border-bottom: none;
-}
-
-.numbering {
-    
-    padding-left: 15px;
-
-}
-
-.info-label {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.85rem;
-    color: #666;
-    font-weight: 600;
-}
-
-.name {
-    flex: 2;
-    text-align: center;
-}
-
-.info-value {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.95rem;
-    color: #333;
-    font-weight: 500;
-}
 }
