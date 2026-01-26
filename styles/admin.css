@@ -1473,6 +1473,30 @@ select {
     display: none;
 }
 
+.acc-security-detection {
+    height: 100px;
+    width: 100%;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 10px;
+    padding: 0 3em;
+    border-radius: 10px;
+}
+
+.acc-security-detection-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.acc-security-detection p {
+    font-weight: lighter;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
@@ -2005,5 +2029,9 @@ select {
 
     .desktop-carousel {
         display: none;
+    }
+
+    .acc-security-detection {
+        padding: 0 1.5em;
     }
 }
