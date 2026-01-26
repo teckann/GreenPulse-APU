@@ -746,6 +746,117 @@ footer {
     display: none;
 }
 
+.contact-us {
+    /* background-color: red; */
+    padding: 2em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.contact-us-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    /* background-color: blue; */
+}
+
+.contact-us-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-us-header h1 {
+    color: #194a7a;
+    font-size: 3.5em;
+}
+
+.contact-us-header p {
+    color: #194a7a;
+    font-weight: lighter;
+    font-size: 1.1em;
+}
+
+.contact-us-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.contact-us-image {
+    width: 45%;
+    height: 558px;
+    border-radius: 10px;
+}
+
+.contact-form {
+    background-color: #9cad92;
+    border-radius: 10px;
+    padding: 1em 2em;
+    width: 50%;
+    /* font-size: 1.1em; */
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-box input,
+.input-box textarea,
+.input-box select {
+    width: 100%;
+    height: 2rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    border: 1px black solid;
+}
+
+.input-box select {
+    padding: 5px 15px;
+}
+
+.input-box input:focus,
+.input-box textarea:focus,
+.input-box select:focus {
+    border-color: #194a7a;
+    box-shadow: 0 0 10px rgba(0, 53, 13, 0.6);
+    outline: none;
+}
+
+.input-box textarea {
+    height: 120px;
+}
+
+.submit-container {
+    /* background-color: #fff; */
+    display: flex;
+    justify-content: center;
+}
+
+.submitContact-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 1.5em;
+    gap: 8px;
+    border: none;
+    color: white;
+    background-color: #707c68;
+    border-radius: 8px;
+}
+
 @media(max-width: 800px) {
     header {
         padding: 0.5em 1em;
@@ -880,6 +991,7 @@ footer {
 
     footer {
         padding: 1em 2em;
+        font-size: 0.9em;
     }
 
     .footer-details {
@@ -941,6 +1053,33 @@ footer {
 
     .function-service-space1,
     .function-service-space2 {
+        width: 100%;
+    }
+
+    .question {
+        font-size: 0.9em;
+        padding: 0 1em;
+    }
+
+    .answer {
+        font-size: 0.9em;
+        padding: 1em;
+    }
+
+    .contact-us-header h1 {
+        font-size: 3em;
+    }
+
+
+    .contact-us-container {
+        width: 90%;
+    }
+
+    .contact-us-image {
+        display: none;
+    }
+
+    .contact-form {
         width: 100%;
     }
 }

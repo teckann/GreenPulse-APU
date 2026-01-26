@@ -92,7 +92,7 @@
                 </form>
 
                 <form action="" method="GET" class="select-container" id="item-form">
-                    <div class="select-boxs">
+                    <div class="select-boxs item-select-boxs">
                         <div>
                             <label for="itemCategory">Category: </label>
                             <select name="txtCategory" id="itemCategory">
@@ -245,7 +245,7 @@
 
                                     <a href="viewItemDetails.php?id=' . $row['item_id'] . '" title="View">
                                         <button class="card-action-btn card-view-btn">
-                                            View User Details
+                                            View Item Details
                                         </button>
                                     </a>
                                 </div>

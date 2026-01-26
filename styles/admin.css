@@ -58,6 +58,7 @@ footer {
 
 footer p {
     margin: 0;
+    font-size: 0.9em;
 }
 
 .search-box {
@@ -1655,6 +1656,11 @@ select {
         gap: 20px;
         justify-content: center;
         align-items: center;
+    }
+
+    .item-select-boxs {
+        gap: 9px;
+        font-size: 0.9em;
     }
 
     .select-boxs select {
