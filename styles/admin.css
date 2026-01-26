@@ -205,14 +205,13 @@ footer p {
 .data-container {
     margin: 1em 0;
     padding: 0.5em 0;
-    width: 100%;
+    width: 90%;
     height: auto;
     /* background-color: red; */
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     justify-items: center;
-    gap: 5em;
 }
 
 .data-box {
