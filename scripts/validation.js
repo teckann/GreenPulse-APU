@@ -471,3 +471,137 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 });
+
+
+// [Guest] contact us validation
+document.addEventListener("DOMContentLoaded", () => {
+    const btnSubmitContact = document.querySelector("#btnSubmit-contact");
+
+    const fullname = document.getElementById("fullname");
+    const email = document.getElementById("email");
+    const contact = document.getElementById("contactNumber");
+    const subject = document.getElementById("subject");
+    const description = document.getElementById("description");
+
+    const nameError = document.getElementById("error-fullname");
+    const emailError = document.getElementById("error-email");
+    const contactError = document.getElementById("error-contactNumber");
+    const subjectError = document.getElementById("error-subject");
+    const descriptionError = document.getElementById("error-description");
+
+    if (fullname) {
+        fullname.addEventListener("input", () => {
+            if (fullname.value.trim() !== "") {
+                nameError.style.display = "none";
+            }
+        });
+    }
+
+    if (email) {
+        email.addEventListener("input", () => {
+            if (email.value.trim() !== "") {
+                emailError.style.display = "none";
+            }
+        });
+    }
+
+    if (contact) {
+        contact.addEventListener("input", () => {
+            if (contact.value.trim() !== "") {
+                contactError.style.display = "none";
+            }
+        });
+    }
+
+    if (subject) {
+        subject.addEventListener("change", () => {
+            if (subject.value.trim() !== "") {
+                subjectError.style.display = "none";
+            }
+        });
+    }
+
+    if (description) {
+        description.addEventListener("input", () => {
+            if (description.value.trim() !== "") {
+                descriptionError.style.display = "none";
+            }
+        });
+    }
+
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    const contactRegex = /^\d{10,11}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const displayErrorMsg = (element) => {
+        element.style.display = "block";
+    }
+
+    const closeErrorMsg = (element) => {
+        element.style.display = "none";
+    }
+
+    if (btnSubmitContact) {
+        btnSubmitContact.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const Vfullname = fullname.value;
+            const Vemail = email.value;
+            const Vcontact = contact.value;
+            const Vsubject = subject.value;
+            const Vdescription = description.value;
+
+            let validationPass = true;
+
+            // validate name
+            if (Vfullname.trim() === "" || !nameRegex.test(Vfullname)) {
+                displayErrorMsg(nameError);
+                validationPass = false;
+            }
+            else {
+                closeErrorMsg(nameError);
+            }
+
+            // validate email
+            if (Vemail.trim() === "" || !emailRegex.test(Vemail)) {
+                displayErrorMsg(emailError);
+                validationPass = false;
+            }
+            else {
+                closeErrorMsg(emailError);
+            }
+
+            // validate contact
+            if (Vcontact.trim() === "" || !contactRegex.test(Vcontact)) {
+                displayErrorMsg(contactError);
+                validationPass = false;
+            }
+            else {
+                closeErrorMsg(contactError);
+            }
+
+            // validate subject
+            if (Vsubject.trim() === "") {
+                displayErrorMsg(subjectError);
+                validationPass = false;
+            }
+            else {
+                closeErrorMsg(subjectError);
+            }
+
+            // validate description
+            if (Vdescription.trim() === "") {
+                displayErrorMsg(descriptionError);
+                validationPass = false;
+            }
+            else {
+                closeErrorMsg(descriptionError);
+            }
+
+            if (validationPass) {
+                const form = document.querySelector(".contact-form");
+                form.submit();
+            }
+        })
+    }
+});

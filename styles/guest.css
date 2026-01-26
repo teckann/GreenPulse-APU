@@ -857,6 +857,12 @@ footer {
     border-radius: 8px;
 }
 
+.form-error-text {
+    color: #dc3545;
+    font-size: 0.9em;
+    display: none;
+}
+
 @media(max-width: 800px) {
     header {
         padding: 0.5em 1em;

@@ -1,3 +1,31 @@
+<?php
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        include("../../conn.php");
+        include("../../backend/utility.php");
+
+        $fullName = trim($_POST["txtFullName"]);
+        $email= trim($_POST["txtEmail"]);
+        $contactNumber = trim($_POST["txtContactNumber"]);
+        $subject = $_POST["txtSubject"];
+        $description = trim($_POST["txtDescription"]);
+
+        $submissionID = newID($conn, "contact_submission", "S");
+        $todayDateTime = date("Y-m-d H:i:s");
+
+        $sql = "INSERT INTO contact_submission (submission_id, full_name, email_address, contact_number, subject, content, submission_datetime)
+                VALUES ('$submissionID', '$fullName', '$email', '$contactNumber', '$subject', '$description', '$todayDateTime')";
+        
+        if(mysqli_query($conn, $sql)) {
+            echo "<script>
+                    alert('--- Successfully Submit Contact Request ---\\nYour Request ID: $submissionID\\nOur Team will contact you soon!');
+                    window.location.href = 'contactUs.php';
+                  </script>";
+        }
+
+        mysqli_close($conn);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -35,35 +63,40 @@
                         <div class="input-box">
                             <label for="fullname">Full Name *</label>
                             <input type="text" name="txtFullName" id="fullname">
+                            <div class="form-error-text" id="error-fullname">Enter a Valid Name</div>
                         </div>
 
                         <div class="input-box">
                             <label for="email">Email *</label>
-                            <input type="text" name="txtEmail" id="email">
+                            <input type="email" name="txtEmail" id="email">
+                            <div class="form-error-text" id="error-email">Enter a Valid Email</div>
                         </div>
 
                         <div class="input-box">
                             <label for="contactNumber">Contact Number *</label>
                             <input type="text" name="txtContactNumber" id="contactNumber">
+                            <div class="form-error-text" id="error-contactNumber">Enter a Valid Contact Number</div>
                         </div>
 
                         <div class="input-box">
                             <label for="subject">Subject *</label>
                             <select name="txtSubject" id="subject">
                                 <option value="">-- Please Select --</option>
-                                <option value="Account Registration Issue">Account Registration Issue</option>
-                                <option value="GreenPoints & Rewards Issue">GreenPoints & Rewards Issue</option>
-                                <option value="Join the Committee">Join the Committee</option>
+                                <option value="Account Registration">Account Registration</option>
+                                <option value="Green Points & Rewards">Green Points & Rewards</option>
                                 <option value="Partnership & Collaboration">Partnership & Collaboration</option>
-                                <option value="Technical Support">Technical Support</option>
                                 <option value="Feedback & Suggestions">Feedback & Suggestions</option>
+                                <option value="Join the Committee">Join the Committee</option>
+                                <option value="Technical Support">Technical Support</option>
                                 <option value="General Inquiry">General Inquiry</option>
                             </select>
+                            <div class="form-error-text" id="error-subject">Select Subject</div>
                         </div>
 
                         <div class="input-box">
                             <label for="description">Description *</label>
                             <textarea name="txtDescription" id="description"></textarea>
+                            <div class="form-error-text" id="error-description">Enter a Valid Description</div>
                         </div>
 
                         <div class="submit-container">
@@ -78,5 +111,6 @@
         </main>
 
         <?php include("footer.php") ?>
+        <script src="../../scripts/validation.js"></script>
     </body>
 </html>
