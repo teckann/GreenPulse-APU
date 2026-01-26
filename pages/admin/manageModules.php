@@ -222,7 +222,7 @@
 
                                     <a href="viewModuleDetails.php?id=' . $row['module_id'] . '" title="View">
                                         <button class="card-action-btn card-view-btn">
-                                            View User Details
+                                            View Module Details
                                         </button>
                                     </a>
                                 </div>

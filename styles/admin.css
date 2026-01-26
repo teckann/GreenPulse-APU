@@ -58,6 +58,7 @@ footer {
 
 footer p {
     margin: 0;
+    font-size: 0.9em;
 }
 
 .search-box {
@@ -204,14 +205,13 @@ footer p {
 .data-container {
     margin: 1em 0;
     padding: 0.5em 0;
-    width: 100%;
+    width: 90%;
     height: auto;
     /* background-color: red; */
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     justify-items: center;
-    gap: 5em;
 }
 
 .data-box {
@@ -1655,6 +1655,11 @@ select {
         gap: 20px;
         justify-content: center;
         align-items: center;
+    }
+
+    .item-select-boxs {
+        gap: 9px;
+        font-size: 0.9em;
     }
 
     .select-boxs select {

@@ -1,9 +1,37 @@
+<?php
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        include("../../conn.php");
+        include("../../backend/utility.php");
+
+        $fullName = trim($_POST["txtFullName"]);
+        $email= trim($_POST["txtEmail"]);
+        $contactNumber = trim($_POST["txtContactNumber"]);
+        $subject = $_POST["txtSubject"];
+        $description = trim($_POST["txtDescription"]);
+
+        $submissionID = newID($conn, "contact_submission", "S");
+        $todayDateTime = date("Y-m-d H:i:s");
+
+        $sql = "INSERT INTO contact_submission (submission_id, full_name, email_address, contact_number, subject, content, submission_datetime)
+                VALUES ('$submissionID', '$fullName', '$email', '$contactNumber', '$subject', '$description', '$todayDateTime')";
+        
+        if(mysqli_query($conn, $sql)) {
+            echo "<script>
+                    alert('--- Successfully Submit Contact Request ---\\nYour Request ID: $submissionID\\nOur Team will contact you soon!');
+                    window.location.href = 'contactUs.php';
+                  </script>";
+        }
+
+        mysqli_close($conn);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login Page</title>
+        <title>Contact Us</title>
         
         <link rel="stylesheet" href="../../styles/guest.css">
         <!-- style & ico -->
@@ -22,9 +50,67 @@
     <body>
         <?php include("header.php") ?>
 
-        <main>
+        <main class="contact-us">
+            <div class="contact-us-container">
+                <div class="contact-us-header">
+                    <h1>Contact Us</h1>
+                    <p>Any questions or remarks? Just write us a message!</p>
+                </div>
+
+                <div class="contact-us-details">
+                    <img src="../../src/elements/contact-us.jpg" alt="" class="contact-us-image">
+                    <form action="" method="POST" class="contact-form">
+                        <div class="input-box">
+                            <label for="fullname">Full Name *</label>
+                            <input type="text" name="txtFullName" id="fullname">
+                            <div class="form-error-text" id="error-fullname">Enter a Valid Name</div>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="email">Email *</label>
+                            <input type="email" name="txtEmail" id="email">
+                            <div class="form-error-text" id="error-email">Enter a Valid Email</div>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="contactNumber">Contact Number *</label>
+                            <input type="text" name="txtContactNumber" id="contactNumber">
+                            <div class="form-error-text" id="error-contactNumber">Enter a Valid Contact Number</div>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="subject">Subject *</label>
+                            <select name="txtSubject" id="subject">
+                                <option value="">-- Please Select --</option>
+                                <option value="Account Registration">Account Registration</option>
+                                <option value="Green Points & Rewards">Green Points & Rewards</option>
+                                <option value="Partnership & Collaboration">Partnership & Collaboration</option>
+                                <option value="Feedback & Suggestions">Feedback & Suggestions</option>
+                                <option value="Join the Committee">Join the Committee</option>
+                                <option value="Technical Support">Technical Support</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                            </select>
+                            <div class="form-error-text" id="error-subject">Select Subject</div>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="description">Description *</label>
+                            <textarea name="txtDescription" id="description"></textarea>
+                            <div class="form-error-text" id="error-description">Enter a Valid Description</div>
+                        </div>
+
+                        <div class="submit-container">
+                            <button name="btnSubmit" value="Submit" class="submitContact-btn" id="btnSubmit-contact">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <p>Submit</p>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </main>
 
         <?php include("footer.php") ?>
+        <script src="../../scripts/validation.js"></script>
     </body>
 </html>
