@@ -18,7 +18,7 @@
         if (password_verify($passwordInput, $hash_password)) {
             ?>
                 <script>
-                    window.location.href = "securityCheckingPage.php";
+                    window.location.href = "securityMainPage.php";
                 </script>
             <?php
         }
@@ -45,11 +45,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png">
 </head>
-</head>
 <body>
+    <?php include ("header.php");?>
     <div id="safetyVerifyUpperPart">
         <div><button id='btnBackToMainPage' class='btnExitPopUps'><a href="index.php"><i class="fa-solid fa-arrow-left"></i></a></button></div>
-        <div id="safetyVerityTextPart"><b id="safetyVerityTextt">Password Verification</b></div>
+        <div id="safetyVerityTextPart"><b id="safetyVerityText">Password Verification</b></div>
     </div>
     <form action="#" method="POST">
         <div id="safetyVerifyBottomPart">
