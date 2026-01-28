@@ -58,6 +58,7 @@ footer {
 
 footer p {
     margin: 0;
+    font-size: 0.9em;
 }
 
 .search-box {
@@ -204,14 +205,13 @@ footer p {
 .data-container {
     margin: 1em 0;
     padding: 0.5em 0;
-    width: 100%;
+    width: 90%;
     height: auto;
     /* background-color: red; */
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     justify-items: center;
-    gap: 5em;
 }
 
 .data-box {
@@ -1473,6 +1473,30 @@ select {
     display: none;
 }
 
+.acc-security-detection {
+    height: 100px;
+    width: 100%;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 10px;
+    padding: 0 3em;
+    border-radius: 10px;
+}
+
+.acc-security-detection-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.acc-security-detection p {
+    font-weight: lighter;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
@@ -1631,6 +1655,11 @@ select {
         gap: 20px;
         justify-content: center;
         align-items: center;
+    }
+
+    .item-select-boxs {
+        gap: 9px;
+        font-size: 0.9em;
     }
 
     .select-boxs select {
@@ -2005,5 +2034,9 @@ select {
 
     .desktop-carousel {
         display: none;
+    }
+
+    .acc-security-detection {
+        padding: 0 1.5em;
     }
 }

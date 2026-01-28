@@ -229,7 +229,7 @@
 
                                     <a href="viewEventDetails.php?id=' . $row['event_id'] . '" title="View">
                                         <button class="card-action-btn card-view-btn">
-                                            View User Details
+                                            View Event Details
                                         </button>
                                     </a>
                                 </div>

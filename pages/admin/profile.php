@@ -17,6 +17,50 @@
         $gender = "Female";
     }
 
+    // for account detection config
+    $textColor = "";
+    $borderColor = "";
+    $bgColor = "";
+    $accountSecurityDetectionResult = "";
+
+    // find the dob
+    $arr = explode("-", $row["date_of_birth"]);
+    $dob = $arr[1] .$arr[2];
+    $defaultPassword = $row["user_id"] . "@" . $dob;
+
+    $defaultPassword_test = !password_verify($defaultPassword, $row["password"]);
+    $safetyQuestion_test = !empty($row["safety_question_1"]);
+
+    // both true (have safety question and chenged password)
+    if ($safetyQuestion_test && $defaultPassword_test) {
+        $textColor = "#2CB819";
+        $borderColor = "#BEFFC0";
+        $bgColor = "#EFFFF0";
+
+        $accountSecurityDetectionResult = "No security issues detected. Your account is secure.";
+    }
+    // either one is true (no safety question && chenged password OR safety question && default password)
+    elseif (($safetyQuestion_test && !$defaultPassword_test) || (!$safetyQuestion_test && $defaultPassword_test)) {
+        $textColor = "#B0B819";
+        $borderColor = "#FEFFBE";
+        $bgColor = "#FFFDEF";
+        
+        if ($safetyQuestion_test && !$defaultPassword_test) {
+            $accountSecurityDetectionResult = "Security issues detected. Please change default password.";
+        }
+        else {
+            $accountSecurityDetectionResult = "Security issues detected. Please set security questions.";
+        }
+    }
+    else {
+        $textColor = "#B81919";
+        $borderColor = "#FFBEBE";
+        $bgColor = "#FFF4EF";
+
+        $accountSecurityDetectionResult = "Security issues detected. Please change default password and set security questions.";
+    }
+
+
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($_POST["formType"] === "addNewUser") {
@@ -82,6 +126,20 @@
             <h2 class="page-subTitle">Manage your admin identity & credentials</h2>
 
             <div class="flex-container">
+                <div class="acc-security-detection" style="
+                    color: <?php echo $textColor ?>;
+                    border: 1px <?php echo $borderColor ?> solid;
+                    background-color: <?php echo $bgColor ?>;
+                "
+                >
+                    <div class="acc-security-detection-header">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <h3>Account Security Detection</h3>
+                    </div>
+
+                    <p><?php echo $accountSecurityDetectionResult ?></p>
+                </div>
+
                 <div class="profile-header">
                     <div class="profile-header-info">
                         <div class="avatar-container">

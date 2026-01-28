@@ -42,3 +42,37 @@
         </marquee>
     </div>
 </nav>
+
+<div id="profileNavBarOverlay"></div>
+
+<div id="profileRelatedNavBarPopUp">
+    <div class="profileNavBarUpper"><div class="triangleUp"></div></div>
+    <div class="profileNavBarBottom">
+        <div><a href="committeeProfile.php">General Profile</a></div>
+        <div><a href="securityCommonPage.php">Security Settings</a></div>
+        <div><a href="../../backend/logoutRedirect.php">Log Out</a></div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const profilePhoto = document.querySelector(".profile")
+        const profileNavBarPopUp = document.querySelector("#profileRelatedNavBarPopUp");
+        const profileOverlay = document.querySelector("#profileNavBarOverlay");
+
+        profilePhoto.addEventListener("click", () => {
+            profileNavBarPopUp.classList.toggle("profileRelatedNavBarOpen");
+            profileOverlay.classList.toggle("profileRelatedNavBarOpen");
+        })
+
+        profileOverlay.addEventListener("click", () => {
+            profileNavBarPopUp.classList.toggle("profileRelatedNavBarOpen");
+            profileOverlay.classList.toggle("profileRelatedNavBarOpen");
+        })
+
+
+        // const toggleProfileNavBar = () => {
+        //     profileNavBarPopUp.classList.toggle("profileRelatedNavBarOpen");
+        // }
+    })
+</script>
