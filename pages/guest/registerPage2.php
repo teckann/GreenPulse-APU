@@ -1,5 +1,8 @@
 <?php
     include("../../conn.php");
+    session_start();
+
+    $email = $_SESSION['email'];
 ?>
 
 <!DOCTYPE html>
@@ -17,27 +20,43 @@
 
     <main class="register">
         <div class="backButtonPart">
-            <div><button id='btnBackToLogInPage' class='btnExitPage'><a href="registerPage1.php"><i class="fa-solid fa-arrow-left" style="color: #fff;"></i></a></button></div>
+            <div><button id='btnBackToRegisterPage1' class='btnExitPage'><a href="registerPage1.php"><i class="fa-solid fa-arrow-left" style="color: #fff;"></i></a></button></div>
         </div>
         <div class="userRegisterHeader">
             <h1>User Registration</h1>
-            <div class="registerTitlePart"><i class="fa-solid fa-envelope" style="color: #194a7a"></i><h3 class="registerTitle"></h3></div>
+            <div class="registerTitlePart"><i class="fa-solid fa-circle-info" style="color: #194a7a"></i><h3 class="registerTitle">Information Collection Page</h3></div>
         </div>
-        <div class="registerVideoPart">
-            <video autoplay muted loop playsinline width="100%">
-                <source src="../../src/elements/RegistrationVideo.mp4" type="video/mp4">
-            </video>
-        </div>
-        <form action="#" method="POST" class="registerEmailForm">
-            <div class="registerEmailPart">
-                <h4 class="email-title">Email Address</h4>
-                <div class="registerEmailInputPart">
-                    <input type="text" name="registerEmail" id="registerEmail" placeholder="e.g. TP123456">
-                    <p>@mail.apu.edu.my</p>
-                </div>
+        <form action="#" method="POST" class="registerInformationForm">
+            <div class="registerInformationInput">
+                <label for="registerName">Name</label>
+                <input type="text" name="registerName" placeholder="Enter Name">
             </div>
-            <div class="btnVerifyEmails">
-                <button id="btnVerifyEmail">Next Page</button>
+            <div class="registerInformationInput">
+                <label for="registerDOB">Date Of Birth</label>
+                <input type="date" name="registerDOB" id="registerDOB">
+            </div>
+            <div class="registerInformationInput">
+                <label for="registerGender">Gender</label>
+                <select name="registerGender" id="registerGender">
+                    <option value="">--Please Select--</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </div>
+            <div class="registerInformationInput">
+                <label for="course">Course Name</label>
+                <?php include("../general/course.php"); ?>
+            </div>
+            <div class="registerInformationInput">
+                <label for="nationality">Nationality</label>
+                <?php include("../general/nationality.php"); ?>
+            </div>
+            <div class="registerInformationInput">
+                <label for="contactNumber">Contact Number</label>
+                <input type="text" name="contactNumber" id="contactNumber" placeholder="0123456789">
+            </div>
+            <div class="btnSubmitInformations">
+                <button id="btnSubmitInformation">Next Page</button>
             </div>
         </form>
     </main>

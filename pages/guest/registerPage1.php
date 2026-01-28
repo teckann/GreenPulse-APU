@@ -1,5 +1,18 @@
 <?php
     include("../../conn.php");
+    session_start();
+
+    if (isset($_POST["btnVerifyEmail"])) {
+        $tpNo = strtoupper($_POST["registerEmailID"]);
+        $email = $tpNo . "@mail.apu.edu.my";
+
+        // store in SESSION
+        $_SESSION["email"] = $email;
+
+        // jump ton page 2
+        header("Location: registerPage2.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -32,12 +45,12 @@
             <div class="registerEmailPart">
                 <h4 class="email-title">Email Address</h4>
                 <div class="registerEmailInputPart">
-                    <input type="text" name="registerEmail" id="registerEmail" placeholder="e.g. TP123456">
+                    <input type="text" name="registerEmailID" id="registerEmail" placeholder="e.g. TP123456">
                     <p>@mail.apu.edu.my</p>
                 </div>
             </div>
             <div class="btnVerifyEmails">
-                <button id="btnVerifyEmail">Next Page</button>
+                <button id="btnVerifyEmail" type="submit" name="btnVerifyEmail" value="Submit">Verify</button>
             </div>
         </form>
     </main>
