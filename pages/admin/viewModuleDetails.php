@@ -85,6 +85,8 @@
                 </form>
 
                 <div class="viewDetails-header event-header">
+                    <img src="../../<?php echo $data['module_cover'] ?>" alt="event poster" width="350px" height="190px">
+
                     <video width="350px" height="auto" controls class="box-content">
                         <source src="../../<?php echo $data["module_video"] ?>" type="video/mp4">
                     </video>
