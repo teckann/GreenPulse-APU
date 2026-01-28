@@ -1213,7 +1213,7 @@ footer {
 }
 
 .btnVerifyEmails,
-.btnSubmitInformations {
+.btnSubmitInformations,
 #identifyUserIdInput {
     border-radius: 8px;
     padding: 0.5em 1em;
@@ -1228,8 +1228,7 @@ footer {
 }
 
 #btnVerifyEmail,
-#btnSubmitInformation {
-#btnVerifyEmail, #btnSubmitInformation,
+#btnSubmitInformation,
 #btnSubmitPassword, #btnVerifyUserId,
 #btnVerifySafetyQuestion {
     width: 100%;
@@ -1332,8 +1331,7 @@ footer {
     }
 
     .registerVideoPart,
-    .registerEmailForm {
-    .registerVideoPart, .registerEmailForm,
+    .registerEmailForm,
     .forgetPasswordForm {
         width: 50%;
     }
