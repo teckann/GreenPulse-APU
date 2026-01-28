@@ -1,10 +1,14 @@
 <?php
     $sql_avatar = "SELECT * FROM users WHERE user_id = '$userID'";
-
     $result_avatar = mysqli_query($conn, $sql_avatar);
-
     $row = mysqli_fetch_assoc($result_avatar);
     $profilePhoto = $row["avatar"];
+
+    $sql_announcement = "SELECT announcement_details FROM announcement ORDER BY announcement_datetime DESC LIMIT 1";
+    $result_announcement = mysqli_query($conn, $sql_announcement);
+    $announcement_row = mysqli_fetch_assoc($result_announcement);
+    $latestAnnouncement = $announcement_row ? $announcement_row["announcement_details"] : "No announcements at this time.";
+
 ?> 
 
 <header>
@@ -25,7 +29,7 @@
             <a href="availableTreePage.php">Tree Adoption</a>
             <a href="merchandiseManagement.php">Merchandises</a>
             <a href="eventMain.php">Events</a>
-            <a href="study&Quiz.php">Study & Quiz</a>
+            <a href="studyQuizMain.php">Study & Quiz</a>
         </div>
         
         <div class = "profile">
@@ -34,8 +38,8 @@
     </nav>
 
     <div class = "banner">
-        <marquee direction = "right" scrollamount = "10">
-            <p>Join our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.</p>
+        <marquee direction = "left" scrollamount = "10">
+            <p><?php echo ($latestAnnouncement); ?></p>
         </marquee>
     </div>
 

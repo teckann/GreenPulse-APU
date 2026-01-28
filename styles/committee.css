@@ -379,7 +379,6 @@ header {
     max-width: 65rem;
     width: 80%;
     margin: 0 auto;
-    /* Centers the box horizontally */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -580,7 +579,8 @@ header {
 }
 
 .btn-edit:hover,
-.btn-delete:hover {
+.btn-delete:hover,
+.btn-study-material:hover {
     /* I want make like when hover the button change color */
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -619,7 +619,8 @@ header {
     gap: 5px;
 }
 
-.meta-label,.event-posted-date-id {
+.meta-label,
+.event-posted-date-id {
     font-size: 0.7rem;
     color: #999;
     text-transform: uppercase;
@@ -680,6 +681,8 @@ header {
 }
 
 .points-badge {
+    max-width: 100px;
+    ;
     padding: 8px 16px;
     background-color: #fff3e0;
     border-radius: 20px;
@@ -744,7 +747,6 @@ header {
 /* ======================================================================================================================================== */
 /*  CREATE EVENT PAGE */
 /* ======================================================================================================================================== */
-/* outer container：for bg-color and gap between <div> */
 .eventControls-create {
     background-color: #FAF9F6;
     padding: 2rem 1.5rem;
@@ -754,16 +756,18 @@ header {
 }
 
 .btn-create-event {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 16px;
     width: 100%;
-    padding: 20px;
+    height: 45px;
     color: white;
     background-color: #2D6A4F;
     border: 1px solid #ddd;
     border-radius: 10px;
     cursor: pointer;
-    background-image: linear-gradient(to right, #043927 , #0a7e58);
-
+    background-image: linear-gradient(to right, #043927, #0a7e58);
 }
 
 .container {
@@ -781,6 +785,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-bottom: 10px;
     width: 100%;
 
 }
@@ -877,7 +882,9 @@ header {
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    font-size: 20px;
     font-family: "Roboto", sans-serif;
+    color: rgb(78, 78, 78);
 }
 
 .event-feedback-outer-box:hover {
@@ -1055,6 +1062,7 @@ header {
     color: #333;
     font-weight: 500;
 }
+
 /* 
 .status-badge {
     display: inline-flex;
@@ -1077,7 +1085,7 @@ header {
 
 /* Right Side - Details */
 .right-side-container {
-    margin: 20px 0px 20px 0px;  
+    margin: 20px 0px 20px 0px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -1090,6 +1098,8 @@ header {
     background-color: #f9f9f9;
     border-radius: 12px;
     border-left: 4px solid #2d5a27;
+    transition: all 0.3s ease;
+    /*make it slower*/
 }
 
 .detail-box-row {
@@ -1264,6 +1274,7 @@ header {
         padding: 15px;
     }
 }
+
 /* ======================================================================================================================================== */
 /* STUDY QUIZ MODULE*/
 /* ======================================================================================================================================== */
@@ -1278,30 +1289,88 @@ header {
     gap: 10px;
 }
 
+.btn-study-material {
+    border: rgb(193, 193, 193) solid 1px;
+    width: 100px;
+    height: 45px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.instruction {
+    color: #666;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+}
+
+
+
+
 /* ======================================================================================================================================= */
 /*  STUDY QUIZ CREATE MATERIAL AND QUIZ */
 /* ======================================================================================================================================== */
 .quiz-block {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            position: relative;
-        }
-        .remove-quiz-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: red;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-        .two-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
+    border: 1px solid #efefef;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: white;
+    position: relative;
+    gap: 200px;
+}
+
+.remove-quiz-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: red;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.study-quiz-title {
+    font-family: "Roboto", sans-serif;
+}
+
+.btn-more-question {
+    border: none;
+    font-size: 16px;
+    width: 100%;
+    padding: 20px;
+    color: white;
+    background-color: #f2f6ff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-more-question:hover {
+    background-color: rgb(224, 224, 255);
+    transition: ease-in 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.word-color:hover {
+    color: rgb(160, 160, 255);
+}
+
+.word-color {
+    color: rgb(171, 171, 171);
+}
+
 
 
 /* ======================================================================================================================================== */
@@ -1321,7 +1390,9 @@ header {
 }
 
 
-.numbering, .attendance-user-id,.name{
+.numbering,
+.attendance-user-id,
+.name {
     flex: 1;
 }
 
@@ -1339,7 +1410,8 @@ header {
 
 
 
-.btn-present, .btn-absent {
+.btn-present,
+.btn-absent {
     border: none;
     width: 60px;
     height: 35px;
@@ -1353,19 +1425,19 @@ header {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.btn-absent:hover{
+.btn-absent:hover {
     transform: translateY(-1px);
     background-color: #FEE2E2;
-    border:#B91C1C solid 1px;
+    border: #B91C1C solid 1px;
 }
 
-.btn-present:hover{
+.btn-present:hover {
     transform: translateY(-1px);
     background-color: #DCFCE7;
-    border:#15803D solid 1px;
+    border: #15803D solid 1px;
 }
 
-.green-color:hover{
+.green-color:hover {
     color: #15803D;
 }
 
@@ -1373,7 +1445,55 @@ header {
     color: #B91C1C;
 }
 
+.space {
+    height: 20px;
+}
 
+
+/* ======================================================================================================================================== */
+/* DELETE QUIZ*/
+/* ======================================================================================================================================== */
+.delete-selection-item {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.delete-selection-item:hover {
+    background-color: #fff0f0;
+    border-color: #ffcccc;
+}
+
+.delete-checkbox {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.question-preview {
+    flex-grow: 1;
+}
+
+.badge-points {
+    background-color: #e2e6ea;
+    color: #495057;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.btn-group-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
 
 
 
@@ -1554,14 +1674,16 @@ header {
         min-width: 100%;
         height: 250px;
     }
-    
+
     .event-image {
         min-height: 250px;
     }
 
     .event-meta-row {
-        gap: 20px; /* Reduce gap on mobile */
-        flex-direction: column; /* Stack meta info vertically on very small screens if needed */
+        gap: 20px;
+        /* Reduce gap on mobile */
+        flex-direction: column;
+        /* Stack meta info vertically on very small screens if needed */
     }
 }
 
@@ -1569,7 +1691,8 @@ header {
 /* Tree Adoption (Testing) */
 /* ======================================================================================================================================== */
 
-#upperTree, #upperMerchandise {
+#upperTree,
+#upperMerchandise {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -1628,30 +1751,34 @@ header {
     background-color: gray !important;
 }
 
-#treeSearchBar, #merchandiseSearchBar {
+#treeSearchBar,
+#merchandiseSearchBar {
     display: flex;
     align-items: center;
     position: relative;
     width: 12em;
 }
 
-#treeSearchBar i, #merchandiseSearchBar i {
+#treeSearchBar i,
+#merchandiseSearchBar i {
     position: absolute;
     left: 8px;
     color: gray;
 }
 
-#searchTree, #searchMerchandise {
+#searchTree,
+#searchMerchandise {
     width: 100%;
     padding: 0.6em 0 0.6em 1.8em !important;
     border-radius: 8px;
 }
 
-#searchTree:focus, #searchMerchandise:focus {
+#searchTree:focus,
+#searchMerchandise:focus {
     box-shadow: 0 0 10px rgba(25, 74, 122, 0.6);
 }
 
-#upperTreeCard form, 
+#upperTreeCard form,
 #upperMerchandiseCard form {
     display: flex;
     flex-direction: column;
@@ -1670,7 +1797,7 @@ header {
     font-size: 1em;
 }
 
-#upperTreeCard form select{
+#upperTreeCard form select {
     padding: 1px 5px;
     font-size: 1em;
     border-radius: 5px;
@@ -1678,7 +1805,8 @@ header {
     background-color: #f9f9f9;
 }
 
-#searchTree, #searchMerchandise {
+#searchTree,
+#searchMerchandise {
     padding: 1px 5px;
     font-size: 1em;
 }
@@ -1706,12 +1834,13 @@ header {
 }
 
 #upperTreeCard form {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
-.showTreeCards, .showMerchandiseCards {
+.showTreeCards,
+.showMerchandiseCards {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1720,7 +1849,8 @@ header {
     margin-top: 2em;
 }
 
-.treeCard , .merchandiseCard {
+.treeCard,
+.merchandiseCard {
     width: 80%;
     border: 0.2em solid #EAF2E3;
     border-radius: 15px;
@@ -1728,7 +1858,8 @@ header {
     margin: 0;
 }
 
-.treeCard:last-child, .merchandiseCard:last-child {
+.treeCard:last-child,
+.merchandiseCard:last-child {
     margin-bottom: 2em;
 }
 
@@ -1870,7 +2001,8 @@ header {
     cursor: not-allowed;
 }
 
-#itemOverlay, .profileOverlay {
+#itemOverlay,
+.profileOverlay {
     display: none;
     position: fixed;
     top: 0;
@@ -1906,7 +2038,8 @@ header {
     margin: 1em 0;
 }
 
-.btnExitPopUps, #btnBackToProfile {
+.btnExitPopUps,
+#btnBackToProfile {
     color: #271033;
     background-color: #fff;
     border: none;
@@ -2057,7 +2190,8 @@ header {
     display: none;
 }
 
-#oldItemImage, #oldProfileImage {
+#oldItemImage,
+#oldProfileImage {
     width: 50%;
     height: 50%;
 }
@@ -2238,7 +2372,8 @@ header {
     gap: 0.5em;
 }
 
-.btnCreateTree, .btnCreateMerchandise {
+.btnCreateTree,
+.btnCreateMerchandise {
     width: 8em;
     height: 3em;
     background-color: #2D936C;
@@ -2338,7 +2473,8 @@ header {
 
 .photosPart img {
     width: 6em;
-    height: 6em;;
+    height: 6em;
+    ;
     border-radius: 100%;
 }
 
@@ -2354,7 +2490,7 @@ header {
     right: 0;
     width: 3em;
     height: 3em;
-    border:none;
+    border: none;
     border-radius: 100%;
     opacity: 0.8;
 }
@@ -2364,7 +2500,7 @@ header {
     color: #fff;
 }
 
-.profileName b{
+.profileName b {
     color: #fff;
 }
 
@@ -2506,7 +2642,8 @@ header {
     flex-direction: column;
 }
 
-.editInput input, .editInput select {
+.editInput input,
+.editInput select {
     border-radius: 3px;
     border: none;
     font-size: 1.2em;
@@ -2517,8 +2654,8 @@ header {
 }
 
 .confirmEditProfileBtn {
-   display: flex;
-   justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 #btnConfirmEditProfile {
@@ -2535,8 +2672,10 @@ header {
     color: red;
 }
 
-.nameError, .phoneNumberError, 
-.courseError, .nationalityError {
+.nameError,
+.phoneNumberError,
+.courseError,
+.nationalityError {
     display: none;
 }
 
@@ -2560,8 +2699,10 @@ header {
     border-radius: 10px;
 }
 
-#safetyVerifyUpperPart, #safetyMainPageUpperPart,
-#changePasswordUpperPart, #changeSafetyQuestionUpperPart {
+#safetyVerifyUpperPart,
+#safetyMainPageUpperPart,
+#changePasswordUpperPart,
+#changeSafetyQuestionUpperPart {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2704,6 +2845,8 @@ header {
 
 #profileNavBarOverlay {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -2738,10 +2881,10 @@ header {
 
 .triangleUp {
     width: 0;
-	height: 0;
-	border-left: 12px solid transparent;
-	border-right: 12px solid transparent;
-	border-bottom: 24px solid #BBDBB4;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 24px solid #BBDBB4;
 }
 
 .profileRelatedNavBarOpen {
@@ -2781,7 +2924,8 @@ header {
     gap: 0.2em;
 }
 
-.newPassword label, .newPassword input,
+.newPassword label,
+.newPassword input,
 .upText {
     font-size: 1.5em;
 }
@@ -2846,6 +2990,7 @@ header {
 
 
 @media(min-width: 800px) {
+
     #upperTreeCard form,
     #upperMerchandiseCard form {
         flex-direction: row;
@@ -2853,7 +2998,7 @@ header {
     }
 
     #upperTree button {
-        position:static;
+        position: static;
         z-index: auto;
     }
 
@@ -2876,7 +3021,8 @@ header {
         flex-direction: row;
     }
 
-    .showTreeCardsSpace, .showMerchandiseCardsSpace {
+    .showTreeCardsSpace,
+    .showMerchandiseCardsSpace {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -2884,7 +3030,8 @@ header {
         /* background-color: red; */
     }
 
-    .showTreeCards,  .showMerchandiseCards{
+    .showTreeCards,
+    .showMerchandiseCards {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
@@ -2902,7 +3049,8 @@ header {
         height: 10em;
     }
 
-    .treeCard, .merchandiseCard {
+    .treeCard,
+    .merchandiseCard {
         width: 19em;
         height: 30em;
     }
@@ -2918,7 +3066,8 @@ header {
 
     }
 
-    .treeCard:last-child, .merchandiseCard:last-child {
+    .treeCard:last-child,
+    .merchandiseCard:last-child {
         margin-bottom: 0;
     }
 
@@ -2987,9 +3136,9 @@ header {
         right: 2em;
     }
 
-/* TEST */
-/* -------------------------*/
-/* ATTENDANCE
+    /* TEST */
+    /* -------------------------*/
+    /* ATTENDANCE
 /* -------------------------*/
 
 

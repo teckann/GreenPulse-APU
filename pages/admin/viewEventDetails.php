@@ -174,6 +174,12 @@
                                         <td>:</td>
                                         <td><?php echo $data["capacity"] ?></td>
                                     </tr>
+
+                                    <tr>
+                                        <td>Points Given</td>
+                                        <td>:</td>
+                                        <td><?php echo $data["points_given"] ?> GP</td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>

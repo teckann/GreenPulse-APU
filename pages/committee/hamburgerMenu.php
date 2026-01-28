@@ -33,13 +33,6 @@
             </a>
         </div>
 
-        <div class="sidebar-footer">
-            <img src="../../src/committee/profilePicture.jpg" class="user-avatar" alt="User Avatar">
-            <div class="user-info">
-                <div class="user-name">User Name</div>
-                <div class="user-id">User ID</div>
-            </div>
-        </div>
     </div>
 
     <!-- Overlay -->

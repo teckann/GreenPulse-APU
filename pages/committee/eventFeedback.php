@@ -36,7 +36,7 @@
     <title>Event Feedback Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png"> -->
+    <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
@@ -45,7 +45,6 @@
 
 <?php include ("header.php");?>
 
-    <!-- !!! -->
     <div class="header-content">
         <div class="back-icon" onclick="history.back()">
             <i class="fas fa-arrow-left"></i>
@@ -57,7 +56,6 @@
         </div>
     </div>
 
-    <!-- Lower Part  -->
     <section class="event-controls-event-main">
         <div class = "white-color-box">
 

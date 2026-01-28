@@ -22,7 +22,7 @@
     <title>More Event</title>
     <link rel="stylesheet" href="../../styles/committee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png"> -->
+    <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png">
 </head>
 <body>
     <?php include ("header.php");?>
@@ -41,7 +41,6 @@
 
     </div>
 
-    <!-- Lower Part  -->
     <section class="event-controls-event-main">
         <div class = "white-color-box">
             <div class = "details-upper">
