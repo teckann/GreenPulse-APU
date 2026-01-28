@@ -90,7 +90,7 @@
                                 <td class="colon password-colon">:</td>
                                 <td class="password-feild">
                                     <input type="password" name="txtPassword" id="password" required>
-                                    <a href="#" class="forgot-password">Forgot Password?</a>
+                                    <a href="forgetPasswordPage1.php" class="forgot-password">Forgot Password?</a>
                                 </td>
                             </tr>
                         </table>
