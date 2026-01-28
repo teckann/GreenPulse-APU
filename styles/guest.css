@@ -471,6 +471,7 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 30px;
+    text-decoration: none;
 }
 
 .member-card:hover {
@@ -1211,6 +1212,8 @@ footer {
     /* font-size: 1.3em; */
 }
 
+.btnVerifyEmails,
+.btnSubmitInformations {
 #identifyUserIdInput {
     border-radius: 8px;
     padding: 0.5em 1em;
@@ -1224,6 +1227,8 @@ footer {
     margin: 2em;
 }
 
+#btnVerifyEmail,
+#btnSubmitInformation {
 #btnVerifyEmail, #btnSubmitInformation,
 #btnSubmitPassword, #btnVerifyUserId,
 #btnVerifySafetyQuestion {
@@ -1247,7 +1252,7 @@ footer {
     gap: 1em;
 }
 
-.registerInformationInput input, 
+.registerInformationInput input,
 .registerInformationInput select,
 .registerPassword input, 
 .forgetPasswordPart input,
@@ -1326,6 +1331,8 @@ footer {
         font-size: 3.5em;
     }
 
+    .registerVideoPart,
+    .registerEmailForm {
     .registerVideoPart, .registerEmailForm,
     .forgetPasswordForm {
         width: 50%;
