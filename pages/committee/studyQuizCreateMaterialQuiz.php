@@ -23,7 +23,6 @@
             $coverFileName = basename($_FILES['module_cover']['name']);
             $materialFileName = basename($_FILES["module_material"]["name"]);
             $videoFileName = basename($_FILES["module_video"]["name"]);
-eg
             $allowCoverType = array ('png','jpeg', 'jpg'); 
             $allowDocTypes = array('pdf');
             $allowVideoTypes = array('mp4');
