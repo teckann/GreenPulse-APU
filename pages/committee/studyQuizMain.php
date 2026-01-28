@@ -6,19 +6,17 @@
     $search = trim($search);
     $lowerSearch = strtolower($search);
     
-    // Initialize SQL query first
     $sql = "SELECT * FROM modules";
     
-    // Add WHERE clause if search is not empty
     if (!empty($search)){
         $sql .= " WHERE LOWER(module_name) LIKE '%$lowerSearch%' OR LOWER(module_description) LIKE '%$lowerSearch%'";
     }
     
-    // Order by module_id
-    $sql .= " ORDER BY module_id DESC";
+    $sql = "SELECT * FROM modules WHERE module_status = 'Active' ORDER BY module_id DESC";
     
-    // Execute query
     $result = mysqli_query($conn, $sql);
+
+   
 ?>
 
 <!DOCTYPE html>
@@ -29,12 +27,11 @@
     <title>Study & Quiz Main Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png"> -->
+    <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png">
 </head>
 <body>
     <?php include ("header.php");?>
     
-    <!-- Upper Part -->
     <div class="header-content">
         <div class="back-icon" onclick="history.back()">
             <i class="fas fa-arrow-left"></i>
@@ -45,12 +42,11 @@
             <p>MANAGE STUDY MATERIALS AND QUIZZES IN ONE PLACE.</p>
         </div>
         
-        <div class="add-icon" onclick="window.location.href='studyQuizCreateQuiz.php'">
+        <div class="add-icon" onclick="window.location.href='studyQuizCreateMaterialQuiz.php'">
             <i class="fas fa-add"></i>
         </div>
     </div>
 
-    <!-- DETAILS PART -->
     <section class="event-controls-event-main">
         <form action="#" method="GET">
             <div class="search-filter-group">
@@ -69,54 +65,34 @@
                 <?php
                     if (mysqli_num_rows($result) > 0) {
                         while ($rows = mysqli_fetch_array($result)){
-                            // Check if current user is the creator
                             $currentUserId = isset($_SESSION['userID']) ? $_SESSION['userID'] : null;
                             $isCreator = ($currentUserId !== null && $rows['user_id'] == $currentUserId);
                 ?>
                 <div class="content-card-event">
-                    <!-- Left Side: Image Section -->
                     <div class="event-left-section">
                         <div class="event-image">
-                            <img src="../../src/elements/greenCampaignTest.jpg" alt="Event Image">
+                            <img src="../../<?php echo $rows['module_cover']; ?>" alt="Module Cover">
                         </div>
                     </div>
 
-                    <!-- Right Side: Details Section -->
                     <div class="event-right-section">
                         <div class = "event-posted-info">
                             <div class = "event-posted">
-                                    <div class = "event-posted-date-id">Module ID: <?php echo $rows['module_id']?></div>
+                                <div class = "event-posted-date-id">Module ID: <?php echo $rows['module_id']?></div>
                                 </div>
                             <div class = "event-posted">
-                                    <div class = "event-posted-date-id">Posted by: <?php echo $rows['user_id']?></div>
-                                </div>
-                                
+                                <div class = "event-posted-date-id">Posted by: <?php echo $rows['user_id']?></div>
                             </div>
-                        <div class="event-meta-row">
-                            <div class="meta-item">
-                                <span class="meta-label">MODULE ID</span>
-                                <span class="meta-value"><?php echo $rows['module_id']?></span>
                             </div>
-                        </div>
 
-                        <!-- Status and Points Row -->
                         <div class="status-points-row">
-                            <?php if ($isCreator): ?>
-                                <div class="more-section" onclick="window.location.href = 'studyQuizModule.php?module_id=<?php echo $rows['module_id'];?>'">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                </div>
-                            <?php endif; ?>
-                            <?php if ($isCreator): ?>
-                            <div class="event-more" onclick = "window.location.href = 'eventMore.php?event_id=<?php echo $rows['event_id'];?>'">
+                            <div class="more-section" onclick="window.location.href = 'studyQuizModule.php?module_id=<?php echo $rows['module_id'];?>'">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </div>
-                        <?php endif; ?>
                         </div>
 
-                        <!-- Module Title -->
                         <h2 class="event-title"><?php echo $rows['module_name']?></h2>
 
-                        <!-- Module Description -->
                         <p class="event-description">
                             <?php echo $rows['module_description']?>
                         </p>

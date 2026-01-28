@@ -3,7 +3,6 @@
     include("../../backend/sessionData.php");
     include("../../backend/utility.php");
 
-    // Get event ID from URL
     if (!isset($_GET['event_id'])) {
         echo "<script>alert('No event selected!'); window.location.href='eventMain.php';</script>";
         exit;
@@ -11,7 +10,6 @@
 
     $eventID = mysqli_real_escape_string($conn, $_GET['event_id']);
 
-    // Fetch event data
     $sqlFetch = "SELECT * FROM events WHERE event_id = '$eventID'";
     $resultFetch = mysqli_query($conn, $sqlFetch);
 
@@ -22,18 +20,15 @@
 
     $eventData = mysqli_fetch_assoc($resultFetch);
 
-    // Check if current user is the creator
     if ($eventData['user_id'] != $_SESSION['userID']) {
         echo "<script>alert('You can only edit events you created!'); window.location.href='eventMain.php';</script>";
         exit;
     }
 
-    // Handle form submission
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (isset($_POST["formType"]) && $_POST["formType"] === "editEvent") {
             
-            // Check if new poster is uploaded
-            $eventPosterPath = $eventData['event_poster']; // Keep old poster by default
+            $eventPosterPath = $eventData['event_poster'];
             
             if (!empty($_FILES["event_poster"]["name"])) {
                 $targetDir = "../../src/eventPosters/";
@@ -49,7 +44,6 @@
                 }
             }
             
-            // Get form data
             $eventTitle = mysqli_real_escape_string($conn, $_POST['event_title']);
             $eventDateTime = mysqli_real_escape_string($conn, $_POST['event_datetime']);
             $eventDesc = mysqli_real_escape_string($conn, $_POST['event_description']);
@@ -58,13 +52,11 @@
             $capacity = mysqli_real_escape_string($conn, $_POST['event_capacity']);
             $pointsGiven = mysqli_real_escape_string($conn, $_POST['event_points']);
             
-            // Calculate available spots (maintain the difference from original)
             $spotDifference = $eventData['capacity'] - $eventData['available_spot'];
             $availableSpot = $capacity - $spotDifference;
 
             $postedDate = date("Y-m-d");
             
-            // Update query
             $sqlUpdate = "UPDATE events SET 
                             event_title = '$eventTitle',
                             event_poster = '$eventPosterPath',
@@ -79,6 +71,7 @@
                         WHERE event_id = '$eventID'";
             
             if (mysqli_query($conn, $sqlUpdate)) {
+                addLog($conn, $_SESSION['userID'], "Updated Event: $eventTitle (ID: $eventID)");
                 echo "<script>
                         alert('Event Updated Successfully!'); 
                         window.location.href='eventMain.php';
@@ -99,6 +92,7 @@
     <title>Edit Event Page</title>
     <link rel="stylesheet" href="../../styles/committee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png">
 </head>
 <body>
     <?php include ("header.php");?>
