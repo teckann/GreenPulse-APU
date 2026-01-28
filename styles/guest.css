@@ -1089,3 +1089,132 @@ footer {
         width: 100%;
     }
 }
+
+.userRegisterHeader {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    Flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: 89vh;
+}
+
+.btnExitPage {
+    color: #fff;
+    background-color: inherit;
+    border: none;
+    font-size: 2em;
+    margin-left: 0.2em;
+}
+
+.userRegisterHeader h1 {
+    color: #194a7a;
+    font-size: 3em;
+}
+
+.registerTitle {
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: #194a7a;
+}
+
+.backButtonPart {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 1em;
+}
+
+.registerTitlePart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.registerVideoPart {
+    width: 80%;
+    margin: 1em 2em;
+}
+
+.registerVideoPart video {
+    border-radius: 1em;
+}
+
+.registerEmailForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerEmailPart {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    gap: 0.5em;
+}
+
+
+.registerEmailInputPart {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1em;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.email-title {
+    align-self: flex-start;
+    /* width: 80%; */
+}
+
+#registerEmail {
+    /* width: 8em; */
+    border-radius: 8px;
+    padding: 0.5em 1em;
+    /* font-size: 1.3em; */
+}
+
+.btnVerifyEmails {
+    width: 80%;
+    margin: 2em;
+}
+
+#btnVerifyEmail {
+    width: 100%;
+    background-color: #355070;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3em;
+    padding: 0.5em;
+}
+
+@media(min-width: 800px) {
+    .userRegisterHeader {
+        /* align-items: flex-start; */
+        width: 80%;
+        margin-bottom: 2em;
+    }
+
+    .userRegisterHeader h1 {
+        font-size: 3.5em;
+    }
+
+    .registerVideoPart, .registerEmailForm {
+        width: 50%;
+    }
+}

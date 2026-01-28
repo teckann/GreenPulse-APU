@@ -96,7 +96,7 @@
                         <input type="submit" value="Login" class="btn-login" name="btnLogin">
 
                         <p class="signup-text">
-                            Don't have an account? <a href="#">Sign Up</a>
+                            Don't have an account? <a href="registerPage1.php">Sign Up</a>
                         </p>
                     </form>
                 </div>

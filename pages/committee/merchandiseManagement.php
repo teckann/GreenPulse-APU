@@ -221,7 +221,7 @@
                                         <div class='itemButton'>
                                             <form action='#' method='GET'>
                                                 <input type='hidden' name='targetItemID' value='" . $row['item_id'] . "'>
-                                                <input type='hidden' name='targetUserID' value='" . $row['user_id'] . "'>
+                                                <input type='hidden' name='targetUserID' id='merchandiseUserId' value='" . $row['user_id'] . "'>
                                                 <input type='hidden' name='targetItemName' value='" . $row['item_name'] . "'>
                                                 <input type='hidden' name='targetItemImage' value='" . $row['item_image'] . "'>
                                                 <input type='hidden' name='targetItemDescription' value='" . $row['item_description'] . "'>
@@ -431,8 +431,9 @@
                 const statusText = itemStatus.innerText;
                 const itemEditBtn = merchandiseCard.querySelector(".itemEditBtn");
                 const itemDeleteBtn = merchandiseCard.querySelector(".itemDeleteBtn");
+                const merchandiseUserId = merchandiseCard.querySelector("#merchandiseUserId").value;
 
-                if (statusText === "Inactive") {
+                if ((statusText === "Inactive") || (merchandiseUserId !== <?php echo json_encode($userID) ?>)) {
                     itemEditBtn.classList.add("disableButton");
                     itemDeleteBtn.classList.add("disableButton");
                 }
