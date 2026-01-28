@@ -1,17 +1,34 @@
 <?php
     include("../../conn.php");
     session_start();
-
+    
     if (isset($_POST["btnVerifyEmail"])) {
-        $tpNo = strtoupper($_POST["registerEmailID"]);
-        $email = $tpNo . "@mail.apu.edu.my";
+        $tpNo = strtoupper(trim($_POST["registerEmailID"]));
 
-        // store in SESSION
-        $_SESSION["email"] = $email;
+        
 
-        // jump ton page 2
-        header("Location: registerPage2.php");
-        exit();
+        if (empty($tpNo)) {
+            $errorMessage = "Please fill in the TP number";
+        }
+        else if (strlen($tpNo) !== 8) {
+            $errorMessage = "TP number sould have 8 characters";
+        }
+        else if (substr($tpNo, 0, 2) !== 'TP' || !ctype_digit(substr($tpNo, 2))) {
+            $errorMessage = "The TP number should follow the format (e.g. TP123456).";
+        }
+        else {
+            $email = $tpNo . "@mail.apu.edu.my";
+            $_SESSION["email"] = $email;
+            header("Location: registerPage2.php");
+            exit();
+        }
+        
+        ?>
+            <script>
+                alert(<?php echo json_encode($errorMessage); ?>);
+                window.location.href = "registerPage1.php";
+            </script>
+        <?php
     }
 ?>
 
@@ -45,7 +62,7 @@
             <div class="registerEmailPart">
                 <h4 class="email-title">Email Address</h4>
                 <div class="registerEmailInputPart">
-                    <input type="text" name="registerEmailID" id="registerEmail" placeholder="e.g. TP123456">
+                    <input type="text" name="registerEmailID" id="registerEmailInput" placeholder="e.g. TP123456" value="<?php if(isset($_SESSION["email"])) echo explode("@", $_SESSION["email"])[0] ?>">
                     <p>@mail.apu.edu.my</p>
                 </div>
             </div>

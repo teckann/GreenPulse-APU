@@ -1,6 +1,7 @@
 <?php
     include("../../conn.php");
-    include("../../backend/sessionData.php"); 
+    include("../../backend/sessionData.php");
+    include("../../backend/unsetRegisterData.php");
 ?>
 
 <!DOCTYPE html>

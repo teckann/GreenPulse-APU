@@ -1090,7 +1090,8 @@ footer {
     }
 }
 
-.userRegisterHeader {
+.userRegisterHeader,
+.userForgotPasswordHeader {
     width: 100%;
     height: 15%;
     display: flex;
@@ -1100,7 +1101,8 @@ footer {
     gap: 1em;
 }
 
-.register {
+.register,
+.forgetPassword {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -1116,12 +1118,14 @@ footer {
     margin-left: 0.2em;
 }
 
-.userRegisterHeader h1 {
+.userRegisterHeader h1,
+.userForgotPasswordHeader h1 {
     color: #194a7a;
     font-size: 3em;
 }
 
-.registerTitle {
+.registerTitle,
+.forgetPasswordTitle {
     font-size: 1.2em;
     font-weight: lighter;
     color: #194a7a;
@@ -1134,7 +1138,8 @@ footer {
     padding: 1em;
 }
 
-.registerTitlePart {
+.registerTitlePart,
+.forgetPasswordTitlePart {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1150,7 +1155,8 @@ footer {
     border-radius: 1em;
 }
 
-.registerEmailForm {
+.registerEmailForm,
+.forgetPasswordForm {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1158,7 +1164,8 @@ footer {
     justify-content: center;
 }
 
-.registerEmailPart {
+.registerEmailPart,
+.identifyUserIdPart {
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -1167,7 +1174,10 @@ footer {
 }
 
 
-.registerEmailInputPart {
+.registerEmailInputPart,
+.identifyUserIdInputPart,
+.safetyQuestion1Part,
+.safetyQuestion2Part {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -1176,24 +1186,47 @@ footer {
     justify-content: flex-start;
 }
 
+.forgetPasswordPart {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 0.5em;
+    align-items: flex-start;
+}
+
 .email-title {
     align-self: flex-start;
     /* width: 80%; */
 }
 
-#registerEmail {
+.forgetPasswordUserId {
+    align-self: flex-start;
+    font-size: 1.3em;
+}
+
+#registerEmailInput {
     /* width: 8em; */
     border-radius: 8px;
     padding: 0.5em 1em;
     /* font-size: 1.3em; */
 }
 
-.btnVerifyEmails, .btnSubmitInformations {
+#identifyUserIdInput {
+    border-radius: 8px;
+    padding: 0.5em 1em;
+    width: 100%;
+    font-size: 1.3em;
+}
+
+.btnVerifyEmails, .btnSubmitInformations,
+.btnSubmitPasswords, .btnVerifyIds {
     width: 80%;
     margin: 2em;
 }
 
-#btnVerifyEmail, #btnSubmitInformation {
+#btnVerifyEmail, #btnSubmitInformation,
+#btnSubmitPassword, #btnVerifyUserId,
+#btnVerifySafetyQuestion {
     width: 100%;
     background-color: #355070;
     color: #fff;
@@ -1204,7 +1237,8 @@ footer {
 }
 
 .registerInformationForm,
-.registerPassword {
+.registerPassword,
+.successFullyInfo {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1215,37 +1249,85 @@ footer {
 
 .registerInformationInput input, 
 .registerInformationInput select,
-.registerPassword input {
+.registerPassword input, 
+.forgetPasswordPart input,
+.resetPasswordInputs input {
     font-size: 1.2em;
     padding: 0.5em 1.5em;
     border-radius: 10px;
 }
 
 .registerInformationInput,
-.registerPasswordInput {
+.registerPasswordInput,
+.resetPasswordInputs {
     display: flex;
     flex-direction: column;
     width: 80%;
     gap: 0.5em;
 }
 
+.forgetPasswordForm {
+    margin-top: 1em;
+    gap: 1em;
+}
+
+.forgetPasswordPart input {
+    width: 100%;
+}
+
 .registerInformationInput label,
-.registerPasswordInput label {
+.registerPasswordInput label,
+.forgetPasswordPart label,
+.resetPasswordInputs label {
     font-size: 1.2em;
 }
 
+.successInfoShow {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 0.5em;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+}
+
+.successInfoShow input {
+    border-radius: 10px;
+    padding: 0.5em 1em;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.registerNavRelatedText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    margin: 2em 1em;
+}
+
+.registerSuccessHeader {
+    margin-top: 2em;
+}
+
 @media(min-width: 800px) {
-    .userRegisterHeader {
+    .userRegisterHeader,
+    .userForgotPasswordHeader {
         /* align-items: flex-start; */
         width: 80%;
         margin-bottom: 2em;
     }
 
-    .userRegisterHeader h1 {
+    .userRegisterHeader h1,
+    .userForgotPasswordHeader h1 {
         font-size: 3.5em;
     }
 
-    .registerVideoPart, .registerEmailForm {
+    .registerVideoPart, .registerEmailForm,
+    .forgetPasswordForm {
         width: 50%;
     }
 }

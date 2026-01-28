@@ -2,7 +2,66 @@
     include("../../conn.php");
     session_start();
 
-    $email = $_SESSION['email'];
+    if(isset($_SESSION["name"])) {
+        ?>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const nameInput = document.querySelector("#registerName");
+                    const DOBInput = document.querySelector("#registerDOB");
+                    const genderInput = document.querySelector("#registerGender");
+                    const courseInput = document.querySelector("#course");
+                    const nationalityInput = document.querySelector("#nationality");
+                    const contactNumberInput = document.querySelector("#contactNumber");
+
+                    nameInput.value = <?php echo json_encode($_SESSION["name"]); ?>;
+                    DOBInput.value = <?php echo json_encode($_SESSION["DOB"]); ?>;
+                    genderInput.value = <?php echo json_encode($_SESSION["gender"]); ?>;
+                    courseInput.value = <?php echo json_encode($_SESSION["course"]); ?>;
+                    nationalityInput.value = <?php echo json_encode($_SESSION["nationality"]); ?>;
+                    contactNumberInput.value = <?php echo json_encode($_SESSION["contactNumber"]); ?>;
+                })
+            </script>
+        <?php
+    }
+
+    if (isset($_POST["btnSubmitInformation"])) {
+        $name = trim($_POST["registerName"]);
+        $DOB = $_POST["registerDOB"];
+        $gender = $_POST["registerGender"];
+        $course = $_POST["courseName"];
+        $nationality = $_POST["nationality"];
+        $contactNumber = trim($_POST["contactNumber"]);
+
+        $_SESSION["name"] = $name;
+        $_SESSION["DOB"] = $DOB;
+        $_SESSION["gender"] = $gender;
+        $_SESSION["course"] = $course;
+        $_SESSION["nationality"] = $nationality;
+        $_SESSION["contactNumber"] = $contactNumber;
+
+        if (empty($name) ||empty($gender) || empty($course) || empty($nationality)) {
+            $errorMessage = "All data is required to be selected.";
+        }
+        else if (!preg_match("/^[a-zA-Z ]+$/", $name)) {
+            $errorMessage = "The name should only contain alpheberts.";
+        }
+        else if (!ctype_digit($contactNumber) || !((10 == strlen($contactNumber)) || (strlen($contactNumber) == 11))) {
+            $errorMessage = "The contact number should only contain 10 or 11 digits.";
+        }
+        else {
+
+            header("Location: registerPage3.php");
+            exit;
+        }
+
+        ?>
+            <script>
+                alert(<?php echo json_encode($errorMessage) ?>);
+                window.location.href = "registerPage2.php";
+            </script>
+        <?php
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +88,11 @@
         <form action="#" method="POST" class="registerInformationForm">
             <div class="registerInformationInput">
                 <label for="registerName">Name</label>
-                <input type="text" name="registerName" placeholder="Enter Name">
+                <input type="text" name="registerName" id="registerName" required placeholder="Enter Name">
             </div>
             <div class="registerInformationInput">
                 <label for="registerDOB">Date Of Birth</label>
-                <input type="date" name="registerDOB" id="registerDOB">
+                <input type="date" name="registerDOB" id="registerDOB" required id="registerDOB">
             </div>
             <div class="registerInformationInput">
                 <label for="registerGender">Gender</label>
@@ -53,10 +112,10 @@
             </div>
             <div class="registerInformationInput">
                 <label for="contactNumber">Contact Number</label>
-                <input type="text" name="contactNumber" id="contactNumber" placeholder="0123456789">
+                <input type="text" name="contactNumber" required id="contactNumber" placeholder="0123456789">
             </div>
             <div class="btnSubmitInformations">
-                <button id="btnSubmitInformation">Next Page</button>
+                <button id="btnSubmitInformation" name="btnSubmitInformation">Next Page</button>
             </div>
         </form>
     </main>

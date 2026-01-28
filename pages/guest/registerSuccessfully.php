@@ -2,7 +2,7 @@
     include("../../conn.php");
     session_start();
 
-    $email = $_SESSION['email'];
+    // $email = $_SESSION['email'];
 ?>
 
 <!DOCTYPE html>
@@ -19,33 +19,26 @@
     <?php include("header.php") ?>
 
     <main class="register">
-        <div class="backButtonPart">
-            <div><button id='btnBackToRegisterPage3' class='btnExitPage'><a href="registerPage3.php"><i class="fa-solid fa-arrow-left" style="color: #fff;"></i></a></button></div>
-        </div>
-        <div class="userRegisterHeader">
+        <div class="userRegisterHeader registerSuccessHeader">
             <h1>User Registration</h1>
             <div class="registerTitlePart"><h3 class="registerTitle">Register Successfully🎉</h3></div>
         </div>
-        <div class="successfullyInfo">
+        <div class="successFullyInfo">
             <div class="successInfoShow">
                 <h3>Your ID is</h3>
-                <input type="text" id="newId" value="" readonly>
+                <input type="text" id="newId" value="<?php echo $_SESSION["newUserID"]; ?>" readonly>
             </div>
-        </div>
-        <div class="successfullyInfo">
             <div class="successInfoShow">
                 <h3>Password</h3>
-                <input type="text" id="password" value="" readonly>
+                <input type="text" id="password" value="<?php echo $_SESSION["password1"]; ?>" readonly>
             </div>
         </div>
-        <p>
-            Try to explore our platform right now!
-        </p>
-        <h2>
-            <a href="login.php">Log In Page</a>
-        </h2>
+        <div class="registerNavRelatedText">
+            <p>Try to explore our platform right now!</p>
+            <h2><a href="login.php">Log In Page</a></h2>
+        </div>
     </main>
 
-
+    <?php session_destroy() ?>;
 </body>
 </html>
