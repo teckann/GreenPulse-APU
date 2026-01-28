@@ -32,8 +32,8 @@ main {
 .avatar {
     width: 100px;
     height: 100px;
-    border-radius: 5px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .social-media-big-container {

@@ -54,13 +54,13 @@
                     <h1>Our Project Contributors</h1>
 
                     <div class="member-card-container">
-                        <div class="member-card">
+                        <a href="teckannPortfolio.php" target="_blank" title="View Portfolio" class="member-card">
                             <img src="../../src/elements/member1.png" alt="Member 1 Picture">
                             <div class="member-details">
                                 <h3>Gan Teck Ann</h3>
                                 <p>Project Leader</p>
                             </div>
-                        </div>
+                        </a>
 
                         <div class="member-card">
                             <img src="../../src/elements/member2.png" alt="Member 2 Picture">
