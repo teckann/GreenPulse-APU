@@ -140,6 +140,44 @@ main {
     height: 26px;
 }
 
+.experience-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.experience-details {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.experience-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.experience-header-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.experience-header-1 h3 {
+    font-size: 1.3em;
+}
+
+.experience-header-1 p {
+    font-size: 1.1em;
+    font-weight: 450;
+}
+
+.duration p {
+    font-size: 1.1em;
+    font-weight: lighter;
+}
+
 @media(max-width: 800px) {
     .flex-container {
         padding: 2em 0;
@@ -159,5 +197,10 @@ main {
 
     .section-details {
         font-size: 1em;
+    }
+
+    .experience-header {
+        flex-direction: column;
+        gap: 8px;
     }
 }

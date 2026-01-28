@@ -65,6 +65,51 @@
                 </div>
 
                 <div class="section-container">
+                    <p class="section-title">Experience</p>
+                    
+                    <div class="experience-details">
+                        <div class="experience-box">
+                            <div class="experience-header">
+                                <div class="experience-header-1">
+                                    <h3>BRAIN Research Consultant</h3>
+                                    <p>WorldQuant | Contract</p>
+                                </div>
+
+                                <div class="duration">
+                                    <p>Dec 2025 - Present</p>
+                                </div>
+                            </div>
+
+                            <p class="section-details">
+                                Works with large datasets, applying statistical and programming techniques to uncover 
+                                market insights. Gains exposure to real-world applications of data science and quantitative 
+                                analysis.
+                            </p>
+                        </div>
+
+                        <div class="experience-box">
+                            <div class="experience-header">
+                                <div class="experience-header-1">
+                                    <h3>Frontend Developer</h3>
+                                    <p>APU CLCS | Hybrid</p>
+                                </div>
+
+                                <div class="duration">
+                                    <p>Jun 2025 - Oct 2025</p>
+                                </div>
+                            </div>
+
+                            <p class="section-details">
+                                Served as a frontend developer on a collaborative team within the Official Website 
+                                Project of APU CLCS. Developed and maintained responsive web applications using React,
+                                TypeScript and Tailwind CSS. Build reusable and modular UI components to improve 
+                                development efficiency. Participated in team discussions to maintain code quality.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-container">
                     <p class="section-title">Skills</p>
                     
                     <div class="tech-details">
