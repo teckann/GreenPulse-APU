@@ -7,7 +7,8 @@
     $profilePhoto = $row["avatar"];
 ?> 
 
-<nav class = "navigation-bar">
+<header>
+    <nav class = "navigation-bar">
         <div class = "hamburger-menu">
             <button onclick = "toggleMenu()">
                 <img src="../../src/committee/hamburgerMenu.svg" alt="Hamburger Menu">
@@ -37,18 +38,19 @@
             <p>Join our upcoming Recycling Workshop on Dec 30! Learn, create, and make a difference for a greener tomorrow.</p>
         </marquee>
     </div>
-</nav>
 
-<div id="profileNavBarOverlay"></div>
 
-<div id="profileRelatedNavBarPopUp">
-    <div class="profileNavBarUpper"><div class="triangleUp"></div></div>
-    <div class="profileNavBarBottom">
-        <div><a href="committeeProfile.php">General Profile</a></div>
-        <div><a href="securityCommonPage.php">Security Settings</a></div>
-        <div><a href="../../backend/logoutRedirect.php">Log Out</a></div>
+    <div id="profileNavBarOverlay"></div>
+
+    <div id="profileRelatedNavBarPopUp">
+        <div class="profileNavBarUpper"><div class="triangleUp"></div></div>
+        <div class="profileNavBarBottom">
+            <div><a href="committeeProfile.php">General Profile</a></div>
+            <div><a href="securityCommonPage.php">Security Settings</a></div>
+            <div><a href="../../backend/logoutRedirect.php">Log Out</a></div>
+        </div>
     </div>
-</div>
+</header>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {

@@ -235,7 +235,7 @@
                                         <div class='itemButton'>
                                             <form action='#' method='GET'>
                                                 <input type='hidden' name='targetItemID' value='" . $row['item_id'] . "'>
-                                                <input type='hidden' name='targetUserID' value='" . $row['user_id'] . "'>
+                                                <input type='hidden' name='targetUserID' id='tree_userId' value='" . $row['user_id'] . "'>
                                                 <input type='hidden' name='targetItemName' value='" . $row['item_name'] . "'>
                                                 <input type='hidden' name='targetItemImage' value='" . $row['item_image'] . "'>
                                                 <input type='hidden' name='targetItemDescription' value='" . $row['item_description'] . "'>
@@ -450,8 +450,9 @@
                 const statusText = itemStatus.innerText;
                 const itemEditBtn = treeCard.querySelector(".itemEditBtn");
                 const itemDeleteBtn = treeCard.querySelector(".itemDeleteBtn");
+                const eachTreeUserId = treeCard.querySelector("#tree_userId").value;
 
-                if (statusText === "Inactive") {
+                if ((statusText === "Inactive") || (eachTreeUserId !== <?php echo json_encode($userID) ?>)) {
                     itemEditBtn.classList.add("disableButton");
                     itemDeleteBtn.classList.add("disableButton");
                 }

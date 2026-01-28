@@ -116,7 +116,7 @@
         <div class="info">
             <div class="personalData">
                 <div><p>Role</p></div>
-                <div><p>: <?php echo $role ?></p></div>
+                <div><p>: <?php echo ucwords($role) ?></p></div>
             </div>
             <div class="personalData">
                 <div><p>Gender</p></div>

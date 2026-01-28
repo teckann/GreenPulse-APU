@@ -23,6 +23,13 @@ body {
     height: 30px;
 }
 
+header {
+    width: 100%;
+    /* position: sticky; */
+    /* top: 0; */
+    /* z-index: 1000000; */
+}
+
 /*The header thing*/
 .navigation-bar {
     /* i. This three trio is to: auto seperate the space, and make it top center
