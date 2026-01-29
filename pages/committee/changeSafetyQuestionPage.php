@@ -27,7 +27,7 @@
                 addLog($conn, $userID, "Update Security Question ($userID)");
                 ?>
                     <script>
-                        alert("Safety Question Update Successfully");
+                        alert("Security Question Update Successfully");
                         window.location.href = "index.php";
                     </script>
                 <?php
@@ -62,6 +62,11 @@
             $dataSafetyQuestionAnswer1 = $row["answer_1"];
             $dataSafetyQuestionAnswer2 = $row["answer_2"];
 
+            if ($dataSafetyQuestion1 == null) {
+                $dataSafetyQuestion1 = "";
+            }
+            if ($dataSafetyQuestion2== null)
+                $dataSafetyQuestion2 = "";
             ?>
                 <script>
                     document.addEventListener("DOMContentLoaded", () => {
@@ -96,7 +101,7 @@
 
     <div id="changeSafetyQuestionUpperPart">
         <div><button id='btnBackToSecurityMainPage' class='btnExitPopUps'><a href="securityMainPage.php"><i class="fa-solid fa-arrow-left"></i></a></button></div>
-        <div id="changeSafetyQuestionTextPart"><b id="changeSafetyQuestionText">Safety Question Changing Page</b></div>
+        <div id="changeSafetyQuestionTextPart"><b id="changeSafetyQuestionText">Security Question Changing Page</b></div>
     </div>
     <form action="#" method="POST">
         <div id="changeSafetyQuestionBottomPart">
@@ -114,7 +119,7 @@
                         </select>
                     </div>
                     <div id="safetyQuestionAnswer1" class="newSafetyQuestion1">
-                        <label for="newSafetyQuestionAnswer1" class="upText">Answer Safety Question 1:</label>
+                        <label for="newSafetyQuestionAnswer1" class="upText">Question 1 Answer:</label>
                         <input type="text" name="newSafetyQuestionAnswer1" id="newSafetyQuestionAnswer1" class="upText" required>
                     </div>
                 </div>
@@ -131,7 +136,7 @@
                         </select>
                     </div>
                     <div id="safetyQuestionAnswer2" class="newSafetyQuestion2">
-                        <label for="newSafetyQuestionAnswer2" class="upText">Answer Safety Question 2:</label>
+                        <label for="newSafetyQuestionAnswer2" class="upText">Question 2 Answer:</label>
                         <input type="text" name="newSafetyQuestionAnswer2" id="newSafetyQuestionAnswer2" class="upText" required>
                     </div>
                 </div>

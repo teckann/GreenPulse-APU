@@ -10,6 +10,7 @@
 /* HEADER */
 /* ======================================================================================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 body {
     margin: 0px;
@@ -3142,6 +3143,10 @@ header {
     align-items: center;
 }
 
+.profileNavBarBottom div a:hover {
+    color: #805D93;
+}
+
 .editProfileTextContainer {
     width: 100%;
     display: flex;
@@ -3268,6 +3273,7 @@ header {
 
 #changeSafetyQuestionUpperPart div:nth-of-type(2) b {
     font-size: 1.5em;
+    text-align: center;
 }
 
 .safetyVerifyDescription {
@@ -3531,6 +3537,11 @@ header {
     width: 100%;
 }
 
+.itemImage img:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 
 @media(min-width: 800px) {
 
@@ -3596,7 +3607,7 @@ header {
     .treeCard,
     .merchandiseCard {
         width: 19em;
-        height: 30em;
+        height: 32em;
     }
 
     .itemUploadInfo {
@@ -3606,7 +3617,7 @@ header {
     }
 
     .itemInfo {
-        height: 6em;
+        height: 8em;
 
     }
 
@@ -3664,7 +3675,7 @@ header {
     }
 
     #treeCardAdoptedTree {
-        height: 32em;
+        height: 33em;
     }
 
     .personalData {
