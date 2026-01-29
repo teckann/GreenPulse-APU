@@ -48,6 +48,8 @@
             $sqlChangePassword = "UPDATE users SET password = '$hash_password' WHERE user_id = '$userID'";
 
             if (mysqli_query($conn, $sqlChangePassword)) {
+
+                addLog($conn, $userID, "Update Password ($userID)");
                 ?> 
                     <script>
                         alert("Password changed successfully.");
@@ -101,5 +103,7 @@
             </div>
         </div>
     </form>
+
+    <?php include ("hamburgerMenu.php");?>
 </body>
 </html>

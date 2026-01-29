@@ -1,7 +1,6 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php");
-    include("../../backend/unsetRegisterData.php");
 
     $sqlMerchandise = "SELECT COUNT(*) as total FROM items 
                        WHERE category = 'merchandise' AND item_status = 'Active'";

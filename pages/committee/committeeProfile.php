@@ -214,5 +214,6 @@
         const changePhotoStatus = <?php echo json_encode($changeProfilePhotoPopUp); ?>;
     </script>
     <script src="../../scripts/committee_profile.js"></script>
+    <?php include ("hamburgerMenu.php");?>
 </body>
 </html>

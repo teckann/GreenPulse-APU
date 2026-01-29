@@ -62,6 +62,9 @@
             '{$_SESSION['email']}', '{$_SESSION['course']}', '{$date}', '{$_SESSION['hash_password']}', 'src/avatars/default.png', 'volunteer');";
 
             if (mysqli_query($conn, $sqlCreateAccount)) {
+
+                addLog($conn, $newId, "Register an account ($newId)");
+
                 header("Location: registerSuccessfully.php");
                 exit;
             }

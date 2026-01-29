@@ -16,7 +16,7 @@
         if (mysqli_query($conn, $sqlChange)) {
 
             // record activity into logs
-            addLog($conn, $userID, "Edit available merchandise information");
+            addLog($conn, $userID, "Update Merchandise Information ($merchandiseId)");
             ?>
                 <script>
                     document.addEventListener("DOMContentLoaded", () => {
@@ -41,13 +41,11 @@
         
 
         $sqlDelete = "UPDATE items SET item_status = 'Inactive' WHERE item_id = '$merchandiseID'";
-        
-        echo "<script>alert('$merchandiseID')</script>";
 
         if (mysqli_query($conn, $sqlDelete)) { 
 
         // record actifivy into logs
-        addLog($conn, $userID, "Delete available merchandise");
+        addLog($conn, $userID, "Delete Merchandise ($merchandiseID)");
             ?>
             <script>
                 document.addEventListener("DOMContentLoaded", () => {
@@ -545,5 +543,6 @@
         
     </script>
     <script src="../../scripts/committee.js"></script>
+    <?php include ("hamburgerMenu.php");?>
 </body>
 </html>

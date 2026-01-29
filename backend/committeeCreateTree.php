@@ -79,7 +79,7 @@
                             window.location.href = '../pages/committee/availableTreePage.php';
                         </script>";
                     
-                    addLog($conn, $userID, "Create New Tree ($itemID)");
+                    addLog($conn, $userID, "Add New Tree ($itemID)");
                 }
             }
             else {

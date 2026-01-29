@@ -79,6 +79,8 @@
 
             if (mysqli_query($conn, $sqlChangeProfileData)) {
 
+                addLog($conn, $userID, "Update Profile Information ($userID)");
+
                 $_SESSION["userName"] = $name;
                 ?>
                     <script>

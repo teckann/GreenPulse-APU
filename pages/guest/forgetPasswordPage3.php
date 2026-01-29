@@ -38,6 +38,9 @@
             $sqlUpdatePassword = "UPDATE users SET password = '{$_SESSION['hash_password']}' WHERE user_id = '{$_SESSION["userIdInput"]}'";
 
             if (mysqli_query($conn, $sqlUpdatePassword)) {
+
+                addLog($conn, $_SESSION["userIdInput"], "Reset Password ({$_SESSION['userIdInput']})");
+
                 ?>
                     <script>
                         alert('Password change successfully!');
