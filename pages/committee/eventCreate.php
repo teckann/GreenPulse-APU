@@ -165,7 +165,7 @@
                     <div class = "two-column">
                         <div class="input-group">
                             <div class = "row">
-                                <label>Available Spot</label>
+                                <label>Capacity</label>
                                 <span> *</span>
                             </div>
                            
