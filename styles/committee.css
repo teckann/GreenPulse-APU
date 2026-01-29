@@ -3280,7 +3280,8 @@ header {
         gap: 3em;
     }
 
-    #upperTree button {
+    #upperTree button,
+    #upperMerchandise button {
         position: static;
         z-index: auto;
     }
@@ -3392,6 +3393,10 @@ header {
 
     .createItem {
         padding: 0 0 0 15%;
+    }
+
+    .changeSafetyQuestionForm {
+        width: auto;
     }
 
     #middleItemCardAdoptedTree {

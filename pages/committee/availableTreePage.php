@@ -16,7 +16,7 @@
         if (mysqli_query($conn, $sqlChange)) {
 
             // record activity into logs
-            addLog($conn, $userID, "Edit Available Tree Information($treeId)");
+            addLog($conn, $userID, "Update Tree Information ($treeId)");
             ?>
                 <script>
                     document.addEventListener("DOMContentLoaded", () => {
@@ -41,13 +41,11 @@
         
 
         $sqlDelete = "UPDATE items SET item_status = 'Inactive' WHERE item_id = '$treeID'";
-        
-        echo "<script>alert('$treeID')</script>";
 
         if (mysqli_query($conn, $sqlDelete)) { 
 
         // record actifivy into logs
-        addLog($conn, $userID, "Delete Available Tree ($treeID)");
+        addLog($conn, $userID, "Delete Tree ($treeID)");
             ?>
             <script>
                 document.addEventListener("DOMContentLoaded", () => {

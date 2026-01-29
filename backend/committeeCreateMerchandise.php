@@ -72,7 +72,7 @@
                             window.location.href = '../pages/committee/merchandiseManagement.php';
                         </script>";
                     
-                    addLog($conn, $userID, "Create New Merchandise ($itemID)");
+                    addLog($conn, $userID, "Add New Merchandise ($itemID)");
                 }
             }
             else {

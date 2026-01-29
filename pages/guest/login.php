@@ -21,7 +21,7 @@
             if(password_verify($password, $hash_password) && $account_status === "Active") {
                 session_start();
 
-                include("../../backend/unsetRegisterData.php");
+                include("../../backend/unsetRegisterAndForgetPassword.php");
 
                 $_SESSION["userID"] = $row["user_id"];
                 $_SESSION["userName"] = $row["name"];

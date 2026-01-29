@@ -23,6 +23,8 @@
             $sqlUpdateSafetyQuestion = "UPDATE users SET safety_question_1 = '$question1', answer_1 = '$answer1', safety_question_2 = '$question2', answer_2 = '$answer2' WHERE user_id = '$userID'";
 
             if (mysqli_query($conn, $sqlUpdateSafetyQuestion)) {
+
+                addLog($conn, $userID, "Update Security Question ($userID)");
                 ?>
                     <script>
                         alert("Safety Question Update Successfully");
@@ -57,15 +59,21 @@
         if ($row = mysqli_fetch_assoc($result)) {
             $dataSafetyQuestion1 = $row["safety_question_1"];
             $dataSafetyQuestion2 = $row["safety_question_2"];
+            $dataSafetyQuestionAnswer1 = $row["answer_1"];
+            $dataSafetyQuestionAnswer2 = $row["answer_2"];
 
             ?>
                 <script>
                     document.addEventListener("DOMContentLoaded", () => {
                         const selectBox1 = document.querySelector("#newSafetyQuestionSelect1");
                         const selectBox2 = document.querySelector("#newSafetyQuestionSelect2");
+                        const answerBox1 = document.querySelector("#newSafetyQuestionAnswer1");
+                        const answerBox2 = document.querySelector("#newSafetyQuestionAnswer2");
 
                         selectBox1.value = <?php echo json_encode($dataSafetyQuestion1); ?>;
                         selectBox2.value = <?php echo json_encode($dataSafetyQuestion2); ?>;
+                        answerBox1.value = <?php echo json_encode($dataSafetyQuestionAnswer1); ?>;
+                        answerBox2.value = <?php echo json_encode($dataSafetyQuestionAnswer2); ?>;
                     })
                 </script>
             <?php
