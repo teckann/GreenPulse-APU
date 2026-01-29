@@ -63,6 +63,31 @@
                 </div>
 
                 <div class="section-container">
+                    <p class="section-title">Experience</p>
+                    
+                    <div class="experience-details">
+                        <div class="experience-box">
+                            <div class="experience-header">
+                                <div class="experience-header-1">
+                                    <h3>BRAIN Research Consultant</h3>
+                                    <p>WorldQuant | Contract</p>
+                                </div>
+
+                                <div class="duration">
+                                    <p>Dec 2025 - Present</p>
+                                </div>
+                            </div>
+
+                            <p class="section-details">
+                                Works with large datasets, applying statistical and programming techniques to uncover 
+                                market insights. Gains exposure to real-world applications of data science and quantitative 
+                                analysis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-container">
                     <p class="section-title">Skills</p>
                     
                     <div class="tech-details">
