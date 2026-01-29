@@ -67,19 +67,19 @@
         </div>
         <div class="userForgotPasswordHeader">
             <h1>Forget Password</h1>
-            <div class="forgetPasswordTitlePart"><i class="fa-solid fa-lock" style="color: #194a7a"></i><h3 class="forgetPasswordTitle">Safety Question Verification</h3></div>
+            <div class="forgetPasswordTitlePart"><i class="fa-solid fa-lock" style="color: #194a7a"></i><h3 class="forgetPasswordTitle">Security Question Verification</h3></div>
         </div>
         <form action="#" method="POST" class="forgetPasswordForm">
             <div class="SafetyQuestion1Part forgetPasswordPart">
-                <h4 class="safetyQuestion1Lbl">Safety Question 1</h4>
-                <label for="" id="safetyQuestion1">Question Question</label>
+                <h4 class="safetyQuestion1Lbl">Security Question 1</h4>
+                <label for="" id="safetyQuestion1">Question</label>
                 <div class="safetyQuestion1Part">
                     <input type="text" name="safetyQuestion1Input" id="safetyQuestion1Input" class="safetyQuestions">
                 </div>
             </div>
             <div class="SafetyQuestion2Part forgetPasswordPart">
-                <h4 class="safetyQuestion2Lbl">Safety Question 2</h4>
-                <label for="" id="safetyQuestion2">Question Question</label>
+                <h4 class="safetyQuestion2Lbl">Security Question 2</h4>
+                <label for="" id="safetyQuestion2">Question</label>
                 <div class="safetyQuestion2Part">
                     <input type="text" name="safetyQuestion2Input" id="safetyQuestion2Input" class="safetyQuestions">
                 </div>

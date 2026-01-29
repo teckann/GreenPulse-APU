@@ -64,6 +64,8 @@
         // to change the tree photo
 
     $sql = "SELECT * FROM items WHERE category = 'tree'";
+    $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
+                                FROM items WHERE category = 'tree'";
 
     $search = '';
     $treeStatus = '';
@@ -84,25 +86,43 @@
 
     if (!empty($search)) {
         $sql = "SELECT * FROM items WHERE item_name LIKE '%{$search}%' AND category = 'tree'";
+        $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
+                                FROM items WHERE item_name LIKE '%{$search}%' AND category = 'tree'";
     }
     else {
         if ($treeStatus === "" && $treeCreatorStatus === "") {
             $sql = "SELECT * FROM items WHERE category = 'tree'";
+            $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
+                                FROM items WHERE category = 'tree'";
+
         }
         else if ($treeStatus === "") {
             $sql = "SELECT * FROM items WHERE user_id = '$userID' AND category = 'tree'";
+            $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
+                                FROM items WHERE user_id = '$userID' AND category = 'tree'";
         }
         else if ($treeCreatorStatus === "") {
             $sql = "SELECT * FROM items WHERE item_status = '$treeStatus' AND category = 'tree'";
+            $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
+                                FROM items WHERE item_status = '$treeStatus' AND category = 'tree'";
         }
         else {
             $sql = "SELECT * FROM items WHERE item_status = '$treeStatus' AND user_id = '$userID' AND category = 'tree'";
+            $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
+                                FROM items WHERE item_status = '$treeStatus' AND user_id = '$userID' AND category = 'tree'";
         }
     }
 
 
     // $sql = "SELECT * from items where item_name like '%{$search}%'";
     $result = mysqli_query($conn, $sql);
+    $stockResult = mysqli_query($conn, $sqlItemStockStatus);
+
+    if ($stockRow = mysqli_fetch_assoc($stockResult)) {
+        $totalStock = $stockRow["total"];
+        $normalStock = $stockRow["normal_stock"];
+        $lowStock = $stockRow["low_stock"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -170,11 +190,49 @@
                     </form>
                 </div>
 
+                <div class="showTreeStatusSpace">
+                    <div class="itemStockOverview">
+                        <div class="itemStockTitle">
+                            <h3>Tree Stock Overview</h3>
+                        </div>
+                        <div class="itemStockStatuses">
+                            <div class="itemStockCard">
+                                <p>Selected Tree</p>
+                                <div style="background-color: #0A2463"><b style="color: white;"><?php echo $totalStock ?></b></div>
+                            </div>
+                            <div class="itemStockCard">
+                                <p>Normal Stock</p>
+                                <div style="background-color: #66A182"><b style="color: white;"><?php echo $normalStock ?></b></div>
+                            </div>
+                            <div class="itemStockCard">
+                                <p>Low Stock</p>
+                                <div style="background-color: #C42021"><b style="color: white;"><?php echo $lowStock ?></b></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="showTreeCardsSpace">
                     <div class="showTreeCards">
                         <?php 
                             $trees = array();
+                            // $totalStock = 0;
+                            // $lowStockNumber = 0;
+                            // $normalStockNumber = 0;
                             while ($row = mysqli_fetch_assoc($result)) {
+
+                                // count total stock
+                                // $totalStock += 1;
+
+                                $itemStock = $row['item_stock'];
+
+                                // if ($itemstock >= 20) {
+                                //     $normalStockNumber += 1;
+                                // }
+                                // else {
+                                //     $lowStockNumber += 1;
+                                // }
+
                                 $trees[] = $row;
                                 $statusColor = "";
                                 if ($row["item_status"] === "Active") {
@@ -216,7 +274,7 @@
                                                 </div>
                                                 <div class='itemStock'>
                                                     <b>Stocks:</b>
-                                                    <p>" . $row['item_stock'] . "</p>
+                                                    <p>" . $itemStock . "</p>
                                                 </div>
                                             </div>
                                         </div>
