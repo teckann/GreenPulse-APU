@@ -7,11 +7,8 @@
 **************************/
 
 /* ======================================================================================================================================== */
-/* HOME PAGE */
+/* HEADER */
 /* ======================================================================================================================================== */
-
-
-/* import google font*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 body {
@@ -25,33 +22,20 @@ body {
 
 header {
     width: 100%;
-    /* position: sticky; */
-    /* top: 0; */
-    /* z-index: 1000000; */
 }
 
-/*The header thing*/
 .navigation-bar {
-    /* i. This three trio is to: auto seperate the space, and make it top center
-          If want to use justify-content and align-items, I need to use display: flex;
-          
-          display: flex; is used to "activate the justify and align thing" and arrage the element inside the navigation bar
-    */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
-    /* ii. Then I want fixed the size of the navigation bar*/
     min-height: 40px;
-
-    /* iii. Design*/
     background-color: #FAF9F6;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hamburger {
     flex: 1;
-    /* Use one section*/
     text-align: left;
 }
 
@@ -62,27 +46,33 @@ header {
 }
 
 .logo {
+
+    height: 50px;
     flex: 1;
+    max-width: 140px;
+    display: flex;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo img {
-    width: 160px;
+    width: 140px;
     height: auto;
 }
 
 
 .profile {
-    flex: 1;
     text-align: right;
     position: relative;
+    width: 40px;
+    height: 40px;
 }
 
 .profile img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    /* Circle */
 }
 
 .banner {
@@ -90,7 +80,6 @@ header {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /* Make sure the <marquee> won't overflow*/
     height: 40px;
     background-color: #ffffff;
     letter-spacing: 0.5px;
@@ -110,9 +99,6 @@ header {
 .heroSection {
     background-color: #FAF9F6;
     flex: 1;
-    /* Takes up the remaining middle space */
-    background-color: transparent !important;
-    /* Prevents double background colors */
     text-align: center;
     padding: 2rem 0;
 }
@@ -133,9 +119,6 @@ header {
     letter-spacing: 1px;
 }
 
-
-
-/* Grey content section */
 .content-section {
     background-color: #ededed;
     padding: 2rem 1.5rem;
@@ -174,7 +157,6 @@ header {
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    /*When the cursor hover the button, the cursor will become a "hand" shape*/
     font-family: "Roboto", sans-serif;
     font-size: 0.85rem;
     width: 100%;
@@ -187,7 +169,6 @@ header {
     padding: 5px;
 }
 
-/* Sidebar Menu */
 .sidebar {
     position: fixed;
     top: 0;
@@ -235,7 +216,6 @@ header {
     justify-content: center;
 }
 
-/* Menu Items */
 .menu-items {
     flex: 1;
     overflow-y: auto;
@@ -271,15 +251,11 @@ header {
 
 .menu-icon i {
     color: #2d5a27;
-    /* Dark green */
     font-size: 20px;
-    /* Optional: adjust size */
 }
 
-/* Change color when you hover over the menu item */
 .menu-item:hover .menu-icon i {
     color: #4CAF50;
-    /* Brighter green on hover */
 }
 
 .menu-text {
@@ -289,7 +265,6 @@ header {
     color: #333;
 }
 
-/* Sidebar Footer - User Profile Section */
 .sidebar-footer {
     padding: 1.25rem 1.5rem;
     border-top: 1px solid #e0e0e0;
@@ -339,7 +314,6 @@ header {
     text-overflow: ellipsis;
 }
 
-/* Overlay */
 .overlay {
     position: fixed;
     top: 0;
@@ -357,7 +331,6 @@ header {
     opacity: 1;
     visibility: visible;
 }
-
 
 /* ======================================================================================================================================== */
 /* MAIN EVENT PAGE */
@@ -387,11 +360,9 @@ header {
 .header-content {
     display: flex;
     align-items: center;
-    /* Vertically align icons with text */
     justify-content: space-between;
     background-color: #FAF9F6;
     padding: 0 5%;
-    /* Gives breathing room on the sides */
     width: 100%;
     box-sizing: border-box;
 }
@@ -419,13 +390,11 @@ header {
 
 .back-icon,
 .add-icon {
-    /* The circle behind the icon*/
     border-radius: 50%;
     transition: all 0.3s ease;
     background-color: #f5f5f5;
     height: 50px;
     width: 50px;
-    /* Fixed width for both ensures center is true center */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -445,7 +414,6 @@ header {
     transition: all 0.3s ease;
 }
 
-/* Hover Effects */
 .back-icon:hover {
     background-color: #e0e0e0;
     transform: translateX(-3px);
@@ -485,7 +453,6 @@ header {
 .searchInput {
     border: none;
     outline: none;
-    /*This is make the searchbar like when you click then no border*/
     width: 100%;
     font-size: 0.95rem;
     padding-left: 0.6rem;
@@ -510,11 +477,8 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-
 }
 
-/* Update content-card-event to use flexbox for two columns */
 .content-card-event {
     position: relative;
     background-color: white;
@@ -522,18 +486,17 @@ header {
     padding: 0;
     width: 100%;
     box-sizing: border-box;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: row;
     gap: 0;
     overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Left Section - Image */
 .event-left-section {
     position: relative;
-    flex: 1;
-    min-width: 350px;
+    flex: 2;
 }
 
 .event-image {
@@ -544,7 +507,6 @@ header {
     overflow: hidden;
 }
 
-/* This can make the image size gang gang hao */
 .event-image img {
     width: 100%;
     height: 100%;
@@ -552,8 +514,6 @@ header {
     display: block;
 }
 
-
-/* Action Buttons */
 .button {
     position: absolute;
     top: 15px;
@@ -562,7 +522,6 @@ header {
     display: flex;
     gap: 10px;
 }
-
 
 .btn-edit,
 .btn-delete {
@@ -581,13 +540,11 @@ header {
 .btn-edit:hover,
 .btn-delete:hover,
 .btn-study-material:hover {
-    /* I want make like when hover the button change color */
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     background-color: #f5f5f5;
 }
 
-/* Right Section - Details */
 .event-right-section {
     flex: 1;
     padding: 2rem;
@@ -606,7 +563,6 @@ header {
     margin-bottom: 10px;
 }
 
-/* Meta Info Row */
 .event-meta-row {
     display: flex;
     gap: 150px;
@@ -637,7 +593,7 @@ header {
 }
 
 .event-status-row {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .event-more {
@@ -650,7 +606,6 @@ header {
     font-weight: 600;
 }
 
-/* Status and Points Row */
 .status-points-row {
     display: flex;
     gap: 15px;
@@ -682,7 +637,6 @@ header {
 
 .points-badge {
     max-width: 100px;
-    ;
     padding: 8px 16px;
     background-color: #fff3e0;
     border-radius: 20px;
@@ -718,7 +672,6 @@ header {
     font-size: 12px;
 }
 
-/* Event Title */
 .event-title {
     font-size: 2rem;
     color: #1a4d3a;
@@ -728,7 +681,6 @@ header {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Event Description */
 .event-description {
     font-size: 1rem;
     color: #666;
@@ -742,6 +694,51 @@ header {
     border: none;
     cursor: pointer;
     color: #666;
+}
+
+
+@media (max-width: 414px) {
+    .search-filter-group {
+        justify-content: center !important; 
+        flex-direction: column; 
+        width: 100%;
+    }
+
+    .search-bar {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-bottom: 15px !important;
+        width: 95%; 
+        flex: none !important; 
+    }
+
+    .event-controls-event-main {
+        margin-right: 10px;
+    }
+
+    .heroSection h1 {
+        font-size: 30px;
+    }
+
+    .heroSection p {
+        font-size: 12px;
+    }
+
+    .header-content {
+        margin-bottom: 10px;;
+    }
+
+    .status-points-row {
+        margin-bottom: 20px;
+    }
+
+    .event-status {
+        margin-bottom: 10px;
+    }
+
+    .event-image {
+        height: 10px;
+    }
 }
 
 /* ======================================================================================================================================== */
@@ -781,7 +778,6 @@ header {
 }
 
 .input-group {
-    /* border-radius: 5px; */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -790,14 +786,11 @@ header {
 
 }
 
-
 .row {
     display: flex;
     flex-direction: row;
     gap: 5px;
 }
-
-
 
 .row span {
     color: red;
@@ -822,8 +815,6 @@ header {
     text-align: left;
     font-family: "Roboto", sans-serif;
 }
-
-
 
 .white-color-box-event-create {
     border-radius: 12px;
@@ -855,7 +846,6 @@ header {
     font-family: "Roboto", sans-serif;
 }
 
-
 .short-tagline {
     display: flex;
     text-align: center;
@@ -863,6 +853,70 @@ header {
     font-family: "Roboto", sans-serif;
     color: #969696;
     font-size: 12px;
+}
+
+.back-icon-hidden {
+        border-radius: 50%;
+        background-color: transparent;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        color: transparent;
+        
+    }
+    .fa-arrow-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: transparent;
+        transition: all 0.3s ease;
+    }
+
+@media (max-width: 414px) {
+    
+
+
+    .two-column {
+        flex-direction: column !important; 
+        gap: 15px !important;
+    }
+
+    .event-box {
+        height: 45px !important; 
+        font-size: 0.9rem; 
+        padding: 0 10px; 
+    }
+
+    .row {
+        margin-bottom: 5px;
+    }
+
+    .row label {
+        font-size: 0.9rem; 
+    }
+
+    .event-big-box {
+        height: 100px; 
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .btn-create-event {
+        width: 100%; 
+        height: 40px; 
+        font-size: 1.1rem;
+    }
+
+    .heroSection h1 {
+        font-size: 1.6rem;
+    }
+    .heroSection p {
+        font-size: 0.8rem;
+    }
 }
 
 
@@ -961,11 +1015,47 @@ header {
     flex: 1;
 }
 
+@media (max-width: 414px) {
+    .event-feedback-outer-box {
+        margin: 0px 10px 0px 0px;
+    }
+
+    .feedback-header {
+        padding: 0;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .title-feedback {
+        font-size: 0.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .title-date {
+        visibility: hidden;
+    }
+
+    .event-feedback-inner-box {
+        width: 85%;
+        min-height: 40px;
+        height: auto;
+        padding: 10px;
+        font-size: 0.9rem;
+        margin-top: 10px;
+    }
+}
+
 /* ======================================================================================================================================= */
 /*  EVENT MORE PAGE */
 /* ======================================================================================================================================== */
-
-
 .details-upper {
     display: flex;
     justify-content: space-between;
@@ -992,14 +1082,12 @@ header {
     border-radius: 20px;
 }
 
-/* Main Container */
 .event-details-container {
     display: flex;
     gap: 30px;
     flex-direction: column;
 }
 
-/* Left Side - Image and Info */
 .left-side-container {
     display: flex;
     flex-direction: column;
@@ -1063,27 +1151,6 @@ header {
     font-weight: 500;
 }
 
-/* 
-.status-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 14px;
-    background-color: #e8f5f1;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #10b981;
-}
-
-.status-badge .circle {
-    width: 8px;
-    height: 8px;
-    background-color: #10b981;
-    border-radius: 50%;
-    margin-right: 6px;
-} */
-
-/* Right Side - Details */
 .right-side-container {
     margin: 20px 0px 20px 0px;
     display: flex;
@@ -1099,7 +1166,6 @@ header {
     border-radius: 12px;
     border-left: 4px solid #2d5a27;
     transition: all 0.3s ease;
-    /*make it slower*/
 }
 
 .detail-box-row {
@@ -1166,7 +1232,6 @@ header {
     color: #666;
 }
 
-/* Description Container */
 .description-container {
     display: flex;
     gap: 15px;
@@ -1183,7 +1248,6 @@ header {
     margin: 10px 0 0 0;
 }
 
-/* Action Buttons */
 .action-buttons {
     display: flex;
     gap: 15px;
@@ -1234,8 +1298,7 @@ header {
     border-left: 4px solid orange;
 }
 
-/* Responsive Design */
-@media (min-width: 968px) {
+@media (min-width: 414px) {
     .event-details-container {
         flex-direction: row;
     }
@@ -1252,6 +1315,11 @@ header {
         height: 300px;
         object-fit: cover;
     }
+
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 600px) {
@@ -1263,10 +1331,6 @@ header {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
-    }
-
-    .action-buttons {
-        flex-direction: column;
     }
 
     .detail-box,
@@ -1310,9 +1374,6 @@ header {
     justify-content: center;
     margin-top: 0px;
 }
-
-
-
 
 /* ======================================================================================================================================= */
 /*  STUDY QUIZ CREATE MATERIAL AND QUIZ */
@@ -1371,8 +1432,6 @@ header {
     color: rgb(171, 171, 171);
 }
 
-
-
 /* ======================================================================================================================================== */
 /* ATTENDANCE*/
 /* ======================================================================================================================================== */
@@ -1407,8 +1466,6 @@ header {
     flex-direction: row;
     gap: 20px;
 }
-
-
 
 .btn-present,
 .btn-absent {
@@ -1449,6 +1506,75 @@ header {
     height: 20px;
 }
 
+@media (max-width: 414px) {
+    .heroSection h1 {
+        font-size: 1.8rem;
+    }
+
+    .heroSection p {
+        font-size: 0.8rem;
+    }
+
+    .event-controls-event-main {
+        margin: 0px 10px 0px 0px;
+    }
+
+    .white-color-box {
+        width: 95%;
+        padding: 1rem 0.5rem;
+    }
+
+    .title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        text-align: center;
+        display: block;
+        padding: 0 10px;
+    }
+
+    .attendance-row {
+        min-height: 55px; 
+        padding: 10px 5px;
+        gap: 5px;
+    }
+
+    .numbering {
+        flex: 0 0 30px;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
+    .attendance-user-id {
+        display: none; 
+    }
+
+    .name {
+        flex: 2; 
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 5px;
+    }
+
+    .attendance-date-time {
+        display: none; 
+    }
+
+    .attendance-status {
+        flex: 1.5; 
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .btn-present,
+    .btn-absent {
+        width: 60px;
+        height: 35px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+}
 
 /* ======================================================================================================================================== */
 /* DELETE QUIZ*/
@@ -1495,18 +1621,6 @@ header {
     margin-top: 20px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* ======================================================================================================================================== */
 /* @media*/
 /* ======================================================================================================================================== */
@@ -1515,14 +1629,13 @@ header {
     display: none;
 }
 
-/* Mobile */
 @media (max-width: 480px) {
     .hamburger-menu img {
         max-width: 32px;
     }
 
-    .logo img {
-        max-width: 120px;
+    .logo {
+        max-width: 50px;
     }
 
     .profile img {
@@ -1530,22 +1643,21 @@ header {
         height: 32px;
         border-radius: 50%;
     }
+
+    .profileNavBarBottom div a {
+        font-size: 1.1rem;
+    }
 }
 
 
-/* desktop */
 @media (min-width: 801px) {
-
-    /* Hide hamburger menu */
     .hamburger-menu {
         display: none;
     }
 
-    /* Show desktop menu */
     .desktopMenu {
         display: flex;
-        gap: 20px;
-        /* space between menu items */
+        justify-content: center;
         align-items: center;
         font-family: 'Montserrat', sans-serif;
         font-weight: 500;
@@ -1587,7 +1699,6 @@ header {
 }
 
 
-/* Responsive Design for Event Card */
 @media (max-width: 968px) {
     .content-card-event {
         flex-direction: column;
@@ -1648,7 +1759,6 @@ header {
     }
 }
 
-/* Desktop optimizations */
 @media (min-width: 969px) {
     .content-card-event {
         max-width: 1000px;
@@ -1681,9 +1791,7 @@ header {
 
     .event-meta-row {
         gap: 20px;
-        /* Reduce gap on mobile */
         flex-direction: column;
-        /* Stack meta info vertically on very small screens if needed */
     }
 }
 
@@ -1967,7 +2075,148 @@ header {
 .copy-right p {
     color: white;
     font-family: 'Inter', sans-serif;
+}
 
+@media (max-width: 414px) {
+    .video-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .video-content h1 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .mission {
+        padding: 3rem 0;
+        min-height: auto;
+    }
+
+    .whole-page {
+        flex-direction: column;
+    }
+
+    .mission-border {
+        margin: 0px 15px 10px 15px;
+    }
+
+    .mission-border h1 {
+        font-size: 1.2rem;
+    }
+
+    .mission-left p {
+        font-size: 1rem;
+        padding-left: 0; 
+        margin: 10px 15px 0px 15px;
+    }
+
+    .image-under {
+        flex-direction: column;
+        margin-top: 20px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .background-image {
+        width: 100%; 
+    }
+
+    .background-image img {
+        max-height: 250px;
+        width: 100%;
+        border-radius: 0; 
+    }
+
+    .current-impact {
+        padding: 3rem 0; 
+        min-height: auto;
+    }
+
+    .big-title {
+        font-size: 2.2rem;
+        text-align: center;
+        padding-left: 0; 
+    }
+
+    .impact-title {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 10px;
+        padding: 0 15px; 
+    }
+
+    .impact-description {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin: 10px 0;
+    }
+
+    .year {
+        font-weight: bold;
+        margin: 5px 0;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        align-items: center; 
+        gap: 0; 
+        margin-top: 30px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .stats-grid {
+        width: 100%; 
+        min-height: 160px;
+        padding: 20px;
+        border-radius: 0; 
+        box-sizing: border-box;
+        margin-bottom: 1px; 
+    }
+
+    .stat-label p {
+        font-size: 0.9rem;
+    }
+
+    .data h1 {
+        font-size: 2.2rem;
+    }
+
+    .current-impact.green {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .start-manage-container {
+        margin-top: 40px;
+        text-align: center;
+        padding: 0 15px; 
+    }
+
+    .start-manage-title h1 {
+        font-size: 1.6rem;
+        margin: 10px 30px 20px 10px;
+        padding-right: 10px;
+    }
+
+    .btn-manage-event {
+        width: 100%;
+        max-width: 80%; 
+        height: 50px;
+        font-size: 1.1rem;
+    }
+
+    .copy-right {
+        font-size: 0.8rem;
+        padding: 10px 0;
+        height: auto;
+    }
 }
 
 /* ======================================================================================================================================== */
@@ -3418,11 +3667,6 @@ header {
     #profileRelatedNavBarPopUp {
         right: 2em;
     }
-
-    /* TEST */
-    /* -------------------------*/
-    /* ATTENDANCE
-/* -------------------------*/
 
 
 }

@@ -2,7 +2,6 @@
     include("../../conn.php");
     include("../../backend/sessionData.php");
     include("../../backend/unsetRegisterData.php");
-    include("../../backend/sessionData.php"); 
 
     $sqlMerchandise = "SELECT COUNT(*) as total FROM items 
                        WHERE category = 'merchandise' AND item_status = 'Active'";
@@ -81,7 +80,7 @@
                 <h1>CURRENT IMPACT.</h1>
                 <div class = "impact-title">
                     <p class = year>2025</p>
-                    <p class = "impact-description">The project has successfully achieved tree planting activities,<br>merchandise releases, event organization, and module development.</p>
+                    <p class = "impact-description">The project has successfully achieved tree planting activities, merchandise releases, event organization, and module development.</p>
                     <p class = "year">2026</p>
                 </div>
             </div>

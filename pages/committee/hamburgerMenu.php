@@ -12,12 +12,12 @@
                 <span class="menu-text">Home</span>
             </a>
 
-            <a href="treeAdoption.php" class="menu-item">
+            <a href="availableTreePage.php" class="menu-item">
                 <div class="menu-icon"><i class="fa-solid fa-tree"></i></div>
                 <span class="menu-text">Tree Adoption</span>
             </a>
 
-            <a href="merchandises.php" class="menu-item">
+            <a href="merchandiseManagement.php" class="menu-item">
                 <div class="menu-icon"><i class="fa-solid fa-bag-shopping"></i></div>
                 <span class="menu-text">Merchandises</span>
             </a>
