@@ -51,5 +51,6 @@
             <button id="securityChangeSafetyQuestionBtn"><a href="changeSafetyQuestionPage.php">Change Safety Question</a></button>
         </div>
     </div>
+    <?php include ("hamburgerMenu.php");?>
 </body>
 </html>

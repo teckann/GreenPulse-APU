@@ -2324,12 +2324,17 @@ header {
     gap: 1em;
 }
 
+/* .fa-arrow-left {
+    color: black;
+} */
+
 #upperTreeCard form label,
 #upperMerchandiseCard form label {
     font-size: 1em;
 }
 
-#upperTreeCard form select {
+#upperTreeCard form select,
+#upperMerchandiseCard form select {
     padding: 1px 5px;
     font-size: 1em;
     border-radius: 5px;
@@ -2577,6 +2582,12 @@ header {
     border: none;
     font-size: 2em;
     margin-left: 0.2em;
+}
+
+.btnExitPopUps i,
+#btnBackToProfile i {
+    font-size: 1em;
+    color: #271033;
 }
 
 #popUpHeaderText {
