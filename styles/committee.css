@@ -3542,7 +3542,12 @@ header {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.showTreeStatusSpace {
+.itemStockCard p {
+    text-align: center;
+}
+
+.showTreeStatusSpace,
+.showMerchandiseStatusSpace {
     padding: 1em;
     display: flex;
     justify-content: center;
@@ -3572,6 +3577,36 @@ header {
     gap: 1em;
 }
 
+.itemStockCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.itemStockCard div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.treeClass:hover {
+    transform: scale(1.1);
+}
+
+.lowStockReminder {
+    background-color: #C3423F;
+    color: white;
+    border-radius: 5px;
+    margin-left: 2em;
+}
+
+.stockShow {
+    display: flex;
+    align-items: center;
+}
 
 @media(min-width: 800px) {
 

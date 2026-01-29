@@ -64,6 +64,8 @@
         // to change the merchandise photo
 
     $sql = "SELECT * FROM items WHERE category = 'merchandise'";
+    $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
+                                FROM items WHERE category = 'merchandise'";
 
     $search = '';
     $merchandiseStatus = '';
@@ -84,25 +86,42 @@
 
     if (!empty($search)) {
         $sql = "SELECT * FROM items WHERE item_name LIKE '%{$search}%' AND category = 'merchandise'";
+        $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
+                                FROM items WHERE item_name LIKE '%{$search}%' AND category = 'merchandise'";
     }
     else {
         if ($merchandiseStatus === "" && $merchandiseCreatorStatus === "") {
             $sql = "SELECT * FROM items WHERE category = 'merchandise'";
+            $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
+                                FROM items WHERE category = 'merchandise'";
         }
         else if ($merchandiseStatus === "") {
             $sql = "SELECT * FROM items WHERE user_id = '$userID' AND category = 'merchandise'";
+            $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
+                                FROM items WHERE user_id = '$userID' AND category = 'merchandise'";
         }
         else if ($merchandiseCreatorStatus === "") {
             $sql = "SELECT * FROM items WHERE item_status = '$merchandiseStatus' AND category = 'merchandise'";
+             $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
+                                FROM items WHERE item_status = '$merchandiseStatus' AND category = 'merchandise'";
         }
         else {
             $sql = "SELECT * FROM items WHERE item_status = '$merchandiseStatus' AND user_id = '$userID' AND category = 'merchandise'";
+            $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
+                                FROM items WHERE item_status = '$merchandiseStatus' AND user_id = '$userID' AND category = 'merchandise'";
         }
     }
 
 
     // $sql = "SELECT * from items where item_name like '%{$search}%'";
     $result = mysqli_query($conn, $sql);
+    $stockResult = mysqli_query($conn, $sqlItemStockStatus);
+
+    if ($stockRow = mysqli_fetch_assoc($stockResult)) {
+        $totalStock = $stockRow["total"];
+        $normalStock = $stockRow["normal_stock"];
+        $lowStock = $stockRow["low_stock"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -156,6 +175,28 @@
                     </form>
                 </div>
 
+                <div class="showMerchandiseStatusSpace">
+                    <div class="itemStockOverview">
+                        <div class="itemStockTitle">
+                            <h3>Merchandise Stock Overview</h3>
+                        </div>
+                        <div class="itemStockStatuses">
+                            <div class="itemStockCard">
+                                <p>Selected items</p>
+                                <div style="background-color: #0A2463"><b style="color: white;"><?php echo $totalStock ?></b></div>
+                            </div>
+                            <div class="itemStockCard">
+                                <p>Normal Stock</p>
+                                <div style="background-color: #66A182"><b style="color: white;"><?php echo $normalStock ?></b></div>
+                            </div>
+                            <div class="itemStockCard">
+                                <p>Low Stock</p>
+                                <div style="background-color: #C42021"><b style="color: white;"><?php echo $lowStock ?></b></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="showMerchandiseCardsSpace">
                     <div class="showMerchandiseCards">
                         <?php 
@@ -202,7 +243,7 @@
                                                 </div>
                                                 <div class='itemStock'>
                                                     <b>Stocks:</b>
-                                                    <p>" . $row['item_stock'] . "</p>
+                                                    <p><span class='stockText'>" . $row["item_stock"] . "</span> <span class='lowStockReminder'>Low Stock</span></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -430,10 +471,20 @@
                 const itemEditBtn = merchandiseCard.querySelector(".itemEditBtn");
                 const itemDeleteBtn = merchandiseCard.querySelector(".itemDeleteBtn");
                 const merchandiseUserId = merchandiseCard.querySelector("#merchandiseUserId").value;
+                const stockText = merchandiseCard.querySelector(".stockText").innerText;
+                const stock = parseInt(stockText);
+                const lowStockReminder = merchandiseCard.querySelector(".lowStockReminder");
+
+                if (stock >= 20) {
+                    lowStockReminder.style.display = "none";
+                }
 
                 if ((statusText === "Inactive") || (merchandiseUserId !== <?php echo json_encode($userID) ?>)) {
                     itemEditBtn.classList.add("disableButton");
                     itemDeleteBtn.classList.add("disableButton");
+                    lowStockReminder.style.display = "inline";
+                    lowStockReminder.style.backgroundColor = "gray";
+                    lowStockReminder.innerText = "Not Available";
                 }
             })
 

@@ -3,11 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gan Teck Ann's Portfolio</title>
+        <title>Goh Yang Ee's Portfolio</title>
 
         <link rel="stylesheet" href="../../styles/portfolio.css">
         <!-- style & ico -->
-        <link rel="icon" href="../../src/avatars/U001_avatar_1768494571.png" type="image/x-icon">
+        <link rel="icon" href="../../src/avatars/U002_avatar.png" type="image/x-icon">
 
         <!-- icon  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,23 +18,23 @@
         <main>
             <div class="portfolio-header">
                 <div class="header-1">
-                    <img src="../../src/avatars/U001_avatar_1768494571.png" alt="" class="avatar">
+                    <img src="../../src/avatars/U002_avatar.png" alt="" class="avatar">
 
                     <div class="social-media-big-container">
                         <div class="social-media-container">
-                            <a href="https://www.linkedin.com/in/gan-teck-ann-60349b26a" target="_blank" class="social-media-icon">
+                            <a href="https://www.linkedin.com/in/yang-ee-goh-b53406345/" target="_blank" class="social-media-icon">
                                 <i class="fa-brands fa-linkedin"></i>
                             </a>
 
-                            <a href="https://github.com/teckann" target="_blank" class="social-media-icon">
+                            <a href="https://github.com/Gohyangee2006" target="_blank" class="social-media-icon">
                                 <i class="fa-brands fa-github"></i>
                             </a>
 
-                            <a href="https://www.instagram.com/teckann_06?igsh=Znl6dXhlZHlmcWxv" target="_blank" class="social-media-icon">
+                            <a href="https://www.instagram.com/yangee___?igsh=MXEwZjVlanprc3dhaQ%3D%3D&utm_source=qr" target="_blank" class="social-media-icon">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
 
-                            <a href="mailto: ganteckann582006@gmail.com" target="_blank" class="social-media-icon">
+                            <a href="mailto: eeyang383@gmail.com" target="_blank" class="social-media-icon">
                                 <i class="fa-solid fa-envelope"></i>
                             </a>
                         </div>
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="header-2">
-                    <h1>Gan Teck Ann</h1>
+                    <h1>Goh Yang Ee</h1>
                     <p>Software Engineering Student</p>
                 </div>
             </div>
@@ -51,62 +51,8 @@
                 <div class="section-container">
                     <p class="section-title">About Me</p>
                     <p class="section-details">
-                        I'm Teck Ann, a second-year Diploma student majoring in Software Engineering at the 
-                        <strong>Asia Pacific University (APU)</strong>. During my third semester, I volunteered 
-                        with the APU CLCS front-end development team, where I gained hands-on experience with 
-                        modern technologies such as React, TypeScript, and Tailwind CSS, and collaborated closely 
-                        with other developers. I have also completed multiple assignment projects involving Java 
-                        and object-oriented programming, allowing me to apply theoretical concepts in practical 
-                        development and strengthen my problem-solving skills. Currently in my fourth semester, I 
-                        am working towards becoming a full-stack and mobile developer by building dynamic web applications 
-                        using PHP and MySQL as the backend foundation, further enhancing my experience in end-to-end system 
-                        development.
+                        Thinking
                     </p>
-                </div>
-
-                <div class="section-container">
-                    <p class="section-title">Experience</p>
-                    
-                    <div class="experience-details">
-                        <div class="experience-box">
-                            <div class="experience-header">
-                                <div class="experience-header-1">
-                                    <h3>BRAIN Research Consultant</h3>
-                                    <p>WorldQuant | Contract</p>
-                                </div>
-
-                                <div class="duration">
-                                    <p>Dec 2025 - Present</p>
-                                </div>
-                            </div>
-
-                            <p class="section-details">
-                                Works with large datasets, applying statistical and programming techniques to uncover 
-                                market insights. Gains exposure to real-world applications of data science and quantitative 
-                                analysis.
-                            </p>
-                        </div>
-
-                        <div class="experience-box">
-                            <div class="experience-header">
-                                <div class="experience-header-1">
-                                    <h3>Frontend Developer</h3>
-                                    <p>APU CLCS | Hybrid</p>
-                                </div>
-
-                                <div class="duration">
-                                    <p>Jun 2025 - Oct 2025</p>
-                                </div>
-                            </div>
-
-                            <p class="section-details">
-                                Served as a frontend developer on a collaborative team within the Official Website 
-                                Project of APU CLCS. Developed and maintained responsive web applications using React,
-                                TypeScript and Tailwind CSS. Build reusable and modular UI components to improve 
-                                development efficiency. Participated in team discussions to maintain code quality.
-                            </p>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="section-container">

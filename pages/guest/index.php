@@ -31,7 +31,7 @@
                 <p>Join us in our mission to create a greener, cleaner planet for generations to come. Every action counts, every voice matters.</p>
 
                 <div class="journey-btn-deco">
-                    <a href="signUp.php" style="text-decoration: none">
+                    <a href="registerPage1.php" style="text-decoration: none">
                         <button class="journey-btn">
                             <p>Start Your Journey Now</p>
                             <i class="fa-solid fa-arrow-right"></i>

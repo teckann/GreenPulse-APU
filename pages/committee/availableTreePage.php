@@ -274,7 +274,9 @@
                                                 </div>
                                                 <div class='itemStock'>
                                                     <b>Stocks:</b>
-                                                    <p>" . $itemStock . "</p>
+                                                    <div class='stockShow'>
+                                                        <p><span class='stockText'>" . $itemStock . "</span> <span class='lowStockReminder'>Low Stock</span></p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -507,10 +509,21 @@
                 const itemEditBtn = treeCard.querySelector(".itemEditBtn");
                 const itemDeleteBtn = treeCard.querySelector(".itemDeleteBtn");
                 const eachTreeUserId = treeCard.querySelector("#tree_userId").value;
+                const stockText = treeCard.querySelector(".stockText").innerText;
+                const stock = parseInt(stockText);
+                const lowStockReminder = treeCard.querySelector(".lowStockReminder");
+
+                if (stock >= 20) {
+                    lowStockReminder.style.display = "none";
+                }
+                
 
                 if ((statusText === "Inactive") || (eachTreeUserId !== <?php echo json_encode($userID) ?>)) {
                     itemEditBtn.classList.add("disableButton");
                     itemDeleteBtn.classList.add("disableButton");
+                    lowStockReminder.style.display = "inline";
+                    lowStockReminder.style.backgroundColor = "gray";
+                    lowStockReminder.innerText = "Not Available";
                 }
             })
 
