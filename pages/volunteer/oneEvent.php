@@ -103,7 +103,7 @@
         <div class="oneEventLeft">
             
             <div class="oneEventPic">
-                <img src="../../src/eventPosters/poster1.png" alt="Event Image" class="oneEventImg">
+                <img src="../../<?php echo$clickedEvent["event_poster"]; ?>" alt="Event Image" class="oneEventImg">
             </div>
 
             <div class="eventFirstSection">

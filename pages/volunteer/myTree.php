@@ -24,7 +24,7 @@
 
     <div class="eventHead" id="availableEventHead">
     <div>
-        <div><a href="event.php" class="backEvent"><i class="fa-solid fa-arrow-left"></i></a> Available Event</div>
+        <div><a href="profile.php" class="backEvent"><i class="fa-solid fa-arrow-left"></i></a> My Tree</div>
     </div>
 
     

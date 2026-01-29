@@ -26,7 +26,7 @@
                             <div>
                                 <span class="oneEventDetail">
                                 <i class="fa-solid fa-ticket"></i>
-                                <span id="slotAvailability">'.$oneEvent["available_spot"].'</span>
+                                <span id="slotAvailability">'.$oneEvent["capacity"].'</span>
                                 </span>
                             </div>
                         </div>   

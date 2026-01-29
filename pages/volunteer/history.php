@@ -7,7 +7,7 @@
     $userID = $_SESSION["userID"];
 
     $sql_historyAmount = "SELECT 
-                            (SELECT COUNT(*) FROM attendance WHERE user_id = '$userID') AS event_count,
+                            (SELECT COUNT(*) FROM attendance WHERE user_id = '$userID' AND attendance_status = 'Present') AS event_count,
                             (SELECT COUNT(*) FROM module_history WHERE user_id = '$userID')  AS module_count,
                             (SELECT COUNT(*) FROM tree_adoption_history WHERE user_id = '$userID')   AS tree_count,
                             (SELECT COUNT(*) FROM merchandise_purchase_history WHERE user_id = '$userID') AS merchandise_count;";

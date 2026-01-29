@@ -11,7 +11,7 @@ function addModuleCard($module) {
                         <input type="hidden" name="oneModule" value="'.$oneModule["module_id"].'">
 
                         <div class="studyCoverBox">
-                            <img src="../../src/eventPosters/poster1.png" alt="Module Cover" class="studyCoverPage">
+                            <img src="../../'.$oneModule["module_cover"].'" alt="Module Cover" class="studyCoverPage">
                         </div>
 
                         <div class="downStudy">
