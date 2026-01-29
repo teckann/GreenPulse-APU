@@ -14,7 +14,7 @@
 
     // pop-up message
     echo "<script>
-            alert('Successful Logout');
+            alert('Logout Successfully');
             window.location.href = '../pages/guest/login.php';
           </script>";
 ?>

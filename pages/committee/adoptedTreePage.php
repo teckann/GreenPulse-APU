@@ -501,5 +501,7 @@
         }
         </script>
         <script src="../../scripts/committee.js"></script>
+
+        <?php include ("hamburgerMenu.php");?>
 </body>
 </html>

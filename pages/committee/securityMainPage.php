@@ -43,13 +43,14 @@
             <button id="securityChangePasswordBtn"><a href="changePasswordPage.php">Change Password</a></button>
         </div>
         <div id="securitySafetyQuestionPart">
-            <h2 class="securityTitle"><b><i class="fa-solid fa-circle-question">           </i>Safety Question</b></h2>
+            <h2 class="securityTitle"><b><i class="fa-solid fa-circle-question"></i>Security Question</b></h2>
             <div class="safetyQuestions">
                 <div><p>Question 1: <span id="safetyQuestion1Display"><?php echo $safetyQuestion1; ?></span></p></div>
                 <div><p>Question 2: <span id="safetyQuestion2Display"><?php echo $safetyQuestion2; ?></span></p> </div>
             </div>
-            <button id="securityChangeSafetyQuestionBtn"><a href="changeSafetyQuestionPage.php">Change Safety Question</a></button>
+            <button id="securityChangeSafetyQuestionBtn"><a href="changeSafetyQuestionPage.php">Change Security Question</a></button>
         </div>
     </div>
+    <?php include ("hamburgerMenu.php");?>
 </body>
 </html>
