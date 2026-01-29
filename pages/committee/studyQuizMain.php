@@ -6,13 +6,13 @@
     $search = trim($search);
     $lowerSearch = strtolower($search);
     
-    $sql = "SELECT * FROM modules";
+    $sql = "SELECT * FROM modules WHERE module_status = 'Active'";
     
     if (!empty($search)){
-        $sql .= " WHERE LOWER(module_name) LIKE '%$lowerSearch%' OR LOWER(module_description) LIKE '%$lowerSearch%'";
+        $sql .= " AND (LOWER(module_name) LIKE '%$lowerSearch%' OR LOWER(module_description) LIKE '%$lowerSearch%')";
     }
     
-    $sql = "SELECT * FROM modules WHERE module_status = 'Active' ORDER BY module_id DESC";
+    $sql .= " ORDER BY module_id DESC";
     
     $result = mysqli_query($conn, $sql);
 
@@ -48,12 +48,11 @@
     </div>
 
     <section class="event-controls-event-main">
-        <form action="#" method="GET">
+        <form action="#" method = "GET">
             <div class="search-filter-group">
                 <div class="search-bar">
-                    <input type="text" name="search" placeholder="Search Modules by title or description" class="searchInput"
-                    value="<?php echo htmlspecialchars($search);?>">
-                    <button type="submit" class="event-search-button">
+                    <input type="text" name = "search" placeholder="Search Events by title or description" class="searchInput">
+                    <button type="submit" class = "event-search-button">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>

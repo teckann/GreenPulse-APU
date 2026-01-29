@@ -31,7 +31,7 @@
                       WHERE quiz_id = '$quiz_id'";
 
         if (mysqli_query($conn, $sqlUpdate)) {
-            addLog($conn, $_SESSION['userID'], "Updated Quiz Question (ID: $quiz_id): $shortQuestion");
+            addLog($conn, $_SESSION['userID'], "Update Quiz: $shortQuestion");
             echo "<script>alert('Question Updated!'); window.location.href='studyQuizEditQuiz.php?module_id=$module_id&selected_quiz_id=$quiz_id';</script>";
         } else {
             echo "Error: " . mysqli_error($conn);

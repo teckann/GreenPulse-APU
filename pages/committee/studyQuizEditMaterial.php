@@ -33,10 +33,10 @@
                 move_uploaded_file($_FILES['module_cover']['tmp_name'], $targetDir . $coverFileName);
                 $coverPath = "src/moduleMaterials/" . $coverFileName;
             } else {
-                $coverPath = $moduleData['module_cover']; // Keep old if invalid
+                $coverPath = $moduleData['module_cover'];
             }
         } else {
-            $coverPath = $moduleData['module_cover']; // Keep old
+            $coverPath = $moduleData['module_cover']; 
         }
 
         if (!empty($_FILES['module_material']['name'])) {
@@ -72,7 +72,7 @@
                       WHERE module_id = '$module_id'";
 
         if (mysqli_query($conn, $sqlUpdate)) {
-            addLog($conn, $_SESSION['userID'], "Updated Module Material: $moduleName (ID: $module_id)");
+            addLog($conn, $_SESSION['userID'], "Update Module Information: $module_id");
             echo "<script>alert('Material Updated Successfully!'); window.location.href='studyQuizMain.php';</script>";
         } else {
             echo "Error: " . mysqli_error($conn);

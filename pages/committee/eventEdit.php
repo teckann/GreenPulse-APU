@@ -52,8 +52,19 @@
             $capacity = mysqli_real_escape_string($conn, $_POST['event_capacity']);
             $pointsGiven = mysqli_real_escape_string($conn, $_POST['event_points']);
             
-            $spotDifference = $eventData['capacity'] - $eventData['available_spot'];
-            $availableSpot = $capacity - $spotDifference;
+            $sqlAttendance = "SELECT COUNT(*) as total_attendees FROM attendance WHERE event_id = '$eventID'";
+            $resultAttendance = mysqli_query($conn, $sqlAttendance);
+            $currentAttendees = 0;
+            
+            if ($resultAttendance) {
+                $rowAttendance = mysqli_fetch_assoc($resultAttendance);
+                $currentAttendees = $rowAttendance['total_attendees'];
+            }
+            $availableSpot = $capacity - $currentAttendees;
+
+            if ($availableSpot < 0) {
+                $availableSpot = 0;
+            }
 
             $postedDate = date("Y-m-d");
             
@@ -65,13 +76,12 @@
                             duration = '$duration',
                             location = '$location',
                             capacity = '$capacity',
-                            available_spot = '$availableSpot',
                             points_given = '$pointsGiven',
                             posted_date = '$postedDate'
                         WHERE event_id = '$eventID'";
             
             if (mysqli_query($conn, $sqlUpdate)) {
-                addLog($conn, $_SESSION['userID'], "Updated Event: $eventTitle (ID: $eventID)");
+                addLog($conn, $_SESSION['userID'], "Update Event Information: $eventID");
                 echo "<script>
                         alert('Event Updated Successfully!'); 
                         window.location.href='eventMain.php';

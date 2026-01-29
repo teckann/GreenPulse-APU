@@ -39,9 +39,13 @@
         
         <div class="heroSection">
             <h1>STUDY & QUIZ MANAGEMENT</h1>
-            <p>MANAGE STUDY MATERIALS AND QUIZZES IN ONE PLACE.</p>
-
+            <p>VIEW THE DETAILS AND IMPORTANT INFORMATION HERE.</p>
         </div>
+
+        <div class="back-icon-hidden" onclick="window.location.href='eventCreate.php'">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
     </div>
 
     <section class="event-controls-event-main">
@@ -75,7 +79,7 @@
 
                     <div class="left-side-info-box-edit-dlt">
                         <div class="info-row">
-                            <span class="info-label">Manage Module</span>
+                            <span class="info-label">Manage Material</span>
                             <div class="study-quiz-button">
                                 <?php if ($isCreator): ?>
                                     <div class="btn-edit" onclick="window.location.href='studyQuizEditMaterial.php?module_id=<?php echo $rows['module_id']; ?>'">

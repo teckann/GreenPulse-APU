@@ -32,7 +32,7 @@
 
     if (mysqli_query($conn, $sqlUpdate)) {
         $action = ($newStatus == 'Inactive') ? 'Deactivated' : 'Reactivated';
-        addLog($conn, $_SESSION['userID'], "$action Module: {$eventData['event_name']} (ID: $moduleID)");
+        addLog($conn, $_SESSION['userID'], "Delete Module: $moduleID");
         
         $message = ($newStatus == 'Inactive') ? 'Module deactivated successfully!' : 'Event reactivated successfully!';
         echo "<script>alert('$message'); window.location.href='eventMain.php';</script>";

@@ -35,12 +35,8 @@
 
     </div>
 
-    <!-- Overlay -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT FOR HAMBURGER MENU - MUST BE AT THE END -->
-    <!-- ============================================ -->
     <script>
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
@@ -50,14 +46,12 @@
             overlay.classList.toggle('active');
         }
 
-        // Close menu when clicking on menu items
         document.querySelectorAll('.menu-item').forEach(item => {
             item.addEventListener('click', () => {
                 toggleMenu();
             });
         });
-
-        // Close menu with ESC key
+        
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 const sidebar = document.getElementById('sidebar');

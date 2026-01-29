@@ -2,24 +2,24 @@
     include("../../conn.php");
     include("../../backend/sessionData.php");
 
-    $sqlMerchandise = "SELECT COUNT(*) as total FROM items 
-                       WHERE category = 'merchandise' AND item_status = 'Active'";
+    $userID = isset($_SESSION['userID']) ? $_SESSION['userID'] : '';
+
+    $sqlMerchandise = "SELECT COUNT(*) as total FROM items WHERE category = 'merchandise' AND item_status = 'Active' AND user_id = '$userID'";
     $resultMerchandise = mysqli_query($conn, $sqlMerchandise);
     $rowMerchandise = mysqli_fetch_assoc($resultMerchandise);
     $merchandiseCount = $rowMerchandise['total'];
     
-    $sqlTrees = "SELECT COUNT(*) as total FROM tree_adoption_history 
-                 WHERE tree_adoption_status = 'Active'";
+    $sqlTrees = "SELECT COUNT(*) as total FROM items WHERE category = 'tree' AND item_status = 'Active' AND user_id = '$userID'";
     $resultTrees = mysqli_query($conn, $sqlTrees);
     $rowTrees = mysqli_fetch_assoc($resultTrees);
-    $treesPlanted = $rowTrees['total'];
+    $treesCount = $rowTrees['total'];
     
-    $sqlEvents = "SELECT COUNT(*) as total FROM events WHERE event_status = 'Active'";
+    $sqlEvents = "SELECT COUNT(*) as total FROM events WHERE event_status = 'Active' AND user_id = '$userID'";
     $resultEvents = mysqli_query($conn, $sqlEvents);
     $rowEvents = mysqli_fetch_assoc($resultEvents);
     $eventsCount = $rowEvents['total'];
     
-    $sqlModules = "SELECT COUNT(*) as total FROM modules WHERE module_status = 'Active'";
+    $sqlModules = "SELECT COUNT(*) as total FROM modules WHERE module_status = 'Active' AND user_id = '$userID'";
     $resultModules = mysqli_query($conn, $sqlModules);
     $rowModules = mysqli_fetch_assoc($resultModules);
     $modulesCount = $rowModules['total'];
@@ -107,10 +107,10 @@
                     </svg>         
                 </div>
                 <div class="stat-label">
-                    <p>TREES PLANTED</p>
+                    <p>AVAILABLE TREE</p>
                 </div>
                 <div class="data">
-                    <h1><?php echo $treesPlanted; ?></h1>
+                    <h1><?php echo $treesCount; ?></h1>
                 </div>
             </div>
 

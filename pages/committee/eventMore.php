@@ -34,7 +34,7 @@
         
         <div class="heroSection">
             <h1>EVENT DETAILS</h1>
-            <p>CREATE AND MANAGE GREEN INITIATIVE EVENTS.</p>
+            <p>VIEW THE EVENT DETAILS AND IMPORTANT INFORMATION HERE.</p>
         </div>
 
         <div class="back-icon-hidden" onclick="window.location.href='eventCreate.php'">

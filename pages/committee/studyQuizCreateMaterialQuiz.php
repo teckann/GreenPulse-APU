@@ -82,7 +82,7 @@
                             )";
 
                 if (mysqli_query($conn, $sqlModule)) {
-                    addLog($conn, $creatorID, "Created Module: $moduleName (ID: $finalModuleID)");
+                    addLog($conn, $creatorID, "Add New Module: $finalModuleID");
 
                     if (!empty($_POST['quiz_question'])) {
                         
@@ -136,6 +136,7 @@
                                                 '$pts'
                                             )";
                                 mysqli_query($conn, $sqlQuiz);
+                                addLog($conn, $creatorID, "Add New Quiz: $quizID");
                             }
                         }
                     }
@@ -240,77 +241,77 @@
                 </p>
 
                 <div id="quiz-container">
-                        <div class="quiz-block">
-                            <div class="remove-quiz-btn" onclick="this.parentElement.remove()">&times;</div>
+                    <div class="quiz-block">
+                        <div class="remove-quiz-btn" onclick="this.parentElement.remove()">&times;</div>
 
-                                <div class="input-group">
-                                    <div class = "row">
-                                        <label>Question</label>
-                                        <span> *</span>
-                                    </div>
-                                    <input type="text" name="quiz_question[]" class="event-box" placeholder="Enter question..." required>
+                            <div class="input-group">
+                                <div class = "row">
+                                    <label>Question</label>
+                                    <span> *</span>
                                 </div>
-                            
-                            
-                            <div class = "two-column">
-                                <div class="input-group">
-                                    <div class = "row">
-                                        <label>Option 1</label>
-                                        <span> *</span>
-                                    </div>
-                                    <div class="input-group"><input type="text" name="opt1[]" class="event-box" placeholder="Option 1" required></div>
+                                <input type="text" name="quiz_question[]" class="event-box" placeholder="Enter question..." required>
+                            </div>
+                        
+                        
+                        <div class = "two-column">
+                            <div class="input-group">
+                                <div class = "row">
+                                    <label>Option 1</label>
+                                    <span> *</span>
                                 </div>
-
-                                <div class="input-group">
-                                    <div class = "row">
-                                        <label>Option 2</label>
-                                        <span> *</span>
-                                    </div>
-                                    <div class="input-group"><input type="text" name="opt2[]" class="event-box" placeholder="Option 2" required></div>
-                                </div>
+                                <div class="input-group"><input type="text" name="opt1[]" class="event-box" placeholder="Option 1" required></div>
                             </div>
 
-                            <div class = "two-column">
-                                <div class="input-group">
-                                    <div class = "row">
-                                        <label>Option 3</label>
-                                        <span> *</span>
-                                    </div>
-                                    <div class="input-group"><input type="text" name="opt3[]" class="event-box" placeholder="Option 3" required></div>
+                            <div class="input-group">
+                                <div class = "row">
+                                    <label>Option 2</label>
+                                    <span> *</span>
                                 </div>
+                                <div class="input-group"><input type="text" name="opt2[]" class="event-box" placeholder="Option 2" required></div>
+                            </div>
+                        </div>
 
-                                <div class="input-group">
-                                    <div class = "row">
-                                        <label>Option 4</label>
-                                        <span> *</span>
-                                    </div>
-                                    <div class="input-group"><input type="text" name="opt4[]" class="event-box" placeholder="Option 4" required></div>
+                        <div class = "two-column">
+                            <div class="input-group">
+                                <div class = "row">
+                                    <label>Option 3</label>
+                                    <span> *</span>
                                 </div>
+                                <div class="input-group"><input type="text" name="opt3[]" class="event-box" placeholder="Option 3" required></div>
                             </div>
 
-                            <div class = "two-column">
-                                <div class="input-group">
-                                    <div class = "row">
-                                        <label>Correct Answer</label>
-                                        <span> *</span>
-                                    </div>
-                                    <select name="correct_answer[]" class="event-box">
-                                        <option value="Option 1">Option 1</option>
-                                        <option value="Option 2">Option 2</option>
-                                        <option value="Option 3">Option 3</option>
-                                        <option value="Option 4">Option 4</option>
-                                    </select>
+                            <div class="input-group">
+                                <div class = "row">
+                                    <label>Option 4</label>
+                                    <span> *</span>
                                 </div>
+                                <div class="input-group"><input type="text" name="opt4[]" class="event-box" placeholder="Option 4" required></div>
+                            </div>
+                        </div>
 
-                                <div class="input-group">
-                                    <div class = "row">
-                                        <label>Points</label>
-                                        <span> *</span>
-                                    </div>
-                                    <input type="number" name="points[]" class="event-box" placeholder="e.g. 10" required>
+                        <div class = "two-column">
+                            <div class="input-group">
+                                <div class = "row">
+                                    <label>Correct Answer</label>
+                                    <span> *</span>
                                 </div>
-                            </div>  
-                </div> 
+                                <select name="correct_answer[]" class="event-box">
+                                    <option value="Option 1">option 1</option>
+                                    <option value="Option 2">option 2</option>
+                                    <option value="Option 3">option 3</option>
+                                    <option value="Option 4">option 4</option>
+                                </select>
+                            </div>
+
+                <div class="input-group">
+                    <div class = "row">
+                        <label>Points</label>
+                        <span> *</span>
+                    </div>
+                    <input type="number" name="points[]" class="event-box" placeholder="e.g. 10" required>
+                </div>
+            </div>  
+    </div> 
 </div>  
             
 
@@ -390,10 +391,10 @@
                                     <span> *</span>
                                 </div>
                                 <select name="correct_answer[]" class="event-box">
-                                    <option value="Option 1">Option 1</option>
-                                    <option value="Option 2">Option 2</option>
-                                    <option value="Option 3">Option 3</option>
-                                    <option value="Option 4">Option 4</option>
+                                    <option value="Option 1">option 1</option>
+                                    <option value="Option 2">option 2</option>
+                                    <option value="Option 3">option 3</option>
+                                    <option value="Option 4">option 4</option>
                                 </select>
                             </div>
 

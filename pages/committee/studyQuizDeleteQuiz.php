@@ -36,7 +36,7 @@
             $sqlUpdate = "UPDATE quiz SET quiz_status = 'Inactive' WHERE quiz_id IN ($idsString)";
 
             if (mysqli_query($conn, $sqlUpdate)) {
-                addLog($conn, $_SESSION['userID'], "Deleted questions from Module: {$moduleData['module_name']}");
+                addLog($conn, $_SESSION['userID'], "Delete Quiz: $moduleID");
                 echo "<script>alert('Selected questions deleted successfully!'); window.location.href='studyQuizModule.php?module_id=$moduleID';</script>";
             } else {
                 echo "<script>alert('Error deleting questions!'); window.history.back();</script>";
@@ -65,7 +65,6 @@
 <body>
     <?php include ("header.php");?>
 
-    <!-- Upper Part -->
     <div class="header-content">
         <div class="back-icon" onclick="window.location.href='studyQuizModule.php?module_id=<?php echo $moduleID; ?>'">
             <i class="fas fa-arrow-left"></i>
@@ -110,7 +109,7 @@
 
                     <div class="btn-group-actions">
                         <button type="submit" name="delete_confirm" class="btn-create-event" style="background-color: #dc3545;">
-                            <i class="fas fa-trash"></i> Delete Selected Questions
+                            Delete Selected Questions
                         </button>
                     </div>
 
