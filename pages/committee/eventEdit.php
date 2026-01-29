@@ -105,6 +105,10 @@
             <h1>EDIT EVENT</h1>
             <p>UPDATE THE DETAILS TO REFINE YOUR GREEN INITIATIVE EVENT.</p>
         </div>
+
+        <div class="back-icon-hidden" onclick="window.location.href='eventCreate.php'">
+            <i class="fas fa-arrow-left"></i>
+        </div>
     </div>
 
     <form action="eventEdit.php?event_id=<?php echo $eventID; ?>" method="POST" enctype="multipart/form-data">

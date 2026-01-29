@@ -6,13 +6,15 @@
     $search = isset($_GET['search'])?$_GET['search']:'';
     $search = trim($search);
     $lowerSearch = strtolower($search);
-    $sql = "SELECT * FROM events";
+     $sql = "SELECT e.*, 
+               (e.capacity - IFNULL((SELECT COUNT(*) FROM attendance a WHERE a.event_id = e.event_id), 0)) as real_available_spot 
+            FROM events e WHERE e.event_status = 'Active'";
 
     if (!empty ($search)){
-        $sql .= " WHERE LOWER(event_title) LIKE '%$lowerSearch%' OR LOWER(event_description) LIKE '%$lowerSearch%'";
+        $sql .= " AND (LOWER(e.event_title) LIKE '%$lowerSearch%' OR LOWER(e.event_description) LIKE '%$lowerSearch%')";
     }
 
-    $sql = "SELECT * FROM events WHERE event_status = 'Active' ORDER BY posted_date DESC";
+    $sql .= " ORDER BY e.posted_date DESC";
     $result = mysqli_query($conn, $sql);
 ?>
 
@@ -43,6 +45,7 @@
         <div class="add-icon" onclick="window.location.href='eventCreate.php'">
             <i class="fas fa-add"></i>
         </div>
+
     </div>
 
     <section class="event-controls-event-main">
@@ -89,6 +92,8 @@
                                 View only
                             </div>
                         <?php endif; ?>
+
+                        
                     </div>
                 </div>
 
@@ -96,15 +101,18 @@
                     <div class = "event-posted-info">
 
                     <div class = "event-posted">
-                            <div class = "event-posted-date-id">Event ID: <?php echo $rows['event_id']?></div>
-                        </div>
-                    <div class = "event-posted">
-                            <div class = "event-posted-date-id">Posted by: <?php echo $rows['user_id']?></div>
-                        </div>
-                        <div class = "event-posted">
-                            <div class = "event-posted-date-id">Posted on: <?php echo $rows['posted_date']?></div>
-                        </div>
+                        <div class = "event-posted-date-id">Event ID: <?php echo $rows['event_id']?></div>
                     </div>
+
+                    <div class = "event-posted">
+                        <div class = "event-posted-date-id">Posted by: <?php echo $rows['user_id']?></div>
+                    </div>
+
+                    <div class = "event-posted">
+                        <div class = "event-posted-date-id">Posted on: <?php echo $rows['posted_date']?></div>
+                    </div>
+
+                </div>
 
                     <div class = "event-title-row">
                         <h2 class="event-title"><?php echo $rows['event_title']; ?></h2>
@@ -123,14 +131,16 @@
 
                     <div class="event-status">
                         <span class="circle"></span>
-                        <span>AVAILABLE SPOT: <?php echo $rows['available_spot']?></span>
+                        <span>AVAILABLE SPOT: <?php echo $rows['real_available_spot'];?></span>
                     </div>
 
                     <span class="event-status"><?php echo $rows['points_given']; ?> points</span>
 
                     <?php if ($isCreator): ?>
                         <div class="event-more" onclick = "window.location.href = 'eventMore.php?event_id=<?php echo $rows['event_id'];?>'">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            <div class="points-badge">
+                            <span>MORE</span>
+                        </div>
                         </div>
                     <?php endif; ?>
    

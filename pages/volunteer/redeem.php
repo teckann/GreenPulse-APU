@@ -1,7 +1,10 @@
 <?php
-    include("eventBackend.php");
+    include("itemBackend.php");
 
     include("../../conn.php");
+
+    
+    include("../../backend/sessionData.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +14,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <script src="../../scripts/volunteer.js"></script>
+    <script src="../../scripts/volunteer_redeem.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
@@ -18,6 +22,30 @@
             body {
                 padding-right: 300px; 
             }
+        }
+
+        .navBar #redeemNav {
+            background: radial-gradient(circle at top, transparent 30%, #c6ff00 180%);
+        }
+
+        .navBar #redeemNav span {
+            color: #000000;
+            
+            background-color: #ffffff3c; 
+            
+            border-radius: 0 0 22px 22px; 
+            
+        }
+
+        .navBar #redeemNav:hover {
+            background: radial-gradient(circle at top, transparent 30%, #c6ff00 180%);
+            border-radius: 0;
+            transform: translateY(0px);
+
+        }
+
+        .navBar .redeemNav:hover span {
+            color: #000000; 
         }
     </style>
 
@@ -28,10 +56,9 @@
     <div class="secondGeneralHeader" id="redeemSecondHeader">
  
     <div class="searchBar" id="redeemSearchBar">
-        <form class="studySearchForm" >
-            <input autocomplete="off" id="searchStudy" class="searchArea" type="text" name="search" placeholder="Search for Merchandise/Tree">
-            <button class="searchButton" id="searchEventBtn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
+            <input autocomplete="off" id="searchRedeem" class="searchArea" type="text" name="search" placeholder="Search for Merchandise/Tree">
+            <button disabled class="searchButton" id="searchRedeemBtn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+
     </div>
 
     </div>
@@ -76,82 +103,33 @@
     </div>
 
     <div class="redeemMain" id="merchandiseRedeem">
-        <div class="redeemCard">
+        <?php 
 
-            <div class="redeemPicBox">
-                <img src="../../src/eventPosters/poster1.png" alt="Module Cover" class="redeemPic">
-            </div>
+            $sql_merchandise = "SELECT * FROM items 
+                                WHERE  category = 'merchandise';";
 
-            <div class="centerRedeem">
-            <p class="redeemCardTitle">GreenPulse T-Shirt</p>
-            <P class="redeemCardDetail">A GreenPulse branded T-shirt supporting green init..</P>
-            </div>
-
-            <button class="redeemCardBtn">Redeem (600GP)</button>
-        </div>
-
-                <div class="redeemCard">
-
-            <div class="redeemPicBox">
-                <img src="../../src/itemImages/item1.png" alt="Module Cover" class="redeemPic">
-            </div>
-
-            <div class="centerRedeem">
-            <p class="redeemCardTitle">GreenPulse T-Shirt</p>
-            <P class="redeemCardDetail">A GreenPulse branded T-shirt supporting green init..</P>
-            </div>
-
-            <button class="redeemCardBtn">Redeem (600GP)</button>
-        </div>
-
-                <div class="redeemCard">
-
-            <div class="redeemPicBox">
-                <img src="../../src/itemImages/item1.png" alt="Module Cover" class="redeemPic">
-            </div>
-
-            <div class="centerRedeem">
-            <p class="redeemCardTitle">GreenPulse T-Shirt</p>
-            <P class="redeemCardDetail">A GreenPulse branded T-shirt supporting green init..</P>
-            </div>
-
-            <button class="redeemCardBtn">Redeem (600GP)</button>
-        </div>
-
-                <div class="redeemCard">
-
-            <div class="redeemPicBox">
-                <img src="../../src/itemImages/item1.png" alt="Module Cover" class="redeemPic">
-            </div>
-
-            <div class="centerRedeem">
-            <p class="redeemCardTitle">GreenPulse T-Shirt</p>
-            <P class="redeemCardDetail">A GreenPulse branded T-shirt supporting green init..</P>
-            </div>
-
-            <button class="redeemCardBtn">Redeem (600GP)</button>
-        </div>
-
-                <div class="redeemCard">
-
-            <div class="redeemPicBox">
-                <img src="../../src/itemImages/item1.png" alt="Module Cover" class="redeemPic">
-            </div>
-
-            <div class="centerRedeem">
-            <p class="redeemCardTitle">GreenPulse T-Shirt</p>
-            <P class="redeemCardDetail">A GreenPulse branded T-shirt supporting green init..</P>
-            </div>
-
-            <div>
-                <button class="redeemCardBtn">Redeem (600GP)</button>
-            </div>
+            $merchandises = mysqli_query($conn,$sql_merchandise);
             
-        </div>
+            addItemCard($merchandises);
+
+        
+        ?>
 
     </div>
 
     <div class="redeemMain" id="treeRedeem">
+        <?php        
+
+
+            $sql_tree = "SELECT * FROM items 
+                                WHERE  category = 'tree';";
+
+            $trees = mysqli_query($conn,$sql_tree);
+            
+            addItemCard($trees);
+
+            mysqli_close($conn);
+         ?>
 
     </div>
 

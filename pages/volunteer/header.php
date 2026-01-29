@@ -1,3 +1,22 @@
+<?php 
+
+if(!$userID){
+    $userID = $_SESSION["userID"];
+}
+
+    $sql_profileDetails = "SELECT * FROM users WHERE user_id = '$userID';";
+
+    $profileDetails = mysqli_fetch_assoc(mysqli_query($conn,$sql_profileDetails));
+
+    $avatar = $profileDetails['avatar'];
+
+?>
+
+
+    <script src="../../scripts/volunteer_header.js"></script>
+
+
+<div id="blockEverything"></div>
 
 <div id="header">
     <div class="logo">
@@ -18,11 +37,11 @@
     </div>
 
     <div class="navBar">
-        <a class="navLink" href="index.php">Home</a>
-        <a class="navLink" href="event.php">Events</a>
-        <a class="navLink" href="study.php">Study</a>
-        <a class="navLink" href="redeem.php">Redeem</a>
-        <a class="navLink" href="profile.php">Profile</a>
+        <a class="navLink" id="indexNav" href="index.php"><span>Home</span></a>
+        <a class="navLink" id="eventNav" href="event.php"><span>Events</span></a>
+        <a class="navLink" id="studyNav" href="study.php"><span>Study</span></a>
+        <a class="navLink" id="redeemNav" href="redeem.php"><span>Redeem</span></a>
+        <a class="navLink" id="profileNav" href="profile.php"><span>Profile</span></a>
     </div>
 
     <button id="menuButton">🍔</button>
@@ -34,10 +53,10 @@
         <a href="profile.php" >
             <div id="sidebarUp">
                 <span>
-                    <img src="../../src/avatars/U004_avatar.jpg" alt="User Profile" class="phoneProfilePic">
+                    <img src="../../<?php echo$avatar ?>" alt="User Profile" class="phoneProfilePic">
                 </span>
                 <?php
-                    echo'<span id="userNameSideBar">Jimmy</span>'
+                    echo'<span id="userNameSideBar">'.$_SESSION["userName"].'</span>'
                 ?>
             </div>
         </a>
@@ -48,7 +67,7 @@
 
         
     <div class="searchBar" id="phoneSearchBar">
-        <form id="headerSearch">
+        <form id="phoneHeaderSearch">
             <input autocomplete="off" class="searchArea" id="phoneSearchArea" type="text" name="search" placeholder="Search...">
             <button class="searchButton" id="phoneSearchButton" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 
@@ -57,12 +76,15 @@
         </form>
     </div>
 
+
     <div id="headerNavBar">
-        <a class="navLink" href="index.php">Home</a>
-        <a class="navLink" href="event.php">Events</a>
-        <a class="navLink" href="study.php">Study</a>
-        <a class="navLink" href="redeem.php">Redeem</a>
-        <a class="navLink" href="profile.php">Profile</a>
+
+    <hr>
+        <a class="navLink" href="index.php"><span>Home</span><i class="fa-solid fa-chevron-right wide-angle"></i></a>
+        <a class="navLink" href="event.php"><span>Events</span><i class="fa-solid fa-chevron-right wide-angle"></i></a>
+        <a class="navLink" href="study.php"><span>Study</span><i class="fa-solid fa-chevron-right wide-angle"></i></a>
+        <a class="navLink" href="redeem.php"><span>Redeem</span><i class="fa-solid fa-chevron-right wide-angle"></i></a>
+        <a class="navLink" href="profile.php"><span>Profile</span><i class="fa-solid fa-chevron-right wide-angle"></i></a>
     </div>
 
 </div>

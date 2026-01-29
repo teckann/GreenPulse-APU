@@ -61,13 +61,13 @@
         </form>
                
         <div class="white-color-box">
-            <section class="container-event">
-                <?php
+             <?php
                     if (mysqli_num_rows($result) > 0) {
                         while ($rows = mysqli_fetch_array($result)){
                             $currentUserId = isset($_SESSION['userID']) ? $_SESSION['userID'] : null;
                             $isCreator = ($currentUserId !== null && $rows['user_id'] == $currentUserId);
                 ?>
+            <section class="container-event">
                 <div class="content-card-event">
                     <div class="event-left-section">
                         <div class="event-image">

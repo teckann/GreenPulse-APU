@@ -2,6 +2,10 @@
     include("eventBackend.php");
 
     include("../../conn.php");
+
+    
+    include("../../backend/sessionData.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +17,31 @@
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <script src="../../scripts/volunteer.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .navBar #eventNav {
+            background: radial-gradient(circle at top, transparent 30%, #c6ff00 180%);
+        }
 
+        .navBar #eventNav span {
+            color: #000000;
+            
+            background-color: #ffffff3c; 
+            
+            border-radius: 0 0 22px 22px; 
+            
+        }
+
+        .navBar #eventNav:hover {
+            background: radial-gradient(circle at top, transparent 30%, #c6ff00 180%);
+            border-radius: 0;
+            transform: translateY(0px);
+
+        }
+
+        .navBar .eventNav:hover span {
+            color: #000000; 
+        }
+    </style>
 </head>
 <body>
     <?php include("header.php") ?>

@@ -1,7 +1,10 @@
 <?php
-    include("eventBackend.php");
+    include("pointBackend.php");
 
     include("../../conn.php");
+
+    
+    include("../../backend/sessionData.php");
 ?>
 
 <!DOCTYPE html>
@@ -20,32 +23,41 @@
 
     <div id="pointHead">
     <div>
-        <div><button href="profile.php" class="backPoint" id="backFromPoint"><i class="fa-solid fa-arrow-left"></i> Point</button>  </div>
+        <div><button class="backPoint" id="backFromPoint"><i class="fa-solid fa-arrow-left"></i> Point</button>  </div>
     </div>
 
     </div>
-
+<div id="containerForDesktop">
     <div id="realPointBigContainer">
         <div id="realPointBar">
 
 
-        <div class="pointDetails" id="realPointDetails">
-            <p id="pointLabel">Current Green Point :</p>
-            <!-- point Amount will be key in by js -->
-            <h1 class="pointAmount"></h1>
+            <div class="pointDetails" id="realPointDetails">
+                <p id="pointLabel">Current Green Point :</p>
+                <!-- point Amount will be key in by js -->
+                <h1 class="pointAmount"></h1>
 
-            <hr id="realPointLine">
+                <hr id="realPointLine">
+            </div>
         </div>
-    </div>
 
 
     <div id="totalPointBar">
         <div>
         <div id="totalPointBar-left" >
         
+            <?php 
 
-            <img src="../../src/avatars/U004_avatar.jpg" alt="Badge Picture" id="badgePic">
+                $userID = $_SESSION["userID"];
+            
+                $sql_profileDetails = "SELECT * FROM users WHERE user_id = '$userID';";
 
+                $profileDetails = mysqli_fetch_assoc(mysqli_query($conn,$sql_profileDetails));
+
+                echo '<img src="../../'.$profileDetails['avatar'].'" alt="User Profile" class="profilePic">'; 
+
+            
+            ?>
 
             
             <button href="editProfile.php" id="editBadgeImg"><i class="fa-solid fa-pen" id="chooseBadgeIcon"></i></button>
@@ -57,7 +69,10 @@
         <div id="totalPointDetails">
             <p id="badgeName"> Badge Name</p>
             <p id="totalPointLabel">Total Earned Green Point : </p>
-            <p id="totalEarnedPoint">6666 GP </p>
+            <p id="totalEarnedPoint">
+                <?php
+                    echo getTotalPoint($conn);
+                ?> GP </p>
             
 
         </div>
@@ -81,11 +96,16 @@
 
     </div>
     <div id="pointFlowBtnContainer">
-        <a href="earnedPoint" ><div class="pointFlowBtn">Points Earned</div></a>
-        <a href="spentPoint" ><div class="pointFlowBtn">Points Spent</div></a>
-    
+        <form action="pointflow.php" method="post">
+            <button type="submit" name="pointFlow" value="earnedPoint" class="pointFlowBtn" >
+                Points Earned
+            </button>
+            <button type="submit" name="pointFlow" value="spentPoint" class="pointFlowBtn">
+                Points Spent
+            </button>
+        </form>
     </div>
-
+</div>
 
 </body>
 </html>

@@ -1,4 +1,6 @@
 <?php
+    
+
     function addEventCard($events) {
         if(mysqli_num_rows($events) > 0){
             while($oneEvent = mysqli_fetch_assoc($events)){
@@ -24,12 +26,13 @@
                             <div>
                                 <span class="oneEventDetail">
                                 <i class="fa-solid fa-ticket"></i>
-                                <span id="slotAvailability">'.$oneEvent["available_spot"].'</span>
+                                <span id="slotAvailability">'.$oneEvent["capacity"].'</span>
                                 </span>
                             </div>
                         </div>   
-                        
-                        <button class="viewEvent">View</button>
+                        <form method="post" action="oneEvent.php">
+                        <button class="viewEvent" name="oneEvent" type="submit" value="'.$oneEvent["event_id"].'">View</button>
+                        </form>
                     </div>
                 ';
             }
