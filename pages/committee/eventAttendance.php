@@ -26,9 +26,7 @@
         $updateSql = "UPDATE attendance SET attendance_status = '$status' 
                     WHERE event_id = '$eventID' AND user_id = '$userID'";
         mysqli_query($conn, $updateSql);
-        
-        addLog($conn, $_SESSION['userID'], "Updated attendance for User ID: $userID to $status in Event ID: $eventID");
-        
+            
         header("Location: eventAttendance.php?event_id=" . $eventID);
         exit;
     }
@@ -36,7 +34,7 @@
     $sql = "SELECT a.*, u.name
     FROM attendance a 
     LEFT JOIN users u ON a.user_id = u.user_id
-    WHERE a.event_id = '$eventID' ORDER BY a.event_register_datetime DESC";
+    WHERE a.event_id = '$eventID' ORDER BY u.name ASC";
     $result = mysqli_query($conn, $sql);
 ?>
 
@@ -61,6 +59,10 @@
             <div class="heroSection">
                 <h1>EVENT ATTENDANCE</h1>
                 <p>CREATE AND MANAGE GREEN INITIATIVE EVENTS.</p>
+            </div>
+
+            <div class="back-icon-hidden" onclick="window.location.href='eventCreate.php'">
+                <i class="fas fa-arrow-left"></i>
             </div>
         </div>
 

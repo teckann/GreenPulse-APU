@@ -22,22 +22,17 @@
                     $eventTitle = mysqli_real_escape_string($conn, $_POST['event_title']);
                     $eventDateTime = mysqli_real_escape_string($conn, $_POST['event_datetime']);
                     $eventDesc = mysqli_real_escape_string($conn, $_POST['event_description']);
-                    
                     $duration = mysqli_real_escape_string($conn, $_POST['event_duration']); 
                     $location = mysqli_real_escape_string($conn, $_POST['event_Location']);
                     $capacity = mysqli_real_escape_string($conn, $_POST['event_capacity']);
                     $pointsGiven = mysqli_real_escape_string($conn, $_POST['event_points']);
 
                     $creatorID = isset($userID) ? $userID : $_SESSION['user_id'];
-
                     $eventID = newID($conn, "events", "E"); // use utility.php
-
-                
                     $availableSpot = $capacity;
                     
                     date_default_timezone_set("Asia/Kuala_Lumpur");
                     $postedDate = date("Y-m-d"); 
-
                   
                     $sql = "INSERT INTO events (
                                 event_id, 
@@ -49,7 +44,6 @@
                                 duration,       
                                 location,        
                                 capacity,       
-                                available_spot, 
                                 points_given,    
                                 posted_date
                             ) VALUES (
@@ -62,14 +56,13 @@
                                 '$duration',
                                 '$location',
                                 '$capacity',
-                                '$availableSpot',
                                 '$pointsGiven',
                                 '$postedDate'
                             )";
 
   
                     if (mysqli_query($conn, $sql)) {
-                        addLog($conn, $creatorID, "Created Event: $eventTitle");
+                        addLog($conn, $creatorID, "Add New Event: $eventID");
                       
                         echo "<script>
                                 alert('Event Created Successfully!'); 

@@ -82,7 +82,7 @@
                             )";
 
                 if (mysqli_query($conn, $sqlModule)) {
-                    addLog($conn, $creatorID, "Created Module: $moduleName (ID: $finalModuleID)");
+                    addLog($conn, $creatorID, "Add New Module: $finalModuleID");
 
                     if (!empty($_POST['quiz_question'])) {
                         
@@ -136,6 +136,7 @@
                                                 '$pts'
                                             )";
                                 mysqli_query($conn, $sqlQuiz);
+                                addLog($conn, $creatorID, "Add New Quiz: $quizID");
                             }
                         }
                     }

@@ -39,9 +39,13 @@
         
         <div class="heroSection">
             <h1>STUDY & QUIZ MANAGEMENT</h1>
-            <p>MANAGE STUDY MATERIALS AND QUIZZES IN ONE PLACE.</p>
-
+            <p>VIEW THE DETAILS AND IMPORTANT INFORMATION HERE.</p>
         </div>
+
+        <div class="back-icon-hidden" onclick="window.location.href='eventCreate.php'">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
     </div>
 
     <section class="event-controls-event-main">
