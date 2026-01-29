@@ -74,7 +74,7 @@
                 </p>
             </div>
 
-            <div class="oneModuleMaterial">
+            <div class="oneModuleMaterial" id="studyVideoMaterial">
                 <video controls muted paused class="oneModuleVid">
                     <source src="../../<?php echo$clickedModule["module_video"]; ?>" type="video/mp4">
                 </video>

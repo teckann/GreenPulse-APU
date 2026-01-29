@@ -4,6 +4,8 @@
 
     include("../../backend/sessionData.php");
 
+    include("../../backend/utility.php");
+
     $userID = $_SESSION["userID"];
 
     if(isset($_POST['tree']) || isset($_POST['merchandise'])){
@@ -13,13 +15,13 @@
 
             $item_id = $_POST['tree'];
 
-            $type = 'Tree';
+            $typeToShow = 'Tree';
 
         }else if(isset($_POST['merchandise'])){
 
             $item_id = $_POST['merchandise'];
 
-            $type = 'Merchandise';
+            $typeToShow = 'Merchandise';
 
         }else{
             header("Location: redeem.php");
@@ -32,8 +34,116 @@
 
         $item = mysqli_fetch_assoc(mysqli_query($conn, $sql_one_item));
 
+        $type = $item['category'];
 
-    }else {
+
+    }
+    
+
+    if(isset($_POST["totalCost"])){
+
+        $totalCost = $_POST["totalCost"];
+
+        $sql_user_points = "SELECT * FROM users WHERE user_id = '$userID';";
+
+        $userPoints = mysqli_fetch_assoc(mysqli_query($conn, $sql_user_points))["green_points"];
+
+        if($userPoints >= $totalCost){
+
+            $newPoints = $userPoints - $totalCost;
+
+            
+
+            $sql_update_points = "UPDATE users SET
+                                    green_points = $newPoints
+                                    WHERE user_id = '$userID';";
+
+            if($type == 'merchandise') {
+
+                $newID = newID($conn, 'merchandise_purchase_history', 'MP');
+
+                $amount = $_POST["quantity"];
+
+                $sql_insert_history = "INSERT INTO merchandise_purchase_history
+                                        (merchandise_purchase_id, item_id, user_id, merchandise_purchase_datetime, amount)
+                                        VALUES
+                                        ('$newID', '$item_id', '$userID', NOW(), $amount);";
+
+
+                if(mysqli_query($conn, $sql_insert_history)){
+                    mysqli_query($conn, $sql_update_points);
+                    echo '<script>alert("Redemption Successful! 🎉🎉");
+                    
+
+                            let form = document.createElement("form");
+                            form.method = "POST";
+                            form.action = "oneModule.php";
+                            
+                            let input = document.createElement("input");
+                            input.type = "hidden";
+                            input.name = "'.$type.'";
+                            input.value = "'.$item_id.'";
+                            
+                            form.appendChild(input);
+                            document.body.appendChild(form);
+                            form.submit();
+
+                            })
+                            </script>';
+
+
+
+
+
+                    
+                }
+
+            }else if($type == 'tree'){
+                $newID = newID($conn, 'tree_adoption_history', 'TA');
+
+                $givenName = $_POST["givenName"];
+
+                $sql_insert_history = "INSERT INTO tree_adoption_history
+                                        (tree_adoption_id, item_id, user_id, given_name, tree_adoption_datetime, fertilization_datetime, tree_adoption_status)
+                                        VALUES
+                                        ('$newID', '$item_id', '$userID', '$givenName', NOW(), NULL, 'Active');";
+
+
+                if(mysqli_query($conn, $sql_insert_history)){
+                    mysqli_query($conn, $sql_update_points);
+                    echo '<script>alert("Adoption Successful!");
+                    
+                            let form = document.createElement("form");
+                            form.method = "POST";
+                            form.action = "oneModule.php";
+                            
+                            let input = document.createElement("input");
+                            input.type = "hidden";
+                            input.name = "'.$type.'";
+                            input.value = "'.$item_id.'";
+                            
+                            form.appendChild(input);
+                            document.body.appendChild(form);
+                            form.submit();
+
+                            })
+                            </script>';
+
+                }
+
+
+            }
+            
+
+            
+        }else{
+            echo '<script>alert("Not enought Point 😭😭");</script>';
+            header("Location: redeem.php");
+            exit();
+        }
+
+    }
+    if(!$item_id) {
         header("Location: redeem.php");
         exit();
     }
@@ -63,9 +173,8 @@
 
     <div id="pointHead">
     <div>
-        <form id="backOneModule" action="history.php" method="post">
-        <input type="hidden" name="oneModule" value="<?php echo $module_id; ?>">
-        <div><button class="backPoint" id="backFromPoint"><i class="fa-solid fa-arrow-left"></i><?php echo$type; ?></button>  </div>
+        <form id="backOneModule" action="redeem.php" method="post">
+        <div><button class="backPoint" id="backFromPoint"><i class="fa-solid fa-arrow-left"></i> <?php echo$typeToShow; ?></button>  </div>
         </form>
     </div>
 
@@ -78,6 +187,7 @@
         <div class="imageBox">
             <img src="../../<?php echo $item['item_image']; ?>" alt="Item Image" class="itemImg">
         </div>
+        <form action="oneItem.php" method="post" id="redeemOrAdoptForm">
 
         <div class="itemContent">
             <h1 class="itemName" > <?php echo $item['item_name']; ?></h1>
@@ -85,23 +195,38 @@
                 <?php echo$item['item_description']; ?>
             </p>
 
+            <?php if($type == 'merchandise'){ ?>
             <div class="quantityBox">
-                <button class="quantityBtn" id="minusBtn"><i class="fa-solid fa-minus"></i></button>
+                <button class="quantityBtn" type="button" id="minusBtn"><i class="fa-solid fa-minus"></i></button>
 
                 <span id="itemQuantityShow">1</span>
                 <input type="hidden" name="quantity" id="quantityInput" value="1">
-                <input type="hidden" name="quantity" id="pointPerItem" value="<?php echo$item['item_redeem_points']; ?>">
+                <input type="hidden" name="pointPerItem" id="pointPerItem" value="<?php echo$item['item_redeem_points']; ?>">
 
 
-                <button class="quantityBtn" id="plusBtn"><i class="fa-solid fa-plus"></i></button>
+                <button class="quantityBtn" type="button" id="plusBtn"><i class="fa-solid fa-plus"></i></button>
             </div>
+
+            <?php }else if($type == 'tree'){ ?>
+                <input type="hidden" name="givenName" id="givenNameInput">
+             <?php } ?>
 
             
 
 
         </div>
         
-        <button class="thBtn" id="itemRedeemBtn" name="totalCost" value="<?php echo$item['item_redeem_points']; ?>"> Redeem (-<?php echo$item['item_redeem_points']; ?> GP) </button>
+        <input type="hidden" name="<?php echo$type ?>" value="<?php echo$item_id ?>" id="typeAndId">
+        <input type="hidden" name="totalCost" value="<?php echo$item['item_redeem_points']; ?>" id="toalCostInput">
+
+
+
+        <button type="button" class="thBtn" id="itemRedeemBtn" > 
+            <?php echo(($type == 'tree') ? 'Adopt' : 'Redeem'); ?> (-<?php echo$item['item_redeem_points']; ?> GP) 
+        </button>
+
+        </form>
+
 
     </div>
 

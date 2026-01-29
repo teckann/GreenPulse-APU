@@ -24,28 +24,62 @@ function searchItem() {
 
 }
 
+function getGivenName() {
+    const type = document.querySelector('#typeAndId').name;
+    const form = document.querySelector('#redeemOrAdoptForm');
+    
+    if (type === 'tree') {
+        let name = prompt("Name Your Tree (Enter N to cancel adoption):");
+
+        
+        if (name != null && name.trim() !== "" && name.trim() !== "N") {
+
+            document.querySelector('#givenNameInput').value = name;
+            
+            form.submit();
+        } else {
+            alert("Adoption Failed, Please give a name for your tree.");
+        }
+    } else {
+        let confirm = prompt("confirm Redeem? (enter 'Y' is Yes):");
+        if(confirm.trim() === "Y"){
+            form.submit();
+        }else{
+            alert("Redemption Cancelled.");
+        }
+        
+    }
+}
+
 function changeQuantity(minusOrPlus) {
-    let quantity = 1;
+    
     const onePrice = parseInt(document.querySelector('#pointPerItem').value);
 
     const qtyShow = document.querySelector('#itemQuantityShow');
     const qtyInput = document.querySelector('#quantityInput');
     const redeemBtn = document.querySelector('#itemRedeemBtn');
 
-
+    let quantity = parseInt(qtyInput.value);
 
     quantity += minusOrPlus;
+
     if(quantity < 1) {
         quantity = 1; 
     }
 
+    
 
     qtyShow.innerHTML = quantity;
+
+
+
     qtyInput.value = quantity;
 
 
     const totalCost = onePrice * quantity;
-    redeemBtn.innerText = `Redeem (-${totalCost} GP)`;
+    document.querySelector('#toalCostInput').value = totalCost;
+
+    redeemBtn.innerHTML = `Redeem (-${totalCost} GP)`;
 
 }
 
@@ -73,6 +107,11 @@ document.addEventListener('DOMContentLoaded',() =>{
 
             changeQuantity(1);
         })
+    }
+
+    if(document.querySelector('#itemRedeemBtn')){
+        
+        document.querySelector('#itemRedeemBtn').addEventListener('click', getGivenName);
     }
 
 
