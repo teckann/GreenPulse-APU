@@ -142,13 +142,6 @@ function changingPageRedeem(button) {
 
 }
 
-function phoneHamburger() {
-    const sideBar = document.querySelector('.phoneHamburger');
-
-    if(sideBar.style.display !== 'none'){
-        sideBar.style.display = 'flex';
-    }
-}
 
 function searchEvent(e) {
 
@@ -289,7 +282,6 @@ function remainmingPoints() {
 document.addEventListener('DOMContentLoaded',() =>{
     // loadUpcomingEvent();
 
-    document.querySelector('#menuButton').addEventListener('click',phoneHamburger)
 
     const btnAvailable = document.querySelector('#availableStudyNav');
     const btnCompleted = document.querySelector('#completedStudyNav');
@@ -310,8 +302,9 @@ document.addEventListener('DOMContentLoaded',() =>{
     }
 
 
-    if(document.querySelector('#backFromPoint')){
-        document.querySelector('#backFromPoint').addEventListener('click', ()=> {
+
+    if(document.querySelector('#oneEventBack')){
+        document.querySelector('#oneEventBack').addEventListener('click', ()=> {
             history.back();
 
         })

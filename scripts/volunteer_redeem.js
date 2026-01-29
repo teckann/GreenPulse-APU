@@ -24,14 +24,56 @@ function searchItem() {
 
 }
 
+function changeQuantity(minusOrPlus) {
+    let quantity = 1;
+    const onePrice = parseInt(document.querySelector('#pointPerItem').value);
+
+    const qtyShow = document.querySelector('#itemQuantityShow');
+    const qtyInput = document.querySelector('#quantityInput');
+    const redeemBtn = document.querySelector('#itemRedeemBtn');
+
+
+
+    quantity += minusOrPlus;
+    if(quantity < 1) {
+        quantity = 1; 
+    }
+
+
+    qtyShow.innerHTML = quantity;
+    qtyInput.value = quantity;
+
+
+    const totalCost = onePrice * quantity;
+    redeemBtn.innerText = `Redeem (-${totalCost} GP)`;
+
+}
+
 
 
 /* ------------------------ start running here---------------------- */
 
 document.addEventListener('DOMContentLoaded',() =>{
     // loadUpcomingEvent();
+    if(document.querySelector('#searchRedeem')){
 
-    document.querySelector('#searchRedeem').addEventListener('keyup', searchItem);
+        document.querySelector('#searchRedeem').addEventListener('keyup', searchItem);
+
+    }
+
+    if(document.querySelector('#minusBtn')){
+
+        document.querySelector('#minusBtn').addEventListener('click', () => {
+            changeQuantity(-1);
+        })
+    }
+    if(document.querySelector('#plusBtn')){
+
+        document.querySelector('#plusBtn').addEventListener('click', () => {
+
+            changeQuantity(1);
+        })
+    }
 
 
 

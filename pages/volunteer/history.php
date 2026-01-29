@@ -1,7 +1,30 @@
 <?php
-    include("eventBackend.php");
 
     include("../../conn.php");
+
+    include("../../backend/sessionData.php");
+
+    $userID = $_SESSION["userID"];
+
+    $sql_historyAmount = "SELECT 
+                            (SELECT COUNT(*) FROM attendance WHERE user_id = '$userID') AS event_count,
+                            (SELECT COUNT(*) FROM module_history WHERE user_id = '$userID')  AS module_count,
+                            (SELECT COUNT(*) FROM tree_adoption_history WHERE user_id = '$userID')   AS tree_count,
+                            (SELECT COUNT(*) FROM merchandise_purchase_history WHERE user_id = '$userID') AS merchandise_count;";
+
+    $historyAmount = mysqli_fetch_assoc(mysqli_query($conn,$sql_historyAmount));
+
+    $eventAmount = $historyAmount['event_count'];
+    $moduleAmount = $historyAmount['module_count'];
+    $treeAmount = $historyAmount['tree_count'];
+    $merchandiseAmount = $historyAmount['merchandise_count']
+
+                            // FROM users
+                            // JOIN attendance ON users_id = attendance.user_id
+                            // JOIN module_history ON users_id = module_history.user_id
+                            // JOIN tree_adoption_history ON tree_adoption_history = items.user_id
+                            // JOIN merchandise_purchase_history ON users_id = marchandise_purchase_history.user_id
+                            // WHERE users_id = U004
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +57,16 @@
 
     <div class="historyAmount">
             <div class="labelHistory">Event Attended :</div>
+            
             <div class="amountLinkHistory" >
-                <span class="amountHistory">34</span>
-                <a><i class="fa-solid fa-chevron-right wide-angle"></i></a>
+                <span class="amountHistory">
+                    <?php echo$eventAmount ?>
+                </span>
+                <form method="post" action="secondaryHistory.php">
+                    <button name="event" type="submit" value="event">
+                        <i class="fa-solid fa-chevron-right wide-angle"></i>
+                    </button>
+            </form>
             </div>
       
     </div>
@@ -48,8 +78,14 @@
     <div class="historyAmount">
             <div class="labelHistory">Quiz Answered :</div>
             <div class="amountLinkHistory" >
-                <span class="amountHistory">34</span>
-                <a><i class="fa-solid fa-chevron-right wide-angle"></i></a>
+                <span class="amountHistory">
+                    <?php echo$moduleAmount ?>
+                </span>
+                <form method="post" action="secondaryHistory.php">
+                    <button name="module" type="submit" value="module">
+                        <i class="fa-solid fa-chevron-right wide-angle"></i>
+                    </button>
+            </form>
             </div>
       
     </div>
@@ -61,8 +97,14 @@
     <div class="historyAmount">
             <div class="labelHistory">Merchandise Redeemed :</div>
             <div class="amountLinkHistory" >
-                <span class="amountHistory">34</span>
-                <a><i class="fa-solid fa-chevron-right wide-angle"></i></a>
+                <span class="amountHistory">
+                    <?php echo$merchandiseAmount ?>
+                </span>
+                <form method="post" action="secondaryHistory.php">
+                    <button name="merchandise" type="submit" value="merchandise">
+                        <i class="fa-solid fa-chevron-right wide-angle"></i>
+                    </button>
+            </form>
             </div>
       
     </div>
@@ -70,8 +112,14 @@
     <div class="historyAmount" id="lastHistoryAmount">
             <div class="labelHistory">Tree Adopted :</div>
             <div class="amountLinkHistory" >
-                <span class="amountHistory">34</span>
-                <a><i class="fa-solid fa-chevron-right wide-angle"></i></a>
+                <span class="amountHistory">
+                    <?php echo$treeAmount ?>
+                </span>
+                <form method="post" action="secondaryHistory.php">
+                    <button name="tree" type="submit" value="tree">
+                        <i class="fa-solid fa-chevron-right wide-angle"></i>
+                    </button>
+            </form>
             </div>
       
     </div>

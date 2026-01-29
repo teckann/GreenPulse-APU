@@ -1,7 +1,11 @@
 <?php
-    include("eventBackend.php");
 
     include("../../conn.php");
+
+    
+    include("../../backend/sessionData.php");
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,19 +16,53 @@
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <script src="../../scripts/volunteer.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .navBar #profileNav {
+            background: radial-gradient(circle at top, transparent 30%, #c6ff00 180%);
+        }
 
+        .navBar #profileNav span {
+            color: #000000;
+            
+            background-color: #ffffff3c; 
+            
+            border-radius: 0 0 22px 22px; 
+            
+        }
+
+        .navBar #profileNav:hover {
+            background: radial-gradient(circle at top, transparent 30%, #c6ff00 180%);
+            border-radius: 0;
+            transform: translateY(0px);
+
+        }
+
+        .navBar .profileNav:hover span {
+            color: #000000; 
+        }
+
+    </style>
 </head>
 <body>
     <?php include("header.php") ?>
 
     
-    <div class="pointBar">
+    <div class="pointBar" id="profilePB">
         <div>
         <div class="pointBar-left" id="profilePointBar-left">
         
+            <?php 
 
-            <img src="../../src/avatars/U004_avatar.jpg" alt="User Profile" class="profilePic">
+                $userID = $_SESSION["userID"];
+            
+                $sql_profileDetails = "SELECT * FROM users WHERE user_id = '$userID';";
 
+                $profileDetails = mysqli_fetch_assoc(mysqli_query($conn,$sql_profileDetails));
+
+                echo '<img src="../../'.$profileDetails['avatar'].'" alt="User Profile" class="profilePic">'; 
+
+            
+            ?>
 
             
             <a href="editProfile.php" id="editProfileBtn"><i class="fa-solid fa-pen" id="editProfileIcon"></i></a>

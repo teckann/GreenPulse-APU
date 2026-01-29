@@ -7,8 +7,6 @@
     function getNewRequiredPoint($conn){
         $sql_totalPoint = "SELECT total_earned FROM users WHERE user_id = 'U004'";
 
-        
-
             $totalPoints = mysqli_fetch_assoc(mysqli_query($conn,$sql_totalPoint));
             $totalPoint = $totalPoints['total_earned'];
 
@@ -35,9 +33,6 @@
             $totalPoint = $totalPoints['total_earned'];
 
 
-            
-
-
             $sql_lastRequiredPoints = "SELECT MAX(points_required) AS result 
                                         FROM badges 
                                         WHERE points_required <= '$totalPoint'";
@@ -58,11 +53,12 @@
             $lastRequiredPoints = getPrevRequiredPoint($conn);
 
 
-            if($newRequiredPoints != null && $lastRequiredPoints != null){
-
+            if($newRequiredPoints != null && $lastRequiredPoints != null && 
+                $newRequiredPoints > 0 && $lastRequiredPoints > 0){
                 return ($newRequiredPoints - $lastRequiredPoints);
+                
             }else{
-                return 0;
+                return $newRequiredPoints;
             }
     }
 
@@ -75,8 +71,13 @@
             echo(getRemainmingPoint($conn));
 
         }else if(($_GET["getBadge"]) == "badgePercentage")
-            echo((getTotalPoint($conn) - getPrevRequiredPoint($conn)) / getRemainmingPoint($conn));
-    
+            if(getTotalPoint($conn) != '0'){
+                echo((getTotalPoint($conn) - getPrevRequiredPoint($conn)) / getRemainmingPoint($conn));
+                    
+            }else {
+                echo '0';
+            }
+            
         mysqli_close($conn);
         exit();
     }
