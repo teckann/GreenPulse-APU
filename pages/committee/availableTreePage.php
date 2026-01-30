@@ -120,8 +120,8 @@
 
     if ($stockRow = mysqli_fetch_assoc($stockResult)) {
         $totalStock = $stockRow["total"];
-        $normalStock = $stockRow["normal_stock"];
-        $lowStock = $stockRow["low_stock"];
+        $normalStock = $stockRow["normal_stock"] ? $stockRow["normal_stock"] : 0;
+        $lowStock = $stockRow["low_stock"] ? $stockRow["low_stock"] : 0;
     }
 ?>
 

@@ -34,7 +34,7 @@
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
 
-                            <a href="mailto: jinming@gmail.com" target="_blank" class="social-media-icon">
+                            <a href="mailto: limjinming0609@gmail.com" target="_blank" class="social-media-icon">
                                 <i class="fa-solid fa-envelope"></i>
                             </a>
                         </div>
@@ -51,7 +51,15 @@
                 <div class="section-container">
                     <p class="section-title">About Me</p>
                     <p class="section-details">
-                        Thinking
+                        I am Lim Jin Ming, a second-year Diploma student majoring in Information  and 
+                        Technology specialism in Software Engineering at <strong>Asia Pacific University 
+                        (APU)</strong>. I have completed projects involving <strong>python</strong>, <strong>Java</strong> 
+                        and <strong>object-oriented programming</strong>, strengthening my practical development and 
+                        problem-solving skills.
+
+                        Currently in my fourth semester, I am working towards web developing by building dynamic web applications using HTML, 
+                        CSS, and JAVASCRIPT, also PHP and MySQL as my backend foundation. In the future, I hope to further develop my 
+                        skills and be involved in more field on software.
                     </p>
                 </div>
 

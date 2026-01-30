@@ -56,9 +56,9 @@
                         but it pushed me to work harder and improve step by step. Semester 4 has been the most 
                         important for me, as I started learning different programming languages for both frontend 
                         and backend development. Along the way, I actively participated in competitions, workshops, 
-                        and hackathons, including the Joget competition and Devmatch Hackathon 2025, which strengthened 
-                        my technical skills, teamwork, and problem-solving abilities. I hope to become a well-rounded software 
-                        engineer in the future :3
+                        and hackathons, including the <strong>Joget competition</strong> and <strong>Devmatch Hackathon 2025</strong>, 
+                        which strengthened my technical skills, teamwork, and problem-solving abilities. I hope to become a well-rounded 
+                        software engineer in the future :3
                     </p>
                 </div>
 

@@ -3609,6 +3609,16 @@ header {
     align-items: center;
 }
 
+#upperTree button:hover,
+#upperMerchandise button:hover {
+    border-color: #f1ff5c;
+    color: white;
+    box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
+    transform: translateY(-0.25em);
+    transition: border-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.25s;
+    cursor: pointer;
+}
+
 @media(min-width: 800px) {
 
     #upperTreeCard form,
@@ -3623,7 +3633,7 @@ header {
         z-index: auto;
     }
 
-    #upperTree button:hover,
+    /* #upperTree button:hover,
     #upperMerchandise button:hover {
         border-color: #f1ff5c;
         color: white;
@@ -3631,7 +3641,7 @@ header {
         transform: translateY(-0.25em);
         transition: border-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.25s;
         cursor: pointer;
-    }
+    } */
 
     #filterBar {
         gap: 3em;
