@@ -14,7 +14,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    
+        <link rel="icon" href="../../src/elements/logo_vertical.png" type="image/x-icon">
+
+
+    <title>Study</title>
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <script src="../../scripts/volunteer.js"></script>
     <script src="../../scripts/volunteer_study.js"></script>

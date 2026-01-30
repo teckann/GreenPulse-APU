@@ -1,18 +1,21 @@
 <?php
     include("../../conn.php");
 
-    include("../../backend/sessionData.php");
 
     include("eventBackend.php");
 
-    $userID = $_SESSION["userID"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    
+        <link rel="icon" href="../../src/elements/logo_vertical.png" type="image/x-icon">
+
+
+    <title>Home Page</title>
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <script src="../../scripts/volunteer.js"></script>
 
@@ -48,10 +51,15 @@
 
 </head>
 <body>
-    <?php include("header.php") ?>
+    <?php include("header.php");
+    
+    $sql_system_message = "SELECT * FROM announcement ORDER BY announcement_datetime DESC LIMIT 1;";
+    
+    $systemMessage = mysqli_fetch_assoc(mysqli_query($conn,$sql_system_message));
+    ?>
 
     <div id="banner">
-    <p>some system message</p>
+    <p><?php echo$systemMessage["announcement_details"]; ?></p>
 
     </div>
 

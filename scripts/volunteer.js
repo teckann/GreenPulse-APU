@@ -191,6 +191,8 @@ function searchEvent(e) {
 
 
 
+
+
 function filterEvent() {
     const filterDiv = document.querySelector('.filter');
     const button = document.querySelector('.filterBtn');
@@ -301,6 +303,21 @@ function remainmingPoints() {
 document.addEventListener('DOMContentLoaded',() =>{
     // loadUpcomingEvent();
 
+        if(document.querySelector('#uploadProPic')){
+
+        const fileInput = document.querySelector('#uploadProPic');
+
+        document.querySelector('#uploadPicBtn').addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', () => {
+                document.querySelector('#profilePicForm').submit();
+        });
+
+    }
+
+
 
     const btnAvailable = document.querySelector('#availableStudyNav');
     const btnCompleted = document.querySelector('#completedStudyNav');
@@ -340,6 +357,9 @@ document.addEventListener('DOMContentLoaded',() =>{
 
 
 
+
+
+
     
     document.querySelector('#headerSearchArea').addEventListener('focus', (e) => navSearching('#headerSearchArea','#searchDropDown'));
     document.querySelector('#phoneSearchArea').addEventListener('focus', (e) => navSearching('#phoneSearchArea','#phoneSearchDropDown'));
@@ -350,8 +370,16 @@ document.addEventListener('DOMContentLoaded',() =>{
     });
 
     getMilestone('requiredPoints').then(data => {
+
+        let toPrintNM = `${data} GP`;
+
+        if(!data){
+            toPrintNM = ' You Reach The Highest Milestone';
+        }
+
         
-        document.querySelector('.nextMilestone').innerHTML = `${data} GP` ;
+        
+        document.querySelector('.nextMilestone').innerHTML = toPrintNM ;
     });
 
     remainmingPoints();

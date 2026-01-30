@@ -1,8 +1,8 @@
 <?php
     include("../../conn.php");
 
-    // $hash = password_hash("jimmy123", PASSWORD_DEFAULT);
-    // $sql = "UPDATE users SET password = '$hash' WHERE user_id = 'U004'";
+    // $hash = password_hash("U001@0805", PASSWORD_DEFAULT);
+    // $sql = "UPDATE users SET password = '$hash' WHERE user_id = 'U001'";
     // mysqli_query($conn, $sql);
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {

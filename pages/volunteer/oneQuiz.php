@@ -142,7 +142,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    
+        <link rel="icon" href="../../src/elements/logo_vertical.png" type="image/x-icon">
+
+
+    <title>Quiz</title>
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <script src="../../scripts/volunteer.js"></script>
     <script src="../../scripts/volunteer_study.js"></script>
@@ -185,19 +190,19 @@
                     <label for="" class="qqLabel"><?php echo $questionCount.'. '.$q["quiz_question"]; ?></label>
                     <div class="qqOptions">
                         <label class="qqOptionLabel">
-                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="<?php echo $q["option1"]; ?>" required>
+                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option1" required>
                             <?php echo $q["option1"]; ?>
                         </label>
                         <label class="qqOptionLabel">
-                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="<?php echo $q["option2"]; ?>">
+                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option2">
                             <?php echo $q["option2"]; ?>
                         </label>
                         <label class="qqOptionLabel">
-                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="<?php echo $q["option3"]; ?>">
+                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option3">
                             <?php echo $q["option3"]; ?>
                         </label>
                         <label class="qqOptionLabel">
-                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="<?php echo $q["option4"]; ?>">
+                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option4">
                             <?php echo $q["option4"]; ?>
                         </label>
 

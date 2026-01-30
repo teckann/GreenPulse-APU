@@ -1,5 +1,6 @@
 <?php
     include("../../conn.php");
+    include("../../backend/utility.php");
     session_start();
     
     if (isset($_POST["btnSubmitPassword"])) {

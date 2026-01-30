@@ -1,9 +1,9 @@
 <?php 
                 
-    include("../../conn.php");
 
     include("pointBackend.php");
 
+    
 
     function getNewRequiredPoint($conn, $userID){
         $sql_totalPoint = "SELECT total_earned FROM users WHERE user_id = '$userID'";
@@ -58,8 +58,10 @@
                 $newRequiredPoints > 0 && $lastRequiredPoints > 0){
                 return ($newRequiredPoints - $lastRequiredPoints);
                 
-            }else{
+            }else if($newRequiredPoints){
                 return $newRequiredPoints;
+            }else{
+                return 1;
             }
     }
 

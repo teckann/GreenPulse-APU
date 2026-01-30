@@ -352,7 +352,7 @@
                 <div class='popUpShow'>
                     <div class='itemPopUpInput'>
                         <label for='itemNameEdit'>Tree Name:</label>
-                        <input type='text' name='itemNameEdit' id='itemNameEdit' value='<?php echo "$itemName" ?>'>
+                        <input type='text' name='itemNameEdit' required id='itemNameEdit' value='<?php echo "$itemName" ?>'>
                     </div>
                     <div class='itemPopUpInput'>
                         <label for='itemDescriptionEdit'>Tree Description</label>

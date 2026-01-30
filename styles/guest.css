@@ -865,6 +865,10 @@ footer {
 }
 
 @media(max-width: 800px) {
+    .home-header {
+        padding: 0 1.5em;
+    }
+
     header {
         padding: 0.5em 1em;
     }
@@ -1100,6 +1104,7 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 1em;
+    margin-bottom: 2em;
 }
 
 .register,
@@ -1221,15 +1226,18 @@ footer {
     font-size: 1.3em;
 }
 
-.btnVerifyEmails, .btnSubmitInformations,
-.btnSubmitPasswords, .btnVerifyIds {
+.btnVerifyEmails,
+.btnSubmitInformations,
+.btnSubmitPasswords,
+.btnVerifyIds {
     width: 80%;
     margin: 2em;
 }
 
 #btnVerifyEmail,
 #btnSubmitInformation,
-#btnSubmitPassword, #btnVerifyUserId,
+#btnSubmitPassword,
+#btnVerifyUserId,
 #btnVerifySafetyQuestion {
     width: 100%;
     background-color: #355070;
@@ -1253,7 +1261,7 @@ footer {
 
 .registerInformationInput input,
 .registerInformationInput select,
-.registerPassword input, 
+.registerPassword input,
 .forgetPasswordPart input,
 .resetPasswordInputs input {
     font-size: 1.2em;
@@ -1318,6 +1326,7 @@ footer {
 }
 
 @media(min-width: 800px) {
+
     .userRegisterHeader,
     .userForgotPasswordHeader {
         /* align-items: flex-start; */

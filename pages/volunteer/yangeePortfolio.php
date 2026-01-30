@@ -3,11 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gan Teck Ann's Portfolio</title>
+        <title>Goh Yang Ee's Portfolio</title>
 
         <link rel="stylesheet" href="../../styles/portfolio.css">
         <!-- style & ico -->
-        <link rel="icon" href="../../src/elements/member1.png" type="image/x-icon">
+        <link rel="icon" href="../../src/elements/member2.png" type="image/x-icon">
 
         <!-- icon  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,23 +18,23 @@
         <main>
             <div class="portfolio-header">
                 <div class="header-1">
-                    <img src="../../src/elements/member1.png" alt="" class="avatar">
+                    <img src="../../src/elements/member2.png" alt="" class="avatar">
 
                     <div class="social-media-big-container">
                         <div class="social-media-container">
-                            <a href="https://www.linkedin.com/in/gan-teck-ann-60349b26a" target="_blank" class="social-media-icon">
+                            <a href="https://www.linkedin.com/in/yang-ee-goh-b53406345/" target="_blank" class="social-media-icon">
                                 <i class="fa-brands fa-linkedin"></i>
                             </a>
 
-                            <a href="https://github.com/teckann" target="_blank" class="social-media-icon">
+                            <a href="https://github.com/Gohyangee2006" target="_blank" class="social-media-icon">
                                 <i class="fa-brands fa-github"></i>
                             </a>
 
-                            <a href="https://www.instagram.com/teckann_06" target="_blank" class="social-media-icon">
+                            <a href="https://www.instagram.com/yangee___?igsh=MXEwZjVlanprc3dhaQ%3D%3D&utm_source=qr" target="_blank" class="social-media-icon">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
 
-                            <a href="mailto: ganteckann582006@gmail.com" target="_blank" class="social-media-icon">
+                            <a href="mailto: eeyang383@gmail.com" target="_blank" class="social-media-icon">
                                 <i class="fa-solid fa-envelope"></i>
                             </a>
                         </div>
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="header-2">
-                    <h1>Gan Teck Ann</h1>
+                    <h1>Goh Yang Ee</h1>
                     <p>Software Engineering Student</p>
                 </div>
             </div>
@@ -51,62 +51,18 @@
                 <div class="section-container">
                     <p class="section-title">About Me</p>
                     <p class="section-details">
-                        I'm Teck Ann, a second-year Diploma student majoring in Software Engineering at the 
-                        <strong>Asia Pacific University (APU)</strong>. During my third semester, I volunteered 
-                        with the APU CLCS front-end development team, where I gained hands-on experience with 
-                        modern frontend technologies such as React, TypeScript, and Tailwind CSS, and collaborated closely 
-                        with other developers. I have also completed the assignment project that involving Java 
-                        and object-oriented programming (OOP), allowing me to apply theoretical concepts in practical 
-                        development and strengthen my problem-solving skills. Currently in my fourth semester, I 
-                        am working towards becoming a full-stack and mobile developer. To support this goal, I start 
-                        from building dynamic web applications using PHP and MySQL as the backend foundation, further 
-                        enhancing my experience in full-stack development.
+                        I’m Goh Yang Ee, a second-year Diploma student majoring in <strong>Software Engineering</strong> at 
+                        <strong>Asia Pacific University (APU)</strong>. Throughout my studies, I have developed a strong 
+                        interest in programming and building efficient, reliable software solutions. My coursework has given me a 
+                        solid foundation in programming fundamentals, data structures, and core software development concepts. <br>
+                        I have completed multiple academic projects using <strong>Java</strong> and <strong>object-oriented programming 
+                        (OOP)</strong>, where I applied theoretical knowledge to practical scenarios and strengthened my 
+                        analytical thinking and problem-solving abilities. Currently, I am expanding my expertise in full-stack 
+                        web development, developing dynamic web applications with PHP and MySQL while deepening my 
+                        understanding of backend systems, databases, and application architecture. I am continuously 
+                        learning new technologies and working toward becoming a capable developer who can deliver 
+                        complete end-to-end systems.
                     </p>
-                </div>
-
-                <div class="section-container">
-                    <p class="section-title">Experience</p>
-                    
-                    <div class="experience-details">
-                        <div class="experience-box">
-                            <div class="experience-header">
-                                <div class="experience-header-1">
-                                    <h3>BRAIN Research Consultant</h3>
-                                    <p>WorldQuant | Contract</p>
-                                </div>
-
-                                <div class="duration">
-                                    <p>Dec 2025 - Present</p>
-                                </div>
-                            </div>
-
-                            <p class="section-details">
-                                Works with large datasets, applying statistical and programming techniques to uncover 
-                                market insights. Gains exposure to real-world applications of data science and quantitative 
-                                analysis.
-                            </p>
-                        </div>
-
-                        <div class="experience-box">
-                            <div class="experience-header">
-                                <div class="experience-header-1">
-                                    <h3>Frontend Developer</h3>
-                                    <p>APU CLCS | Hybrid</p>
-                                </div>
-
-                                <div class="duration">
-                                    <p>Jun 2025 - Oct 2025</p>
-                                </div>
-                            </div>
-
-                            <p class="section-details">
-                                Served as a frontend developer on a collaborative team within the Official Website 
-                                Project of APU CLCS. Developed and maintained responsive web applications using React,
-                                TypeScript and Tailwind CSS. Build reusable and modular UI components to improve 
-                                development efficiency. Participated in team discussions to maintain code quality.
-                            </p>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="section-container">
@@ -154,21 +110,6 @@
                             <div class="tech">
                                 <img src="../../src/icons/php.svg" class="svg-icon" alt="PHP">
                                 <p>PHP</p>
-                            </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/typescript.svg" class="svg-icon" alt="TypeScript">
-                                <p>TypeScript</p>
-                            </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/react.svg" class="svg-icon" alt="React">
-                                <p>React</p>
-                            </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/tailwindcss.svg" class="svg-icon" alt="Tailwind CSS">
-                                <p>Tailwind CSS</p>
                             </div>
                         </div>
                     </div>
