@@ -7,6 +7,73 @@
 
     $userID = $_SESSION["userID"];
 
+    if(($_FILES["profilePic"]) && $_FILES["profilePic"]["error"] == 0){
+
+
+
+        $savePicIn = "../src/avatars/";
+
+
+        $fileType = strtolower(pathinfo($_FILES["profileImage"]["name"], PATHINFO_EXTENSION));
+
+        $nameToSave = $userID . "_avatar_" . time() . "." . $fileType;
+        $fileToSave = $savePicIn . $nameToSave;
+
+        $allowFormat = array("png", "jpg", "jpeg");
+
+        $isError = false;
+
+        $fileSize = $_FILES["profilePic"]["size"];
+
+        if ($fileSize > 0 && $fileSize < 5000000){
+            $isError = false;
+        }else {
+            $uploadOk = 0;
+            echo "<script>
+                    alert('No file Or File Uploaded was over 5MB.');
+                    
+                  </script>";
+
+            header("Location: editProfile.php");
+            exit();
+        }
+
+        if(in_array($fileType, $allowFormat)){
+            if(move_uploaded_file($_FILES["profilePic"]["tmp_name"], $fileToSave)){
+
+                $pathForDB = "src/avatars/" . $nameToSave;
+
+                $ql_new_avatar = "UPDATE users 
+                                    SET avatar = '$pathForDB'
+                                    WHERE user_id = '$userID'";
+
+                mysqli_query($conn, $sql_update_pic);
+
+                header("Location: editProfile.php");
+                exit();
+
+            }else{
+                echo "<script>
+                alert('Oh o SOmethings went wrong');
+                
+                </script>";
+                header("Location: editProfile.php");
+                exit();
+            }
+        }else {
+            echo "<script>
+            alert('file Uploaded is out of png, jpg, and jpeg format');
+            
+            </script>";
+            header("Location: editProfile.php");
+            exit();
+        }
+
+    
+
+
+    }
+
 
     if(isset($_POST["valueToChange"])){
         $valueChanged = $_POST["valueToChange"];
@@ -23,7 +90,7 @@
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }
 
-            header("Location: profile.php");
+            header("Location: editProfile.php");
            
     }else if(isset($_POST["nationality"])){
         $valueChanged = $_POST["nationality"];
@@ -40,7 +107,7 @@
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
 
-        header("Location: profile.php");
+        header("Location: editProfile.php");
 
 
     }
@@ -129,8 +196,13 @@
             
             ?>
 
+        <form action="" method="post" id="profilePicForm" enctype="multipart/form-data">
+
+        <input type="file" name="profilePic" id="uploadProPic"  accept="image/*" hidden>
+
         <button id="uploadPicBtn"><i class="fa-solid fa-camera" id="editPicIcon"></i></button>
 
+        </form>
 
     </div>
 

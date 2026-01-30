@@ -89,7 +89,7 @@
     
         <link rel="icon" href="../../src/elements/logo_vertical.png" type="image/x-icon">
 
-        
+
     <title>Badge And MileStone</title>
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <script src="../../scripts/volunteer.js"></script>
@@ -103,7 +103,7 @@
     <div class="eventHead" id="availableEventHead">
         <div>
             <div>
-                <a href="event.php" class="backEvent">
+                <a href="point.php" class="backEvent">
                     <i class="fa-solid fa-arrow-left"></i>
                     Badge & Milestone
                 </a> 
@@ -157,6 +157,8 @@
 
         $champBadge = mysqli_fetch_assoc(mysqli_query($conn,$sql_champ_badge));
 
+        if(mysqli_num_rows(mysqli_query($conn,$sql_champ_badge)) > 0){
+
 
 
     ?>
@@ -184,9 +186,11 @@
             </div>
     </div>
 
+    <?php } ?>
+
     <div class="rbHeader">
         <div class="rbhTitle">Badges</div>
-        <div class="rbhText">Collected: 20/50</div>
+        <div class="rbhText">Collected: <?php echo $totalOwned.'/'.$totalBadges ?></div>
     </div>
 
     <div class="realBadgeContainer">

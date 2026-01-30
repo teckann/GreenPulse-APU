@@ -58,8 +58,10 @@
                 $newRequiredPoints > 0 && $lastRequiredPoints > 0){
                 return ($newRequiredPoints - $lastRequiredPoints);
                 
-            }else{
+            }else if($newRequiredPoints){
                 return $newRequiredPoints;
+            }else{
+                return 1;
             }
     }
 
