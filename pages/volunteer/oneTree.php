@@ -39,62 +39,13 @@
             $lastFertDate = strtotime($dateFromDB);
             $todayDate = strtotime(date("Y-m-d"));
 
-            if($lastFertDate >= $todayDate){
-                $btnStyle = '
-                    .otFertBtn {
-
-                        background-color: gray;
-
-                        color: white;
-                    }
-                    
-
-                ';
-
-                $disableOrNot = 'disabled';
-
-            }else{
-                $btnStyle = '
-
-                    .otFertBtn {
-
-                        background-color: #09450c;
-
-                        color: white;
-                    }
-                    .otFertBtn:hover {
-
-                        background-color: #5cd762;
-
-                        color: black;
-                    }
-
-                ';
-            }
+            
 
 
         }else{
             $lastFertilized = 'Not Yet Fertilized';
 
-            $btnStyle = '
-
-
-                .otFertBtn {
-
-                
-                    background-color: #09450c;
-
-                    color: white;
-
-
-                }
-                .otFertBtn:hover {
-                    background-color: #5cd762;
-
-                    color: black;
-                }
-
-            ';
+            
         }
 
 
@@ -113,7 +64,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    
+        <link rel="icon" href="../../src/elements/logo_vertical.png" type="image/x-icon">
+
+
+    <title>Tree</title>
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <link rel="stylesheet" href="../../styles/volunteer_2.css">
     <script src="../../scripts/volunteer.js"></script>
@@ -168,12 +124,7 @@
             <div class="otFertiCard">
                 <h3 class="fertTitle">Last Fertilized :</h3>
                 <p class="otFertiDate"><?php echo $lastFertilized; ?></p>
-                <form action="" method="post">
-                    <button class="otFertBtn" name="fertilize" value="<?php echo$tree_id ?>">
-                        <i class="fa-solid fa-spray-can"></i>
-                        Fertilize (-20 GP)
-                    </button>
-                </form>
+
             </div>
 
             </div>

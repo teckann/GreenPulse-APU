@@ -21,7 +21,7 @@
 
         $clickedModule = mysqli_fetch_assoc(mysqli_query($conn,$sql_one_module));
 
-        if($clickedModule["module_status"] == "Active"){
+        if($clickedModule["module_status"] == "Active" && ($clickedModule["total_quiz"] > 0)){
             $disabledOrNot = '';
         }else{
             $disabledOrNot = 'disabled';
@@ -43,10 +43,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    
+        <link rel="icon" href="../../src/elements/logo_vertical.png" type="image/x-icon">
+
+
+    <title>Module</title>
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <script src="../../scripts/volunteer.js"></script>
     <script src="../../scripts/volunteer_study.js"></script>
+
+    <?php 
+    
+    if($disabledOrNot == ''){
+    
+    
+    ?>
+
+    <style>
+        .quizBtn:hover {
+            transform: translateY(-2px);
+
+            box-shadow: 0 6px 20px rgba(198, 255, 0, 0.6);
+            
+            color: #ccff33;
+            background-color: #1b5e20;
+        }
+
+        .quizBtn {
+            background-color: #c6ff00;
+            color: #1b5e20;
+        }
+    </style>
+
+    <?php  }else{ ?>
+    <style>
+        .quizBtn {
+            background-color: #a5a5a5;
+            color: #000000;
+        }
+    </style>
+
+
+    <?php } ?>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 </head>

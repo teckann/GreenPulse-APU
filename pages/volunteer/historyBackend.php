@@ -20,7 +20,7 @@
                                     WHERE event_id IN (
                                         SELECT event_id 
                                         FROM attendance 
-                                        WHERE user_id = 'U004'
+                                        WHERE user_id = '$userID'
                                         AND attendance_status = 'Present'
                                     )
                                     AND event_title LIKE '%$toSearch%';";
