@@ -56,7 +56,7 @@
                         with the APU CLCS front-end development team, where I gained hands-on experience with 
                         modern frontend technologies such as React, TypeScript, and Tailwind CSS, and collaborated closely 
                         with other developers. I have also completed the assignment project that involving Java 
-                        and object-oriented programming, allowing me to apply theoretical concepts in practical 
+                        and object-oriented programming (OOP), allowing me to apply theoretical concepts in practical 
                         development and strengthen my problem-solving skills. Currently in my fourth semester, I 
                         am working towards becoming a full-stack and mobile developer. To support this goal, I start 
                         from building dynamic web applications using PHP and MySQL as the backend foundation, further 
