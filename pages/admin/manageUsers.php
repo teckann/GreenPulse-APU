@@ -28,7 +28,7 @@
         
             if(mysqli_query($conn, $sql_updateStatus)) {
                 // record action into log
-                // addLog($conn, $userID, "Change User Status ($targetUserID)");
+                addLog($conn, $userID, "Change User Status ($targetUserID)");
                 echo "<script>
                         alert('--- Successfully Updated User Status ---\\nUser ID: $targetUserID\\nNew Status: $nextStatus');
                         window.location.href = 'manageUsers.php';
@@ -107,7 +107,7 @@
         if(mysqli_query($conn, $sql_addUser)) {
             $titleFormat_role = ucwords($role);
             // record action into log
-            // addLog($conn, $userID, "Add New User ($newUserID)");
+            addLog($conn, $userID, "Add New User ($newUserID)");
 
             echo "<script>
                     alert('--- Successfully Added New User ---\\nAccess Granted!\\nUser ID: $newUserID\\nRole: $titleFormat_role\\nDefault Password Format: UXXX@MMDD');

@@ -35,7 +35,7 @@
 
                     if (mysqli_query($conn, $sql_updatePassword)) {
                         // record action into log
-                        // addLog($conn, $userID, "Update Password ($userID)");
+                        addLog($conn, $userID, "Update Password ($userID)");
                         echo "<script>
                                 alert('--- Successfully Updated Password ---\\nYour account is now more secure.');
                                 window.location.href = 'updateSecuritySettings.php';
@@ -66,7 +66,7 @@
 
                     if (mysqli_query($conn, $sql_updateQuestion)) {
                         // record action into log
-                        // addLog($conn, $userID, "Update Security Question ($userID)");
+                        addLog($conn, $userID, "Update Security Question ($userID)");
                         echo "<script>
                                 alert('--- Successfully Updated Safety Questions ---\\nYour account is now more secure.');
                                 window.location.href = 'updateSecuritySettings.php';
