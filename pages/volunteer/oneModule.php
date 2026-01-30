@@ -54,9 +54,11 @@
 
     <div class="profileHead">
         <div>
+            <form action="study.php">
             <button class="backEvent" id="oneModuleBack">
                 <i class="fa-solid fa-arrow-left"></i>
             </button> 
+            </form>
         </div>
     </div>
 

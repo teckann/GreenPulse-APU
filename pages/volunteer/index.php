@@ -4,6 +4,8 @@
     include("../../backend/sessionData.php");
 
     include("eventBackend.php");
+
+    $userID = $_SESSION["userID"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +61,6 @@
             
             <?php 
 
-                $userID = $_SESSION["userID"];
             
                 $sql_profileDetails = "SELECT * FROM users WHERE user_id = '$userID';";
 

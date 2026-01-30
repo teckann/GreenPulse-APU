@@ -92,9 +92,11 @@
 
     <div class="profileHead">
         <div>
-            <button href="event.php" class="backEvent" id="oneEventBack">
+            <form action="event.php">
+            <button class="backEvent" id="oneEventBack">
                 <i class="fa-solid fa-arrow-left"></i>
             </button> 
+            </form>
         </div>
     </div>
 

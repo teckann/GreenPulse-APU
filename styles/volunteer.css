@@ -1487,6 +1487,7 @@ footer {
     justify-content: center;
 }
 
+
 .itemCard {
     background-color: #c8f8ded0;
     border-radius: 20px;
@@ -1504,7 +1505,6 @@ footer {
 
     overflow: hidden;
 
-    border-top: 5px solid #7b9813;
 }
 
 .imageBox {
@@ -1537,6 +1537,7 @@ footer {
     transform: scale(1.10);
 }
 
+
 .itemName {
     font-size: 24px;
     font-weight: 800;
@@ -1544,6 +1545,9 @@ footer {
     margin-bottom: 10px;
     color: #1a4d1c;
 }
+
+
+
 
 .itemDescription {
     font-size: 14px;
@@ -1565,6 +1569,8 @@ footer {
 
 
 }
+
+
 
 .dbLabel {
     font-size: 14px;
@@ -2141,7 +2147,7 @@ footer {
 
 #realPointBigContainer {
     margin-top: 10px;
-    background-color: #52A473;
+    background-color: #ffd6d6;
 
     
 
@@ -2322,6 +2328,11 @@ footer {
     color: #0a670e;
     font-size: 16px;
 
+}
+
+#linkBadgeMilestone:hover {
+    background-color: #0a670e;
+    color: white;
 }
 
 #pointFlowBtnContainer {
@@ -2834,7 +2845,7 @@ footer {
     color: #c6ff00;
 }
 
-.deleteSection {
+.deleteSection, .logOutSection {
     margin: 60px 0;
     display: flex;
     justify-content: center;
@@ -2842,7 +2853,13 @@ footer {
 
 }
 
-.deleteAccountBtn {
+.logOutSection{
+    width: 100%;
+}
+
+
+
+.deleteAccountBtn, .logOutBtn {
     width: 100%;
     max-width: 400px;
     padding: 15px;
@@ -2853,6 +2870,12 @@ footer {
     
     font-weight: 700;
     font-size: 16px;
+}
+
+.logOutBtn:hover {
+    background-color: #c62828;
+    color: #ffebee;
+    border: 1px solid #ffebee;
 }
 
 .editSecurityBtn {
@@ -3009,6 +3032,7 @@ footer {
     gap: 30px;
 
     grid-template-columns: 1fr;
+    
 }
 
 .otImageBox {
@@ -3148,6 +3172,517 @@ footer {
     box-shadow: 0 4px 10px rgba(26, 77, 28, 0.2);
 }
 
+/* badge */
+
+#navBadge {
+    background-color: #ffbb00;
+}
+
+.badgeBigContainer {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 20px;
+}
+
+.champHeader {
+    background-color: #EB9325;
+
+    border: 5px solid #F9BB4F;
+
+
+    
+    box-shadow: inset 0 1px 2px #0000006c;
+}
+
+.rbHeader, .champHeader {
+
+    border-radius: 15px;
+
+    padding: 5px 10px;
+
+    margin: 0 10px;
+
+    margin-bottom: 15px;
+
+    
+}
+
+.rbHeader {
+    background-color: rgba(74, 74, 74, 0.149);
+
+    border: 2px solid rgba(55, 55, 55, 0.207);
+
+
+    
+    box-shadow: 0 2px 5px rgba(95, 93, 26, 0.353);
+}
+
+.champTitle, .rbhTitle {
+    
+    border-radius: 10px;
+
+    padding: 3px;
+    margin: 0;
+
+    margin-bottom: 5px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    
+
+
+}
+
+.champTitle {
+    padding: 0;
+    color: white;
+}
+
+.rbhTitle {
+    background-color: #faffe878;
+
+    box-shadow: 0 2px 5px rgba(95, 93, 26, 0.2);
+
+    color: #166E9C;
+
+}
+
+.rbhText, .champText {
+    font-size: 13px;
+}
+
+.champText {
+    color: #FCF75B;
+
+}
+
+.rbhText {
+    color: #07CEF8;
+}
+
+.champCard {
+    background: linear-gradient(160deg, #ffffff 0%, #dbffe6 100%);
+
+    border: 2px solid #c6ff00;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    box-shadow: 0 4px 15px rgba(231, 255, 178, 0.247);
+
+    margin-bottom: 40px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.champImageBox {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 15px;
+
+    margin: 0 auto 15px auto;
+
+    position: relative;
+
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.champImg, .realBadgeImg {
+    width: 100%;
+    height: 100%;
+    
+    object-fit: cover;
+}
+
+.champName {
+    font-size: 22px;
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+    position: relative;
+
+    color: #09450c;
+
+
+}
+
+.champBox {
+    background-color: #b1ffc846;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    text-align: left;
+
+    position: relative;
+
+    box-shadow: 0 4px 15px rgba(192, 255, 57, 0.378);
+}
+
+.champRow {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+
+
+}
+
+.champRow:last-child, .rbRow:last-child {
+    margin-bottom: 0;
+}
+
+.champLabel, .rbLabel {
+    color: #00BA4B;
+}
+
+.champDate, .rbDate {
+    font-weight: 700;
+    color: #09450c;
+}
+
+.realBadgeContainer {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    
+
+    gap: 15px;
+}
+
+
+.realBadgeCard {
+    background: radial-gradient(circle at top, transparent 10%, #c8f8de 100%);
+    border-radius: 20px;
+
+    text-align: center;
+
+    display: flex;
+
+    flex-direction: column;
+
+
+    padding: 15px;
+
+
+
+
+    text-align: center;
+
+    box-shadow: 0 4px 15px rgba(108, 166, 100, 0.384);
+
+
+
+}
+
+.realBadgeImageBox {
+
+    background: radial-gradient(circle at top, transparent 10%, #4affc9 180%);
+
+    width: 80px;
+    height: 80px;
+    margin: auto;
+
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+
+    box-shadow: 0 0 10px rgba(77, 255, 61, 0.182);
+}
+
+
+
+.realBadgeName {
+    font-size: 16px;
+    font-weight: 700;
+
+    margin-bottom: 10px;
+    color: #1a4d1c;
+
+
+
+    
+}
+.realBadgeBox {
+    border: 1px solid #b3f7db;
+    background-color: #b1ffc846;
+
+    border-radius: 8px;
+
+    padding: 15px;
+
+    text-align: left;
+
+
+    box-shadow: 0 4px 15px rgba(192, 255, 57, 0.378);
+
+    padding: 10px;
+
+    font-size: 11px;
+
+    text-align: left;
+
+    margin-top: auto;
+
+  
+
+}
+
+.rbRow {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+    margin-bottom: 5px;
+
+}
+
+
+
+
+.rbDate {
+    font-size: 14px;
+    color: #254F1B;
+
+    text-align: left;
+
+    padding: 0 15px;
+
+
+
+}
+
+#milestoneDiv {
+    display: none;
+}
+
+#makeItFixed {
+    position: fixed;
+
+
+    width: 100%;
+
+
+    z-index: 900;
+
+    background-color: #FAFFE8;
+}
+
+.someSpace {
+
+    margin-top: 140px;
+}
+
+/* Milestone */
+
+.badgeMileStoneMain {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+
+    padding-right: 20px;
+
+    margin-left: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+
+
+    height: 100%;
+}
+
+.milestoneContainer {
+
+
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+
+    padding-left: 60px;
+    padding-bottom: 50px;
+
+    background-color: #166E9C;
+
+}
+
+.totalEarnBar {
+    position: absolute;
+    left: 0px;
+    top: 0;
+    bottom: 0;
+
+    width: 30px;
+
+    background-color: rgba(86, 86, 86, 0.468);
+
+    z-index: 2;
+}
+
+.totalEarnedFill {
+    position: absolute;
+    left: 3px;
+    bottom: 0;
+
+    width: 24px;
+
+    background-color: #48ABFE;
+
+    border-radius: 10px 10px 0 0;
+
+    z-index: 1;
+
+    height: 55%;
+}
+
+.oneMilestone {
+    position: relative;
+
+    margin-bottom: 60px;
+}
+
+.omLine {
+    position: absolute;
+
+    left: -60px;
+
+    top: 50%;
+
+    width: 30px;
+
+    height: 2px;
+
+    background-color: #000;
+
+    z-index: 2;
+}
+
+.omRequiredPoint {
+    position: absolute;
+
+    left: 30px;
+    top: -5px;
+
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    padding: 0 2px;
+}
+
+.omCard {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-self: end;
+
+    gap: 10px;
+
+    width: 70vw;
+
+
+    background: #12a6ea40;
+
+    border: 3px solid #0776C3;
+
+    padding: 20px;
+
+    margin-right: 20px;
+
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.325);
+
+    text-align: center;
+
+    border-radius: 16px;
+}
+
+.omImageBox {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    border-radius: 8px;
+
+
+
+    margin-bottom: 5px;
+}
+
+.omImg {
+    width:100%;
+
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.omName {
+    font-size: 22px;
+
+    font-weight: 800;
+
+    margin-bottom: 5px;
+}
+
+.omClaim {
+
+    width: 100%;
+
+    border-radius: 20px;
+
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.omBtn {
+
+    background-color: #4EAFFD;
+    border: 2px solid #4DB7F8;
+
+    color: white;
+
+    padding: 10px 30px;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 15px;
+
+    margin-top: 5px;
+}
+
+
+
 
 
 @media (min-width: 800px) {
@@ -3245,10 +3780,28 @@ footer {
         max-width: 1000px;
         margin-top: 40px;
     }
+    .badgeContainer {
+        max-width: 1000px;
+        margin-top: 40px;
+    }
 
     .itemCard {
 
         max-width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        gap: 40px;
+        padding: 40px;
+
+        text-align: left;
+        align-items: center;
+    }
+
+    .badgeCard {
+
+        max-width: 50%;
 
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -3348,6 +3901,60 @@ footer {
         padding: 30px;
 
     }
+
+
+    /* badge */
+
+    .badgeBigContainer {
+        padding: 40px;
+    }
+
+    .champCard {
+        display: flex;
+
+        align-items: center;
+
+        gap: 40px;
+
+        padding: 40px;
+
+        text-align: left;
+    }
+
+    .champImageBox {
+
+        margin: 0;
+
+        width: 100px;
+        height: 100px;
+
+    }
+
+    .champContent {
+        flex: 1;
+    }
+
+    .champTitle {
+        font-size: 32px;
+
+        margin-bottom: 20px;
+    }
+
+    .realBadgeContainer {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+
+    /* milestone*/
+
+    .badgeBigContainer {
+        max-width: 800px;
+    }
+
+    .omCard {
+        padding: 40px;
+    }
+
 
 
 

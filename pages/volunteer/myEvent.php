@@ -5,6 +5,8 @@
 
     
     include("../../backend/sessionData.php");
+
+    $userID = $_SESSION["userID"];
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +85,7 @@
                                     WHERE event_id IN (
                                         SELECT event_id 
                                         FROM attendance 
-                                        WHERE user_id = 'U004'
+                                        WHERE user_id = '$userID'
                                     ) ;";
                 
 

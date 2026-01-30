@@ -72,12 +72,14 @@
 
                 if(mysqli_query($conn, $sql_insert_history)){
                     mysqli_query($conn, $sql_update_points);
-                    echo '<script>alert("Redemption Successful! 🎉🎉");
+                    echo '<script>
+                            document.addEventListener("DOMContentLoaded",() =>{
+                            alert("Redemption Successful! 🎉🎉");
                     
 
                             let form = document.createElement("form");
                             form.method = "POST";
-                            form.action = "oneModule.php";
+                            form.action = "oneItem.php";
                             
                             let input = document.createElement("input");
                             input.type = "hidden";
@@ -111,11 +113,13 @@
 
                 if(mysqli_query($conn, $sql_insert_history)){
                     mysqli_query($conn, $sql_update_points);
-                    echo '<script>alert("Adoption Successful!");
+                    echo '<script>
+                            document.addEventListener("DOMContentLoaded",() =>{
+                            alert("Adoption Successful!");
                     
                             let form = document.createElement("form");
                             form.method = "POST";
-                            form.action = "oneModule.php";
+                            form.action = "oneItem.php";
                             
                             let input = document.createElement("input");
                             input.type = "hidden";
@@ -137,9 +141,25 @@
 
             
         }else{
-            echo '<script>alert("Not enought Point 😭😭");</script>';
-            header("Location: redeem.php");
-            exit();
+            echo '<script>
+                    document.addEventListener("DOMContentLoaded",() =>{
+                    alert("Not enough point");
+                    let form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = "oneItem.php";
+                    
+                    let input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = "'.$type.'";
+                    input.value = "'.$item_id.'";
+                    
+                    form.appendChild(input);
+                    document.body.appendChild(form);
+                    form.submit();
+
+                    })
+            
+                </script>';
         }
 
     }

@@ -5,6 +5,8 @@
 
     
     include("../../backend/sessionData.php");
+
+    $userID = $_SESSION["userID"];
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +94,7 @@
                                     WHERE module_id IN (
                                         SELECT module_id 
                                         FROM module_history 
-                                        WHERE user_id = 'U004'
+                                        WHERE user_id = '$userID'
                                     ) 
                                     AND module_status = 'Active';";
                 

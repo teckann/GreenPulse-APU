@@ -139,7 +139,7 @@
                 if(mysqli_num_rows($allModule) > 0){
                     while($oneModule = mysqli_fetch_assoc($allModule)){
                         fillingRow($oneModule['module_name'], $oneModule['highest_score'].'/'.$oneModule['total_quizes'],
-                                    $destinationFile ,'module', $oneModule['module_id']);
+                                    $destinationFile ,'oneModule', $oneModule['module_id']);
                         
                     }
                 }else{

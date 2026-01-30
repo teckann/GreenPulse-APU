@@ -141,6 +141,12 @@
 
     </div>
 
+    <div class="logOutSection">
+    <form action="../../backend/logoutRedirect.php">
+        <button type="submit" class="logOutBtn">Log Out</button>
+    </form>
+    </div>
+
 
 </body>
 </html>

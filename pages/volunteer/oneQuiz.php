@@ -46,7 +46,7 @@
 
         $answeredRecord = mysqli_fetch_assoc(mysqli_query($conn, $sql_attempt_times));
 
-        $highestScore = $totalCorrectQuiz.'/'.$totalQuiz;
+        
 
         if(!$answeredRecord){
 
@@ -55,7 +55,7 @@
             $sql_insert_record = "INSERT INTO module_history 
                                     (module_id, user_id, highest_score, awarded_points, total_attempt, finish_datetime) 
                                     VALUES 
-                                    ('$module_id', '$userID', '$highestScore', '$totalPoint', 1, NOW());";
+                                    ('$module_id', '$userID', '$totalCorrectQuiz', '$totalPoint', 1, NOW());";
 
             mysqli_query($conn, $sql_insert_record);
 

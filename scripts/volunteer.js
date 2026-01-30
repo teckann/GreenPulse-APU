@@ -141,6 +141,25 @@ function changingPageRedeem(button) {
     }
 
 }
+function changingPageBadgeMilestone(button) {
+
+    document.querySelector('#navBadge').style.background = 'transparent';
+    document.querySelector('#navMilestone').style.background = 'transparent';
+
+    button.parentElement.style.background = '#ffbb00';
+
+    const badgeDiv = document.querySelector('#badgeDiv');
+    const milestoneDiv = document.querySelector('#milestoneDiv');
+
+    if(button.id === 'badgeNav'){
+        badgeDiv.style.display = 'grid';
+        milestoneDiv.style.display = 'none';
+    }else if(button.id === 'milestoneNav'){
+        badgeDiv.style.display = 'none';
+        milestoneDiv.style.display = 'flex';
+    }
+
+}
 
 
 function searchEvent(e) {
@@ -289,6 +308,9 @@ document.addEventListener('DOMContentLoaded',() =>{
     const btnMerchandise = document.querySelector('#merchandiseRedeemNav');
     const btnTree = document.querySelector('#treeStudyNav');
 
+    const btnBadge = document.querySelector('#badgeNav');
+    const btnMilestone= document.querySelector('#milestoneNav');
+
     if(btnAvailable && btnCompleted) {
         btnAvailable.addEventListener('click', (e) => changingPageStudy(e.target));
 
@@ -299,6 +321,11 @@ document.addEventListener('DOMContentLoaded',() =>{
         btnMerchandise.addEventListener('click', (e) => changingPageRedeem(e.target));
 
         btnTree.addEventListener('click', (e) => changingPageRedeem(e.target));
+    }
+    if(btnBadge && btnMilestone) {
+        btnBadge.addEventListener('click', (e) => changingPageBadgeMilestone(e.target));
+
+        btnMilestone.addEventListener('click', (e) => changingPageBadgeMilestone(e.target));
     }
 
 

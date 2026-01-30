@@ -88,7 +88,7 @@
 
             <p id="realPointMilestone">Next Milestone : <span class="nextMilestone"></span></p>
 
-            <a href="BadgeMilestone.php"  id="linkBadgeMilestone" >Badge and Milestone &nbsp  <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="badgeMilestone.php"  id="linkBadgeMilestone" >Badge and Milestone &nbsp  <i class="fa-solid fa-arrow-right"></i></a>
 
         </div>
     
