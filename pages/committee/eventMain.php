@@ -88,7 +88,7 @@
                                 </svg>
                             </div>
                         <?php else: ?>
-                            <div style="padding: 10px; color: #666; font-size: 12px; font-style: italic;">
+                            <div style="padding: 10px; color: white; font-size: 12px; font-style: italic;">
                                 View only
                             </div>
                         <?php endif; ?>

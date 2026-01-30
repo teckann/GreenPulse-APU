@@ -296,10 +296,10 @@
                                     <span> *</span>
                                 </div>
                                 <select name="correct_answer[]" class="event-box">
-                                    <option value="Option 1">option 1</option>
-                                    <option value="Option 2">option 2</option>
-                                    <option value="Option 3">option 3</option>
-                                    <option value="Option 4">option 4</option>
+                                    <option value="option 1">option 1</option>
+                                    <option value="option 2">option 2</option>
+                                    <option value="option 3">option 3</option>
+                                    <option value="option 4">option 4</option>
                                 </select>
                             </div>
 
@@ -391,10 +391,10 @@
                                     <span> *</span>
                                 </div>
                                 <select name="correct_answer[]" class="event-box">
-                                    <option value="Option 1">option 1</option>
-                                    <option value="Option 2">option 2</option>
-                                    <option value="Option 3">option 3</option>
-                                    <option value="Option 4">option 4</option>
+                                    <option value="option 1">option 1</option>
+                                    <option value="option 2">option 2</option>
+                                    <option value="option 3">option 3</option>
+                                    <option value="option 4">option 4</option>
                                 </select>
                             </div>
 

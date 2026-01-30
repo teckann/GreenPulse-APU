@@ -34,7 +34,7 @@
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
 
-                            <a href="mailto: cynthia@gmail.com" target="_blank" class="social-media-icon">
+                            <a href="mailto: cynthiatan0121@gmail.com" target="_blank" class="social-media-icon">
                                 <i class="fa-solid fa-envelope"></i>
                             </a>
                         </div>
@@ -51,14 +51,18 @@
                 <div class="section-container">
                     <p class="section-title">About Me</p>
                     <p class="section-details">
-                        I am a Semester 4 Software Engineering student at <strong>APU</strong> and I love learning new things in 
-                        technology. I started university without any programming experience, which was hard, 
-                        but it pushed me to work harder and improve step by step. Semester 4 has been the most 
-                        important for me, as I started learning different programming languages for both frontend 
-                        and backend development. Along the way, I actively participated in competitions, workshops, 
-                        and hackathons, including the <strong>Joget competition</strong> and <strong>Devmatch Hackathon 2025</strong>, 
-                        which strengthened my technical skills, teamwork, and problem-solving abilities. I hope to become a well-rounded 
-                        software engineer in the future :3
+                        I am a Semester 4 Software Engineering student at <strong>Asia Pacific University (APU)</strong> with a 
+                        strong passion for learning and self-improvement in technology.
+                        My university journey has not been easy, because I entered without any prior 
+                        programming background. However, this challenge pushed me to work harder, 
+                        stay consistent, and grow step by step. <br>
+                        In Semester 2, I learned <strong>Python</strong> to build a strong programming foundation, and in Semester 3, 
+                        I learned <strong>Java</strong> and <strong>Object-Oriented Programming (OOP)</strong> to understand how software is designed 
+                        using classes and objects. Semester 4 has been the most impactful stage of my journey so far. 
+                        This was when I truly started learning and applying multiple programming languages, covering both 
+                        frontend and backend development. Through continuous practice, hands-on projects, and self-learning, 
+                        I gradually built my confidence and technical foundation. 
+                        My goal is to keep improving step by step and grow into a well-rounded software engineer who is adaptable, curious, and ready to take on real-world challenges. 
                     </p>
                 </div>
 
@@ -69,17 +73,39 @@
                         <div class="experience-box">
                             <div class="experience-header">
                                 <div class="experience-header-1">
-                                    <h3>Position</h3>
-                                    <p>Company | Job Status</p>
+                                    <h3>DEVMatch Hackathon 2025 – Participant</h3>
+                                    <p>Asia Pacific University Blockchain & Cryptocurrency Club (APUBCC) | Hackathon</p>
                                 </div>
 
                                 <div class="duration">
-                                    <p>Duration</p>
+                                    <p>Dec 2025</p>
                                 </div>
                             </div>
 
                             <p class="section-details">
-                                Description
+                                Participated in a blockchain-focused hackathon, collaborating with team members to explore Web3 
+                                ideas and develop practical solutions. Gained hands-on exposure to blockchain concepts, 
+                                teamwork, and problem-solving in a fast-paced, real-world development environment.
+                            </p>
+                        </div>
+                    
+                        <div class="experience-box">
+                            <div class="experience-header">
+                                <div class="experience-header-1">
+                                    <h3>Joget NextGenHack 2024 – 3rd Place</h3>
+                                    <p>Joget, Inc. | Competition</p>
+                                </div>
+
+                                <div class="duration">
+                                    <p>Dec 2024</p>
+                                </div>
+                            </div>
+
+                            <p class="section-details">
+                                Developed a real-world low-code solution using Joget to address practical 
+                                industry problems. Collaborated in a team to design workflows, build applications, 
+                                and present solutions under time constraints, gaining hands-on experience in problem-solving, 
+                                teamwork, and industry-oriented development.
                             </p>
                         </div>
                     </div>
@@ -127,10 +153,7 @@
                                 <p>MySQL</p>
                             </div>
 
-                            <div class="tech">
-                                <img src="../../src/icons/php.svg" class="svg-icon" alt="PHP">
-                                <p>PHP</p>
-                            </div>
+                            
                         </div>
                     </div>
 
