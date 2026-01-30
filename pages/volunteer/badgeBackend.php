@@ -4,8 +4,9 @@
 
     include("pointBackend.php");
 
-    function getNewRequiredPoint($conn){
-        $sql_totalPoint = "SELECT total_earned FROM users WHERE user_id = 'U004'";
+
+    function getNewRequiredPoint($conn, $userID){
+        $sql_totalPoint = "SELECT total_earned FROM users WHERE user_id = '$userID'";
 
             $totalPoints = mysqli_fetch_assoc(mysqli_query($conn,$sql_totalPoint));
             $totalPoint = $totalPoints['total_earned'];
@@ -25,8 +26,8 @@
 
     }
 
-    function getPrevRequiredPoint($conn){
-            $sql_totalPoint = "SELECT total_earned FROM users WHERE user_id = 'U004'";
+    function getPrevRequiredPoint($conn, $userID){
+            $sql_totalPoint = "SELECT total_earned FROM users WHERE user_id = '$userID'";
 
         
             $totalPoints = mysqli_fetch_assoc(mysqli_query($conn,$sql_totalPoint));
@@ -47,10 +48,10 @@
             }
     }
 
-    function getRemainmingPoint($conn){
+    function getRemainmingPoint($conn, $userID){
 
-            $newRequiredPoints = getNewRequiredPoint($conn);
-            $lastRequiredPoints = getPrevRequiredPoint($conn);
+            $newRequiredPoints = getNewRequiredPoint($conn, $userID);
+            $lastRequiredPoints = getPrevRequiredPoint($conn, $userID);
 
 
             if($newRequiredPoints != null && $lastRequiredPoints != null && 
@@ -65,14 +66,14 @@
     if(isset($_GET["getBadge"])){
 
         if(($_GET["getBadge"]) == "requiredPoints"){
-            echo(getNewRequiredPoint($conn));
+            echo(getNewRequiredPoint($conn, $userID));
 
         }else if(($_GET["getBadge"]) == "remainmingPoints"){
-            echo(getRemainmingPoint($conn));
+            echo(getRemainmingPoint($conn, $userID));
 
         }else if(($_GET["getBadge"]) == "badgePercentage")
-            if(getTotalPoint($conn) != '0'){
-                echo((getTotalPoint($conn) - getPrevRequiredPoint($conn)) / getRemainmingPoint($conn));
+            if(getTotalPoint($conn, $userID) != '0'){
+                echo((getTotalPoint($conn, $userID) - getPrevRequiredPoint($conn, $userID)) / getRemainmingPoint($conn, $userID));
                     
             }else {
                 echo '0';

@@ -2,8 +2,12 @@
                 
     include("../../conn.php");
 
-    function getCurrentPoint($conn){
-        $sql_currentPoint = "SELECT green_points FROM users WHERE user_id = 'U004'";
+    include("../../backend/sessionData.php");
+
+    $userID = $_SESSION["userID"];
+
+    function getCurrentPoint($conn, $userID){
+        $sql_currentPoint = "SELECT green_points FROM users WHERE user_id = '$userID'";
 
         $greenPoints = mysqli_fetch_assoc(mysqli_query($conn,$sql_currentPoint));
 
@@ -14,8 +18,8 @@
         }
     }
 
-    function getTotalPoint($conn){
-        $sql_totalPoint = "SELECT total_earned FROM users WHERE user_id = 'U004'";
+    function getTotalPoint($conn, $userID){
+        $sql_totalPoint = "SELECT total_earned FROM users WHERE user_id = '$userID'";
 
         $totalPoints = mysqli_fetch_assoc(mysqli_query($conn,$sql_totalPoint));
 
@@ -29,10 +33,10 @@
     if(isset($_GET["getPoint"])){
 
         if(($_GET["getPoint"]) == "currentpoint"){
-            echo(getCurrentPoint($conn));
+            echo(getCurrentPoint($conn, $userID));
 
         }elseif(($_GET["getPoint"]) == "totalPoint"){
-            echo(getTotalPoint($conn));
+            echo(getTotalPoint($conn, $userID));
         }
 
         mysqli_close($conn);
