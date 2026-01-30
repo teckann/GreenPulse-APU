@@ -77,7 +77,7 @@
 
         <div class="profileHead">
         <div>
-            <div><a href="about.php" class="backEvent"><i class="fa-solid fa-arrow-left"></i></a> Contact Us</div>
+            <div><a href="aboutUs.php" class="backEvent"><i class="fa-solid fa-arrow-left"></i></a> Contact Us</div>
         </div>
 
         </div>

@@ -40,6 +40,9 @@ function navSearching(searchAreaid, dropDownid) {
                     case Navigation[0] : 
                         window.location.href = '../../pages/volunteer/index.php';
                         break;
+                    case Navigation[1] : 
+                        window.location.href = '../../pages/volunteer/point.php';
+                        break;
                     case Navigation[2] : 
                         window.location.href = '../../pages/volunteer/event.php';
                         break;

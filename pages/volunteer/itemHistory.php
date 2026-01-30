@@ -123,7 +123,9 @@
             </div>
 
             <?php     if(isset($_POST['tree'])){ ?>
-            <button class="thBtn"> View This Tree </button>
+            <form action="oneTree.php" method="post">
+                <button class="thBtn" name="oneTree" value="<?php echo$item['tree_adoption_id']; ?>" > View This Tree </button>
+            </form>
             <?php } ?>
 
         </div>

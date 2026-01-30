@@ -44,7 +44,8 @@ if(!$userID){
         <a class="navLink" id="profileNav" href="profile.php"><span>Profile</span></a>
     </div>
 
-    <button id="menuButton">🍔</button>
+    <button id="menuButton"><i class="fa-solid fa-bars"></i>
+</button>
 
 </div>
 

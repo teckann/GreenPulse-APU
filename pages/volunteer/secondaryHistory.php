@@ -137,8 +137,11 @@
 
                 if(mysqli_num_rows($allModule) > 0){
                     while($oneModule = mysqli_fetch_assoc($allModule)){
+
+                    if($oneModule["volunteer_id"] == $userID){
                         fillingRow($oneModule['module_name'], $oneModule['highest_score'].'/'.$oneModule['total_quizes'],
                                     $destinationFile ,'oneModule', $oneModule['module_id']);
+                    }
                         
                     }
                 }else{
