@@ -240,11 +240,13 @@
                             <tbody>
                                 <?php
                                     foreach ($allParticipantsInfo as $row):
+                                        $color = statusColor($row["attendance_status"]);
+
                                         echo '<tr>
                                                 <td>' . $row['user_id'] . '</td>
                                                 <td>' . $row['name'] . '</td>
                                                 <td>' . $row['event_register_datetime'] . '</td>
-                                                <td>' . $row['attendance_status'] . '</td>
+                                                <td style="color: '. $color .'">' . $row['attendance_status'] . '</td>
                                               </tr>';
                                     endforeach
                                 ?>

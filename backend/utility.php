@@ -35,10 +35,10 @@
     }
     
     function statusColor($status) {
-        if ($status === "Active" || $status === "Complete") {
+        if ($status === "Active" || $status === "Complete" || $status === "Present") {
             return "#28a745";
         }
-        elseif ($status === "Inactive" || $status === "Pending") {
+        elseif ($status === "Inactive" || $status === "Pending" || $status === "Absent") {
             return "#dc3545";
         }
     }
