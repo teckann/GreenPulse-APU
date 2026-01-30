@@ -30,8 +30,8 @@
         $submissionID = newID($conn, "contact_submission", "S");
         $todayDateTime = date("Y-m-d H:i:s");
 
-        $sql = "INSERT INTO contact_submission (submission_id, full_name, email_address, contact_number, subject, content, submission_datetime)
-                VALUES ('$submissionID', '$fullName', '$email', '$contactNumber', '$subject', '$description', '$todayDateTime')";
+        $sql = "INSERT INTO contact_submission (submission_id, user_id, full_name, email_address, contact_number, subject, content, submission_datetime)
+                VALUES ('$submissionID', ''$userID, '$fullName', '$email', '$contactNumber', '$subject', '$description', '$todayDateTime')";
         
         if(mysqli_query($conn, $sql)) {
             echo "<script>
