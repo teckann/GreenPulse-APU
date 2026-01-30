@@ -7,7 +7,7 @@
 
         <link rel="stylesheet" href="../../styles/portfolio.css">
         <!-- style & ico -->
-        <link rel="icon" href="../../src/avatars/U001_avatar_1768494571.png" type="image/x-icon">
+        <link rel="icon" href="../../src/elements/member1.png" type="image/x-icon">
 
         <!-- icon  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +18,7 @@
         <main>
             <div class="portfolio-header">
                 <div class="header-1">
-                    <img src="../../src/avatars/U001_avatar_1768494571.png" alt="" class="avatar">
+                    <img src="../../src/elements/member1.png" alt="" class="avatar">
 
                     <div class="social-media-big-container">
                         <div class="social-media-container">
@@ -30,7 +30,7 @@
                                 <i class="fa-brands fa-github"></i>
                             </a>
 
-                            <a href="https://www.instagram.com/teckann_06?igsh=Znl6dXhlZHlmcWxv" target="_blank" class="social-media-icon">
+                            <a href="https://www.instagram.com/teckann_06" target="_blank" class="social-media-icon">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
 
@@ -55,7 +55,7 @@
                         <strong>Asia Pacific University (APU)</strong>. During my third semester, I volunteered 
                         with the APU CLCS front-end development team, where I gained hands-on experience with 
                         modern technologies such as React, TypeScript, and Tailwind CSS, and collaborated closely 
-                        with other developers. I have also completed multiple assignment projects involving Java 
+                        with other developers. I have also completed the assignment project that involving Java 
                         and object-oriented programming, allowing me to apply theoretical concepts in practical 
                         development and strengthen my problem-solving skills. Currently in my fourth semester, I 
                         am working towards becoming a full-stack and mobile developer by building dynamic web applications 

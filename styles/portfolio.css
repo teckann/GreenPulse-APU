@@ -32,7 +32,7 @@ main {
 .avatar {
     width: 100px;
     height: 100px;
-    border-radius: 10px;
+    border-radius: 50%;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
