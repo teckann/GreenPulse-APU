@@ -4,7 +4,7 @@
     include("utility.php");
 
     // record action into log
-    // addLog($conn, $userID, "Successful Logout");
+    addLog($conn, $userID, "Successful Logout");
     
     // remove the session
     session_unset();

@@ -13,7 +13,7 @@
         mysqli_query($conn, $sql);
 
         // record action into log
-        // addLog($conn, $userID, "Successful Login");
+        addLog($conn, $userID, "Successful Login");
 
         // main logic - redirection
         if ($role == "admin") {

@@ -27,7 +27,7 @@
         
         if(mysqli_query($conn, $sql_updateStatus)) {
             // record action into log
-            // addLog($conn, $userID, "Complete Contact Submission ($targetSubmissionID)");
+            addLog($conn, $userID, "Complete Contact Submission ($targetSubmissionID)");
 
             echo "<script>
                     alert('--- Successfully Updated Contact Submission Status ---\\nUser ID: $targetSubmissionID\\nNew Status: $nextStatus');
@@ -56,7 +56,7 @@
 
             if (mysqli_query($conn, $sql)) {
                 // record action into log
-                // addLog($conn, $userID, "Add New Announcement ($announcementID)");
+                addLog($conn, $userID, "Add New Announcement ($announcementID)");
 
                 echo "<script>
                         alert('--- Successfully Added Announcement ---\\nThe latest notifications will be displayed on the banner.');

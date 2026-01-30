@@ -33,7 +33,7 @@
         
         if(mysqli_query($conn, $sql_updateStatus)) {
             // record action into log
-            // addLog($conn, $userID, "Change Event Status ($targetEventID)");
+            addLog($conn, $userID, "Change Event Status ($targetEventID)");
 
             echo "<script>
                     alert('--- Successfully Updated Event Status ---\\nUser ID: $targetEventID\\nNew Status: $nextStatus');

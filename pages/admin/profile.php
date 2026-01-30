@@ -81,7 +81,7 @@
 
             if(mysqli_query($conn, $sql_updateInfo)) {
                 // record action into log
-                // addLog($conn, $userID, "Update Profile Information ($userID)");
+                addLog($conn, $userID, "Update Profile Information ($userID)");
                 echo "<script>
                         alert('--- Successfully Updated Personal Infomation ---\\nAlways keep your profile details up to date.');
                         window.location.href = 'profile.php';
