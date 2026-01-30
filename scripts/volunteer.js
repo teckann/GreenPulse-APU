@@ -303,6 +303,21 @@ function remainmingPoints() {
 document.addEventListener('DOMContentLoaded',() =>{
     // loadUpcomingEvent();
 
+        if(document.querySelector('#uploadProPic')){
+
+        const fileInput = document.querySelector('#uploadProPic');
+
+        document.querySelector('#uploadPicBtn').addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', () => {
+                document.querySelector('#profilePicForm').submit();
+        });
+
+    }
+
+
 
     const btnAvailable = document.querySelector('#availableStudyNav');
     const btnCompleted = document.querySelector('#completedStudyNav');
@@ -342,33 +357,6 @@ document.addEventListener('DOMContentLoaded',() =>{
 
 
 
-    if(document.querySelector('#uploadProPic')){
-
-        const fileInput = document.querySelector('#uploadProPic');
-
-        document.querySelector('#uploadPicBtn').addEventListener('click', () => {
-            fileInput.click();
-        });
-
-        fileInput.addEventListener('change', () => {
-            if (fileInput.files.length > 0) {
-                document.querySelector('#profilePicForm').submit();
-            }
-        });
-
-    }
-
-    const fileInput = document.querySelector('#uploadProPic');
-
-    uploadBtn.addEventListener('click', function() {
-        fileInput.click();
-    });
-
-    fileInput.addEventListener('change', function() {
-        if (fileInput.files.length > 0) {
-            form.submit();
-        }
-    });
 
 
 
