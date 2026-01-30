@@ -4,7 +4,6 @@
     include("../../conn.php");
 
     
-    include("../../backend/sessionData.php");
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +70,7 @@
             <p id="totalPointLabel">Total Earned Green Point : </p>
             <p id="totalEarnedPoint">
                 <?php
-                    echo getTotalPoint($conn);
+                    echo getTotalPoint($conn,$userID);
                 ?> GP </p>
             
 

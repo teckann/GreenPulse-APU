@@ -30,6 +30,10 @@
 
     $fillPercentage = ($userTotalPoints/ $hisghestRequired) *100;
 
+    if($fillPercentage >100){
+        $fillPercentage = 100;
+    }
+
 
 ?>
 
@@ -147,10 +151,10 @@
                         WHERE m.user_id = '$userID';";
 
 
-        $badge = mysqli_query($conn,$sql_my_badge);
+        $myBadge = mysqli_query($conn,$sql_my_badge);
 
-        if(mysqli_num_rows($badge) > 0){
-            while($oneBadge = mysqli_fetch_assoc($badge)){
+        if(mysqli_num_rows($myBadge) > 0){
+            while($oneBadge = mysqli_fetch_assoc($myBadge)){
 
     ?>
     <div class="realBadgeCard">
@@ -185,38 +189,86 @@
         <div class="milestoneContainer">
 
             <div class="totalEarnBar">
-                <div class="totalEarnedFill">
+                <div class="totalEarnedFill" style="heaight: <?php echo $fillPercentage; ?>%>">
 
                 </div>
             </div>
 
-            <?php  ?>
+            <?php 
+            
+            while ($row = mysqli_fetch_assoc($allBadges)){
+
+                $alreadyGot = false;
+                $canClaim = false;
+
+                if(mysqli_num_rows($myBadge) > 0){
+                    while($oneBadge = mysqli_fetch_assoc($myBadge)){
+                        if($row["badge_id"] == $oneBadge["badge_id"]){
+                           $alreadyGot = true; 
+                        }
+                        
+                    }
+                }
+
+                if(!$alreadyGot && ($userTotalPoints >= $row["points_required"])){
+                    $canClaim = true;
+
+                }
+
+            
+            
+            ?>
 
             <div class="oneMilestone">
                 <div class="omLine">
                     <span class="omRequiredPoint">
-                        666
+                        <?php echo $row["points_required"] ?>
                     </span>
                 </div>
 
                 <div class="omCard">
                     <div class="omImageBox">
-                        <img src="" alt="" class="omImg">
+                        <img src="../../<?php echo $row["badge_image"] ?>" alt="Badge Image" class="omImg">
 
                     </div>
                     <div class="omName">
-                        lalal
+                        <?php echo $row["badge_name"] ?>
                     </div>
                     <div class="omClaim">
-                        <button class="omBtn">
-                            6000 GP
-                        </button>
+                        <?php if($alreadyGot){ ?>
+                            <button class="omBtn"
+                                    style="background-color: #85858535;
+                                    border: 2px solid #63636396;;">
+                                Achieved
+                            </button>
+
+                        <?php }else if($alreadyGot){ ?>
+                        <form action="" method="post">
+                            <button class="omBtn"
+                                    style="background-color: #63fb68d1;
+                                    border: 2px solid #b7f18796;
+                                    animation-name: heartBeat;
+                                    animation-duration: 2s;
+                                    animation-iteration-count: infinite;">
+                                Claim
+                            </button>
+                            </form>
+                        <?php }else{ ?>
+                            <button class="omBtn"
+                                style="background-color: #4f4f4fe5;
+                                border: 2px solid #63636396;;">
+                                <?php echo $row["points_required"] ?> GP
+                            </button>
+
+                        <?php } ?>
                     </div>
 
 
                 </div>
 
             </div>
+
+            <?php } ?>
 
         </div>
 
