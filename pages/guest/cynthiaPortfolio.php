@@ -7,7 +7,7 @@
 
         <link rel="stylesheet" href="../../styles/portfolio.css">
         <!-- style & ico -->
-        <link rel="icon" href="../../src/avatars/U003_avatar.png" type="image/x-icon">
+        <link rel="icon" href="../../src/elements/member3.png" type="image/x-icon">
 
         <!-- icon  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +18,7 @@
         <main>
             <div class="portfolio-header">
                 <div class="header-1">
-                    <img src="../../src/avatars/U003_avatar.png" alt="" class="avatar">
+                    <img src="../../src/elements/member3.png" alt="" class="avatar">
 
                     <div class="social-media-big-container">
                         <div class="social-media-container">
@@ -69,19 +69,17 @@
                         <div class="experience-box">
                             <div class="experience-header">
                                 <div class="experience-header-1">
-                                    <h3>BRAIN Research Consultant</h3>
-                                    <p>WorldQuant | Contract</p>
+                                    <h3>Position</h3>
+                                    <p>Company | Job Status</p>
                                 </div>
 
                                 <div class="duration">
-                                    <p>Dec 2025 - Present</p>
+                                    <p>Duration</p>
                                 </div>
                             </div>
 
                             <p class="section-details">
-                                Works with large datasets, applying statistical and programming techniques to uncover 
-                                market insights. Gains exposure to real-world applications of data science and quantitative 
-                                analysis.
+                                Description
                             </p>
                         </div>
                     </div>
@@ -132,21 +130,6 @@
                             <div class="tech">
                                 <img src="../../src/icons/php.svg" class="svg-icon" alt="PHP">
                                 <p>PHP</p>
-                            </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/typescript.svg" class="svg-icon" alt="TypeScript">
-                                <p>TypeScript</p>
-                            </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/react.svg" class="svg-icon" alt="React">
-                                <p>React</p>
-                            </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/tailwindcss.svg" class="svg-icon" alt="Tailwind CSS">
-                                <p>Tailwind CSS</p>
                             </div>
                         </div>
                     </div>

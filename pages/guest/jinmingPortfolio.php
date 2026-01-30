@@ -7,7 +7,7 @@
 
         <link rel="stylesheet" href="../../styles/portfolio.css">
         <!-- style & ico -->
-        <link rel="icon" href="../../src/avatars/U004_avatar.png" type="image/x-icon">
+        <link rel="icon" href="../../src/elements/member4.png" type="image/x-icon">
 
         <!-- icon  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +18,7 @@
         <main>
             <div class="portfolio-header">
                 <div class="header-1">
-                    <img src="../../src/avatars/U004_avatar.png" alt="" class="avatar">
+                    <img src="../../src/elements/member4.png" alt="" class="avatar">
 
                     <div class="social-media-big-container">
                         <div class="social-media-container">
@@ -100,21 +100,6 @@
                             <div class="tech">
                                 <img src="../../src/icons/php.svg" class="svg-icon" alt="PHP">
                                 <p>PHP</p>
-                            </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/typescript.svg" class="svg-icon" alt="TypeScript">
-                                <p>TypeScript</p>
-                            </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/react.svg" class="svg-icon" alt="React">
-                                <p>React</p>
-                            </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/tailwindcss.svg" class="svg-icon" alt="Tailwind CSS">
-                                <p>Tailwind CSS</p>
                             </div>
                         </div>
                     </div>

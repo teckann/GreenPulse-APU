@@ -7,7 +7,7 @@
 
         <link rel="stylesheet" href="../../styles/portfolio.css">
         <!-- style & ico -->
-        <link rel="icon" href="../../src/avatars/U002_avatar.png" type="image/x-icon">
+        <link rel="icon" href="../../src/elements/member2.png" type="image/x-icon">
 
         <!-- icon  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +18,7 @@
         <main>
             <div class="portfolio-header">
                 <div class="header-1">
-                    <img src="../../src/avatars/U002_avatar.png" alt="" class="avatar">
+                    <img src="../../src/elements/member2.png" alt="" class="avatar">
 
                     <div class="social-media-big-container">
                         <div class="social-media-container">
@@ -51,7 +51,17 @@
                 <div class="section-container">
                     <p class="section-title">About Me</p>
                     <p class="section-details">
-                        Thinking
+                        I’m Goh Yang Ee, a second-year Diploma student majoring in <strong>Software Engineering</strong> at 
+                        <strong>Asia Pacific University (APU)</strong>. Throughout my studies, I have developed a strong 
+                        interest in programming and building efficient, reliable software solutions. My coursework has given me a 
+                        solid foundation in programming fundamentals, data structures, and core software development concepts. <br>
+                        I have completed multiple academic projects using <strong>Java</strong> and <strong>object-oriented programming 
+                        (OOP)</strong>, where I applied theoretical knowledge to practical scenarios and strengthened my 
+                        analytical thinking and problem-solving abilities. Currently, I am expanding my expertise in full-stack 
+                        web development, developing dynamic web applications with PHP and MySQL while deepening my 
+                        understanding of backend systems, databases, and application architecture. I am continuously 
+                        learning new technologies and working toward becoming a capable developer who can deliver 
+                        complete end-to-end systems.
                     </p>
                 </div>
 
@@ -100,21 +110,6 @@
                             <div class="tech">
                                 <img src="../../src/icons/php.svg" class="svg-icon" alt="PHP">
                                 <p>PHP</p>
-                            </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/typescript.svg" class="svg-icon" alt="TypeScript">
-                                <p>TypeScript</p>
-                            </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/react.svg" class="svg-icon" alt="React">
-                                <p>React</p>
-                            </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/tailwindcss.svg" class="svg-icon" alt="Tailwind CSS">
-                                <p>Tailwind CSS</p>
                             </div>
                         </div>
                     </div>
