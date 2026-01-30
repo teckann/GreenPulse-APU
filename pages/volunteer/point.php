@@ -48,25 +48,30 @@
             <?php 
 
                 $userID = $_SESSION["userID"];
-            
-                $sql_profileDetails = "SELECT * FROM users WHERE user_id = '$userID';";
+                $sql_champ_badge= "SELECT * 
+                        FROM badges b JOIN milestone m
+                        ON b.badge_id = m.badge_id
+                        WHERE m.user_id = '$userID'
+                        ORDER BY b.points_required DESC
+                        LIMIT 1;";
 
-                $profileDetails = mysqli_fetch_assoc(mysqli_query($conn,$sql_profileDetails));
+                $champBadge = mysqli_fetch_assoc(mysqli_query($conn,$sql_champ_badge));
 
-                echo '<img src="../../'.$profileDetails['avatar'].'" alt="User Profile" class="profilePic">'; 
+
+                echo '<img src="../../'.$champBadge['badge_image'].'" alt="User Profile" class="badgePic">'; 
 
             
             ?>
 
             
-            <button href="editProfile.php" id="editBadgeImg"><i class="fa-solid fa-pen" id="chooseBadgeIcon"></i></button>
+            
 
 
         </div>
         </div>
 
         <div id="totalPointDetails">
-            <p id="badgeName"> Badge Name</p>
+            <p id="badgeName"><?php echo$champBadge["badge_name"]; ?></p>
             <p id="totalPointLabel">Total Earned Green Point : </p>
             <p id="totalEarnedPoint">
                 <?php

@@ -108,7 +108,7 @@
                 $sql_insert_history = "INSERT INTO tree_adoption_history
                                         (tree_adoption_id, item_id, user_id, given_name, tree_adoption_datetime, fertilization_datetime, tree_adoption_status)
                                         VALUES
-                                        ('$newID', '$item_id', '$userID', '$givenName', NOW(), NULL, 'Active');";
+                                        ('$newID', '$item_id', '$userID', '$givenName', NOW(), NULL, 'Planted');";
 
 
                 if(mysqli_query($conn, $sql_insert_history)){

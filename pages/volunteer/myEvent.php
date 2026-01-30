@@ -4,9 +4,6 @@
     include("../../conn.php");
 
     
-    include("../../backend/sessionData.php");
-
-    $userID = $_SESSION["userID"];
 ?>
 
 <!DOCTYPE html>

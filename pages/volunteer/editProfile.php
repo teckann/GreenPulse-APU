@@ -1,5 +1,4 @@
 <?php
-    include("eventBackend.php");
 
     include("../../conn.php");
 
@@ -13,17 +12,37 @@
         $valueChanged = $_POST["valueToChange"];
         $typeChanged = $_POST["typeToChange"];
 
-        $sql_register_event = "UPDATE users
+        $sql_update_profile = "UPDATE users
                                 SET $typeChanged = '$valueChanged'
                                 WHERE user_id = '$userID';";
 
 
-            if(mysqli_query($conn,$sql_register_event)){
+            if(mysqli_query($conn,$sql_update_profile)){
                 
             }else{
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }
+
+            header("Location: profile.php");
            
+    }else if(isset($_POST["nationality"])){
+        $valueChanged = $_POST["nationality"];
+        $typeChanged = 'nationality';
+
+        $sql_update_profile = "UPDATE users
+                            SET $typeChanged = '$valueChanged'
+                            WHERE user_id = '$userID';";
+
+
+        if(mysqli_query($conn,$sql_update_profile)){
+            
+        }else{
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        header("Location: profile.php");
+
+
     }
 
 

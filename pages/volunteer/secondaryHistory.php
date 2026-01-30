@@ -1,5 +1,4 @@
 <?php
-    include("../../backend/sessionData.php");
 
     include("eventBackend.php");
 
@@ -17,7 +16,7 @@
                                   WHERE event_id IN (
                                     SELECT event_id 
                                     FROM attendance 
-                                    WHERE user_id = 'U004'
+                                    WHERE user_id = '$userID'
                                     AND attendance_status = 'Present'
                                 );";
 

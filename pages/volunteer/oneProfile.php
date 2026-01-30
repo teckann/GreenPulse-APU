@@ -1,5 +1,4 @@
 <?php
-    include("eventBackend.php");
 
     include("../../conn.php");
 
@@ -39,11 +38,15 @@
             $original = ($_POST['course']);
             $header = ' Course';
             $formName = 'course_name';
+
+            $type = 'course';
             break;
         case isset($_POST['nationality']):
             $original = ($_POST['nationality']);
             $header = ' Nationality';
             $formName = 'nationality';
+
+            $type = 'nationality';
             break;
         default:
             header("Location: profile.php");
@@ -113,9 +116,17 @@
         <div id="inputChangeProfile">
             
                 <?php
-                
-                echo'<input autofocus autocomplete="off" id="detailToChange" name="valueToChange" type="'.$type.'" value="'.$original.'">';
-                echo'<input type="hidden" name="typeToChange" value="'.$formName.'">'
+
+                if($type == 'nationality'){
+                    include("../general/nationality.php");
+                }else if($type == 'course'){
+                    include("../general/course.php");
+                }else{
+                    echo'<input autofocus autocomplete="off" id="detailToChange" name="valueToChange" type="'.$type.'" value="'.$original.'">';
+                    echo'<input type="hidden" name="typeToChange" value="'.$formName.'">';                
+                }
+
+
                 ?>
         </div>
         <div id="doneBtnContainer">

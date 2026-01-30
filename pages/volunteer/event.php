@@ -4,7 +4,6 @@
     include("../../conn.php");
 
     
-    include("../../backend/sessionData.php");
 
 ?>
 
@@ -60,7 +59,7 @@
                                     WHERE event_id IN (
                                         SELECT event_id 
                                         FROM attendance 
-                                        WHERE user_id = 'U004'
+                                        WHERE user_id = '$userID'
                                     ) 
                                     AND event_datetime >= CURRENT_DATE;";
                 

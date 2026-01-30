@@ -3,8 +3,6 @@
 
     include("../../conn.php");
 
-    
-    include("../../backend/sessionData.php");
 ?>
 
 <!DOCTYPE html>

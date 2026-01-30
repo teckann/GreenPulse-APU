@@ -19,12 +19,6 @@
     $treeAmount = $historyAmount['tree_count'];
     $merchandiseAmount = $historyAmount['merchandise_count']
 
-                            // FROM users
-                            // JOIN attendance ON users_id = attendance.user_id
-                            // JOIN module_history ON users_id = module_history.user_id
-                            // JOIN tree_adoption_history ON tree_adoption_history = items.user_id
-                            // JOIN merchandise_purchase_history ON users_id = marchandise_purchase_history.user_id
-                            // WHERE users_id = U004
 ?>
 
 <!DOCTYPE html>

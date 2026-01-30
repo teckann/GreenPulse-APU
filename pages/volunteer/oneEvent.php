@@ -4,7 +4,52 @@
 
     include("../../backend/sessionData.php");
 
+    
+    include("../../backend/utility.php");
+
     $userID = $_SESSION["userID"];
+
+    $feedBackButton = false;
+
+    if(isset($_POST["feedBackText"])){
+        $fbText = $_POST["feedBackText"];
+        $fbEventId = $_POST["oneEvent"];
+
+        $newFBid = newID($conn, 'feedback', 'F');
+
+
+
+        $sql_insert_feedback = "INSERT INTO feedback
+                                (feedback_id, event_id, user_id, feedback_details, submit_datetime)
+                                VALUES
+                                ('$newFBid', '$fbEventId', '$userID', '$fbText', NOW());";
+
+
+        if(mysqli_query($conn, $sql_insert_feedback)){
+            echo '<script>
+                    document.addEventListener("DOMContentLoaded",() =>{
+                    alert("Feedback Submitted. THANK YOU FOR TAKING YOUR TIME");
+
+                    let form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = "oneEvent.php";
+                    
+                    let input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = "oneEvent";
+                    input.value = "'.$fbEventId.'";
+                    
+                    form.appendChild(input);
+                    document.body.appendChild(form);
+                    form.submit();
+                    })
+                    </script>';
+
+
+        }
+
+
+    }
 
     if(isset($_POST["register"])){
         $insertEventid = $_POST["register"];
@@ -44,6 +89,8 @@
         $now_dateTime = new DateTime();
         $disabledOrNot = '';
 
+        
+
         if($event_dateTime >= $now_dateTime){
             $sql_registered_user = "SELECT COUNT(*) AS totalRegistered FROM attendance WHERE event_id = '$event_id'";
             
@@ -66,6 +113,7 @@
 
             if($clickedEvent["attendance_status"] == 'Present'){
                 $btn = 'You Attended 🎉';
+                $feedBackButton = true;
             }else if($clickedEvent["attendance_status"] == 'Absent'){
                 $btn = 'You Missed :(';
             }else{
@@ -185,6 +233,28 @@
                 </form>
 
             </div>
+
+            <?php if($feedBackButton){
+                $sql_feed_back = "SELECT * FROM feedback 
+                                    WHERE user_id = '$userID'
+                                    AND event_id = '$event_id';";
+
+                $gotFeedBack = mysqli_fetch_assoc(mysqli_query($conn,$sql_feed_back));
+
+                if(!$gotFeedBack){
+                    ?>
+                        <form action="feedBack.php" method="post">
+                            <button class="registerBtn" type="submit" name="feedBack" value="<?php echo$event_id ?>">
+                                Feedback Form
+                            </button>
+                        </form>
+                    <?php
+                }
+
+
+                
+
+            } ?>
         </div>
 
     </div>

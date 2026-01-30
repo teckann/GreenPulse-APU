@@ -1,9 +1,9 @@
 <?php 
                 
-    include("../../conn.php");
 
     include("pointBackend.php");
 
+    
 
     function getNewRequiredPoint($conn, $userID){
         $sql_totalPoint = "SELECT total_earned FROM users WHERE user_id = '$userID'";

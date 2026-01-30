@@ -2,37 +2,80 @@
     include("../../conn.php");
 
     
-    include("../../backend/sessionData.php");
+    include("badgeBackend.php");
+
+    if(isset($_POST["claimBadge"])){
+        $badgeToClaim = $_POST["claimBadge"];
+
+        $sql_insert_milestone = "INSERT INTO milestone
+                                    (user_id, badge_id, issue_date)
+                                    VALUES
+                                    ('$userID', '$badgeToClaim', NOW());";
+
+        if(mysqli_query($conn, $sql_insert_milestone)){
+
+            echo '<script>
+                alert("Badge CLAIMED");
+                
+
+            
+            </script>';
+
+            header('Location: badgeMilestone.php');
+        }
+
+    }
 
 
-    $userID = $_SESSION["userID"];
 
-
-    $sql_user_point = "SELECT * FROM users WHERE user_id = '$userID';";
-
-    $points = mysqli_fetch_assoc(mysqli_query($conn, $sql_user_point));
-
-    $userTotalPoints = $points["total_earned"];
+    $userTotalPoints = getTotalPoint($conn, $userID);
 
     $sql_all_badges = "SELECT * FROM badges ORDER BY points_required DESC;";
 
     $allBadges = mysqli_query($conn, $sql_all_badges);
 
-    while ($row = mysqli_fetch_assoc($allBadges)){
+    $sql_count_badges = "SELECT
+                          (SELECT COUNT(*) FROM badges) AS total_badges,
+                          (SELECT COUNT(*) FROM milestone WHERE user_id = '$userID') AS owned_badges;";
+
+    $countBadges = mysqli_fetch_assoc(mysqli_query($conn, $sql_count_badges));
+
+    $totalBadges = $countBadges["total_badges"];
+
+    $totalOwned = $countBadges["owned_badges"];
+
+    $badgesNotOwned = $totalBadges - $totalOwned;
+
+    $gapPerBadges = 100/$totalBadges;
+
+    $baseFill = $gapPerBadges * $totalOwned;
+
+    $currentGapPercent = ((getTotalPoint($conn, $userID) - getPrevRequiredPoint($conn, $userID)) / getRemainmingPoint($conn, $userID))*20;
+
+    $fillPercentage = $baseFill + $currentGapPercent;
+
+    if($fillPercentage >100){
+        $fillPercentage = 100;
+    }
+
+
+    $hisghestBadges = mysqli_query($conn, $sql_all_badges);
+
+    while ($row = mysqli_fetch_assoc($hisghestBadges)){
         $hisghestRequired = $row["points_required"];
         break;
         
     }
 
+
+
+
+
+
     if($hisghestRequired <= 0){
         $hisghestRequired = 1;
     }
 
-    $fillPercentage = ($userTotalPoints/ $hisghestRequired) *100;
-
-    if($fillPercentage >100){
-        $fillPercentage = 100;
-    }
 
 
 ?>
@@ -152,6 +195,8 @@
 
 
         $myBadge = mysqli_query($conn,$sql_my_badge);
+        $myBadgeForMilestone = mysqli_query($conn,$sql_my_badge);
+
 
         if(mysqli_num_rows($myBadge) > 0){
             while($oneBadge = mysqli_fetch_assoc($myBadge)){
@@ -188,27 +233,27 @@
     <div class="badgeMilestoneMain" id="milestoneDiv">
         <div class="milestoneContainer">
 
-            <div class="totalEarnBar">
-                <div class="totalEarnedFill" style="heaight: <?php echo $fillPercentage; ?>%>">
+            <div class="totalEarnBar" >
+                <div class="totalEarnedFill" style="height: <?php echo $fillPercentage;?>%;">
 
                 </div>
             </div>
 
             <?php 
+
+                $ownedBadgeID = [];
+        
+                while($row = mysqli_fetch_assoc($myBadgeForMilestone)){
+                    $ownedBadgeID[] = $row['badge_id'];
+                }
             
             while ($row = mysqli_fetch_assoc($allBadges)){
 
                 $alreadyGot = false;
                 $canClaim = false;
 
-                if(mysqli_num_rows($myBadge) > 0){
-                    while($oneBadge = mysqli_fetch_assoc($myBadge)){
-                        if($row["badge_id"] == $oneBadge["badge_id"]){
-                           $alreadyGot = true; 
-                        }
-                        
-                    }
-                }
+
+                $alreadyGot = in_array($row["badge_id"], $ownedBadgeID);
 
                 if(!$alreadyGot && ($userTotalPoints >= $row["points_required"])){
                     $canClaim = true;
@@ -242,14 +287,19 @@
                                 Achieved
                             </button>
 
-                        <?php }else if($alreadyGot){ ?>
+                        <?php }else if($canClaim){ ?>
                         <form action="" method="post">
                             <button class="omBtn"
                                     style="background-color: #63fb68d1;
                                     border: 2px solid #b7f18796;
                                     animation-name: heartBeat;
                                     animation-duration: 2s;
-                                    animation-iteration-count: infinite;">
+                                    animation-iteration-count: infinite;"
+                                    
+                                    name="claimBadge"
+                                    type="submit"
+                                    value="<?php echo$row["badge_id"] ?>"
+                                    >
                                 Claim
                             </button>
                             </form>
