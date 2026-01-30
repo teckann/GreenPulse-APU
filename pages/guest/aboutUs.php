@@ -65,24 +65,24 @@
                         <a href="yangeePortfolio.php" target="_blank" title="View Portfolio" class="member-card">
                             <img src="../../src/elements/member2.png" alt="Member 2 Picture">
                             <div class="member-details">
-                                <h3>Gan Teck Ann</h3>
-                                <p>Project Leader</p>
+                                <h3>Goh Yang Ee</h3>
+                                <p>Project Contributor</p>
                             </div>
                         </a>
 
                         <a href="cynthiaPortfolio.php" target="_blank" title="View Portfolio" class="member-card">
                             <img src="../../src/elements/member3.png" alt="Member 3 Picture">
                             <div class="member-details">
-                                <h3>Gan Teck Ann</h3>
-                                <p>Project Leader</p>
+                                <h3>Cynthia Tan Xin Ru</h3>
+                                <p>Project Contributor</p>
                             </div>
                         </a>
 
                         <a href="jinmingPortfolio.php" target="_blank" title="View Portfolio" class="member-card">
                             <img src="../../src/elements/member4.png" alt="Member 4 Picture">
                             <div class="member-details">
-                                <h3>Gan Teck Ann</h3>
-                                <p>Project Leader</p>
+                                <h3>Lim Jin Ming</h3>
+                                <p>Project Contributor</p>
                             </div>
                         </a>
                     </div>
