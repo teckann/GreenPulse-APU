@@ -319,7 +319,7 @@
                 <div class='popUpShow'>
                     <div class='itemPopUpInput createMerchandiseName'>
                         <label for='itemNameEdit'>Merchandise Name:</label>
-                        <input type='text' name='itemNameEdit' id='itemNameEdit' value='<?php echo "$itemName" ?>'>
+                        <input type='text' name='itemNameEdit' id='itemNameEdit' required value='<?php echo "$itemName" ?>'>
                     </div>
                     <div class='itemPopUpInput'>
                         <label for='itemDescriptionEdit'>Merchandise Description</label>
