@@ -157,7 +157,6 @@
                             <div>
                                 <label for="filterAvailableTreeStatus">Tree Status: </label>
                                 <select name="filterAvailableTreeStatus" id="filterAvailableTreeStatus" class="filterTree">
-                                    <option value="">All Status</option>
                                     <option value="Planted">Planted</option>
                                     <option value="Germinating">Germinating</option>
                                     <option value="Growing">Growing</option>

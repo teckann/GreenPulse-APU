@@ -45,7 +45,7 @@
                     $_SESSION["oldPassword"] = $row["password"];
 
                     if ($_SESSION["safetyQuestion1"] == null) {
-                        $errorMessage = "You are not allowed to reset password as your safety question have not set yet, please inform admin.";
+                        $errorMessage = "You are not allowed to reset password as your security question have not set yet, please inform admin.";
                     }
                     else {
                         header("Location: forgetPasswordPage2.php");
