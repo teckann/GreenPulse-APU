@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2026 at 10:42 PM
+-- Generation Time: Jan 30, 2026 at 07:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `announcement` (
 
 INSERT INTO `announcement` (`announcement_id`, `user_id`, `announcement_details`, `announcement_datetime`) VALUES
 ('A001', 'U001', 'New Feature Released', '2025-12-23 22:04:14'),
-('A002', 'U001', 'Start collecting points and level up from Rising Talent to Master Legend!', '2026-01-20 22:16:07');
+('A002', 'U001', 'Start collecting points and level up from Rising Talent to Master Legend!', '2026-01-30 22:16:07');
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,24 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`event_id`, `user_id`, `event_register_datetime`, `attendance_status`) VALUES
-('E001', 'U004', '2025-12-24 09:23:18', 'Absent');
+('E001', 'U004', '2025-12-10 09:23:18', 'Present'),
+('E001', 'U005', '2026-01-10 12:38:03', 'Present'),
+('E001', 'U006', '2026-01-30 17:38:03', 'Present'),
+('E001', 'U007', '2026-01-12 09:21:35', 'Absent'),
+('E001', 'U009', '2026-01-12 14:39:42', 'Present'),
+('E001', 'U010', '2026-01-14 17:39:42', 'Present'),
+('E001', 'U014', '2026-01-16 21:29:42', 'Present'),
+('E001', 'U017', '2026-01-17 14:19:42', 'Absent'),
+('E002', 'U004', '2026-01-25 13:47:22', 'Absent'),
+('E002', 'U006', '2026-01-25 13:22:42', 'Absent'),
+('E002', 'U007', '2026-01-25 17:49:39', 'Absent'),
+('E002', 'U008', '2026-01-26 09:19:22', 'Absent'),
+('E002', 'U009', '2026-01-26 09:49:39', 'Absent'),
+('E002', 'U012', '2026-01-27 06:13:44', 'Absent'),
+('E002', 'U015', '2026-01-27 10:30:59', 'Absent'),
+('E002', 'U017', '2026-01-28 17:50:59', 'Absent'),
+('E002', 'U018', '2026-01-28 20:46:19', 'Absent'),
+('E003', 'U005', '2026-01-30 17:52:45', 'Absent');
 
 -- --------------------------------------------------------
 
@@ -139,8 +156,8 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`event_id`, `user_id`, `event_title`, `event_poster`, `event_description`, `event_datetime`, `duration`, `location`, `capacity`, `points_given`, `posted_date`, `event_status`) VALUES
-('E001', 'U002', 'Green Innovation Talk', 'src/eventPosters/Green Innovation Talk.png', 'An informative talk exploring green technologies and innovative solutions that support environmental sustainability.', '2026-01-20 14:00:00', '2h 30m', 'S-08-02 | APU Campus', 50, 350, '2025-12-23', 'Active'),
-('E002', 'U003', 'Go Green 3.0', 'src/eventPosters/Go Green 3.0.png', 'An annual green initiative promoting environmental awareness and its role in encouraging sustainable and eco-friendly practices.', '2026-01-30 13:00:00', '5h 45m', 'Auditorium 1 @ Level 7 | APU Campus', 75, 500, '2026-01-25', 'Active'),
+('E001', 'U003', 'Green Innovation Talk', 'src/eventPosters/Green Innovation Talk.png', 'An informative talk exploring green technologies and innovative solutions that support environmental sustainability.', '2026-01-20 14:00:00', '2h 30m', 'S-08-02 | APU Campus', 50, 350, '2025-12-09', 'Active'),
+('E002', 'U003', 'Go Green 3.0', 'src/eventPosters/Go Green 3.0.png', 'An annual green initiative promoting environmental awareness and its role in encouraging sustainable and eco-friendly practices.', '2026-01-30 17:00:00', '3h 45m', 'Auditorium 1 @ Level 7 | APU Campus', 75, 500, '2026-01-25', 'Active'),
 ('E003', 'U003', 'Sustainable Living Workshop', 'src/eventPosters/Sustainable Living Workshop.png', 'An interactive workshop focused on practical sustainable living habits and environmentally friendly daily practices.', '2026-02-02 12:30:00', '2h 30m', 'E-08-03 | APU Campus', 45, 480, '2026-01-28', 'Active'),
 ('E004', 'U002', 'Climate Action Session', 'src/eventPosters/Climate Action Session.png', 'An engaging session aimed at raising awareness of climate change and encouraging responsible environmental actions.', '2026-02-07 13:00:00', '1h 30m', 'Auditorium 5 @ Level 3 | APU Campus', 40, 550, '2026-01-28', 'Active');
 
@@ -157,6 +174,17 @@ CREATE TABLE `feedback` (
   `feedback_details` varchar(255) NOT NULL,
   `submit_datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedback_id`, `event_id`, `user_id`, `feedback_details`, `submit_datetime`) VALUES
+('F001', 'E001', 'U004', 'The event was very well organized and informative. The speakers explained the topics clearly and the activities were engaging. I learned a lot and would be happy to join similar events again.', '2026-01-20 12:32:11'),
+('F002', 'E001', 'U005', 'Overall a great experience. The schedule was smooth and the facilitators were helpful and friendly. It would be even better if there were more interactive sessions.', '2026-01-21 18:30:20'),
+('F003', 'E001', 'U006', 'I really enjoyed the event and the practical demonstrations. The content was useful and relevant. The venue setup and time management were also well handled.', '2026-01-21 18:32:06'),
+('F004', 'E001', 'U009', 'The event was good and educational. The sharing sessions were interesting, but I think adding more hands-on activities would make it more impactful.', '2026-01-21 20:12:06'),
+('F005', 'E001', 'U014', 'Very meaningful event with clear objectives and good coordination. I gained new knowledge and appreciated the effort from the organizing team. Looking forward to future events.', '2026-01-22 18:32:06');
 
 -- --------------------------------------------------------
 
@@ -210,9 +238,18 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`log_id`, `user_id`, `log_event`, `log_datetime`) VALUES
-('L001', 'U001', 'Successful Login', '2026-01-02 02:49:32'),
-('L002', 'U001', 'Successful Logout', '2026-01-18 16:01:13'),
-('L003', 'U001', 'Successful Login', '2026-01-18 16:06:57');
+('L001', 'U001', 'Successful Login', '2026-01-19 09:42:46'),
+('L002', 'U001', 'Change Module Status (M004)', '2026-01-19 09:45:50'),
+('L003', 'U001', 'Update Profile Information (U001)', '2026-01-19 09:47:12'),
+('L004', 'U002', 'Successful Login', '2026-01-19 09:48:19'),
+('L005', 'U001', 'Successful Logout', '2026-01-19 09:48:50'),
+('L006', 'U002', 'Delete Item (I004)', '2026-01-19 09:50:44'),
+('L007', 'U002', 'Successful Logout', '2026-01-19 09:56:12'),
+('L008', 'U004', 'Successful Login', '2026-01-26 18:44:17'),
+('L009', 'U004', 'Update Password (U004)', '2026-01-26 18:46:17'),
+('L010', 'U004', 'Successful Logout', '2026-01-26 18:49:45'),
+('L011', 'U006', 'Successful Login', '2026-01-30 18:52:54'),
+('L012', 'U008', 'Successful Login', '2026-01-30 18:56:12');
 
 -- --------------------------------------------------------
 
@@ -233,7 +270,11 @@ CREATE TABLE `merchandise_purchase_history` (
 --
 
 INSERT INTO `merchandise_purchase_history` (`merchandise_purchase_id`, `item_id`, `user_id`, `merchandise_purchase_datetime`, `amount`) VALUES
-('MP001', 'I001', 'U004', '2026-01-01 11:23:47', 1);
+('MP001', 'I001', 'U004', '2026-01-01 11:23:47', 1),
+('MP002', 'I002', 'U004', '2026-01-30 18:09:05', 1),
+('MP003', 'I003', 'U005', '2026-01-30 18:16:26', 1),
+('MP004', 'I001', 'U006', '2026-01-30 18:54:48', 1),
+('MP005', 'I001', 'U008', '2026-01-30 18:56:19', 1);
 
 -- --------------------------------------------------------
 
@@ -269,8 +310,8 @@ CREATE TABLE `modules` (
 --
 
 INSERT INTO `modules` (`module_id`, `user_id`, `module_name`, `module_description`, `module_cover`, `module_material`, `module_video`, `module_status`) VALUES
-('M001', 'U002', 'Malaysia’s Green Technology', 'Explore Malaysia’s efforts in green technology, including sustainable energy solutions, eco-friendly innovations, and initiatives promoting environmental awareness.', 'src/moduleMaterials/Malaysia’s Green Technology.png', 'src/moduleMaterials/Malaysia’s Green Technology.pdf', 'src/moduleMaterials/Malaysia’s Green Technology.mp4', 'Active'),
-('M002', 'U003', 'Renewable Energy & Sustainability', 'Discover the role of renewable energy in building a sustainable future, including solar, wind, and hydro power initiatives that reduce carbon emissions and promote environmental responsibility.', 'src/moduleMaterials/Renewable Energy & Sustainability.png', 'src/moduleMaterials/Renewable Energy & Sustainability.pdf', 'src/moduleMaterials/Renewable Energy & Sustainability.mp4', 'Active'),
+('M001', 'U003', 'Malaysia’s Green Technology', 'Explore Malaysia’s efforts in green technology, including sustainable energy solutions, eco-friendly innovations, and initiatives promoting environmental awareness.', 'src/moduleMaterials/Malaysia’s Green Technology.png', 'src/moduleMaterials/Malaysia’s Green Technology.pdf', 'src/moduleMaterials/Malaysia’s Green Technology.mp4', 'Active'),
+('M002', 'U002', 'Renewable Energy & Sustainability', 'Discover the role of renewable energy in building a sustainable future, including solar, wind, and hydro power initiatives that reduce carbon emissions and promote environmental responsibility.', 'src/moduleMaterials/Renewable Energy & Sustainability.png', 'src/moduleMaterials/Renewable Energy & Sustainability.pdf', 'src/moduleMaterials/Renewable Energy & Sustainability.mp4', 'Active'),
 ('M003', 'U003', 'Climate Change Awareness', 'Learn about climate change, its impacts on the environment and society, and the importance of individual and collective actions in mitigating global warming.', 'src/moduleMaterials/Climate Change Awareness.png', 'src/moduleMaterials/Climate Change Awareness.pdf', 'src/moduleMaterials/Climate Change Awareness.mp4', 'Active'),
 ('M004', 'U003', 'Waste Management & Recycling', 'Explore effective waste management practices, recycling methods, and circular economy approaches that help minimize waste and protect natural resources.', 'src/moduleMaterials/Waste Management & Recycling.png', 'src/moduleMaterials/Waste Management & Recycling.pdf', 'src/moduleMaterials/Waste Management & Recycling.mp4', 'Inactive');
 
@@ -294,7 +335,10 @@ CREATE TABLE `module_history` (
 --
 
 INSERT INTO `module_history` (`module_id`, `user_id`, `highest_score`, `awarded_points`, `total_attempt`, `finish_datetime`) VALUES
-('M001', 'U004', '3', 450, 1, '2026-01-21 11:47:18');
+('M001', 'U004', '3', 450, 2, '2026-01-30 01:37:17'),
+('M001', 'U005', '2', 300, 1, '2026-01-30 17:32:04'),
+('M001', 'U008', '2', 150, 3, '2026-01-30 17:56:26'),
+('M001', 'U009', '3', 450, 1, '2026-01-30 17:57:38');
 
 -- --------------------------------------------------------
 
@@ -320,9 +364,9 @@ CREATE TABLE `quiz` (
 --
 
 INSERT INTO `quiz` (`quiz_id`, `module_id`, `quiz_question`, `option1`, `option2`, `option3`, `option4`, `answer`, `quiz_given_point`, `quiz_status`) VALUES
-('Q001', 'M001', 'Due to its tropical climate, which renewable energy source is Malaysia primarily focusing on to reduce carbon emissions?', 'Geothermal Energy', 'Solar Energy', 'Wind Energy', 'Nuclear Energy', 'Solar Energy', 150, 'Active'),
-('Q002', 'M001', 'What is the long-term environmental goal that Malaysia has committed to achieving by the year 2050?', '100% Plastic Free', 'Zero Waste to Landfill', 'Net Zero Carbon Emissions', 'Total ban on fossil fuels', 'Net Zero Carbon Emissions', 150, 'Active'),
-('Q003', 'M001', 'Which of the following is a key green technology innovation currently being promoted in Malaysia\'s transportation sector?', 'Electric Vehicles (EVs)', 'Steam-powered Locomotives', 'Diesel Hybrid Engines', 'Hydrogen Airships', 'Electric Vehicles (EVs)', 150, 'Active');
+('Q001', 'M001', 'Due to its tropical climate, which renewable energy source is Malaysia primarily focusing on to reduce carbon emissions?', 'Geothermal Energy', 'Solar Energy', 'Wind Energy', 'Nuclear Energy', 'option2', 150, 'Active'),
+('Q002', 'M001', 'What is the long-term environmental goal that Malaysia has committed to achieving by the year 2050?', '100% Plastic Free', 'Zero Waste to Landfill', 'Net Zero Carbon Emissions', 'Total ban on fossil fuels', 'option3', 150, 'Active'),
+('Q003', 'M001', 'Which of the following is a key green technology innovation currently being promoted in Malaysia\'s transportation sector?', 'Electric Vehicles (EVs)', 'Steam-powered Locomotives', 'Diesel Hybrid Engines', 'Hydrogen Airships', 'option1', 200, 'Active');
 
 -- --------------------------------------------------------
 
@@ -340,6 +384,15 @@ CREATE TABLE `tree_adoption_history` (
   `tree_adoption_status` varchar(50) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tree_adoption_history`
+--
+
+INSERT INTO `tree_adoption_history` (`tree_adoption_id`, `item_id`, `user_id`, `given_name`, `tree_adoption_datetime`, `fertilization_datetime`, `tree_adoption_status`) VALUES
+('TA001', 'I005', 'U004', 'GreenSpark', '2026-01-30 18:11:58', NULL, 'Active'),
+('TA002', 'I006', 'U004', 'LeafNova', '2026-01-30 18:14:38', NULL, 'Active'),
+('TA003', 'I005', 'U008', 'EverGrow', '2026-01-30 18:56:28', NULL, 'Active');
+
 -- --------------------------------------------------------
 
 --
@@ -349,8 +402,8 @@ CREATE TABLE `tree_adoption_history` (
 CREATE TABLE `users` (
   `user_id` varchar(8) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `nationality` varchar(50) DEFAULT NULL,
-  `gender` char(1) DEFAULT NULL,
+  `nationality` varchar(50) NOT NULL,
+  `gender` char(1) NOT NULL,
   `date_of_birth` date NOT NULL,
   `contact_number` varchar(12) NOT NULL,
   `education_email` varchar(50) NOT NULL,
@@ -374,15 +427,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `nationality`, `gender`, `date_of_birth`, `contact_number`, `education_email`, `course_name`, `registration_date`, `password`, `safety_question_1`, `answer_1`, `safety_question_2`, `answer_2`, `green_points`, `total_earned`, `avatar`, `role`, `last_login`, `account_status`) VALUES
-('U001', 'Gan Teck Ann', 'Malaysian', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$mrSNFUur2uJdl1rNxIyP7eoSCchSguUAcp.Lytrp65KoO2.V961UC', 'What is your secondary school name?', 'SDBL', 'What is the city name were you born in?', 'Batu Pahat', NULL, NULL, 'src/avatars/U001_avatar_1768494571.png', 'admin', '2026-01-28 18:13:48', 'Active'),
-('U002', 'Goh Yang Ee', 'Malaysian', 'M', '2006-07-24', '0125508144', 'TP084231@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$/FqDThXUlgrkHbNEmlF4cuiwcndPCgObsnDj7k/9u7JMRoYPHtWBe', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U002_avatar.png', 'committee', '2026-01-28 16:42:09', 'Active'),
+('U001', 'Gan Teck Ann', 'Malaysian', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$mrSNFUur2uJdl1rNxIyP7eoSCchSguUAcp.Lytrp65KoO2.V961UC', 'What is your secondary school name?', 'SDBL', 'What is the city name were you born in?', 'Batu Pahat', NULL, NULL, 'src/avatars/U001_avatar_1768494571.png', 'admin', '2026-01-30 17:34:38', 'Active'),
+('U002', 'Goh Yang Ee', 'Malaysian', 'M', '2006-07-24', '0125508144', 'TP084231@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$/FqDThXUlgrkHbNEmlF4cuiwcndPCgObsnDj7k/9u7JMRoYPHtWBe', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U002_avatar.png', 'committee', '2026-01-30 02:24:33', 'Active'),
 ('U003', 'Cynthia Tan Xin Ru', 'Malaysian', 'F', '2006-01-21', '01155034966', 'TP084369@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pOUI7Dv/WdOlaO/fca0MHOPafP3I.a55FhuVKme4X8SZzB7l/tyaC', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U003_avatar.png', 'committee', '2026-01-18 18:46:05', 'Active'),
-('U004', 'Lim Jin Ming', 'Malaysian', 'M', '2006-06-09', '0129692700', 'TP083424@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$hrkNchWg.uYwsRLpPlVTveGyMV0fFr1cSTgYC7MY0ec.3rxEIKdyS', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/U004_avatar.png', 'volunteer', '2026-01-26 12:30:51', 'Active'),
-('U005', 'Lim Wei Jian', 'Malaysian', 'M', '2006-11-01', '0129091231', 'TP083342@mail.apu.edu.my', 'Diploma in Business Administration', '2026-01-28', '$2y$10$/rnii.EwZIEccovpFP3y5OTlEL5eOL6Z/LqyAf1V9FTlgPVEhC.AK', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', '2026-01-28 16:32:57', 'Active'),
-('U006', 'Aisyah Binti Ahmad', 'Malaysian', 'F', '2002-05-22', '0134567890', 'TP084567@mail.apu.edu.my', 'Diploma in ICT (Data Informatics)', '2026-01-28', '$2y$10$TsWRtI44N2kFs.zxEFWdXOi6FxTK1OcVwPekKUniv9X33wm/1lvoq', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', NULL, 'Active'),
+('U004', 'Lim Jin Ming', 'Malaysian', 'M', '2006-06-09', '0129692700', 'TP083424@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$hrkNchWg.uYwsRLpPlVTveGyMV0fFr1cSTgYC7MY0ec.3rxEIKdyS', NULL, NULL, NULL, NULL, 1300, 12000, 'src/avatars/U004_avatar.png', 'volunteer', '2026-01-30 18:08:50', 'Active'),
+('U005', 'Lim Wei Jian', 'Malaysian', 'M', '2006-11-01', '0129091231', 'TP083342@mail.apu.edu.my', 'Diploma in Business Administration', '2026-01-28', '$2y$10$/rnii.EwZIEccovpFP3y5OTlEL5eOL6Z/LqyAf1V9FTlgPVEhC.AK', NULL, NULL, NULL, NULL, 4700, 5300, 'src/avatars/default.png', 'volunteer', '2026-01-30 18:16:15', 'Active'),
+('U006', 'Aisyah Binti Ahmad', 'Malaysian', 'F', '2002-05-22', '0134567890', 'TP084567@mail.apu.edu.my', 'Diploma in ICT (Data Informatics)', '2026-01-28', '$2y$10$TsWRtI44N2kFs.zxEFWdXOi6FxTK1OcVwPekKUniv9X33wm/1lvoq', NULL, NULL, NULL, NULL, 2000, 8000, 'src/avatars/default.png', 'volunteer', '2026-01-30 18:52:54', 'Active'),
 ('U007', 'Rajesh Verma', 'Indian', 'M', '2007-07-23', '0125678901', 'TP089123@mail.apu.edu.my', 'Diploma in Accounting', '2026-01-28', '$2y$10$m2XnVnfxqTG8GnaTTLdBKuQTT1jkncaVNEj2.KGSbW4S.5yXntt.W', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', NULL, 'Inactive'),
-('U008', 'Ethan Wong', 'Singaporean', 'M', '2004-02-13', '0117890123', 'TP087233@mail.apu.edu.my', 'Diploma in ICT (Interactive Technology)', '2026-01-28', '$2y$10$ta3ZDktt.oeeaWl9QcUMZe2wXGfDz8yFhMUMWtP4AZEo/VdLy0Rxe', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', NULL, 'Active'),
-('U009', 'Sophie Williams', 'British', 'F', '2004-12-08', '0156789012', 'TP083778@mail.apu.edu.my', 'Diploma in Design & Media', '2026-01-28', '$2y$10$Tw.vgCsEogRDJSX2F2RGiOuGkQ7bLJ6DJ5zG2SFt0cbhXw29IRHPu', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', NULL, 'Active'),
+('U008', 'Ethan Wong', 'Singaporean', 'M', '2004-02-13', '0117890123', 'TP087233@mail.apu.edu.my', 'Diploma in ICT (Interactive Technology)', '2026-01-28', '$2y$10$ta3ZDktt.oeeaWl9QcUMZe2wXGfDz8yFhMUMWtP4AZEo/VdLy0Rxe', NULL, NULL, NULL, NULL, 650, 9150, 'src/avatars/default.png', 'volunteer', '2026-01-30 18:56:12', 'Active'),
+('U009', 'Sophie Williams', 'British', 'F', '2004-12-08', '0156789012', 'TP083778@mail.apu.edu.my', 'Diploma in Design & Media', '2026-01-28', '$2y$10$Tw.vgCsEogRDJSX2F2RGiOuGkQ7bLJ6DJ5zG2SFt0cbhXw29IRHPu', NULL, NULL, NULL, NULL, 450, 450, 'src/avatars/default.png', 'volunteer', '2026-01-30 17:57:30', 'Active'),
 ('U010', 'Hannah Miller', 'American', 'F', '2003-10-14', '0197890123', 'TP086112@mail.apu.edu.my', 'Diploma in Events Management', '2026-01-28', '$2y$10$otzyrw1M7W3F7Fd4VwGvnea64Fx7YHEbo3RJdKE7Q6RNA5U0mWDs2', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', NULL, 'Active'),
 ('U011', 'Kim Soo Min', 'South Korean', 'M', '2002-01-19', '0176789456', 'TP083617@mail.apu.edu.my', 'Diploma in ICT (Interactive Technology)', '2026-01-28', '$2y$10$6jw1XHsD5seB/6bw5bzoKuBNeyTmG0gpaWVwCGcNs.UfPux/rl8gO', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', NULL, 'Active'),
 ('U012', 'Tran Quang Huy', 'Vietnamese', 'M', '2001-07-19', '0142343890', 'TP087021@mail.apu.edu.my', 'Diploma in Mechatronic Engineering', '2026-01-28', '$2y$10$0Y.o1lYAH6iyf4DB6ubRwe7b73jFcPvzgnVcN86P.w8TzE14/woC6', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', NULL, 'Active'),
