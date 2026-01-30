@@ -1,18 +1,21 @@
 <?php
     include("../../conn.php");
 
-    include("../../backend/sessionData.php");
 
     include("eventBackend.php");
 
-    $userID = $_SESSION["userID"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    
+        <link rel="icon" href="../../src/elements/logo_vertical.png" type="image/x-icon">
+
+
+    <title>Home Page</title>
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <script src="../../scripts/volunteer.js"></script>
 

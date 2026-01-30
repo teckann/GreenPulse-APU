@@ -4,7 +4,6 @@
     include("../../conn.php");
 
     
-    include("../../backend/sessionData.php");
 
 ?>
 
@@ -13,7 +12,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    
+        <link rel="icon" href="../../src/elements/logo_vertical.png" type="image/x-icon">
+
+
+    <title>Event</title>
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <script src="../../scripts/volunteer.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -60,7 +64,7 @@
                                     WHERE event_id IN (
                                         SELECT event_id 
                                         FROM attendance 
-                                        WHERE user_id = 'U004'
+                                        WHERE user_id = '$userID'
                                     ) 
                                     AND event_datetime >= CURRENT_DATE;";
                 
