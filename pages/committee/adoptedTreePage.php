@@ -157,6 +157,7 @@
                             <div>
                                 <label for="filterAvailableTreeStatus">Tree Status: </label>
                                 <select name="filterAvailableTreeStatus" id="filterAvailableTreeStatus" class="filterTree">
+                                    <option value="">All Status</option>
                                     <option value="Planted">Planted</option>
                                     <option value="Germinating">Germinating</option>
                                     <option value="Growing">Growing</option>
@@ -406,7 +407,6 @@
                     <div class='itemPopUpInput updateAdoptedTreeStatusPart'>
                         <label for='adoptedUpdateStatusSelector'>New Status</label>
                         <select name="adoptedUpdateStatusSelector" id="adoptedUpdateStatusSelector">
-                            <option value="">All Status</option>
                             <option value="Planted">Planted</option>
                             <option value="Germinating">Germinating</option>
                             <option value="Growing">Growing</option>
