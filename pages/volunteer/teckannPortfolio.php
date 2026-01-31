@@ -3,11 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cynthia Tan Xin Ru's Portfolio</title>
+        <title>Gan Teck Ann's Portfolio</title>
 
         <link rel="stylesheet" href="../../styles/portfolio.css">
         <!-- style & ico -->
-        <link rel="icon" href="../../src/elements/member3.png" type="image/x-icon">
+        <link rel="icon" href="../../src/elements/member1.png" type="image/x-icon">
 
         <!-- icon  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,23 +18,23 @@
         <main>
             <div class="portfolio-header">
                 <div class="header-1">
-                    <img src="../../src/elements/member3.png" alt="" class="avatar">
+                    <img src="../../src/elements/member1.png" alt="" class="avatar">
 
                     <div class="social-media-big-container">
                         <div class="social-media-container">
-                            <a href="https://www.linkedin.com/in/cynthia-tan-xin-ru-93b242318/" target="_blank" class="social-media-icon">
+                            <a href="https://www.linkedin.com/in/gan-teck-ann-60349b26a" target="_blank" class="social-media-icon">
                                 <i class="fa-brands fa-linkedin"></i>
                             </a>
 
-                            <a href="https://github.com/Cynthia-0121" target="_blank" class="social-media-icon">
+                            <a href="https://github.com/teckann" target="_blank" class="social-media-icon">
                                 <i class="fa-brands fa-github"></i>
                             </a>
 
-                            <a href="https://www.instagram.com/https_cynth1a?igsh=MWxlOTNjMW5menR2" target="_blank" class="social-media-icon">
+                            <a href="https://www.instagram.com/teckann_06" target="_blank" class="social-media-icon">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
 
-                            <a href="mailto: cynthiatan0121@gmail.com" target="_blank" class="social-media-icon">
+                            <a href="mailto: ganteckann582006@gmail.com" target="_blank" class="social-media-icon">
                                 <i class="fa-solid fa-envelope"></i>
                             </a>
                         </div>
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="header-2">
-                    <h1>Cynthia Tan Xin Ru</h1>
+                    <h1>Gan Teck Ann</h1>
                     <p>Software Engineering Student</p>
                 </div>
             </div>
@@ -51,18 +51,16 @@
                 <div class="section-container">
                     <p class="section-title">About Me</p>
                     <p class="section-details">
-                        I am a Semester 4 Software Engineering student at <strong>Asia Pacific University (APU)</strong> with a 
-                        strong passion for learning and self-improvement in technology.
-                        My university journey has not been easy, because I entered without any prior 
-                        programming background. However, this challenge pushed me to work harder, 
-                        stay consistent, and grow step by step. <br>
-                        In Semester 2, I learned <strong>Python</strong> to build a strong programming foundation, and in Semester 3, 
-                        I learned <strong>Java</strong> and <strong>Object-Oriented Programming (OOP)</strong> to understand how software is designed 
-                        using classes and objects. Semester 4 has been the most impactful stage of my journey so far. 
-                        This was when I truly started learning and applying multiple programming languages, covering both 
-                        frontend and backend development. Through continuous practice, hands-on projects, and self-learning, 
-                        I gradually built my confidence and technical foundation. 
-                        My goal is to keep improving step by step and grow into a well-rounded software engineer who is adaptable, curious, and ready to take on real-world challenges. 
+                        I'm Teck Ann, a second-year Diploma student majoring in Software Engineering at the 
+                        <strong>Asia Pacific University (APU)</strong>. During my third semester, I volunteered 
+                        with the APU CLCS front-end development team, where I gained hands-on experience with 
+                        modern frontend technologies such as React, TypeScript, and Tailwind CSS, and collaborated closely 
+                        with other developers. I have also completed the assignment project that involving Java 
+                        and object-oriented programming (OOP), allowing me to apply theoretical concepts in practical 
+                        development and strengthen my problem-solving skills. Currently in my fourth semester, I 
+                        am working towards becoming a full-stack and mobile developer. To support this goal, I start 
+                        from building dynamic web applications using PHP and MySQL as the backend foundation, further 
+                        enhancing my experience in full-stack development.
                     </p>
                 </div>
 
@@ -73,39 +71,39 @@
                         <div class="experience-box">
                             <div class="experience-header">
                                 <div class="experience-header-1">
-                                    <h3>DEVMatch Hackathon 2025 – Participant</h3>
-                                    <p>Asia Pacific University Blockchain & Cryptocurrency Club (APUBCC) | Hackathon</p>
+                                    <h3>BRAIN Research Consultant</h3>
+                                    <p>WorldQuant | Contract</p>
                                 </div>
 
                                 <div class="duration">
-                                    <p>Dec 2025</p>
+                                    <p>Dec 2025 - Present</p>
                                 </div>
                             </div>
 
                             <p class="section-details">
-                                Participated in a blockchain-focused hackathon, collaborating with team members to explore Web3 
-                                ideas and develop practical solutions. Gained hands-on exposure to blockchain concepts, 
-                                teamwork, and problem-solving in a fast-paced, real-world development environment.
+                                Works with large datasets, applying statistical and programming techniques to uncover 
+                                market insights. Gains exposure to real-world applications of data science and quantitative 
+                                analysis.
                             </p>
                         </div>
-                    
+
                         <div class="experience-box">
                             <div class="experience-header">
                                 <div class="experience-header-1">
-                                    <h3>Joget NextGenHack 2024 – 3rd Place</h3>
-                                    <p>Joget, Inc. | Competition</p>
+                                    <h3>Frontend Developer</h3>
+                                    <p>APU CLCS | Hybrid</p>
                                 </div>
 
                                 <div class="duration">
-                                    <p>Dec 2024</p>
+                                    <p>Jun 2025 - Oct 2025</p>
                                 </div>
                             </div>
 
                             <p class="section-details">
-                                Developed a real-world low-code solution using Joget to address practical 
-                                industry problems. Collaborated in a team to design workflows, build applications, 
-                                and present solutions under time constraints, gaining hands-on experience in problem-solving, 
-                                teamwork, and industry-oriented development.
+                                Served as a frontend developer on a collaborative team within the Official Website 
+                                Project of APU CLCS. Developed and maintained responsive web applications using React,
+                                TypeScript and Tailwind CSS. Build reusable and modular UI components to improve 
+                                development efficiency. Participated in team discussions to maintain code quality.
                             </p>
                         </div>
                     </div>
@@ -153,7 +151,25 @@
                                 <p>MySQL</p>
                             </div>
 
-                            
+                            <div class="tech">
+                                <img src="../../src/icons/php.svg" class="svg-icon" alt="PHP">
+                                <p>PHP</p>
+                            </div>
+
+                            <div class="tech">
+                                <img src="../../src/icons/typescript.svg" class="svg-icon" alt="TypeScript">
+                                <p>TypeScript</p>
+                            </div>
+
+                            <div class="tech">
+                                <img src="../../src/icons/react.svg" class="svg-icon" alt="React">
+                                <p>React</p>
+                            </div>
+
+                            <div class="tech">
+                                <img src="../../src/icons/tailwindcss.svg" class="svg-icon" alt="Tailwind CSS">
+                                <p>Tailwind CSS</p>
+                            </div>
                         </div>
                     </div>
 

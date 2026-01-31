@@ -30,8 +30,10 @@
         $submissionID = newID($conn, "contact_submission", "S");
         $todayDateTime = date("Y-m-d H:i:s");
 
-        $sql = "INSERT INTO contact_submission (submission_id, user_id, full_name, email_address, contact_number, subject, content, submission_datetime)
-                VALUES ('$submissionID', ''$userID, '$fullName', '$email', '$contactNumber', '$subject', '$description', '$todayDateTime')";
+        $sql = "INSERT INTO contact_submission 
+                (submission_id, user_id, full_name, email_address, contact_number, subject, content, submission_datetime)
+                VALUES 
+                ('$submissionID', '$userID', '$fullName', '$email', '$contactNumber', '$subject', '$description', '$todayDateTime')";
         
         if(mysqli_query($conn, $sql)) {
             echo "<script>
@@ -75,7 +77,7 @@
 
         <div class="profileHead">
         <div>
-            <div><a href="about.php" class="backEvent"><i class="fa-solid fa-arrow-left"></i></a> Contact Us</div>
+            <div><a href="aboutUs.php" class="backEvent"><i class="fa-solid fa-arrow-left"></i></a> Contact Us</div>
         </div>
 
         </div>

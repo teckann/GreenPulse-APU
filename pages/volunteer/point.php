@@ -26,10 +26,11 @@
     <?php include("header.php") ?>
 
     <div id="pointHead">
+        <form action="profile.php">
     <div>
         <div><button class="backPoint" id="backFromPoint"><i class="fa-solid fa-arrow-left"></i> Point</button>  </div>
     </div>
-
+</form>
     </div>
 <div id="containerForDesktop">
     <div id="realPointBigContainer">
@@ -62,8 +63,20 @@
 
                 $champBadge = mysqli_fetch_assoc(mysqli_query($conn,$sql_champ_badge));
 
+                if(mysqli_num_rows(mysqli_query($conn,$sql_champ_badge)) <= 0){
+                    $champImg = '';
+                    $champName = 'No Badge';
 
-                echo '<img src="../../'.$champBadge['badge_image'].'" alt="User Profile" class="badgePic">'; 
+                }else{
+
+                    $champImg = $champBadge['badge_image'];
+                    $champName = $champBadge['badge_name'];
+                }
+
+                
+
+
+                echo '<img src="../../'.$champImg.'" alt="Badge Picture" class="badgePic">'; 
 
             
             ?>
@@ -76,7 +89,7 @@
         </div>
 
         <div id="totalPointDetails">
-            <p id="badgeName"><?php echo$champBadge["badge_name"]; ?></p>
+            <p id="badgeName"><?php echo$champName; ?></p>
             <p id="totalPointLabel">Total Earned Green Point : </p>
             <p id="totalEarnedPoint">
                 <?php

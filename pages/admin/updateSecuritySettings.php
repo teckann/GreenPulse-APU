@@ -1,7 +1,7 @@
 <?php
     include("../../conn.php");
     include("../../backend/sessionData.php");
-    include("../../backedn/utility.php");
+    include("../../backend/utility.php");
 
     if (isset($_GET["btnBack"])) {
         unset($_SESSION["valid_updateSecurityQuestion"]);

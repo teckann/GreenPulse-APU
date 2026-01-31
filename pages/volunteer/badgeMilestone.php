@@ -36,21 +36,33 @@
 
     $sql_count_badges = "SELECT
                           (SELECT COUNT(*) FROM badges) AS total_badges,
-                          (SELECT COUNT(*) FROM milestone WHERE user_id = '$userID') AS owned_badges;";
+                          (SELECT COUNT(*) FROM milestone WHERE user_id = '$userID') AS owned_badges,
+                          (SELECT COUNT(*) FROM badges WHERE points_required <= '$userTotalPoints') AS can_claim;";
 
     $countBadges = mysqli_fetch_assoc(mysqli_query($conn, $sql_count_badges));
+
+    $sql_qualified = "SELECT COUNT(*) AS qualified FROM badges WHERE points_required <= '$userTotalPoints'";
+    $badgesQualified = mysqli_fetch_assoc(mysqli_query($conn, $sql_qualified))['qualified'];
 
     $totalBadges = $countBadges["total_badges"];
 
     $totalOwned = $countBadges["owned_badges"];
 
+    $totalCanClaim = $countBadges["can_claim"];
+
     $badgesNotOwned = $totalBadges - $totalOwned;
 
     $gapPerBadges = 100/$totalBadges;
 
-    $baseFill = $gapPerBadges * $totalOwned;
+    if(($totalBadges-$totalCanClaim) == 1){
+        $baseFill = $gapPerBadges * ($totalCanClaim - 1);
+    }else{
+        $baseFill = $gapPerBadges * ($totalCanClaim);
+    }
 
-    $currentGapPercent = ((getTotalPoint($conn, $userID) - getPrevRequiredPoint($conn, $userID)) / getRemainmingPoint($conn, $userID))*20;
+
+
+    $currentGapPercent = ((getTotalPoint($conn, $userID) - getPrevRequiredPoint($conn, $userID)) / getRemainmingPoint($conn, $userID))*$gapPerBadges;
 
     $fillPercentage = $baseFill + $currentGapPercent;
 
@@ -89,7 +101,7 @@
     
         <link rel="icon" href="../../src/elements/logo_vertical.png" type="image/x-icon">
 
-        
+
     <title>Badge And MileStone</title>
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <script src="../../scripts/volunteer.js"></script>
@@ -103,7 +115,7 @@
     <div class="eventHead" id="availableEventHead">
         <div>
             <div>
-                <a href="event.php" class="backEvent">
+                <a href="point.php" class="backEvent">
                     <i class="fa-solid fa-arrow-left"></i>
                     Badge & Milestone
                 </a> 
@@ -157,6 +169,8 @@
 
         $champBadge = mysqli_fetch_assoc(mysqli_query($conn,$sql_champ_badge));
 
+        if(mysqli_num_rows(mysqli_query($conn,$sql_champ_badge)) > 0){
+
 
 
     ?>
@@ -184,9 +198,11 @@
             </div>
     </div>
 
+    <?php } ?>
+
     <div class="rbHeader">
         <div class="rbhTitle">Badges</div>
-        <div class="rbhText">Collected: 20/50</div>
+        <div class="rbhText">Collected: <?php echo $totalOwned.'/'.$totalBadges ?></div>
     </div>
 
     <div class="realBadgeContainer">

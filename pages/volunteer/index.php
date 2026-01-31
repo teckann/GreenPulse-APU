@@ -51,10 +51,15 @@
 
 </head>
 <body>
-    <?php include("header.php") ?>
+    <?php include("header.php");
+    
+    $sql_system_message = "SELECT * FROM announcement ORDER BY announcement_datetime DESC LIMIT 1;";
+    
+    $systemMessage = mysqli_fetch_assoc(mysqli_query($conn,$sql_system_message));
+    ?>
 
     <div id="banner">
-    <p>some system message</p>
+    <p><?php echo$systemMessage["announcement_details"]; ?></p>
 
     </div>
 

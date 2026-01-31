@@ -7,6 +7,60 @@
 
     $userID = $_SESSION["userID"];
 
+    if(isset($_FILES["profilePic"]) && $_FILES["profilePic"]["error"] == 0){
+
+
+
+        $savePicIn = "../../src/avatars/";
+
+
+        $fileType = strtolower(pathinfo($_FILES["profilePic"]["name"], PATHINFO_EXTENSION));
+
+        $nameToSave = $userID . "_avatar_" . time() . "." . $fileType;
+        $fileToSave = $savePicIn . $nameToSave;
+
+        $allowFormat = array("png", "jpg", "jpeg");
+
+
+        $fileSize = $_FILES["profilePic"]["size"];
+
+
+        if(in_array($fileType, $allowFormat)){
+            if(move_uploaded_file($_FILES["profilePic"]["tmp_name"], $fileToSave)){
+
+                $pathForDB = "src/avatars/" . $nameToSave;
+
+                $ql_new_avatar = "UPDATE users 
+                                    SET avatar = '$pathForDB'
+                                    WHERE user_id = '$userID';";
+
+                mysqli_query($conn, $ql_new_avatar);
+                
+
+                header("Location: editProfile.php");
+                exit();
+
+            }else{
+                echo "<script>
+                alert('Oh o Somethings went wrong');
+                window.location.href = 'editProfile.php';
+                
+                </script>";
+            }
+        }else {
+            echo "<script>
+            alert('file Uploaded is out of png, jpg, and jpeg format');
+            
+            window.location.href = 'editProfile.php';
+            
+            </script>";
+        }
+
+    
+
+
+    }
+
 
     if(isset($_POST["valueToChange"])){
         $valueChanged = $_POST["valueToChange"];
@@ -23,7 +77,7 @@
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }
 
-            header("Location: profile.php");
+            header("Location: editProfile.php");
            
     }else if(isset($_POST["nationality"])){
         $valueChanged = $_POST["nationality"];
@@ -40,7 +94,7 @@
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
 
-        header("Location: profile.php");
+        header("Location: editProfile.php");
 
 
     }
@@ -129,7 +183,12 @@
             
             ?>
 
-        <button id="uploadPicBtn"><i class="fa-solid fa-camera" id="editPicIcon"></i></button>
+        <form action="" method="post" id="profilePicForm" enctype="multipart/form-data">
+
+            <input type="file" name="profilePic" id="uploadProPic"  accept="image/*" style="display: none;">
+
+        </form>
+            <button id="uploadPicBtn"><i class="fa-solid fa-camera" id="editPicIcon"></i></button>
 
 
     </div>

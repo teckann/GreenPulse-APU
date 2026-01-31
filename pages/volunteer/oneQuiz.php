@@ -190,19 +190,19 @@
                     <label for="" class="qqLabel"><?php echo $questionCount.'. '.$q["quiz_question"]; ?></label>
                     <div class="qqOptions">
                         <label class="qqOptionLabel">
-                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option1" required>
+                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option 1" required>
                             <?php echo $q["option1"]; ?>
                         </label>
                         <label class="qqOptionLabel">
-                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option2">
+                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option 2">
                             <?php echo $q["option2"]; ?>
                         </label>
                         <label class="qqOptionLabel">
-                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option3">
+                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option 3">
                             <?php echo $q["option3"]; ?>
                         </label>
                         <label class="qqOptionLabel">
-                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option4">
+                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option 4">
                             <?php echo $q["option4"]; ?>
                         </label>
 
