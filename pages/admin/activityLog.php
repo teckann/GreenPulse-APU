@@ -3,7 +3,7 @@
     include("../../backend/sessionData.php");
     include("../../backend/utility.php");
 
-    $sql = "SELECT * FROM log GROUP BY log_datetime ASC";
+    $sql = "SELECT * FROM log ORDER BY log_datetime ASC";
     $target = "";
 
     if (isset($_GET["btnSearch"])) {
