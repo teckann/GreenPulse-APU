@@ -61,14 +61,8 @@
 
             mysqli_query($conn, $sql_insert_record);
 
-            $moduleLogID = newID($conn, "log", "L");
+            addLog($conn, $userID, "Answered module $module_id");
 
-            $sql_module_log = "INSERT INTO log
-                                    (log_id, user_id, log_event, log_datetime)
-                                    VALUES
-                                    ($moduleLogID, '$userID', 'Answered module $module_id', NOW());";
-
-            mysqli_query($conn, $sql_module_log);
 
             
 

@@ -2,6 +2,8 @@
 
     include("../../conn.php");
 
+    include("../../backend/utility.php");
+
     
     include("../../backend/sessionData.php");
 
@@ -35,6 +37,7 @@
                                     WHERE user_id = '$userID';";
 
                 mysqli_query($conn, $ql_new_avatar);
+
                 
 
                 header("Location: editProfile.php");

@@ -75,14 +75,7 @@
                 if(mysqli_query($conn, $sql_insert_history)){
                     mysqli_query($conn, $sql_update_points);
 
-                    $merchandiseLogID = newID($conn, "log", "L");
-
-                    $sql_merchandise_log = "INSERT INTO log
-                                            (log_id, user_id, log_event, log_datetime)
-                                            VALUES
-                                            ($merchandiseLogID, '$userID', 'Buy item $item_id', NOW());";
-
-                    mysqli_query($conn, $sql_merchandise_log);
+                    addLog($conn, $userID, "Buy item $item_id");
 
 
 
@@ -129,14 +122,7 @@
                 if(mysqli_query($conn, $sql_insert_history)){
                     mysqli_query($conn, $sql_update_points);
 
-                    $treeLogID = newID($conn, "log", "L");
-
-                    $sql_tree_log = "INSERT INTO log
-                                            (log_id, user_id, log_event, log_datetime)
-                                            VALUES
-                                            ($treeLogID, '$userID', 'Buy tree $item_id', NOW());";
-
-                    mysqli_query($conn, $sql_tree_log);
+                    addLog($conn, $userID, "Buy tree $item_id");
 
                     echo '<script>
                             document.addEventListener("DOMContentLoaded",() =>{
