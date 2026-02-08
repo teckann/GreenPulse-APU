@@ -93,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let status = true;
 
-            // A. 检查是不是空的
             if (VnewPassword === "") {
                 errorNewEmpty.style.display = "block";
                 status = false;
