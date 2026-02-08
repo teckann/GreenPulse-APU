@@ -3,7 +3,7 @@
     include("../../backend/sessionData.php");
     include("../../backend/utility.php");
 
-    $sql = "SELECT * FROM log GROUP BY log_datetime ASC";
+    $sql = "SELECT * FROM log ORDER BY log_datetime ASC";
     $target = "";
 
     if (isset($_GET["btnSearch"])) {
@@ -28,26 +28,26 @@
         elseif (!empty($sort) || !empty($logStatus)) {
             if ($logStatus === "today") {
                 $sql = "SELECT * FROM log
-                        WHERE log_datetime >= CURDATE()
-                        AND log_datetime < CURDATE() + INTERVAL 1 DAY
+                        WHERE log_datetime >= DATE_FORMAT(NOW(), '%Y-%m-%d')
+                        AND log_datetime <  DATE_FORMAT(NOW(), '%Y-%m-%d') + INTERVAL 1 DAY
                         ORDER BY log_datetime $sort";
             }
             else if ($logStatus === "this_week") {
                 $sql = "SELECT * FROM log
-                        WHERE log_datetime >= DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY)
-                        AND log_datetime < DATE_ADD(DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY), INTERVAL 7 DAY)
+                        WHERE log_datetime >= DATE_FORMAT(NOW() - INTERVAL WEEKDAY(NOW()) DAY, '%Y-%m-%d')
+                        AND log_datetime <  DATE_FORMAT(NOW() - INTERVAL WEEKDAY(NOW()) DAY, '%Y-%m-%d') + INTERVAL 7 DAY
                         ORDER BY log_datetime $sort";
             }
             else if ($logStatus === "this_month") {
                 $sql = "SELECT * FROM log
                         WHERE log_datetime >= DATE_FORMAT(NOW(), '%Y-%m-01')
-                        AND log_datetime <  DATE_ADD(DATE_FORMAT(CURDATE(), '%Y-%m-01'), INTERVAL 1 MONTH)
+                        AND log_datetime <  DATE_FORMAT(NOW(), '%Y-%m-01') + INTERVAL 1 MONTH
                         ORDER BY log_datetime $sort";
             }
             else if ($logStatus === "this_year") {
                 $sql = "SELECT * FROM log
-                        WHERE log_datetime >= MAKEDATE(YEAR(CURDATE()), 1)
-                        AND log_datetime <  MAKEDATE(YEAR(CURDATE()) + 1, 1)
+                        WHERE log_datetime >= DATE_FORMAT(NOW(), '%Y-01-01')
+                        AND log_datetime <  DATE_FORMAT(NOW(), '%Y-01-01') + INTERVAL 1 YEAR
                         ORDER BY log_datetime $sort";
             }
         }

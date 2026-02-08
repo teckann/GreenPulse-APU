@@ -86,6 +86,7 @@
 
     if (!empty($search)) {
         $sql = "SELECT * FROM items WHERE item_name LIKE '%{$search}%' AND category = 'tree'";
+        // in this part, the sum is not adding the stock, which is adding the true false of the expression which is 1 0r 0 of the expression
         $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 
                                 FROM items WHERE item_name LIKE '%{$search}%' AND category = 'tree'";
     }

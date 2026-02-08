@@ -33,10 +33,10 @@
                     const courseInput = <?php echo json_encode($courseInput); ?>;
                     const nationalityInput = <?php echo json_encode($nationalityInput); ?>;
 
-                    console.log(nameInput);
-                    console.log(phoneNumberInput);
-                    console.log(courseInput);
-                    console.log(nationalityInput);
+                    // console.log(nameInput);
+                    // console.log(phoneNumberInput);
+                    // console.log(courseInput);
+                    // console.log(nationalityInput);
 
                     // const 
                     const nameFind = document.querySelector("#editProfileName");
