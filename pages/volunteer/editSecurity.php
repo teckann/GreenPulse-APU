@@ -32,6 +32,9 @@ if (isset($_POST["savePasswordChange"])) {
         
 
         if (mysqli_query($conn, $sql_update_new_pass)) {
+
+            addLog($conn, $userID, "Update Password");
+
             header('Location: security.php');
         }else {
             echo "Error: " . $sql_update_new_pass . "<br>" . mysqli_error($conn);
@@ -52,6 +55,8 @@ if (isset($_POST["saveQuestionChange"])) {
                                     WHERE user_id = '$userID'";
     
     if (mysqli_query($conn, $sql_update_safety_question)) {
+
+        addLog($conn, $userID, "Update Security Question");
 
         header('Location: security.php');
         

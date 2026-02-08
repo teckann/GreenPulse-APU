@@ -38,6 +38,8 @@
 
                 mysqli_query($conn, $ql_new_avatar);
 
+                addLog($conn, $userID, "Update Avatar");
+
                 
 
                 header("Location: editProfile.php");
@@ -75,6 +77,8 @@
 
 
             if(mysqli_query($conn,$sql_update_profile)){
+
+                addLog($conn, $userID, "Update Profile $typeChanged Info");
                 
             }else{
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -92,6 +96,8 @@
 
 
         if(mysqli_query($conn,$sql_update_profile)){
+
+            addLog($conn, $userID, "Update Profile $typeChanged Info");
             
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -110,6 +116,8 @@
 
 
         if(mysqli_query($conn,$sql_update_profile)){
+
+            addLog($conn, $userID, "Update Profile $typeChanged Info");
             
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
