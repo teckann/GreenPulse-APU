@@ -55,9 +55,13 @@
     $gapPerBadges = 100/$totalBadges;
 
     if(($totalBadges-$totalCanClaim) == 1){
-        $baseFill = $gapPerBadges * ($totalCanClaim - 1);
+        $baseFill = $gapPerBadges * ($totalCanClaim - 0.35);
+    }else if(($totalBadges-$totalCanClaim) == $totalBadges-1){
+        $baseFill = $gapPerBadges * ($totalCanClaim - 0.28);
+    }else if(($totalBadges-$totalCanClaim) == 0){
+        $baseFill = $gapPerBadges * ($totalCanClaim - 0.39);
     }else{
-        $baseFill = $gapPerBadges * ($totalCanClaim);
+        $baseFill = $gapPerBadges * ($totalCanClaim - 0.3 - (($totalBadges-$totalCanClaim)/100));
     }
 
 

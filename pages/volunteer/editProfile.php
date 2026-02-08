@@ -97,6 +97,24 @@
         header("Location: editProfile.php");
 
 
+    }else if(isset($_POST["courseName"])){
+        $valueChanged = $_POST["courseName"];
+        $typeChanged = 'course_name';
+
+        $sql_update_profile = "UPDATE users
+                            SET $typeChanged = '$valueChanged'
+                            WHERE user_id = '$userID';";
+
+
+        if(mysqli_query($conn,$sql_update_profile)){
+            
+        }else{
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        header("Location: editProfile.php");
+
+
     }
 
 

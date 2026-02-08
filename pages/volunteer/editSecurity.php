@@ -41,10 +41,10 @@ if (isset($_POST["savePasswordChange"])) {
 }
 
 if (isset($_POST["saveQuestionChange"])) {
-    $q1 = mysqli_real_escape_string($conn, $_POST["securityQuestion1"]);
-    $a1 = mysqli_real_escape_string($conn, $_POST["safeAnswer1"]);
-    $q2 = mysqli_real_escape_string($conn, $_POST["securityQuestion2"]);
-    $a2 = mysqli_real_escape_string($conn, $_POST["safeAnswer2"]);
+    $q1 = $_POST["securityQuestion1"];
+    $a1 = $_POST["safeAnswer1"];
+    $q2 = $_POST["securityQuestion2"];
+    $a2 = $_POST["safeAnswer2"];
 
     $sql_update_safety_question = "UPDATE users SET 
                                     safety_question_1 = '$q1', answer_1 = '$a1',

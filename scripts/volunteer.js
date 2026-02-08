@@ -176,19 +176,19 @@ function searchEvent(e) {
 
         const selectedFilter = document.querySelector('input[name="filterEvent"]:checked').value;
 
-        return fetch(`eventBackend.php?searchMyEvent=${encodeURIComponent(text)}&filtering=${selectedFilter}`)
+        return fetch(`eventBackend.php?searchMyEvent=${text}&filtering=${selectedFilter}`)
         .then(response => response.text())
         .then(data => {
             document.querySelector('.eventCardContainer').innerHTML = data;
     })
-    }else if (id === 'availableEventBox')
-        return fetch(`eventBackend.php?searchAvailableEvent=${encodeURIComponent(text)}`)
+    }else if (id === 'availableEventBox'){
+        return fetch(`eventBackend.php?searchAvailableEvent=${text}`)
         .then(response => response.text())
         .then(data => {
             document.querySelector('.eventCardContainer').innerHTML = data;
     })
 
-
+    }
 
 }
 

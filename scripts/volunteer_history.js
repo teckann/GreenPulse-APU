@@ -10,7 +10,7 @@ function searchHistory() {
 
     if(typeToSearch){
 
-        return fetch(`historyBackend.php?${typeToSearch}=${encodeURIComponent(text)}`)
+        return fetch(`historyBackend.php?${typeToSearch}=${text}`)
         .then(response => response.text())
         .then(data => {
             document.querySelector('#secondaryHistoryContainer').innerHTML = data;

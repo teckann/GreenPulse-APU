@@ -29,8 +29,8 @@
             $questionId = $question['quiz_id'];
             $totalQuiz++;
 
-            if (isset($_POST['answers'][$questionId])){
-                $userAnswer = $_POST['answers'][$questionId];
+            if (isset($_POST[$questionId])){
+                $userAnswer = $_POST[$questionId];
 
                 if($userAnswer == $question['answer']){
                     $totalPoint += $question['quiz_given_point'];
@@ -88,7 +88,7 @@
 
             mysqli_query($conn, $sql_update_highest);
 
-            $alert = 'Re-Attempt Completed! New Score: '.$toUpdateHighest.'.';
+            $alert = 'Re-Attempt Completed you got '.$totalCorrectQuiz.' correct! New Score: '.$toUpdateHighest.'.';
 
         }
 
@@ -190,19 +190,19 @@
                     <label for="" class="qqLabel"><?php echo $questionCount.'. '.$q["quiz_question"]; ?></label>
                     <div class="qqOptions">
                         <label class="qqOptionLabel">
-                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option 1" required>
+                            <input type="radio" name="<?php echo $q["quiz_id"]; ?>" value="option 1" required>
                             <?php echo $q["option1"]; ?>
                         </label>
                         <label class="qqOptionLabel">
-                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option 2">
+                            <input type="radio" name="<?php echo $q["quiz_id"]; ?>" value="option 2">
                             <?php echo $q["option2"]; ?>
                         </label>
                         <label class="qqOptionLabel">
-                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option 3">
+                            <input type="radio" name="<?php echo $q["quiz_id"]; ?>" value="option 3">
                             <?php echo $q["option3"]; ?>
                         </label>
                         <label class="qqOptionLabel">
-                            <input type="radio" name="answers[<?php echo $q["quiz_id"]; ?>]" value="option 4">
+                            <input type="radio" name="<?php echo $q["quiz_id"]; ?>" value="option 4">
                             <?php echo $q["option4"]; ?>
                         </label>
 
