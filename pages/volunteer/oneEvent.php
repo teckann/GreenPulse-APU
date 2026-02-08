@@ -26,6 +26,18 @@
 
 
         if(mysqli_query($conn, $sql_insert_feedback)){
+
+            $logID = newID($conn, "log", "L");
+
+            $sql_event_log = "INSERT INTO log
+                                    (log_id, user_id, log_event, log_datetime)
+                                    VALUES
+                                    ($logID, '$userID', 'Register Event', NOW());";
+
+            mysqli_query($conn, $sql_event_log);
+
+
+
             echo '<script>
                     document.addEventListener("DOMContentLoaded",() =>{
                     alert("Feedback Submitted. THANK YOU FOR TAKING YOUR TIME");

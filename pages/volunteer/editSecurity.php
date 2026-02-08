@@ -62,7 +62,7 @@ if (isset($_POST["saveQuestionChange"])) {
 
 $safetyQuestion = [
     "What is your secondary school name?",
-    "What is your mother's middle name?",
+    "What is the middle name of your mother?",
     "What is your favorite color?",
     "What is your first car brand?",
     "What is the city name were you born in?"

@@ -1,6 +1,7 @@
 <?php
     include("../../conn.php");
 
+    include("../../backend/utility.php");
     
     include("badgeBackend.php");
 
@@ -13,6 +14,17 @@
                                     ('$userID', '$badgeToClaim', NOW());";
 
         if(mysqli_query($conn, $sql_insert_milestone)){
+
+
+            $logID = newID($conn, "log", "L");
+
+            $sql_milestone_log = "INSERT INTO log
+                                    (log_id, user_id, log_event, log_datetime)
+                                    VALUES
+                                    ($logID, '$userID', 'Claim Badge', NOW());";
+
+            mysqli_query($conn, $sql_milestone_log);
+
 
             echo '<script>
                 alert("Badge CLAIMED");

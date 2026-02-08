@@ -4,6 +4,8 @@
 
     include("../../backend/sessionData.php");
 
+    include("../../backend/utility.php");
+
     $userID = $_SESSION["userID"];
 
     
@@ -58,6 +60,17 @@
                                     ('$module_id', '$userID', '$totalCorrectQuiz', '$totalPoint', 1, NOW());";
 
             mysqli_query($conn, $sql_insert_record);
+
+            $moduleLogID = newID($conn, "log", "L");
+
+            $sql_module_log = "INSERT INTO log
+                                    (log_id, user_id, log_event, log_datetime)
+                                    VALUES
+                                    ($moduleLogID, '$userID', 'Answered module $module_id', NOW());";
+
+            mysqli_query($conn, $sql_module_log);
+
+            
 
             if ($totalPoint > 0){
                 $sql_add_point = "UPDATE users SET 
