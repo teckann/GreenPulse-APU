@@ -44,6 +44,7 @@
     }
 
     function reformat_dateTime($dateTime) {
+        // g: hour (12-h format), i: minute, A: AM/PM
         return date("d M Y (g:i A)", strtotime($dateTime));
     }
 
@@ -106,6 +107,7 @@
         // event havent start
         if ($now < $start) {
             $remaining = $start - $now;
+            // get the integer from the smaller one
             $days = floor($remaining / 86400);
             $hoursRemain = floor(($remaining % 86400) / 3600);
             return $days . " days " . $hoursRemain . " hours remaining";
