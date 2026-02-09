@@ -1,6 +1,11 @@
 <?php 
 
+    include("../../conn.php");
 
+    
+    include("../../backend/sessionData.php");
+
+    $userID = $_SESSION["userID"];
 
 function addModuleCard($module) {
         if(mysqli_num_rows($module) > 0){
@@ -26,4 +31,52 @@ function addModuleCard($module) {
             echo '<p class="noEvents">More module coming soon</p>';
         }
     } 
+
+
+
+    if(isset($_GET["searchAvailable"])){
+
+        $toSearch = $_GET["searchAvailable"];
+
+
+        $sql_searchAvailable = "SELECT * FROM modules 
+                            WHERE module_status = 'Active'
+                            AND module_name LIKE '%$toSearch%';";
+        
+
+        $findAvailable = mysqli_query($conn,$sql_searchAvailable);
+
+        addModuleCard($findAvailable);
+
+        mysqli_close($conn);
+
+    }elseif (isset($_GET["searchCompleted"])){
+
+        $toSearch = $_GET["searchCompleted"];
+
+        $sql_searchCompleted = "SELECT * FROM modules 
+                                WHERE module_id IN (
+                                    SELECT module_id 
+                                    FROM module_history 
+                                    WHERE user_id = '$userID'
+                                ) 
+                                AND module_status = 'Active'
+                                AND module_name LIKE '%$toSearch%';";
+            
+
+        $findCompleted = mysqli_query($conn,$sql_searchCompleted);
+
+        addModuleCard($findCompleted);
+
+        mysqli_close($conn);
+
+    }
+
+
+
+
+
+
+
+
 ?>

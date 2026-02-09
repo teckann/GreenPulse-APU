@@ -64,7 +64,7 @@
                 "nationalityInput" => $nationality
             ];
 
-            // set the session to let the edit php cheeck overwrite data or not
+            // set the session to let the edit php check overwrite data or not
             $_SESSION["hasData"] = true;
 
             ?>

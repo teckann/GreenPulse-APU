@@ -1,6 +1,7 @@
 <?php
     include("../../conn.php");
 
+    include("../../backend/utility.php");
     
     include("badgeBackend.php");
 
@@ -13,6 +14,11 @@
                                     ('$userID', '$badgeToClaim', NOW());";
 
         if(mysqli_query($conn, $sql_insert_milestone)){
+
+
+            addLog($conn, $userID, "Claim Badge $badgeToClaim");
+
+
 
             echo '<script>
                 alert("Badge CLAIMED");
@@ -55,9 +61,13 @@
     $gapPerBadges = 100/$totalBadges;
 
     if(($totalBadges-$totalCanClaim) == 1){
-        $baseFill = $gapPerBadges * ($totalCanClaim - 1);
+        $baseFill = $gapPerBadges * ($totalCanClaim - 0.35);
+    }else if(($totalBadges-$totalCanClaim) == $totalBadges-1){
+        $baseFill = $gapPerBadges * ($totalCanClaim - 0.28);
+    }else if(($totalBadges-$totalCanClaim) == 0){
+        $baseFill = $gapPerBadges * ($totalCanClaim - 0.39);
     }else{
-        $baseFill = $gapPerBadges * ($totalCanClaim);
+        $baseFill = $gapPerBadges * ($totalCanClaim - 0.3 - (($totalBadges-$totalCanClaim)/100));
     }
 
 

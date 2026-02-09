@@ -26,6 +26,9 @@
 
 
         if(mysqli_query($conn, $sql_insert_feedback)){
+
+            addLog($conn, $userID, "Fill Feedback $newFBid");
+
             echo '<script>
                     document.addEventListener("DOMContentLoaded",() =>{
                     alert("Feedback Submitted. THANK YOU FOR TAKING YOUR TIME");
@@ -56,16 +59,41 @@
 
         $now_dateTime_toInsert = date('Y-m-d H:i:s');
 
-        $sql_register_event = "INSERT attendance 
+        $sql_register_event = "INSERT INTO attendance 
                                 (event_id, user_id, event_register_datetime, attendance_status)
                                 VALUES('$insertEventid','$userID','$now_dateTime_toInsert','Absent')";
 
+            
 
-            if(mysqli_query($conn,$sql_register_event)){
+
+        if(mysqli_query($conn,$sql_register_event)){
+
+            addLog($conn, $userID, 'Register Event '.$insertEventid.'');
+
+            echo '<script>
+                document.addEventListener("DOMContentLoaded",() =>{
+                alert("Registeration Successful! 🎉🎉");
+        
+
+                let form = document.createElement("form");
+                form.method = "POST";
+                form.action = "oneEvent.php";
                 
-            }else{
-                echo "Error: " . $sql_register_event . "<br>" . mysqli_error($conn);
-            }
+                let input = document.createElement("input");
+                input.type = "hidden";
+                input.name = "oneEvent";
+                input.value = "'.$insertEventid.'";
+                
+                form.appendChild(input);
+                document.body.appendChild(form);
+                form.submit();
+
+                })
+                </script>';
+            
+        }else{
+            echo "Error: " . $sql_register_event . "<br>" . mysqli_error($conn);
+        }
            
     }
 

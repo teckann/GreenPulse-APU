@@ -12,14 +12,6 @@
         $tree_id = $_POST["oneTree"];
 
 
-    }else if(isset($_POST["fertilize"])) {
-        $tree_id = $_POST["oneTree"];
-
-
-        $sql_update_fertilize = "UPDATE tree_adoption_history SET
-                                    tree_adoption_datetime = NOW()
-                                    WHERE user_id = '$userID'
-                                    AND tree_adoption_id = '$tree_id';";
     }
 
     if($tree_id){

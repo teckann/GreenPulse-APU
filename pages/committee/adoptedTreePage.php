@@ -3,7 +3,7 @@
     include("../../backend/sessionData.php"); 
     include("../../backend/utility.php");
 
-    $sql = "SELECT * FROM tree_adoption_history T ";
+    $sql = "SELECT * FROM tree_adoption_history T";
 
     $search = '';
     $treeStatus = '';
@@ -22,11 +22,11 @@
         $sqlUpdateStatus = "UPDATE tree_adoption_history SET tree_adoption_status = '$newStatus' WHERE tree_adoption_id = '$updateTreeId'";
 
         if (mysqli_query($conn, $sqlUpdateStatus)) {
+            addLog($conn, $userID, "Change Tree Status ($updateTreeId)");
             echo "<script>
             alert('{$updateTreeName}s status is changed to $newStatus');
             window.location.href='adoptedTreePage.php';
             </script>";
-            addLog($conn, $userID, "Change Tree Status ($updateTreeId)");
         }
         else {
             echo "<script>alert('{$updateTreeName}s status cannot be changed, please try again');</script>";
@@ -234,14 +234,14 @@
 
                                 $todayTimeStamp = time();
 
-                                $fertilizeButtonUsed = false;
+                                // $fertilizeButtonUsed = false;
                                 if (!empty($fertilizeInDT) && $fertilizeInDT !== '0000-00-00 00:00:00') {
                                     $fertilizeDT = strtotime($fertilizeInDT); 
                                     if (date('Y-m-d', strtotime($fertilizeInDT)) === date('Y-m-d', $todayTimeStamp)) {
                                         // if today fertilized
                                         $showFertilizeText = "Today, " . date('H:i', $fertilizeDT);
                                         // change the color of button status
-                                        $fertilizeButtonUsed = true;
+                                        // $fertilizeButtonUsed = true;
                                     } 
                                     else {
                                         // if in different day
@@ -443,14 +443,14 @@
                 const btnMarkAllFertilized = document.querySelector("#btnMarkAllFertilized");
 
                 // check the session has record or not, if don't have record, will become null
-                const savedStatusOfTree = sessionStorage.getItem("selectedTreeStatus");
+                const savedStatusOfTree = sessionStorage.getItem("selectedAdoptTreeStatus");
                 // if there have record, will asign it into the the selectbox value
                 if (savedStatusOfTree !== null) { 
                     treeStatus.value = savedStatusOfTree;
                 }
 
                 treeStatus.addEventListener('change', function() {
-                    sessionStorage.setItem('selectedTreeStatus', this.value);
+                    sessionStorage.setItem('selectedAdoptTreeStatus', this.value);
                 });
 
                 const treeType = document.getElementById("filterAvailableTreeType");
@@ -494,7 +494,7 @@
         });
 
         const reload = () => {
-            sessionStorage.setItem('selectedTreeStatus', '');
+            sessionStorage.setItem('selectedAdoptTreeStatus', '');
             sessionStorage.setItem('selectedTreeType', '');
             window.location.href = 'adoptedTreePage.php';
         }
