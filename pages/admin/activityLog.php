@@ -33,6 +33,9 @@
                         ORDER BY log_datetime $sort";
             }
             else if ($logStatus === "this_week") {
+                // WEEKDAY(NOW()) = get the weekday of today
+                // NOW() - INTERVAL WEEKDAY(NOW()) DAY = TODAY - INTERVAL 2 (if wednesday) DAY
+                // 0-6 (Monday - Sunday)
                 $sql = "SELECT * FROM log
                         WHERE log_datetime >= DATE_FORMAT(NOW() - INTERVAL WEEKDAY(NOW()) DAY, '%Y-%m-%d')
                         AND log_datetime <  DATE_FORMAT(NOW() - INTERVAL WEEKDAY(NOW()) DAY, '%Y-%m-%d') + INTERVAL 7 DAY
