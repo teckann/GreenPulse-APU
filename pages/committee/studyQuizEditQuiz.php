@@ -98,7 +98,7 @@
                     </div>
                     <select id="questionDropdown" name="quiz_selector" class="event-box" onchange="changeQuestion()">
                         <?php foreach($questionsList as $q): ?>
-                            <option value="<?php echo $q['quiz_id']; ?>" 
+                            <option value="<?php echo $q['quiz_id']; ?>"
                                 <?php echo ($currentQuestion && $currentQuestion['quiz_id'] == $q['quiz_id']) ? 'selected' : ''; ?>>
                                 <?php echo $q['quiz_question']; ?>
                             </option>

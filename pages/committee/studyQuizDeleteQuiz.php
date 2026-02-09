@@ -115,7 +115,7 @@
 
             <?php else: ?>
                 <div style="text-align:center; padding: 40px;">
-                    <i class="fas fa-check-circle" style="font-size: 40px; color: #28a745; margin-bottom: 10px;"></i>
+                    <i class="fas fa-check-circle"></i>
                     <h3>All Clear!</h3>
                     <p>There are no active questions in this module to delete.</p>
                     <button onclick="window.location.href='studyQuizModule.php?module_id=<?php echo $moduleID; ?>'" class="btn-create-event">Back to Module</button>
