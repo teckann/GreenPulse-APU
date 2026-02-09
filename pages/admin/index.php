@@ -72,6 +72,8 @@
     $monthsLabels = array(); // for graph to display ("Dec", "Jan", ...)
 
     for ($i = 4; $i >= 0; $i--) {
+        // date (format, timstamp)
+        // strtotime(time modifier, timestamp)
         $monthsQueryKeys[]   = date("Y-m", strtotime("-$i months", $latestDateTime));
         $monthsLabels[] = date("M", strtotime("-$i months", $latestDateTime));
     }
@@ -79,6 +81,7 @@
     // function for query the total record for each month
     function countTotal($conn, $table, $column, $monthsQueryKeys) {
         // make the $data as key-value type, then assign key for the $data
+        // make it all the value of the key as 0 first
         $data = array_fill_keys($monthsQueryKeys, 0);
 
         $firstMonth = $monthsQueryKeys[0];
