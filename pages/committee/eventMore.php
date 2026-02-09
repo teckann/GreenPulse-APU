@@ -2,6 +2,11 @@
     include("../../conn.php");
     include("../../backend/sessionData.php"); 
 
+    if (!isset($_GET['event_id'])) {
+        echo "<script>alert('No event selected!'); window.location.href='eventMain.php';</script>";
+        exit;
+    }
+    
     $eventID = mysqli_real_escape_string($conn, $_GET['event_id']);
     $sql = "SELECT * FROM events WHERE event_id = '$eventID'";
     $result = mysqli_query($conn, $sql);

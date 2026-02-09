@@ -31,7 +31,6 @@
                       WHERE quiz_id = '$quiz_id'";
 
         if (mysqli_query($conn, $sqlUpdate)) {
-            addLog($conn, $_SESSION['userID'], "Update Quiz: $shortQuestion");
             echo "<script>alert('Question Updated!'); window.location.href='studyQuizEditQuiz.php?module_id=$module_id&selected_quiz_id=$quiz_id';</script>";
         } else {
             echo "Error: " . mysqli_error($conn);
@@ -46,12 +45,14 @@
         $questionsList[] = $row;
     }
 
+    // show the question to display
     $selectedQuizId = isset($_POST['quiz_id']) ? $_POST['quiz_id'] : (isset($_GET['selected_quiz_id']) ? $_GET['selected_quiz_id'] : '');
     
     if (empty($selectedQuizId) && !empty($questionsList)) {
         $selectedQuizId = $questionsList[0]['quiz_id'];
     }
 
+    
     $currentQuestion = null;
     foreach($questionsList as $q) {
         if ($q['quiz_id'] === $selectedQuizId) {
@@ -71,13 +72,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="../../src/elements/logo_vertical.png">
 
-    <script>
-        function changeQuestion() {
-            var select = document.getElementById("questionDropdown");
-            var quizId = select.options[select.selectedIndex].value;
-            window.location.href = "?module_id=<?php echo $module_id; ?>&selected_quiz_id=" + quizId;
-        }
-    </script>
 </head>
 <body>
    <?php include ("header.php");?>
@@ -97,16 +91,16 @@
     <section class="event-controls-event-main">
         <div class="white-color-box">
             
-            <form action="" method="POST">
+            <form action="#" method="POST">
                 <div class="input-group">
                     <div class="row">
                         <label>Select Question to Edit</label>
                     </div>
                     <select id="questionDropdown" name="quiz_selector" class="event-box" onchange="changeQuestion()">
                         <?php foreach($questionsList as $q): ?>
-                            <option value="<?php echo $q['quiz_id']; ?>" 
+                            <option value="<?php echo $q['quiz_id']; ?>"
                                 <?php echo ($currentQuestion && $currentQuestion['quiz_id'] == $q['quiz_id']) ? 'selected' : ''; ?>>
-                                <?php echo substr($q['quiz_question'], 0, 30) . "..."; ?>
+                                <?php echo $q['quiz_question']; ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -180,5 +174,12 @@
         </div>
     </section>
     <?php include ("hamburgerMenu.php");?>
+    <script>
+        function changeQuestion() {
+            var select = document.getElementById("questionDropdown");
+            var quizId = select.options[select.selectedIndex].value;
+            window.location.href = "?module_id=<?php echo $module_id; ?>&selected_quiz_id=" + quizId;
+        }
+    </script>
 </body>
 </html>

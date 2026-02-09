@@ -69,9 +69,17 @@
                                         VALUES
                                         ('$newID', '$item_id', '$userID', NOW(), $amount);";
 
+                
+
 
                 if(mysqli_query($conn, $sql_insert_history)){
                     mysqli_query($conn, $sql_update_points);
+
+                    addLog($conn, $userID, "Buy item $item_id");
+
+
+
+
                     echo '<script>
                             document.addEventListener("DOMContentLoaded",() =>{
                             alert("Redemption Successful! 🎉🎉");
@@ -113,6 +121,9 @@
 
                 if(mysqli_query($conn, $sql_insert_history)){
                     mysqli_query($conn, $sql_update_points);
+
+                    addLog($conn, $userID, "Buy tree $item_id");
+
                     echo '<script>
                             document.addEventListener("DOMContentLoaded",() =>{
                             alert("Adoption Successful!");

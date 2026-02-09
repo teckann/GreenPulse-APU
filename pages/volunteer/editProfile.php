@@ -2,6 +2,8 @@
 
     include("../../conn.php");
 
+    include("../../backend/utility.php");
+
     
     include("../../backend/sessionData.php");
 
@@ -35,6 +37,9 @@
                                     WHERE user_id = '$userID';";
 
                 mysqli_query($conn, $ql_new_avatar);
+
+                addLog($conn, $userID, "Update Avatar");
+
                 
 
                 header("Location: editProfile.php");
@@ -72,6 +77,8 @@
 
 
             if(mysqli_query($conn,$sql_update_profile)){
+
+                addLog($conn, $userID, "Update Profile $typeChanged Info");
                 
             }else{
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -89,6 +96,28 @@
 
 
         if(mysqli_query($conn,$sql_update_profile)){
+
+            addLog($conn, $userID, "Update Profile $typeChanged Info");
+            
+        }else{
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        header("Location: editProfile.php");
+
+
+    }else if(isset($_POST["courseName"])){
+        $valueChanged = $_POST["courseName"];
+        $typeChanged = 'course_name';
+
+        $sql_update_profile = "UPDATE users
+                            SET $typeChanged = '$valueChanged'
+                            WHERE user_id = '$userID';";
+
+
+        if(mysqli_query($conn,$sql_update_profile)){
+
+            addLog($conn, $userID, "Update Profile $typeChanged Info");
             
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);

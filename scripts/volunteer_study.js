@@ -1,3 +1,29 @@
+function searchModule() {
+
+
+    let text = document.querySelector("#searchStudy").value;
+
+
+    if(document.querySelector('#navStudy1').style.background !== 'transparent'){
+
+
+        return fetch(`studyBackend.php?searchAvailable=${text}`)
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('#availableStudy').innerHTML = data;
+    })
+    }else if (document.querySelector('#navStudy2').style.background !== 'transparent'){
+
+        return fetch(`studyBackend.php?searchCompleted=${text}`)
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('#completedStudy').innerHTML = data;
+    })
+
+}
+
+}
+
 
 
 /* ------------------------ start running here---------------------- */
@@ -23,6 +49,12 @@ document.addEventListener('DOMContentLoaded',() =>{
         })
     }
 
+
+    if(document.querySelector('#searchStudy')){
+
+        document.querySelector('#searchStudy').addEventListener('keyup', searchModule);
+
+    }
 
 
 })

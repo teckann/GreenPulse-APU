@@ -3,11 +3,6 @@
     include("../../backend/sessionData.php");
     include("../../backend/utility.php");
 
-    if (!isset($_SESSION['userID'])) {
-        echo "<script>alert('Please login first!'); window.location.href='../../pages/guest/login.php';</script>";
-        exit;
-    }
-
     if ($_SERVER["REQUEST_METHOD"] === "POST") { 
         if (isset($_POST["formType"]) && $_POST["formType"] === "createNewEvent") {
             $targetDir = "../../src/eventPosters/";
@@ -27,9 +22,8 @@
                     $capacity = mysqli_real_escape_string($conn, $_POST['event_capacity']);
                     $pointsGiven = mysqli_real_escape_string($conn, $_POST['event_points']);
 
-                    $creatorID = isset($userID) ? $userID : $_SESSION['user_id'];
+                    $creatorID = $_SESSION['user_id'];
                     $eventID = newID($conn, "events", "E"); // use utility.php
-                    $availableSpot = $capacity;
                     
                     date_default_timezone_set("Asia/Kuala_Lumpur");
                     $postedDate = date("Y-m-d"); 
@@ -98,7 +92,6 @@
 <body>
     <?php include ("header.php");?>
 
-
         <div class="header-content">
             <div class="back-icon" onclick="history.back()">
                 <i class="fas fa-arrow-left"></i>
@@ -112,15 +105,10 @@
                 <i class="fas fa-arrow-left"></i>
             </div>
             
-            
         </div>
 
-       
         <form action="eventCreate.php" method="POST" enctype="multipart/form-data">
-            
-            
             <input type="hidden" name="formType" value="createNewEvent">
-
             <section class="event-controls-event-main">
                 <div class = "white-color-box">
                     <div class = "two-column">
@@ -140,7 +128,6 @@
                             <input type="datetime-local" name="event_datetime" class="event-box" required>  
                         </div>
                     </div>
-
 
                     <div class = "two-column">
                         <div class="input-group">

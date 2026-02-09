@@ -7,21 +7,21 @@ function searchItem() {
     if(document.querySelector('#navRedeem1').style.background !== 'transparent'){
 
 
-        return fetch(`itemBackend.php?searchMerchandise=${encodeURIComponent(text)}`)
+        return fetch(`itemBackend.php?searchMerchandise=${text}`)
         .then(response => response.text())
         .then(data => {
             document.querySelector('#merchandiseRedeem').innerHTML = data;
     })
-    }else if (document.querySelector('#navRedeem2').style.background !== 'transparent')
+    }else if (document.querySelector('#navRedeem2').style.background !== 'transparent'){
 
-        return fetch(`itemBackend.php?searchTree=${encodeURIComponent(text)}`)
+        return fetch(`itemBackend.php?searchTree=${text}`)
         .then(response => response.text())
         .then(data => {
             document.querySelector('#treeRedeem').innerHTML = data;
     })
 
 
-
+    }
 }
 
 function getGivenName() {

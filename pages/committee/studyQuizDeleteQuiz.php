@@ -27,9 +27,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_confirm'])) {
         if (!empty($_POST['quiz_to_delete'])) {
-            $idsToDelete = array_map(function($id) use ($conn) {
-                return mysqli_real_escape_string($conn, $id);
-            }, $_POST['quiz_to_delete']);
+            $idsToDelete = $_POST['quiz_to_delete'];
 
             $idsString = "'" . implode("','", $idsToDelete) . "'";
 
@@ -92,7 +90,7 @@
                         <?php 
                             while ($quizRow = mysqli_fetch_assoc($resultQuiz)) {
                                 $qid = $quizRow['quiz_id'];
-                                $qText = htmlspecialchars($quizRow['quiz_question']);
+                                $qText = ($quizRow['quiz_question']);
                                 $pts = $quizRow['quiz_given_point'];
                         ?>
                         <label class="delete-selection-item">
@@ -117,7 +115,7 @@
 
             <?php else: ?>
                 <div style="text-align:center; padding: 40px;">
-                    <i class="fas fa-check-circle" style="font-size: 40px; color: #28a745; margin-bottom: 10px;"></i>
+                    <i class="fas fa-check-circle"></i>
                     <h3>All Clear!</h3>
                     <p>There are no active questions in this module to delete.</p>
                     <button onclick="window.location.href='studyQuizModule.php?module_id=<?php echo $moduleID; ?>'" class="btn-create-event">Back to Module</button>

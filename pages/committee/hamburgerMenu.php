@@ -52,13 +52,5 @@
             });
         });
         
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const sidebar = document.getElementById('sidebar');
-                if (sidebar.classList.contains('active')) {
-                    toggleMenu();
-                }
-            }
-        });
     </script>
 
