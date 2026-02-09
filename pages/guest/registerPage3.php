@@ -71,7 +71,7 @@
             else {
                 ?>
                     <script>
-                        alert('Account register failed, please rey again.')
+                        alert('Account register failed, please try again.')
                     </script>
                 <?php
             }
