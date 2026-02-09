@@ -90,7 +90,7 @@
                         <?php 
                             while ($quizRow = mysqli_fetch_assoc($resultQuiz)) {
                                 $qid = $quizRow['quiz_id'];
-                                $qText = htmlspecialchars($quizRow['quiz_question']);
+                                $qText = ($quizRow['quiz_question']);
                                 $pts = $quizRow['quiz_given_point'];
                         ?>
                         <label class="delete-selection-item">
