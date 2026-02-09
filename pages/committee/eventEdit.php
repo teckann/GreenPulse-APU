@@ -28,7 +28,7 @@
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (isset($_POST["formType"]) && $_POST["formType"] === "editEvent") {
             
-            $eventPosterPath = $eventData['event_poster'];
+            $eventPosterPath = $eventData['event_poster']; // Keep the old one first
             
             if (!empty($_FILES["event_poster"]["name"])) {
                 $targetDir = "../../src/eventPosters/";
@@ -51,21 +51,6 @@
             $location = mysqli_real_escape_string($conn, $_POST['event_Location']);
             $capacity = mysqli_real_escape_string($conn, $_POST['event_capacity']);
             $pointsGiven = mysqli_real_escape_string($conn, $_POST['event_points']);
-            
-            $sqlAttendance = "SELECT COUNT(*) as total_attendees FROM attendance WHERE event_id = '$eventID'";
-            $resultAttendance = mysqli_query($conn, $sqlAttendance);
-            $currentAttendees = 0;
-            
-            if ($resultAttendance) {
-                $rowAttendance = mysqli_fetch_assoc($resultAttendance);
-                $currentAttendees = $rowAttendance['total_attendees'];
-            }
-            $availableSpot = $capacity - $currentAttendees;
-
-            if ($availableSpot < 0) {
-                $availableSpot = 0;
-            }
-
             $postedDate = date("Y-m-d");
             
             $sqlUpdate = "UPDATE events SET 
@@ -133,7 +118,7 @@
                             <label>Event Name</label>
                             <span> *</span>
                         </div>
-                        <input type="text" name="event_title" value="<?php echo htmlspecialchars($eventData['event_title']); ?>" class="event-box" required>
+                        <input type="text" name="event_title" value="<?php echo $eventData['event_title']; ?>" class="event-box" required>
                     </div>
 
                     <div class="input-group">
@@ -141,7 +126,7 @@
                             <label>Event Date Time</label>
                             <span> *</span>
                         </div>
-                        <input type="datetime-local" name="event_datetime" value="<?php echo date('Y-m-d\TH:i', strtotime($eventData['event_datetime'])); ?>" class="event-box" required>
+                        <input type="datetime-local" name="event_datetime" value="<?php echo $eventData['event_datetime']; ?>" class="event-box" required>
                     </div>
                 </div>
 
@@ -151,7 +136,7 @@
                             <label>Location</label>
                             <span> *</span>
                         </div>
-                        <input type="text" name="event_Location" value="<?php echo htmlspecialchars($eventData['location']); ?>" class="event-box" required>
+                        <input type="text" name="event_Location" value="<?php echo $eventData['location']; ?>" class="event-box" required>
                     </div>
 
                     <div class="input-group">
@@ -159,7 +144,7 @@
                             <label>Duration</label>
                             <span> *</span>
                         </div>
-                        <input type="text" name="event_duration" value="<?php echo htmlspecialchars($eventData['duration']); ?>" class="event-box" required>
+                        <input type="text" name="event_duration" value="<?php echo $eventData['duration']; ?>" class="event-box" required>
                     </div>
                 </div>
 
@@ -186,7 +171,7 @@
                         <label>Description</label>
                         <span> *</span>
                     </div>
-                    <textarea name="event_description" class="event-big-box" rows="5" required><?php echo htmlspecialchars($eventData['event_description']); ?></textarea>
+                    <textarea name="event_description" class="event-big-box" rows="5" required><?php echo $eventData['event_description']; ?></textarea>
                 </div>
 
                 <div class="input-group">
@@ -194,7 +179,7 @@
                         <label>Event Poster</label>
                     </div>
                     <input type="file" name="event_poster" class="event-big-box">
-                    <div style="margin-top: 10px;">
+                    <div>
                         <small>Current poster: <?php echo basename($eventData['event_poster']); ?></small>
                     </div>
                 </div>

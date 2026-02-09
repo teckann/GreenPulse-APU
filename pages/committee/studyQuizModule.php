@@ -93,7 +93,7 @@
                                         </svg>
                                     </div>
                                 <?php else: ?>
-                                    <div style="padding: 10px; color: #666; font-size: 12px; font-style: italic;">
+                                    <div class = "view-only">
                                         View only
                                     </div>
                                 <?php endif; ?>
@@ -116,7 +116,7 @@
                                         </svg>
                                     </div>
                                 <?php else: ?>
-                                    <div style="padding: 10px; color: #666; font-size: 12px; font-style: italic;">
+                                    <div class = "view-only">
                                         View only
                                     </div>
                                 <?php endif; ?>
@@ -138,8 +138,6 @@
                         <div class="detail-content">
                             <span class="detail-label">STUDY MATERIAL</span>
                             <div class="detail-value">
-                            
-                          
                          
                           <button class="btn-study-material"
                             onclick="window.open('../../<?php echo $rows['module_material']; ?>', '_blank')">

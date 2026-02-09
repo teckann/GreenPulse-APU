@@ -27,7 +27,7 @@
                     WHERE event_id = '$eventID' AND user_id = '$userID'";
         mysqli_query($conn, $updateSql);
             
-        header("Location: eventAttendance.php?event_id=" . $eventID);
+        header("Location: eventAttendance.php?event_id=" . $eventID); 
         exit;
     }
 
@@ -72,7 +72,7 @@
 
             <?php
                 if (mysqli_num_rows($result) <= 0) {
-                    echo "<p style='text-align: center; padding: 20px;'>No attendance records for this event.</p>";
+                    echo "<p class = 'event-message'>No attendance records for this event.</p>";
                     
                 }
                 else {
@@ -86,7 +86,7 @@
                 <span class="name"><?php echo $rows['name']?></span>
                 <span class="attendance-date-time"><?php echo $rows['event_register_datetime']?></span>
                 <div class="attendance-status">
-                    <form method="POST" style="display: inline;">
+                    <form method="POST" action = "#" style="display: inline;">
                         <input type="hidden" name="user_id" value="<?php echo $rows['user_id']; ?>">
                         <input type="hidden" name="status" value="Present">
                         <button type="submit" name="update_attendance" class="btn-present green-color" 
@@ -112,7 +112,7 @@
     ?>
         </div>
     </section>
-
+    
         <?php include ("hamburgerMenu.php");?>
     </body>
     </html>

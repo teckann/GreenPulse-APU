@@ -3,14 +3,7 @@
     include("../../conn.php");
     include("../../backend/utility.php");
 
-   
-     if (!isset($creatorID) || empty($creatorID)) {
-        if (isset($userID)) {
-            $creatorID = $userID;
-        } else {
-            $creatorID = 'U002'; 
-        }
-    }
+    $creatorID = $_SESSION['userID'];
 
     $moduleID = newID($conn, "modules", "M");
 
@@ -23,6 +16,7 @@
             $coverFileName = basename($_FILES['module_cover']['name']);
             $materialFileName = basename($_FILES["module_material"]["name"]);
             $videoFileName = basename($_FILES["module_video"]["name"]);
+            
             $allowCoverType = array ('png','jpeg', 'jpg'); 
             $allowDocTypes = array('pdf');
             $allowVideoTypes = array('mp4');
@@ -39,23 +33,14 @@
                 $uploadOk = 0;
             }
 
-            $coverPath = "src/moduleMaterials/" . $coverFileName; 
-            $materialPath = "src/moduleMaterials/" . $materialFileName; 
-            $videoPath = "src/moduleMaterials/" . $videoFileName;
-
             if ($uploadOk == 1) { 
                 if(!empty($coverFileName)) move_uploaded_file($_FILES["module_cover"]["tmp_name"], $targetDir . $coverFileName);
                 if(!empty($materialFileName)) move_uploaded_file($_FILES["module_material"]["tmp_name"], $targetDir . $materialFileName);
                 if(!empty($videoFileName)) move_uploaded_file($_FILES["module_video"]["tmp_name"], $targetDir . $videoFileName);
 
-            $coverPath = "src/moduleMaterials/" . $coverFileName; 
-            $materialPath = "src/moduleMaterials/" . $materialFileName; 
-            $videoPath = "src/moduleMaterials/" . $videoFileName;
-
-            if ($uploadOk == 1) { 
-                if(!empty($coverlFileName)) move_uploaded_file($_FILES["module_cover"]["tmp_name"], $targetDir . $coverlFileName);
-                if(!empty($materialFileName)) move_uploaded_file($_FILES["module_material"]["tmp_name"], $targetDir . $materialFileName);
-                if(!empty($videoFileName)) move_uploaded_file($_FILES["module_video"]["tmp_name"], $targetDir . $videoFileName);
+                $coverPath = "src/moduleMaterials/" . $coverFileName; 
+                $materialPath = "src/moduleMaterials/" . $materialFileName; 
+                $videoPath = "src/moduleMaterials/" . $videoFileName;
 
                 $finalModuleID = $_POST['module_id']; 
                 $moduleName = mysqli_real_escape_string($conn, $_POST['module_name']);
@@ -93,19 +78,9 @@
                             
                             if (!empty($question)) {
                                 
-                                $sqlCheckQuizID = "SELECT quiz_id FROM quiz ORDER BY quiz_id DESC LIMIT 1";
-                                $resultQuizID = mysqli_query($conn, $sqlCheckQuizID);
+                                $quizID = newID($conn, "quiz", "Q");
 
-                                if (mysqli_num_rows($resultQuizID) > 0) {
-                                    $rowQuiz = mysqli_fetch_assoc($resultQuizID);
-                                    $lastQuizID = $rowQuiz['quiz_id'];
-                                    $lastNumber = intval(substr($lastQuizID, 1)); 
-                                    $newNumber = $lastNumber + 1;
-                                    $paddedNumber = str_pad($newNumber, 3, "0", STR_PAD_LEFT);
-                                    $quizID = "Q" . $paddedNumber;
-                                } else {
-                                    $quizID = "Q001";
-                                }
+
 
                                 $opt1 = mysqli_real_escape_string($conn, $_POST['opt1'][$i]);
                                 $opt2 = mysqli_real_escape_string($conn, $_POST['opt2'][$i]);
@@ -154,7 +129,6 @@
             }
         }
     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -240,78 +214,79 @@
                     Click "Add Question" to link questions to this module.
                 </p>
 
+                <!-- HELP -->
                 <div id="quiz-container">
-                    <div class="quiz-block">
-                        <div class="remove-quiz-btn" onclick="this.parentElement.remove()">&times;</div>
+                        <div class="quiz-block">
+                            <div class="remove-quiz-btn" onclick="this.parentElement.remove()">&times;</div>
 
-                            <div class="input-group">
-                                <div class = "row">
-                                    <label>Question</label>
-                                    <span> *</span>
+                                <div class="input-group">
+                                    <div class = "row">
+                                        <label>Question</label>
+                                        <span> *</span>
+                                    </div>
+                                    <input type="text" name="quiz_question[]" class="event-box" placeholder="Enter question..." required>
                                 </div>
-                                <input type="text" name="quiz_question[]" class="event-box" placeholder="Enter question..." required>
-                            </div>
-                        
-                        
-                        <div class = "two-column">
-                            <div class="input-group">
-                                <div class = "row">
-                                    <label>Option 1</label>
-                                    <span> *</span>
+                            
+                            
+                            <div class = "two-column">
+                                <div class="input-group">
+                                    <div class = "row">
+                                        <label>Option 1</label>
+                                        <span> *</span>
+                                    </div>
+                                    <div class="input-group"><input type="text" name="opt1[]" class="event-box" placeholder="Option 1" required></div>
                                 </div>
-                                <div class="input-group"><input type="text" name="opt1[]" class="event-box" placeholder="Option 1" required></div>
-                            </div>
 
-                            <div class="input-group">
-                                <div class = "row">
-                                    <label>Option 2</label>
-                                    <span> *</span>
+                                <div class="input-group">
+                                    <div class = "row">
+                                        <label>Option 2</label>
+                                        <span> *</span>
+                                    </div>
+                                    <div class="input-group"><input type="text" name="opt2[]" class="event-box" placeholder="Option 2" required></div>
                                 </div>
-                                <div class="input-group"><input type="text" name="opt2[]" class="event-box" placeholder="Option 2" required></div>
-                            </div>
-                        </div>
-
-                        <div class = "two-column">
-                            <div class="input-group">
-                                <div class = "row">
-                                    <label>Option 3</label>
-                                    <span> *</span>
-                                </div>
-                                <div class="input-group"><input type="text" name="opt3[]" class="event-box" placeholder="Option 3" required></div>
                             </div>
 
-                            <div class="input-group">
-                                <div class = "row">
-                                    <label>Option 4</label>
-                                    <span> *</span>
+                            <div class = "two-column">
+                                <div class="input-group">
+                                    <div class = "row">
+                                        <label>Option 3</label>
+                                        <span> *</span>
+                                    </div>
+                                    <div class="input-group"><input type="text" name="opt3[]" class="event-box" placeholder="Option 3" required></div>
                                 </div>
-                                <div class="input-group"><input type="text" name="opt4[]" class="event-box" placeholder="Option 4" required></div>
-                            </div>
-                        </div>
 
-                        <div class = "two-column">
-                            <div class="input-group">
-                                <div class = "row">
-                                    <label>Correct Answer</label>
-                                    <span> *</span>
+                                <div class="input-group">
+                                    <div class = "row">
+                                        <label>Option 4</label>
+                                        <span> *</span>
+                                    </div>
+                                    <div class="input-group"><input type="text" name="opt4[]" class="event-box" placeholder="Option 4" required></div>
                                 </div>
-                                <select name="correct_answer[]" class="event-box">
-                                    <option value="option 1">option 1</option>
-                                    <option value="option 2">option 2</option>
-                                    <option value="option 3">option 3</option>
-                                    <option value="option 4">option 4</option>
-                                </select>
                             </div>
 
-                <div class="input-group">
-                    <div class = "row">
-                        <label>Points</label>
-                        <span> *</span>
-                    </div>
-                    <input type="number" name="points[]" class="event-box" placeholder="e.g. 10" required>
-                </div>
-            </div>  
-    </div> 
+                            <div class = "two-column">
+                                <div class="input-group">
+                                    <div class = "row">
+                                        <label>Correct Answer</label>
+                                        <span> *</span>
+                                    </div>
+                                    <select name="correct_answer[]" class="event-box">
+                                        <option value="Option 1">Option 1</option>
+                                        <option value="Option 2">Option 2</option>
+                                        <option value="Option 3">Option 3</option>
+                                        <option value="Option 4">Option 4</option>
+                                    </select>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class = "row">
+                                        <label>Points</label>
+                                        <span> *</span>
+                                    </div>
+                                    <input type="number" name="points[]" class="event-box" placeholder="e.g. 10" required>
+                                </div>
+                            </div>  
+                </div> 
 </div>  
             
 
@@ -391,10 +366,10 @@
                                     <span> *</span>
                                 </div>
                                 <select name="correct_answer[]" class="event-box">
-                                    <option value="option 1">option 1</option>
-                                    <option value="option 2">option 2</option>
-                                    <option value="option 3">option 3</option>
-                                    <option value="option 4">option 4</option>
+                                    <option value="Option 1">Option 1</option>
+                                    <option value="Option 2">Option 2</option>
+                                    <option value="Option 3">Option 3</option>
+                                    <option value="Option 4">Option 4</option>
                                 </select>
                             </div>
 

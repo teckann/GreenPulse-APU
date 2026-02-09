@@ -21,9 +21,11 @@
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
         $targetDir = "../../src/moduleMaterials/";
+        // module name and description
         $moduleName = mysqli_real_escape_string($conn, $_POST['module_name']);
         $moduleDesc = mysqli_real_escape_string($conn, $_POST['module_description']);
 
+        // module cover
         if (!empty($_FILES['module_cover']['name'])) {
             $coverFileName = basename($_FILES['module_cover']['name']);
             $allowCoverType = array ('png','jpeg', 'jpg'); 
@@ -39,6 +41,7 @@
             $coverPath = $moduleData['module_cover']; 
         }
 
+        // module material
         if (!empty($_FILES['module_material']['name'])) {
             $materialFileName = basename($_FILES['module_material']['name']);
             if (strtolower(pathinfo($materialFileName, PATHINFO_EXTENSION)) === 'pdf') {
@@ -51,6 +54,7 @@
             $materialPath = $moduleData['module_material'];
         }
 
+        // module video
         if (!empty($_FILES['module_video']['name'])) {
             $videoFileName = basename($_FILES['module_video']['name']);
             if (strtolower(pathinfo($videoFileName, PATHINFO_EXTENSION)) === 'mp4') {
@@ -129,7 +133,7 @@
                         <label>Current Cover</label>
                     </div>
                     <?php if(!empty($moduleData['module_cover'])): ?>
-                        <img src="../../<?php echo $moduleData['module_cover']; ?>" style="width:100px; height:100px; object-fit:cover; margin-bottom:10px;">
+                        <img src="../../<?php echo $moduleData['module_cover']; ?>">
                     <?php endif; ?>
                 </div>
 
@@ -137,7 +141,7 @@
                     <div class="row">
                         <label>Update Cover (Optional)</label>
                     </div>
-                    <input type="file" name="module_cover" class="event-big-box" accept="image/png, image/jpeg, image/jpg">
+                    <input type="file" name="module_cover" class="event-big-box">
                 </div>
 
                 <div class="input-group">
@@ -151,7 +155,7 @@
                     <div class="row">
                         <label>Update Study Material (PDF)</label>
                     </div>
-                    <input type="file" name="module_material" class="event-big-box" accept="application/pdf">
+                    <input type="file" name="module_material" class="event-big-box">
                 </div>
 
                 <div class="input-group">
@@ -165,7 +169,7 @@
                     <div class="row">
                         <label>Update Study Video (MP4)</label>
                     </div>
-                    <input type="file" name="module_video" class="event-big-box" accept="video/mp4">
+                    <input type="file" name="module_video" class="event-big-box">
                 </div>
 
                 <div class="space"></div>

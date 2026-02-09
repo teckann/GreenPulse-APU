@@ -16,12 +16,12 @@
         exit;
     }
 
-    $eventData = mysqli_fetch_assoc($resultEventID); // get event data
+    $eventData = mysqli_fetch_assoc($resultEventID); 
 
     $sql = "SELECT f.*, u.avatar, u.name
-    FROM feedback f 
-    LEFT JOIN users u ON f.user_id = u.user_id
-    WHERE f.event_id = '$eventID'ORDER BY f.submit_datetime DESC";
+    FROM feedback f LEFT JOIN users u 
+    ON f.user_id = u.user_id
+    WHERE f.event_id = '$eventID' ORDER BY f.submit_datetime DESC";
     $result = mysqli_query($conn, $sql);
 
                     
@@ -62,7 +62,7 @@
             <span class = "title">Event Feedback</span>
             <?php
                 if (mysqli_num_rows($result) <= 0) {
-                    echo "<p style='text-align: center; padding: 20px;'>No feedback records for this event.</p>";
+                    echo "<p>No feedback records for this event.</p>";
                 }
                 else {
                     while ($rows = mysqli_fetch_array($result)){
@@ -72,9 +72,9 @@
                     <div class="feedback-header">
                         <div class="avatar">
                             <?php if (!empty($rows['avatar'])): ?>
-                                <img src="../../<?php echo $rows['avatar']; ?>" alt="User Avatar" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                                <img src="../../<?php echo $rows['avatar']; ?>" alt="User Avatar" >
                             <?php else: ?>
-                                <i class="fa-solid fa-user" style="font-size: 30px; color: #999; display: flex; align-items: center; justify-content: center; height: 100%;"></i>
+                                <i class="fa-solid fa-user"></i>
                             <?php endif; ?>
                         </div>
                         <div class="feedback-id-container">
