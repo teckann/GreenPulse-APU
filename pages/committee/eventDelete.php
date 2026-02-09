@@ -30,7 +30,7 @@
     $sqlUpdate = "UPDATE events SET event_status = '$newStatus' WHERE event_id = '$eventID'";
 
     if (mysqli_query($conn, $sqlUpdate)) {
-        $action = ($newStatus == 'Inactive') ? 'Deactivated' : 'Reactivated';
+        // $action = ($newStatus == 'Inactive') ? 'Deactivated' : 'Reactivated';
         addLog($conn, $_SESSION['userID'], "Delete Event: $eventID");
         
         $message = ($newStatus == 'Inactive') ? 'Event deactivated successfully!' : 'Event reactivated successfully!';

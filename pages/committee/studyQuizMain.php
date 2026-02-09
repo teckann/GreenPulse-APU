@@ -100,7 +100,7 @@
                 <?php 
                         } 
                     } else {
-                        echo "<p style='text-align: center; padding: 20px;'>No modules found.</p>";
+                        echo "<p>No modules found.</p>";
                     }
                 ?>
             </section>

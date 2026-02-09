@@ -27,9 +27,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_confirm'])) {
         if (!empty($_POST['quiz_to_delete'])) {
-            $idsToDelete = array_map(function($id) use ($conn) {
-                return mysqli_real_escape_string($conn, $id);
-            }, $_POST['quiz_to_delete']);
+            $idsToDelete = $_POST['quiz_to_delete'];
 
             $idsString = "'" . implode("','", $idsToDelete) . "'";
 

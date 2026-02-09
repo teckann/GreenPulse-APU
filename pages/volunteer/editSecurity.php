@@ -32,6 +32,9 @@ if (isset($_POST["savePasswordChange"])) {
         
 
         if (mysqli_query($conn, $sql_update_new_pass)) {
+
+            addLog($conn, $userID, "Update Password");
+
             header('Location: security.php');
         }else {
             echo "Error: " . $sql_update_new_pass . "<br>" . mysqli_error($conn);
@@ -41,10 +44,10 @@ if (isset($_POST["savePasswordChange"])) {
 }
 
 if (isset($_POST["saveQuestionChange"])) {
-    $q1 = mysqli_real_escape_string($conn, $_POST["securityQuestion1"]);
-    $a1 = mysqli_real_escape_string($conn, $_POST["safeAnswer1"]);
-    $q2 = mysqli_real_escape_string($conn, $_POST["securityQuestion2"]);
-    $a2 = mysqli_real_escape_string($conn, $_POST["safeAnswer2"]);
+    $q1 = $_POST["securityQuestion1"];
+    $a1 = $_POST["safeAnswer1"];
+    $q2 = $_POST["securityQuestion2"];
+    $a2 = $_POST["safeAnswer2"];
 
     $sql_update_safety_question = "UPDATE users SET 
                                     safety_question_1 = '$q1', answer_1 = '$a1',
@@ -52,6 +55,8 @@ if (isset($_POST["saveQuestionChange"])) {
                                     WHERE user_id = '$userID'";
     
     if (mysqli_query($conn, $sql_update_safety_question)) {
+
+        addLog($conn, $userID, "Update Security Question");
 
         header('Location: security.php');
         
@@ -62,7 +67,7 @@ if (isset($_POST["saveQuestionChange"])) {
 
 $safetyQuestion = [
     "What is your secondary school name?",
-    "What is your mother's middle name?",
+    "What is the middle name of your mother?",
     "What is your favorite color?",
     "What is your first car brand?",
     "What is the city name were you born in?"

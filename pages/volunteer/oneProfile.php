@@ -9,6 +9,12 @@
 
     $userID = $_SESSION["userID"];
 
+    $pattern="";
+
+    $today = date('Y-m-d');
+
+    $max = '';
+
     switch (true) {
         case isset($_POST['name']):
             $original = ($_POST['name']);
@@ -21,18 +27,26 @@
             $original = ($_POST['contact']);
             $header = ' Contact Number';
             $formName = 'contact_number';
+
+            $type = 'tel';
+
+            $pattern='pattern="[0-9]{10,12}"';
             break;
         case isset($_POST['email']):
             $original = ($_POST['email']);
             $header = 'Email';
             $formName = 'education_email';
 
-            $type = ' email';
+            $type = 'email';
             break;
         case isset($_POST['dob']):
             $original = ($_POST['dob']);
             $header = ' Date Of Birth';
             $formName = 'date_of_birth';
+
+            $type = 'date';
+
+            $max= 'max="'.$today.'"';
             break;
         case isset($_POST['course']):
             $original = ($_POST['course']);
@@ -67,6 +81,7 @@
     <title>Profile</title>
     <link rel="stylesheet" href="../../styles/volunteer.css">
     <script src="../../scripts/volunteer.js"></script>
+    <script src="../../scripts/volunteer_profile.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         .navBar #profileNav {
@@ -127,13 +142,15 @@
                 }else if($type == 'course'){
                     include("../general/course.php");
                 }else{
-                    echo'<input autofocus autocomplete="off" id="detailToChange" name="valueToChange" type="'.$type.'" value="'.$original.'">';
+                    echo'<input autofocus autocomplete="off" id="detailToChange" name="valueToChange" type="'.$type.'" '.$pattern.' '.$max.' value="'.$original.'">';
                     echo'<input type="hidden" name="typeToChange" value="'.$formName.'">';                
                 }
 
 
                 ?>
         </div>
+
+        <span class="errorMessage" id="emProfile"></span>
         <div id="doneBtnContainer">
             <button id="doneButton" type="submit">Done</button>
         </div>
