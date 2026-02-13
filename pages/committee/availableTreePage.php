@@ -61,7 +61,7 @@
         }
     }
 
-        // to change the tree photo
+    // to change the tree photo
 
     $sql = "SELECT * FROM items WHERE category = 'tree'";
     $sqlItemStockStatus = "SELECT COUNT(*) AS total, SUM(item_stock < 20) AS low_stock, SUM(item_stock >= 20) AS normal_stock 

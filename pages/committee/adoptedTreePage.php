@@ -3,7 +3,8 @@
     include("../../backend/sessionData.php"); 
     include("../../backend/utility.php");
 
-    $sql = "SELECT * FROM tree_adoption_history T";
+    $sql = "SELECT *, T.user_id AS adoptionUserId, I.user_id AS itemUserId FROM tree_adoption_history T 
+    INNER JOIN items I ON T.item_id = I.item_id";
 
     $search = '';
     $treeStatus = '';
@@ -79,9 +80,6 @@
     else {
         if ($treeStatus === "" && $treeTypeStatus === "") {
             $sql = "SELECT *, T.user_id AS adoptionUserId, I.user_id AS itemUserId FROM tree_adoption_history T INNER JOIN items I ON T.item_id = I.item_id WHERE category = 'tree'";
-             ?>
-                <!-- <script>alert('hihi');</script> -->
-            <?php
         }
         else if ($treeStatus === "") {
 
@@ -172,7 +170,8 @@
                                 <select name="filterAvailableTreeType" id="filterAvailableTreeType" class="filterTree">
                                     <option value="">All Types</option>
                                     <?php
-                                        $uniqueTreeSql = "SELECT DISTINCT item_name FROM items I INNER JOIN tree_adoption_history T ON I.item_id = T.item_id ORDER BY item_name ASC";
+                                        $uniqueTreeSql = "SELECT DISTINCT item_name FROM items I INNER JOIN tree_adoption_history T ON 
+                                        I.item_id = T.item_id ORDER BY item_name ASC";
                                         $resultOfTreeName = mysqli_query($conn, $uniqueTreeSql);
 
                                         $treeArray = array();
@@ -247,7 +246,8 @@
                                         // if in different day
                                         $showFertilizeText = date('d M Y, H:i', $fertilizeDT);
                                     }
-                                } else {
+                                } 
+                                else {
                                     $showFertilizeText = '-'; // No fertilization date
                                 }
 
@@ -323,22 +323,6 @@
                                             </form>
                                         </div>
                                     </div>";
-                                    // change the fertilized button color
-                                //     if ($fertilizeButtonUsed) {
-                                
-                                    // <script>
-                                    //     const treeCards = querySelectorAll(".treeCard");
-                                    //     forEach((each) => {
-                                    //         const markAsFertilizedButton = each.querySelector(".markAsFertilizedBtn");
-                                    //         const buttonText = markAsFertilizedButton.innerText;
-                                    //         if (buttonText.startsWith("Today")) {
-                                    //             markAsFertilizedButton.style.backgroundColor = "Gray";
-                                    //             markAsFertilizedButton.classList.add("disableButton");
-                                    //         }
-                                    //     })
-                                    // </script>
-                                
-                            // }
                             }
                         ?>                
                     </div>
