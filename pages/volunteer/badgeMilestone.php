@@ -78,25 +78,6 @@
     }
 
 
-    $hisghestBadges = mysqli_query($conn, $sql_all_badges);
-
-    while ($row = mysqli_fetch_assoc($hisghestBadges)){
-        $hisghestRequired = $row["points_required"];
-        break;
-        
-    }
-
-
-
-
-
-
-    if($hisghestRequired <= 0){
-        $hisghestRequired = 1;
-    }
-
-
-
 ?>
 
 <!DOCTYPE html>
