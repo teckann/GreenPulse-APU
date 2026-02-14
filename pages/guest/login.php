@@ -42,6 +42,12 @@
                         window.location.href = 'login.php';
                       </script>";
             }
+        }
+        else {
+            echo "<script> 
+                    alert('Invalid User ID');
+                    window.location.href = 'login.php';
+                  </script>";
         } 
         mysqli_close($conn);
     }
