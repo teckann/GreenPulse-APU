@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2026 at 03:29 AM
+-- Generation Time: Feb 15, 2026 at 03:34 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -354,7 +354,8 @@ INSERT INTO `log` (`log_id`, `user_id`, `log_event`, `log_datetime`) VALUES
 ('L113', 'U003', 'Successful Login', '2026-02-15 03:28:43'),
 ('L114', 'U003', 'Successful Logout', '2026-02-15 03:28:59'),
 ('L115', 'U004', 'Successful Login', '2026-02-15 03:29:06'),
-('L116', 'U004', 'Successful Logout', '2026-02-15 03:29:10');
+('L116', 'U004', 'Successful Logout', '2026-02-15 03:29:10'),
+('L117', 'U001', 'Successful Login', '2026-02-15 03:31:05');
 
 -- --------------------------------------------------------
 
@@ -543,7 +544,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `nationality`, `gender`, `date_of_birth`, `contact_number`, `education_email`, `course_name`, `registration_date`, `password`, `safety_question_1`, `answer_1`, `safety_question_2`, `answer_2`, `green_points`, `total_earned`, `avatar`, `role`, `last_login`, `account_status`) VALUES
-('U001', 'Gan Teck Ann', 'Malaysian', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$7XDMxS8G/ng2sVKWUUqvRej6p8vjgxc/X/hXYn2d2BU/kOBBg636C', 'What is your secondary school name?', 'SDBL', 'What is your favorite color?', 'Blue', NULL, NULL, 'src/avatars/U001_avatar_1769792900.jpg', 'admin', '2026-02-15 03:23:34', 'Active'),
+('U001', 'Gan Teck Ann', 'Malaysian', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$7XDMxS8G/ng2sVKWUUqvRej6p8vjgxc/X/hXYn2d2BU/kOBBg636C', 'What is your secondary school name?', 'SDBL', 'What is your favorite color?', 'Blue', NULL, NULL, 'src/avatars/U001_avatar_1769792900.jpg', 'admin', '2026-02-15 03:31:04', 'Active'),
 ('U002', 'Goh Yang Ee', 'Malaysian', 'M', '2006-07-24', '0125508144', 'TP084231@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$/FqDThXUlgrkHbNEmlF4cuiwcndPCgObsnDj7k/9u7JMRoYPHtWBe', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U002_avatars_1769806685.jpg', 'committee', '2026-02-15 03:17:22', 'Active'),
 ('U003', 'Cynthia Tan Xin Ru', 'Malaysian', 'F', '2006-01-21', '01155034966', 'TP084369@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pOUI7Dv/WdOlaO/fca0MHOPafP3I.a55FhuVKme4X8SZzB7l/tyaC', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U003_avatar_1770542412.jpg', 'committee', '2026-02-15 03:28:43', 'Active'),
 ('U004', 'Lim Jin Ming', 'Malaysian', 'M', '2006-06-09', '0129692700', 'TP083424@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$hrkNchWg.uYwsRLpPlVTveGyMV0fFr1cSTgYC7MY0ec.3rxEIKdyS', NULL, NULL, NULL, NULL, 1300, 12000, 'src/avatars/U004_avatar_1769805185.jpg', 'volunteer', '2026-02-15 03:29:06', 'Active'),
