@@ -47,9 +47,6 @@
 
     $countBadges = mysqli_fetch_assoc(mysqli_query($conn, $sql_count_badges));
 
-    $sql_qualified = "SELECT COUNT(*) AS qualified FROM badges WHERE points_required <= '$userTotalPoints'";
-    $badgesQualified = mysqli_fetch_assoc(mysqli_query($conn, $sql_qualified))['qualified'];
-
     $totalBadges = $countBadges["total_badges"];
 
     $totalOwned = $countBadges["owned_badges"];
