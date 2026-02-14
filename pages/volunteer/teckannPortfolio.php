@@ -152,11 +152,6 @@
                             </div>
 
                             <div class="tech">
-                                <img src="../../src/icons/php.svg" class="svg-icon" alt="PHP">
-                                <p>PHP</p>
-                            </div>
-
-                            <div class="tech">
                                 <img src="../../src/icons/typescript.svg" class="svg-icon" alt="TypeScript">
                                 <p>TypeScript</p>
                             </div>
