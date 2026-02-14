@@ -194,14 +194,14 @@ header {
     border-radius: 50%;
 }
 
-.fa-solid {
+/* .fa-solid {
     font-size: 30px; 
     color: #999; 
     display: flex; 
     align-items: 
     center; justify-content: 
     center; height: 100%;
-}
+} */
 
 
 .sidebar-header {
@@ -2333,6 +2333,8 @@ header {
     position: absolute;
     left: 8px;
     color: gray;
+    /* top: 9px; */
+    /* font-size: 25px; */
 }
 
 #searchTree,
@@ -2597,7 +2599,7 @@ header {
     top: 15%;
     right: 10%;
     width: 80%;
-    max-height: 60%;
+    max-height: 80%;
     height: auto;
     z-index: 1200;
     flex-direction: column;
@@ -2711,7 +2713,8 @@ header {
 }
 
 .editConfirmButton {
-    margin-top: 3em;
+    /* margin-top: 3em; */
+    margin-top: 0.5em;
     display: flex;
     justify-content: center;
 }

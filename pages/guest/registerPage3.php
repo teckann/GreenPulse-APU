@@ -57,8 +57,9 @@
 
             $date = date('Y-m-d');
             
-            $sqlCreateAccount = "INSERT INTO users (`user_id`, `name`, `nationality`, `gender`, `date_of_birth`, `contact_number`, `education_email`, `course_name`, `registration_date`, `password`,
-            `avatar`, `role`) VALUES ('{$newId}', '{$_SESSION['name']}', '{$_SESSION['nationality']}', '{$_SESSION['gender']}', '{$_SESSION['DOB']}', '{$_SESSION['contactNumber']}',
+            $sqlCreateAccount = "INSERT INTO users (`user_id`, `name`, `nationality`, `gender`, `date_of_birth`, `contact_number`, 
+            `education_email`, `course_name`, `registration_date`, `password`, `avatar`, `role`) VALUES ('{$newId}', 
+            '{$_SESSION['name']}', '{$_SESSION['nationality']}', '{$_SESSION['gender']}', '{$_SESSION['DOB']}', '{$_SESSION['contactNumber']}',
             '{$_SESSION['email']}', '{$_SESSION['course']}', '{$date}', '{$_SESSION['hash_password']}', 'src/avatars/default.png', 'volunteer');";
 
             if (mysqli_query($conn, $sqlCreateAccount)) {
@@ -71,7 +72,7 @@
             else {
                 ?>
                     <script>
-                        alert('Account register failed, please try again.')
+                        alert('Account register failed, please try again.');
                     </script>
                 <?php
             }
