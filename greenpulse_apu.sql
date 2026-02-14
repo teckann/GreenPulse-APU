@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2026 at 07:01 PM
+-- Generation Time: Feb 15, 2026 at 03:29 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `announcement` (
 
 INSERT INTO `announcement` (`announcement_id`, `user_id`, `announcement_details`, `announcement_datetime`) VALUES
 ('A001', 'U001', 'New Feature Released', '2025-12-23 22:04:14'),
-('A002', 'U001', 'Start collecting points and level up from Rising Talent to Master Legend!', '2026-01-30 22:16:07');
+('A002', 'U001', 'Start collecting points and level up from Rising Talent to Master Legend!', '2026-02-02 01:28:53');
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,6 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`event_id`, `user_id`, `event_register_datetime`, `attendance_status`) VALUES
-('E001', 'U004', '2025-12-10 09:23:18', 'Present'),
 ('E001', 'U005', '2026-01-10 12:38:03', 'Present'),
 ('E001', 'U006', '2026-01-30 17:38:03', 'Present'),
 ('E001', 'U007', '2026-01-12 09:21:35', 'Absent'),
@@ -77,7 +76,8 @@ INSERT INTO `attendance` (`event_id`, `user_id`, `event_register_datetime`, `att
 ('E002', 'U015', '2026-01-27 10:30:59', 'Absent'),
 ('E002', 'U017', '2026-01-28 17:50:59', 'Absent'),
 ('E002', 'U018', '2026-01-28 20:46:19', 'Absent'),
-('E003', 'U005', '2026-01-30 17:52:45', 'Absent');
+('E003', 'U005', '2026-01-30 17:52:45', 'Absent'),
+('E004', 'U004', '2025-12-10 09:23:18', 'Present');
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,7 @@ INSERT INTO `badges` (`badge_id`, `badge_name`, `badge_image`, `points_required`
 ('B002', 'Top Contributor', 'src/badgeImages/02_topContributor_badge.png', 1500),
 ('B003', 'Pro Achiever', 'src/badgeImages/03_proAchiever_badge.png', 3000),
 ('B004', 'Elite Performer', 'src/badgeImages/04_elitePerformer_badge.png', 5000),
-('B005', 'Master Legend', 'src/badgeImages/05_masterLegend_badge.png', 10000);
+('B005', 'Master Legend', 'src/badgeImages/U001_badge_1769787375.png', 10000);
 
 -- --------------------------------------------------------
 
@@ -127,8 +127,9 @@ CREATE TABLE `contact_submission` (
 
 INSERT INTO `contact_submission` (`submission_id`, `user_id`, `full_name`, `email_address`, `contact_number`, `subject`, `content`, `submission_datetime`, `submission_status`) VALUES
 ('S001', NULL, 'Marcus Tan', 'marcus0101@gmail.com', '0123456789', 'Account Registration', 'Is it only APU students who can register an account?', '2025-12-23 22:08:42', 'Complete'),
-('S002', 'U004', 'Lim Jin Ming', 'TP083424@mail.apu.edu.my', '0129692700', 'Green Points & Rewards', 'Why did I register for an event but not receive the corresponding Green Points?', '2026-01-19 23:25:08', 'Pending'),
-('S003', NULL, 'Jeremiah Lim', 'jeremiah1101@gmail.com', '0123516782', 'Join the Committee', 'Im a second year diploma student at APU. I would like to join the committee. How do I apply?', '2026-01-27 00:06:52', 'Pending');
+('S002', 'U004', 'Lim Jin Ming', 'TP083424@mail.apu.edu.my', '0129692700', 'Green Points & Rewards', 'Why did I register for an event but not receive the corresponding Green Points?', '2026-01-19 23:25:08', 'Complete'),
+('S003', NULL, 'Jeremiah Lim', 'jeremiah1101@gmail.com', '0123516782', 'Join the Committee', 'Im a second year diploma student at APU. I would like to join the committee. How do I apply?', '2026-01-27 00:06:52', 'Complete'),
+('S004', NULL, 'Grace Tan', 'grace.tan@ecotech.com.my', '0123678912', 'Partnership & Collaboration', 'Our team is planning a community green awareness event and would like to invite your organization to collaborate as a partner. We hope to discuss possible sponsorship or joint program involvement.', '2026-01-30 21:17:25', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -156,10 +157,10 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`event_id`, `user_id`, `event_title`, `event_poster`, `event_description`, `event_datetime`, `duration`, `location`, `capacity`, `points_given`, `posted_date`, `event_status`) VALUES
-('E001', 'U003', 'Green Innovation Talk', 'src/eventPosters/Green Innovation Talk.png', 'An informative talk exploring green technologies and innovative solutions that support environmental sustainability.', '2026-01-20 14:00:00', '2h 30m', 'S-08-02 | APU Campus', 50, 350, '2025-12-09', 'Active'),
-('E002', 'U003', 'Go Green 3.0', 'src/eventPosters/Go Green 3.0.png', 'An annual green initiative promoting environmental awareness and its role in encouraging sustainable and eco-friendly practices.', '2026-01-30 17:00:00', '3h 45m', 'Auditorium 1 @ Level 7 | APU Campus', 75, 500, '2026-01-25', 'Active'),
-('E003', 'U003', 'Sustainable Living Workshop', 'src/eventPosters/Sustainable Living Workshop.png', 'An interactive workshop focused on practical sustainable living habits and environmentally friendly daily practices.', '2026-02-02 12:30:00', '2h 30m', 'E-08-03 | APU Campus', 45, 480, '2026-01-28', 'Active'),
-('E004', 'U002', 'Climate Action Session', 'src/eventPosters/Climate Action Session.png', 'An engaging session aimed at raising awareness of climate change and encouraging responsible environmental actions.', '2026-02-07 13:00:00', '1h 30m', 'Auditorium 5 @ Level 3 | APU Campus', 40, 550, '2026-01-28', 'Active');
+('E001', 'U003', 'Green Innovation Talk', 'src/eventPosters/Green Innovation Talk.png', 'An informative talk exploring green technologies and innovative solutions that support environmental sustainability.', '2026-02-20 14:00:00', '2h 30m', 'S-08-02 | APU Campus', 50, 350, '2025-12-09', 'Active'),
+('E002', 'U003', 'Go Green 3.0', 'src/eventPosters/Go Green 3.0.png', 'An annual green initiative promoting environmental awareness and its role in encouraging sustainable and eco-friendly practices.', '2026-02-09 17:00:00', '3h 45m', 'Auditorium 1 @ Level 7 | APU Campus', 75, 500, '2026-01-25', 'Active'),
+('E003', 'U003', 'Sustainable Living Workshop', 'src/eventPosters/Sustainable Living Workshop.png', 'An interactive workshop focused on practical sustainable living habits and environmentally friendly daily practices.', '2026-02-10 12:30:00', '2h 30m', 'E-08-03 | APU Campus', 45, 480, '2026-01-28', 'Active'),
+('E004', 'U002', 'Climate Action Session', 'src/eventPosters/Climate Action Session.png', 'An engaging session aimed at raising awareness of climate change and encouraging responsible environmental actions.', '2026-02-07 13:00:00', '1h 30m', 'Auditorium 5 @ Level 3 | APU Campus', 40, 550, '2026-02-04', 'Active');
 
 -- --------------------------------------------------------
 
@@ -249,7 +250,111 @@ INSERT INTO `log` (`log_id`, `user_id`, `log_event`, `log_datetime`) VALUES
 ('L009', 'U004', 'Update Password (U004)', '2026-01-26 18:46:17'),
 ('L010', 'U004', 'Successful Logout', '2026-01-26 18:49:45'),
 ('L011', 'U006', 'Successful Login', '2026-01-30 18:52:54'),
-('L012', 'U008', 'Successful Login', '2026-01-30 18:56:12');
+('L012', 'U008', 'Successful Login', '2026-01-30 18:56:12'),
+('L013', 'U008', 'Successful Logout', '2026-01-30 19:05:01'),
+('L014', 'U001', 'Successful Login', '2026-01-30 19:05:08'),
+('L015', 'U001', 'Complete Contact Submission (S002)', '2026-01-30 19:07:21'),
+('L016', 'U001', 'Complete Contact Submission (S003)', '2026-01-30 19:07:24'),
+('L017', 'U001', 'Successful Logout', '2026-01-30 19:18:12'),
+('L018', 'U001', 'Successful Login', '2026-01-30 19:18:28'),
+('L019', 'U001', 'Change User Status (U006)', '2026-01-30 19:21:58'),
+('L020', 'U001', 'Change User Status (U007)', '2026-01-30 19:22:01'),
+('L021', 'U001', 'Change Event Status (E004)', '2026-01-30 19:23:41'),
+('L022', 'U001', 'Successful Logout', '2026-01-30 19:37:01'),
+('L023', 'U001', 'Successful Login', '2026-01-30 19:52:53'),
+('L024', 'U001', 'Successful Logout', '2026-01-30 20:02:37'),
+('L025', 'U001', 'Successful Login', '2026-01-30 21:19:19'),
+('L026', 'U001', 'Change User Status (U007)', '2026-01-30 22:15:11'),
+('L027', 'U001', 'Change User Status (U002)', '2026-01-30 22:17:43'),
+('L028', 'U001', 'Change User Status (U002)', '2026-01-30 22:17:52'),
+('L029', 'U001', 'Change User Status (U005)', '2026-01-30 22:18:06'),
+('L030', 'U001', 'Change User Status (U006)', '2026-01-30 22:18:09'),
+('L031', 'U001', 'Change User Status (U005)', '2026-01-30 22:18:54'),
+('L032', 'U001', 'Change User Status (U006)', '2026-01-30 22:19:37'),
+('L033', 'U001', 'Change User Status (U006)', '2026-01-30 22:19:42'),
+('L034', 'U001', 'Change User Status (U006)', '2026-01-30 22:19:49'),
+('L035', 'U001', 'Change User Status (U006)', '2026-01-30 22:19:53'),
+('L036', 'U001', 'Change User Status (U006)', '2026-01-30 22:19:59'),
+('L037', 'U001', 'Change User Status (U007)', '2026-01-30 22:20:03'),
+('L038', 'U001', 'Add New User (U020)', '2026-01-30 22:20:38'),
+('L039', 'U001', 'Add New User (U020)', '2026-01-30 22:33:47'),
+('L040', 'U001', 'Change Event Status (E001)', '2026-01-30 22:43:46'),
+('L041', 'U001', 'Change Event Status (E001)', '2026-01-30 22:43:52'),
+('L042', 'U001', 'Change Event Status (E004)', '2026-01-30 22:43:58'),
+('L043', 'U001', 'Change Event Status (E004)', '2026-01-30 22:44:22'),
+('L044', 'U001', 'Change Event Status (E002)', '2026-01-30 22:45:09'),
+('L045', 'U001', 'Change Event Status (E002)', '2026-01-30 22:45:12'),
+('L046', 'U001', 'Change Event Status (E004)', '2026-01-30 22:47:05'),
+('L047', 'U001', 'Change Event Status (E004)', '2026-01-30 22:47:12'),
+('L048', 'U001', 'Change Event Status (E004)', '2026-01-30 22:47:15'),
+('L049', 'U001', 'Change Event Status (E004)', '2026-01-30 22:47:45'),
+('L050', 'U001', 'Change Event Status (E004)', '2026-01-30 22:48:36'),
+('L051', 'U001', 'Complete Contact Submission (S004)', '2026-01-30 23:35:47'),
+('L052', 'U001', 'Add New Announcement (A002)', '2026-01-30 23:36:04'),
+('L053', 'U001', 'Update Badge Information (B005)', '2026-01-30 23:38:00'),
+('L054', 'U001', 'Update Badge Information (B005)', '2026-01-30 23:38:07'),
+('L055', 'U001', 'Update Badge Information (B005)', '2026-01-31 00:09:29'),
+('L056', 'U001', 'Update Badge Information (B005)', '2026-01-31 00:09:37'),
+('L057', 'U001', 'Update Badge Information (B005)', '2026-01-31 00:10:01'),
+('L058', 'U001', 'Update Profile Information (U001)', '2026-01-31 00:11:33'),
+('L059', 'U001', 'Update Profile Information (U001)', '2026-01-31 00:14:15'),
+('L060', 'U001', 'Successful Logout', '2026-01-31 00:31:09'),
+('L061', 'U004', 'Successful Login', '2026-01-31 00:31:18'),
+('L062', 'U004', 'Successful Logout', '2026-01-31 00:31:50'),
+('L063', 'U001', 'Successful Login', '2026-01-31 00:31:57'),
+('L064', 'U001', 'Update Profile Information (U001)', '2026-01-31 00:42:47'),
+('L065', 'U001', 'Update Password (U001)', '2026-01-31 00:56:45'),
+('L066', 'U001', 'Update Security Question (U001)', '2026-01-31 00:56:57'),
+('L067', 'U001', 'Successful Logout', '2026-01-31 01:00:21'),
+('L068', 'U001', 'Successful Login', '2026-01-31 01:08:12'),
+('L069', 'U001', 'Successful Logout', '2026-01-31 01:54:36'),
+('L070', 'U002', 'Successful Login', '2026-01-31 02:33:34'),
+('L071', 'U002', 'Successful Logout', '2026-01-31 03:21:14'),
+('L072', 'U001', 'Successful Login', '2026-01-31 03:21:23'),
+('L073', 'U001', 'Successful Logout', '2026-01-31 04:49:18'),
+('L074', 'U004', 'Successful Login', '2026-01-31 04:49:38'),
+('L075', 'U004', 'Successful Logout', '2026-01-31 05:11:28'),
+('L076', 'U001', 'Successful Login', '2026-01-31 05:11:40'),
+('L077', 'U001', 'Successful Logout', '2026-01-31 05:48:38'),
+('L078', 'U004', 'Successful Login', '2026-01-31 05:48:44'),
+('L079', 'U004', 'Successful Login', '2026-01-31 21:38:27'),
+('L080', 'U004', 'Successful Logout', '2026-02-01 00:02:22'),
+('L081', 'U001', 'Successful Login', '2026-02-01 00:02:29'),
+('L082', 'U001', 'Add New Announcement (A002)', '2026-02-02 01:28:53'),
+('L083', 'U001', 'Update Badge Information (B005)', '2026-02-02 01:29:16'),
+('L084', 'U001', 'Successful Logout', '2026-02-02 01:31:37'),
+('L085', 'U001', 'Successful Login', '2026-02-02 01:31:44'),
+('L086', 'U001', 'Update Profile Information (U001)', '2026-02-02 01:31:51'),
+('L087', 'U001', 'Successful Logout', '2026-02-02 01:32:03'),
+('L088', 'U004', 'Successful Login', '2026-02-02 01:32:12'),
+('L089', 'U004', 'Successful Logout', '2026-02-02 01:34:21'),
+('L090', 'U002', 'Successful Login', '2026-02-04 16:58:41'),
+('L091', 'U002', 'Update Event Information: E004', '2026-02-04 17:01:03'),
+('L092', 'U002', 'Successful Logout', '2026-02-04 17:09:54'),
+('L093', 'U004', 'Successful Login', '2026-02-04 17:10:01'),
+('L094', 'U004', 'Successful Logout', '2026-02-08 18:48:46'),
+('L095', 'U001', 'Successful Login', '2026-02-08 18:48:54'),
+('L096', 'U001', 'Update Security Question (U001)', '2026-02-08 18:56:29'),
+('L097', 'U001', 'Update Security Question (U001)', '2026-02-08 18:56:58'),
+('L098', 'U001', 'Successful Login', '2026-02-09 02:12:25'),
+('L099', 'U001', 'Successful Logout', '2026-02-09 12:52:34'),
+('L100', 'U004', 'Successful Login', '2026-02-09 12:53:20'),
+('L101', 'U004', 'Successful Logout', '2026-02-13 14:17:18'),
+('L102', 'U001', 'Successful Login', '2026-02-13 23:59:15'),
+('L103', 'U001', 'Successful Logout', '2026-02-13 23:59:32'),
+('L104', 'U002', 'Successful Login', '2026-02-13 23:59:38'),
+('L105', 'U002', 'Successful Logout', '2026-02-14 00:41:25'),
+('L106', 'U001', 'Successful Login', '2026-02-14 00:41:32'),
+('L107', 'U002', 'Successful Login', '2026-02-15 03:17:22'),
+('L108', 'U002', 'Fertilize Tree (TA002)', '2026-02-15 03:17:32'),
+('L109', 'U002', 'Fertilize Tree (TA002)', '2026-02-15 03:17:39'),
+('L110', 'U002', 'Successful Logout', '2026-02-15 03:19:02'),
+('L111', 'U001', 'Successful Login', '2026-02-15 03:23:34'),
+('L112', 'U001', 'Successful Logout', '2026-02-15 03:28:33'),
+('L113', 'U003', 'Successful Login', '2026-02-15 03:28:43'),
+('L114', 'U003', 'Successful Logout', '2026-02-15 03:28:59'),
+('L115', 'U004', 'Successful Login', '2026-02-15 03:29:06'),
+('L116', 'U004', 'Successful Logout', '2026-02-15 03:29:10');
 
 -- --------------------------------------------------------
 
@@ -287,6 +392,17 @@ CREATE TABLE `milestone` (
   `badge_id` varchar(8) NOT NULL,
   `issue_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `milestone`
+--
+
+INSERT INTO `milestone` (`user_id`, `badge_id`, `issue_date`) VALUES
+('U004', 'B001', '2026-02-02'),
+('U004', 'B002', '2026-02-02'),
+('U004', 'B003', '2026-02-02'),
+('U004', 'B004', '2026-02-02'),
+('U004', 'B005', '2026-02-02');
 
 -- --------------------------------------------------------
 
@@ -335,10 +451,10 @@ CREATE TABLE `module_history` (
 --
 
 INSERT INTO `module_history` (`module_id`, `user_id`, `highest_score`, `awarded_points`, `total_attempt`, `finish_datetime`) VALUES
-('M001', 'U004', '3', 450, 2, '2026-01-30 01:37:17'),
+('M001', 'U004', '3', 500, 2, '2026-01-30 01:37:17'),
 ('M001', 'U005', '2', 300, 1, '2026-01-30 17:32:04'),
 ('M001', 'U008', '2', 150, 3, '2026-01-30 17:56:26'),
-('M001', 'U009', '3', 450, 1, '2026-01-30 17:57:38');
+('M001', 'U009', '3', 500, 1, '2026-01-30 17:57:38');
 
 -- --------------------------------------------------------
 
@@ -364,9 +480,9 @@ CREATE TABLE `quiz` (
 --
 
 INSERT INTO `quiz` (`quiz_id`, `module_id`, `quiz_question`, `option1`, `option2`, `option3`, `option4`, `answer`, `quiz_given_point`, `quiz_status`) VALUES
-('Q001', 'M001', 'Due to its tropical climate, which renewable energy source is Malaysia primarily focusing on to reduce carbon emissions?', 'Geothermal Energy', 'Solar Energy', 'Wind Energy', 'Nuclear Energy', 'option2', 150, 'Active'),
-('Q002', 'M001', 'What is the long-term environmental goal that Malaysia has committed to achieving by the year 2050?', '100% Plastic Free', 'Zero Waste to Landfill', 'Net Zero Carbon Emissions', 'Total ban on fossil fuels', 'option3', 150, 'Active'),
-('Q003', 'M001', 'Which of the following is a key green technology innovation currently being promoted in Malaysia\'s transportation sector?', 'Electric Vehicles (EVs)', 'Steam-powered Locomotives', 'Diesel Hybrid Engines', 'Hydrogen Airships', 'option1', 200, 'Active');
+('Q001', 'M001', 'Due to its tropical climate, which renewable energy source is Malaysia primarily focusing on to reduce carbon emissions?', 'Geothermal Energy', 'Solar Energy', 'Wind Energy', 'Nuclear Energy', 'option 2', 150, 'Active'),
+('Q002', 'M001', 'What is the long-term environmental goal that Malaysia has committed to achieving by the year 2050?', '100% Plastic Free', 'Zero Waste to Landfill', 'Net Zero Carbon Emissions', 'Total ban on fossil fuels', 'option 3', 150, 'Active'),
+('Q003', 'M001', 'Which of the following is a key green technology innovation currently being promoted in Malaysia\'s transportation sector?', 'Electric Vehicles (EVs)', 'Steam-powered Locomotives', 'Diesel Hybrid Engines', 'Hydrogen Airships', 'option 1', 200, 'Active');
 
 -- --------------------------------------------------------
 
@@ -381,7 +497,7 @@ CREATE TABLE `tree_adoption_history` (
   `given_name` varchar(100) NOT NULL,
   `tree_adoption_datetime` datetime NOT NULL,
   `fertilization_datetime` datetime DEFAULT NULL,
-  `tree_adoption_status` varchar(50) NOT NULL DEFAULT 'Active'
+  `tree_adoption_status` varchar(50) NOT NULL DEFAULT 'Planted'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -389,9 +505,9 @@ CREATE TABLE `tree_adoption_history` (
 --
 
 INSERT INTO `tree_adoption_history` (`tree_adoption_id`, `item_id`, `user_id`, `given_name`, `tree_adoption_datetime`, `fertilization_datetime`, `tree_adoption_status`) VALUES
-('TA001', 'I005', 'U004', 'GreenSpark', '2026-01-30 18:11:58', NULL, 'Active'),
-('TA002', 'I006', 'U004', 'LeafNova', '2026-01-30 18:14:38', NULL, 'Active'),
-('TA003', 'I005', 'U008', 'EverGrow', '2026-01-30 18:56:28', NULL, 'Active');
+('TA001', 'I005', 'U004', 'GreenSpark', '2026-01-30 18:11:58', NULL, 'Planted'),
+('TA002', 'I006', 'U004', 'LeafNova', '2026-01-30 18:14:38', '2026-02-15 03:17:39', 'Germinating'),
+('TA003', 'I005', 'U008', 'EverGrow', '2026-01-30 18:56:28', NULL, 'Diseased');
 
 -- --------------------------------------------------------
 
@@ -427,13 +543,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `nationality`, `gender`, `date_of_birth`, `contact_number`, `education_email`, `course_name`, `registration_date`, `password`, `safety_question_1`, `answer_1`, `safety_question_2`, `answer_2`, `green_points`, `total_earned`, `avatar`, `role`, `last_login`, `account_status`) VALUES
-('U001', 'Gan Teck Ann', 'Malaysian', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$mrSNFUur2uJdl1rNxIyP7eoSCchSguUAcp.Lytrp65KoO2.V961UC', 'What is your secondary school name?', 'SDBL', 'What is the city name were you born in?', 'Batu Pahat', NULL, NULL, 'src/avatars/U001_avatar_1768494571.png', 'admin', '2026-01-30 17:34:38', 'Active'),
-('U002', 'Goh Yang Ee', 'Malaysian', 'M', '2006-07-24', '0125508144', 'TP084231@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$/FqDThXUlgrkHbNEmlF4cuiwcndPCgObsnDj7k/9u7JMRoYPHtWBe', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U002_avatar.png', 'committee', '2026-01-30 02:24:33', 'Active'),
-('U003', 'Cynthia Tan Xin Ru', 'Malaysian', 'F', '2006-01-21', '01155034966', 'TP084369@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pOUI7Dv/WdOlaO/fca0MHOPafP3I.a55FhuVKme4X8SZzB7l/tyaC', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U003_avatar.png', 'committee', '2026-01-18 18:46:05', 'Active'),
-('U004', 'Lim Jin Ming', 'Malaysian', 'M', '2006-06-09', '0129692700', 'TP083424@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$hrkNchWg.uYwsRLpPlVTveGyMV0fFr1cSTgYC7MY0ec.3rxEIKdyS', NULL, NULL, NULL, NULL, 1300, 12000, 'src/avatars/U004_avatar.png', 'volunteer', '2026-01-30 18:08:50', 'Active'),
+('U001', 'Gan Teck Ann', 'Malaysian', 'M', '2006-08-05', '01110911824', 'TP083567@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$7XDMxS8G/ng2sVKWUUqvRej6p8vjgxc/X/hXYn2d2BU/kOBBg636C', 'What is your secondary school name?', 'SDBL', 'What is your favorite color?', 'Blue', NULL, NULL, 'src/avatars/U001_avatar_1769792900.jpg', 'admin', '2026-02-15 03:23:34', 'Active'),
+('U002', 'Goh Yang Ee', 'Malaysian', 'M', '2006-07-24', '0125508144', 'TP084231@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$/FqDThXUlgrkHbNEmlF4cuiwcndPCgObsnDj7k/9u7JMRoYPHtWBe', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U002_avatars_1769806685.jpg', 'committee', '2026-02-15 03:17:22', 'Active'),
+('U003', 'Cynthia Tan Xin Ru', 'Malaysian', 'F', '2006-01-21', '01155034966', 'TP084369@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$pOUI7Dv/WdOlaO/fca0MHOPafP3I.a55FhuVKme4X8SZzB7l/tyaC', NULL, NULL, NULL, NULL, NULL, NULL, 'src/avatars/U003_avatar_1770542412.jpg', 'committee', '2026-02-15 03:28:43', 'Active'),
+('U004', 'Lim Jin Ming', 'Malaysian', 'M', '2006-06-09', '0129692700', 'TP083424@mail.apu.edu.my', 'Diploma in ICT (Software Engineering)', '2025-12-23', '$2y$10$hrkNchWg.uYwsRLpPlVTveGyMV0fFr1cSTgYC7MY0ec.3rxEIKdyS', NULL, NULL, NULL, NULL, 1300, 12000, 'src/avatars/U004_avatar_1769805185.jpg', 'volunteer', '2026-02-15 03:29:06', 'Active'),
 ('U005', 'Lim Wei Jian', 'Malaysian', 'M', '2006-11-01', '0129091231', 'TP083342@mail.apu.edu.my', 'Diploma in Business Administration', '2026-01-28', '$2y$10$/rnii.EwZIEccovpFP3y5OTlEL5eOL6Z/LqyAf1V9FTlgPVEhC.AK', NULL, NULL, NULL, NULL, 4700, 5300, 'src/avatars/default.png', 'volunteer', '2026-01-30 18:16:15', 'Active'),
-('U006', 'Aisyah Binti Ahmad', 'Malaysian', 'F', '2002-05-22', '0134567890', 'TP084567@mail.apu.edu.my', 'Diploma in ICT (Data Informatics)', '2026-01-28', '$2y$10$TsWRtI44N2kFs.zxEFWdXOi6FxTK1OcVwPekKUniv9X33wm/1lvoq', NULL, NULL, NULL, NULL, 2000, 8000, 'src/avatars/default.png', 'volunteer', '2026-01-30 18:52:54', 'Active'),
-('U007', 'Rajesh Verma', 'Indian', 'M', '2007-07-23', '0125678901', 'TP089123@mail.apu.edu.my', 'Diploma in Accounting', '2026-01-28', '$2y$10$m2XnVnfxqTG8GnaTTLdBKuQTT1jkncaVNEj2.KGSbW4S.5yXntt.W', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', NULL, 'Inactive'),
+('U006', 'Aisyah Binti Ahmad', 'Malaysian', 'F', '2002-05-22', '0134567890', 'TP084567@mail.apu.edu.my', 'Diploma in ICT (Data Informatics)', '2026-01-28', '$2y$10$TsWRtI44N2kFs.zxEFWdXOi6FxTK1OcVwPekKUniv9X33wm/1lvoq', NULL, NULL, NULL, NULL, 2000, 8000, 'src/avatars/default.png', 'volunteer', '2026-01-30 18:52:54', 'Inactive'),
+('U007', 'Rajesh Verma', 'Indian', 'M', '2007-07-23', '0125678901', 'TP089123@mail.apu.edu.my', 'Diploma in Accounting', '2026-01-28', '$2y$10$m2XnVnfxqTG8GnaTTLdBKuQTT1jkncaVNEj2.KGSbW4S.5yXntt.W', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', NULL, 'Active'),
 ('U008', 'Ethan Wong', 'Singaporean', 'M', '2004-02-13', '0117890123', 'TP087233@mail.apu.edu.my', 'Diploma in ICT (Interactive Technology)', '2026-01-28', '$2y$10$ta3ZDktt.oeeaWl9QcUMZe2wXGfDz8yFhMUMWtP4AZEo/VdLy0Rxe', NULL, NULL, NULL, NULL, 650, 9150, 'src/avatars/default.png', 'volunteer', '2026-01-30 18:56:12', 'Active'),
 ('U009', 'Sophie Williams', 'British', 'F', '2004-12-08', '0156789012', 'TP083778@mail.apu.edu.my', 'Diploma in Design & Media', '2026-01-28', '$2y$10$Tw.vgCsEogRDJSX2F2RGiOuGkQ7bLJ6DJ5zG2SFt0cbhXw29IRHPu', NULL, NULL, NULL, NULL, 450, 450, 'src/avatars/default.png', 'volunteer', '2026-01-30 17:57:30', 'Active'),
 ('U010', 'Hannah Miller', 'American', 'F', '2003-10-14', '0197890123', 'TP086112@mail.apu.edu.my', 'Diploma in Events Management', '2026-01-28', '$2y$10$otzyrw1M7W3F7Fd4VwGvnea64Fx7YHEbo3RJdKE7Q6RNA5U0mWDs2', NULL, NULL, NULL, NULL, 0, 0, 'src/avatars/default.png', 'volunteer', NULL, 'Active'),
