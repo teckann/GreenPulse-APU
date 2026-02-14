@@ -196,9 +196,9 @@
                     <div class="showTreeCards">
                         <?php 
                             // $trees = array();
-                            $counter = 0;
+                            // $counter = 0;
                             while ($row = mysqli_fetch_assoc($result)) {
-                                $counter += 1;
+                                // $counter += 1;
                                 $rowStatus = $row["tree_adoption_status"];
                                 $statusColor = "";
                                 if ($rowStatus == "Planted") {
@@ -224,7 +224,7 @@
                                 $findUser = "SELECT * FROM users WHERE user_id = '{$row['adoptionUserId']}'";
                                 $userResult = mysqli_query($conn, $findUser);
                                 $userName = mysqli_fetch_assoc($userResult)['name'];
-                                $treeType = $row["itemUserId"];
+                                // $treeType = $row["itemUserId"];
 
                                 $adoptDate = date("d M Y", strtotime($row['tree_adoption_datetime']));
 
