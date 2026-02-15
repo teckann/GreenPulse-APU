@@ -51,7 +51,7 @@
         <form action="#" method = "GET">
             <div class="search-filter-group">
                 <div class="search-bar">
-                    <input type="text" name = "search" placeholder="Search Events by title or description" class="searchInput">
+                    <input type="text" name = "search" placeholder="Search Module by title or description" class="searchInput">
                     <button type="submit" class = "event-search-button">
                         <i class="fas fa-search"></i>
                     </button>

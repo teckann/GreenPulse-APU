@@ -69,7 +69,7 @@
         </div>
         <div class="heroSection">
             <h1>DELETE QUIZZES</h1>
-            <p><?php echo $moduleData['module_name']; ?></p>
+            <p>DELETE MODULE QUIZ QUESTION HERE.</p>
         </div>
     </div>
 
@@ -106,7 +106,7 @@
                     </div>
 
                     <div class="btn-group-actions">
-                        <button type="submit" name="delete_confirm" class="btn-create-event" style="background-color: #dc3545;">
+                        <button type="submit" name="delete_confirm" class="btn-create-event">
                             Delete Selected Questions
                         </button>
                     </div>

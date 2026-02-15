@@ -58,7 +58,7 @@
             
             <div class="heroSection">
                 <h1>EVENT ATTENDANCE</h1>
-                <p>CREATE AND MANAGE GREEN INITIATIVE EVENTS.</p>
+                <p>VIEW AND UPDATE PARTICIPANTS ATTENDANCE HERE.</p>
             </div>
 
             <div class="back-icon-hidden" onclick="window.location.href='eventCreate.php'">

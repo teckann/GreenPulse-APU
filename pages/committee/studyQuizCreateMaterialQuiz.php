@@ -70,17 +70,13 @@
                     addLog($conn, $creatorID, "Add New Module: $finalModuleID");
 
                     if (!empty($_POST['quiz_question'])) {
-                        
                         $quizCount = count($_POST['quiz_question']);
                         
                         for ($i = 0; $i < $quizCount; $i++) {
                             $question = mysqli_real_escape_string($conn, $_POST['quiz_question'][$i]);
                             
                             if (!empty($question)) {
-                                
                                 $quizID = newID($conn, "quiz", "Q");
-
-
 
                                 $opt1 = mysqli_real_escape_string($conn, $_POST['opt1'][$i]);
                                 $opt2 = mysqli_real_escape_string($conn, $_POST['opt2'][$i]);
@@ -296,7 +292,7 @@
 
                 
                 <button type="submit" class="btn-create-event">
-                        Create Module & Quizzes
+                        Create Material & Quizzes
                 </button>
             
 
