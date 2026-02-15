@@ -51,8 +51,8 @@
         </div>
         
         <div class="heroSection">
-            <h1>EVENT MANAGEMENT</h1>
-            <p>CREATE AND MANAGE GREEN INITIATIVE EVENTS.</p>
+            <h1>EVENT FEEDBACK</h1>
+            <p>VIEW ALL EVENT FEEDBACK HERE.</p>
         </div>
     </div>
 

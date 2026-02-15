@@ -93,7 +93,7 @@
                                         </svg>
                                     </div>
                                 <?php else: ?>
-                                    <div class = "view-only">
+                                    <div class = "view-only-2">
                                         View only
                                     </div>
                                 <?php endif; ?>
@@ -116,7 +116,7 @@
                                         </svg>
                                     </div>
                                 <?php else: ?>
-                                    <div class = "view-only">
+                                    <div class = "view-only-2">
                                         View only
                                     </div>
                                 <?php endif; ?>
@@ -164,7 +164,7 @@
                             <i class="fas fa-align-left"></i>
                         </div>
                         <div class="detail-content">
-                            <span class="detail-label">EVENT DESCRIPTION</span>
+                            <span class="detail-label">MODULE DESCRIPTION</span>
                             <p class="description-text">
                               <?php echo $rows['module_description']; ?>
                             </p>

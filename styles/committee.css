@@ -729,6 +729,13 @@ header {
     font-style: italic;
 }
 
+.view-only-2 {
+    padding: 10px;
+    color: black; 
+    font-size: 12px; 
+    font-style: italic;
+}
+
 @media (max-width: 414px) {
     .search-filter-group {
         justify-content: center !important; 
