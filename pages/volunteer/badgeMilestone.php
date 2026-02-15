@@ -47,9 +47,6 @@
 
     $countBadges = mysqli_fetch_assoc(mysqli_query($conn, $sql_count_badges));
 
-    $sql_qualified = "SELECT COUNT(*) AS qualified FROM badges WHERE points_required <= '$userTotalPoints'";
-    $badgesQualified = mysqli_fetch_assoc(mysqli_query($conn, $sql_qualified))['qualified'];
-
     $totalBadges = $countBadges["total_badges"];
 
     $totalOwned = $countBadges["owned_badges"];
@@ -79,25 +76,6 @@
     if($fillPercentage >100){
         $fillPercentage = 100;
     }
-
-
-    $hisghestBadges = mysqli_query($conn, $sql_all_badges);
-
-    while ($row = mysqli_fetch_assoc($hisghestBadges)){
-        $hisghestRequired = $row["points_required"];
-        break;
-        
-    }
-
-
-
-
-
-
-    if($hisghestRequired <= 0){
-        $hisghestRequired = 1;
-    }
-
 
 
 ?>

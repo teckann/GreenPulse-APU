@@ -106,11 +106,6 @@
                                 <img src="../../src/icons/database.svg" class="svg-icon" alt="MySQL">
                                 <p>MySQL</p>
                             </div>
-
-                            <div class="tech">
-                                <img src="../../src/icons/php.svg" class="svg-icon" alt="PHP">
-                                <p>PHP</p>
-                            </div>
                         </div>
                     </div>
 
