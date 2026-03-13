@@ -1,37 +1,31 @@
 # 🌱 GreenPulse APU – Campus Green Initiative Platform
 
-**GreenPulse APU** is a responsive web-based platform developed by students at **Asia Pacific University (APU)**.
+**GreenPulse APU** is a responsive web-based platform developed by students at **Asia Pacific University (APU)**.  
 The system promotes environmental sustainability on campus by encouraging students and staff to participate in green initiatives and community-driven environmental activities.
 
 The project aligns with the **United Nations Sustainable Development Goal 13 – Climate Action**, supporting awareness, engagement, and sustainable behavior within the campus community.
+
 
 # 🌟 Vision & Mission
 
 ### Vision
 
-A sustainable APU campus driven by a community of changemakers where green actions lead to a greener tomorrow.
+A sustainable APU campus driven by a community of changemakers, where green actions lead to a greener tomorrow.
 
 ### Mission
 
-To engage the APU community through organized environmental initiatives and meaningful learning experiences that contribute to a sustainable future.
+To mobilize the APU community through accessible eco-events and rewarding experiences. By integrating education with action—specifically through our signature Tree Redemption initiative—we turn individual contributions into collective environmental impact.
+
+
 
 # 🛠️ Tech Stack
 
 This project was developed using **core web technologies only**, without external frameworks, as required by the module.
 
-**Frontend**
+- **Frontend:** HTML5, CSS3, JavaScript
+- **Backend:** PHP
+- **Database:** MySQL
 
-* HTML5
-* CSS3 (Flexbox & Grid Layout)
-* JavaScript
-
-**Backend**
-
-* PHP
-
-**Database**
-
-* MySQL
 
 # 🚀 Key Features
 
@@ -53,30 +47,35 @@ Educational content designed to improve awareness of sustainability and environm
 
 A gamified achievement system that tracks user progress and rewards environmental engagement.
 
-### 📊 Admin Dashboard
-
-Administrators can monitor:
-
-* User activity
-* Event participation
-* Sustainability impact
-* System analytics
 
 # 🔑 Demo Accounts
 
+> 🌐 **Access Link:**  
+> [greenpulseapu.infinityfreeapp.com](greenpulseapu.infinityfreeapp.com)
+
 You can use the following accounts to explore different system roles.
 
-| Role          | Username | Password     | Key Access                                          |
-| ------------- | -------- | ------------ | --------------------------------------------------- |
-| **Admin**     | demo01   | admin123     | Full system management, analytics, and user control |
-| **Committee** | demo02   | committee123 | Event creation, inventory management, quiz updates  |
-| **Volunteer** | demo03   | volunteer123 | Event registration, tree adoption, point redemption |
+| Role | Username | Password | Key Access |
+|------|----------|----------|-----------|
+| **Admin** | demo01 | admin123 | Full system management, analytics, and user control |
+| **Committee** | demo02 | committee123 | Event creation, inventory management, quiz updates |
+| **Volunteer** | demo03 | volunteer123 | Event registration, tree adoption, point redemption |
 
-> ⚠️ **Note:**
+> ⚠️ **Note:**  
 > These credentials are for demonstration purposes only.
 
-# 🎓  Clarify
 
-* This project was developed as part of the **Responsive Web Design and Development (RWDD)** module at **Asia Pacific University of Technology & Innovation (APU)** 
-* This project is intended for **educational and demonstration purposes only**.
-* This project is developed by Gan Teck Ann, Goh Yang Ee, Cynthia Tan Xin Ru, and Lim Jin Ming
+# 📜 Declarations
+
+- This project was developed as part of the **Responsive Web Design and Development (RWDD)** module at **Asia Pacific University of Technology & Innovation (APU)**.
+
+- This project is intended for **educational and demonstration purposes only**.
+
+- Developed by Gan Teck Ann, Goh Yang Ee, Cynthia Tan Xin Ru, and Lim Jin Ming.
+
+| Name | Responsibility |
+|------|----------|
+| Gan Teck Ann | Admin & Guest Role |
+| Goh Yang Ee | Committee & Guest Role |
+| Cynthia Tan Xin Ru | Committee Role |
+| Lim Jin Ming | Volunteer Role |
