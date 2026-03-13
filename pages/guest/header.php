@@ -5,7 +5,7 @@
     <nav>
         <a href="index.php" id="home">Home</a>
         <a href="aboutUs.php" id="aboutUs">About Us</a>
-        <a href="contactUs.PHP" id="contactUs">Contact Us</a>
+        <a href="contactUs.php" id="contactUs">Contact Us</a>
         <a href="login.php" id="login">Login</a>
     </nav>
 </header>
