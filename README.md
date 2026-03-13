@@ -71,7 +71,7 @@ You can use the following accounts to explore different system roles.
 
 - This project is intended for **educational and demonstration purposes only**.
 
-- Developed by Gan Teck Ann, Goh Yang Ee, Cynthia Tan Xin Ru, and Lim Jin Ming.
+- Developed by: Gan Teck Ann, Goh Yang Ee, Cynthia Tan Xin Ru, and Lim Jin Ming.
 
 | Name | Responsibility |
 |------|----------|
