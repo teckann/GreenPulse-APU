@@ -1,5 +1,0 @@
-Try Login Details as below:
-    - U001 : Teckann123@ (admin)
-    - U002 : yangee123 (committee)
-    - U003 : cynthia123 (committee)
-    - U004 : jimmy123 (volunteer)
