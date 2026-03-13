@@ -5,8 +5,6 @@ The system promotes environmental sustainability on campus by encouraging studen
 
 The project aligns with the **United Nations Sustainable Development Goal 13 – Climate Action**, supporting awareness, engagement, and sustainable behavior within the campus community.
 
----
-
 # 🌟 Vision & Mission
 
 ### Vision
@@ -16,8 +14,6 @@ A sustainable APU campus driven by a community of changemakers where green actio
 ### Mission
 
 To engage the APU community through organized environmental initiatives and meaningful learning experiences that contribute to a sustainable future.
-
----
 
 # 🛠️ Tech Stack
 
@@ -36,8 +32,6 @@ This project was developed using **core web technologies only**, without externa
 **Database**
 
 * MySQL
-
----
 
 # 🚀 Key Features
 
@@ -68,8 +62,6 @@ Administrators can monitor:
 * Sustainability impact
 * System analytics
 
----
-
 # 🔑 Demo Accounts
 
 You can use the following accounts to explore different system roles.
@@ -83,16 +75,8 @@ You can use the following accounts to explore different system roles.
 > ⚠️ **Note:**
 > These credentials are for demonstration purposes only.
 
----
-
-# 🎓 Academic Context
-
-This project was developed as part of the **Responsive Web Design and Development (RWDD)** module at
-**Asia Pacific University of Technology & Innovation (APU)**.
-
----
-
 # 🎓  Clarify
 
 * This project was developed as part of the **Responsive Web Design and Development (RWDD)** module at **Asia Pacific University of Technology & Innovation (APU)** 
 * This project is intended for **educational and demonstration purposes only**.
+* This project is developed by Gan Teck Ann, Goh Yang Ee, Cynthia Tan Xin Ru, and Lim Jin Ming
